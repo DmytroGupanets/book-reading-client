@@ -6,7 +6,7 @@ const StatisticFormStyled = styled.form`
     font-weight: 600;
     font-size: 12px;
     line-height: 38px;
-    color: #242a37;
+    color: ${({ colors }) => colors.lightColors.primaryText};
   }
   .inputWrapper {
     display: flex;
@@ -25,16 +25,16 @@ const StatisticFormStyled = styled.form`
     font-weight: 500px;
     font-size: 11px;
     line-height: 38px;
-    color: #898f9f;
+    color: ${({ colors }) => colors.lightColors.secondaryText};
   }
   .statisticInput {
     padding: 0 0 0 13px;
     height: 40px;
     font-size: 14px;
     line-height: 38px;
-    color: #242a37;
-    background: #f6f7fb;
-    border: 1px solid #a6abb9;
+    color: ${({ colors }) => colors.lightColors.primaryText};
+    background: ${({ colors }) => colors.lightColors.background};
+    border: 1px solid ${({ colors }) => colors.lightColors.icons};
   }
   .statisticBtn {
     width: 171px;
@@ -42,8 +42,8 @@ const StatisticFormStyled = styled.form`
     font-weight: 500;
     font-size: 14px;
     line-height: 38px;
-    color: #fff;
-    background: #ff6b08;
+    color: ${({ colors }) => colors.lightColors.secondaryBg};
+    background: ${({ colors }) => colors.lightColors.accent};
     border: none;
     cursor: pointer;
   }
@@ -54,9 +54,9 @@ const StatisticFormStyled = styled.form`
     width: 100%;
     font-size: 14px;
     line-height: 38px;
-    color: #242a37;
-    background: #f6f7fb;
-    border: 1px solid #a6abb9;
+    color: ${({ colors }) => colors.lightColors.primaryText};
+    background: ${({ colors }) => colors.lightColors.background};
+    border: 1px solid solid ${({ colors }) => colors.lightColors.icons};
     border-radius: 0;
   }
   .reactSelect__value-container {

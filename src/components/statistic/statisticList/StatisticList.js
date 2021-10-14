@@ -12,8 +12,7 @@ const StatisticList = () => {
   return (
     <StatisticListStyled>
       <h3 className="statisticTitle">Статистика</h3>
-      {/* <ul className="statisticList">
-        <li className="statisticListItem"> */}
+
       {arr.map(({ date, time, str }) => (
         <ul className="statisticList">
           <li className="statisticListItem">{date}</li>
@@ -24,8 +23,6 @@ const StatisticList = () => {
           </li>
         </ul>
       ))}
-      {/* </li>
-      </ul> */}
     </StatisticListStyled>
   );
 };

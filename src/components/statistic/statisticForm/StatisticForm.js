@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Select from "react-select";
+// import axios from "axios";
 
 import StatisticFormStyled from "./StatisticFormStyled";
 
@@ -29,9 +30,18 @@ const StatisticForm = () => {
     setStatistic((prev) => ({ ...prev, date: value }));
   };
 
+  //   const test = async () => {
+  //     const targetId = "616750d686be81937b903c04";
+
+  //     const res = axios.get(
+  //       `http://localhost:5000/api/targets/records/${targetId}`
+  //     );
+  //     return res;
+  //   };
+
   const onHandleSubmit = (e) => {
     e.preventDefault();
-    console.log(statistic);
+    // test().then((res) => console.log(res.data));
     setStatistic(initialState);
   };
 

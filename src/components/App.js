@@ -6,7 +6,10 @@ function App() {
   return (
     <>
       {/* <Header /> */}
-      <Container>{/* <Main /> */}</Container>
+      <Container>
+        {/* <Main /> */}
+        <LibraryPage />
+      </Container>
     </>
   );
 }

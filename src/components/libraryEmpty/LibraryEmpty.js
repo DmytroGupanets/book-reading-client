@@ -24,6 +24,7 @@ const LibraryEmpty = () => {
     return (
         
         <LibraryEmptyStyled  onClick={onHandleSubmit}>
+            <div className="bookContainer">
             <label className="aboutBook aboutBook-title">
             Назва книги
             <input 
@@ -68,6 +69,7 @@ const LibraryEmpty = () => {
             </label>
             </div>
             <button type="submit" className="addButton">Додати</button>
+            </div>
 
         </LibraryEmptyStyled>
         

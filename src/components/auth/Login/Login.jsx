@@ -5,7 +5,7 @@ const Login = () => {
         <p>Login</p>
       </div>
       <div className="rightSideContainer">
-        <p>
+        <p className="loginPageText">
           Книги — это корабли мысли, странствующие по волнам времени и бережно
           несущие свой драгоценный груз от поколения к поколению.
         </p>

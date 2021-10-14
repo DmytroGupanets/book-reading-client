@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Select from "react-select";
 // import axios from "axios";
-
+import colors from "../../../styles/colors";
 import StatisticFormStyled from "./StatisticFormStyled";
 
 const initialState = {
@@ -46,7 +46,7 @@ const StatisticForm = () => {
   };
 
   return (
-    <StatisticFormStyled onSubmit={onHandleSubmit}>
+    <StatisticFormStyled onSubmit={onHandleSubmit} colors={colors}>
       <h3 className="StatisticTitle">Результати</h3>
       <div className="inputWrapper">
         <label className="statisticFormLabel">

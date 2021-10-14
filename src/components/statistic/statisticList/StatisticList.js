@@ -1,3 +1,8 @@
+// import React, { useEffect, useState } from "react";
+// import { useDispatch, useSelector } from "react-redux";
+// import { getRecordOperation } from "../../../redux/target/targetOperations";
+
+import colors from "../../../styles/colors";
 import StatisticListStyled from "./StatisticListStyled";
 
 const arr = [
@@ -10,7 +15,7 @@ const arr = [
 
 const StatisticList = () => {
   return (
-    <StatisticListStyled>
+    <StatisticListStyled colors={colors}>
       <h3 className="statisticTitle">Статистика</h3>
 
       {arr.map(({ date, time, str }) => (

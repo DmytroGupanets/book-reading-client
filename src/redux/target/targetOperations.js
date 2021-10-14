@@ -8,7 +8,7 @@ import {
   updateRecordError,
 } from "../../redux/target/targetActions";
 
-export const getRecordOperation = async (targetId) => {
+export const getRecordOperation = (targetId) => async (dispatch, getState) => {
   try {
     dispatch(getRecordRequest());
 
@@ -20,14 +20,15 @@ export const getRecordOperation = async (targetId) => {
   }
 };
 
-export const updateRecordOpreation = async (targetId, newRecord) => {
-  try {
-    dispatch(updateRecordRequest());
+export const updateRecordOperation =
+  (targetId, newRecord) => async (dispatch, getState) => {
+    try {
+      dispatch(updateRecordRequest());
 
-    const result = await updateRecord(targetId, newRecord);
+      const result = await updateRecord(targetId, newRecord);
 
-    dispatch(updateRecordSuccess(result.data));
-  } catch (error) {
-    dispatch(updateRecordError(error.message));
-  }
-};
+      dispatch(updateRecordSuccess(result.data));
+    } catch (error) {
+      dispatch(updateRecordError(error.message));
+    }
+  };

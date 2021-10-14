@@ -10,7 +10,7 @@ import {
 } from "./targetActions";
 
 const recordsReducer = createReducer([], {
-  getRecordSuccess: (_, { payload }) => payload.data.records,
+  [getRecordSuccess]: (_, { payload }) => payload.data.records,
 });
 
 const isLoadingReducer = createReducer(false, {

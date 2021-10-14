@@ -1,14 +1,14 @@
 import React from "react";
+import AuthStyled from "./AuthStyled";
+import Login from "./Login/Login";
+import Registration from "./Registration/Registration";
 
 const Auth = () => {
   return (
-    <>
-      <h1>Hello</h1>
-
-      <ul>
-        <li>Just testing</li>
-      </ul>
-    </>
+    <AuthStyled>
+      <Login />
+      <Registration />
+    </AuthStyled>
   );
 };
 

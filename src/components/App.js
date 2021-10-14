@@ -1,13 +1,16 @@
-import AuthPage from "../pages/authPage/AuthPage";
+// import AuthPage from "../pages/authPage/AuthPage";
 import Container from "../components/container/Container";
-import LibraryEmpty from "./libraryEmpty/LibraryEmpty";
 
+import LibraryPage from "../pages/libraryPage/LibraryPage";
+import LibraryEmpty from "./libraryEmpty/LibraryEmpty";
+    
 function App() {
   return (
-    <Container>
-      <AuthPage />
-      <LibraryEmpty />
-    </Container>
+    <>
+     <LibraryEmpty />
+      {/* <Header /> */}
+      <Container>{/* <Main /> */}</Container>
+    </>
   );
 }
 

@@ -1,30 +1,32 @@
 import React from "react";
 import { BookMobileStyled } from "./BookMobileStyled";
 
+import bookIcon from "../../../images/book.svg";
+
 const BookMobile = ({ book }) => {
   return (
     <BookMobileStyled>
       <div className="iconWrapper">
         <svg className="iconSvg">
-          <use className="icon" href="" />
+          <use className="icon" href={bookIcon + "#book"} />
         </svg>
       </div>
       <div className="bookInfo">
         <h3 className="bookName">{book.name}</h3>
-        <span>
-          <span>Автор: </span>
-          <p>{book.author}</p>
-        </span>
+        <div className="authorField">
+          <span className="authorTitle">Автор: </span>
+          <span className="authorName">{book.author}</span>
+        </div>
 
-        <span>
-          <span>Рік:</span>
-          <p>{book.year}</p>
-        </span>
+        <div className="yearField">
+          <span className="yearTitle">Рік:</span>
+          <span className="year">{book.year}</span>
+        </div>
 
-        <span>
-          <span>Стор.:</span>
-          <p>{book.pages}</p>
-        </span>
+        <div className="pagesField">
+          <span className="pagesTitle">Стор.:</span>
+          <span className="pages">{book.pages}</span>
+        </div>
       </div>
     </BookMobileStyled>
   );

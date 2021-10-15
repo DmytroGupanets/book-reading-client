@@ -1,17 +1,17 @@
-// import AuthPage from "../pages/authPage/AuthPage";
+import { Suspense } from "react";
 import Container from "../components/container/Container";
-import LibraryPage from "../pages/libraryPage/LibraryPage";
-import LibraryEmpty from "./libraryEmpty/LibraryEmpty";
-import Statistic from "./statistic/Statistic";
+import Header from "./header/Header";
+import Main from "./main/Main";
+import Spinner from "./Spinner/Spinner";
 
 function App() {
   return (
-    <>
-      <LibraryEmpty />
-      {/* <Header /> */}
-      <Container>{/* <Main /> */}</Container>
-      <Statistic />
-    </>
+    <Suspense fallback={<Spinner />}>
+      <Header />
+      <Container>
+        <Main />
+      </Container>
+    </Suspense>
   );
 }
 

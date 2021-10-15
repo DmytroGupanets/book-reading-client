@@ -1,31 +1,39 @@
 import React from "react";
 import { BookMobileStyled } from "./BookMobileStyled";
 
-import bookIcon from "../../../images/book.svg";
+import bookIcon from "../../../images/books-sprite.svg";
 
 const BookMobile = ({ book }) => {
   return (
     <BookMobileStyled>
       <div className="iconWrapper">
-        <svg className="iconSvg">
-          <use className="icon" href={bookIcon + "#book"} />
-        </svg>
+        {book.status === "inProgress" ? (
+          <svg className="iconSvg">
+            <use className="icon" href={bookIcon + "#book-active"} />
+          </svg>
+        ) : (
+          <svg className="iconSvg">
+            <use className="icon" href={bookIcon + "#book"} />
+          </svg>
+        )}
       </div>
-      <div className="bookInfo">
+      <div className="bookInfoWrapper">
         <h3 className="bookName">{book.name}</h3>
-        <div className="authorField">
-          <span className="authorTitle">Автор: </span>
-          <span className="authorName">{book.author}</span>
-        </div>
 
-        <div className="yearField">
-          <span className="yearTitle">Рік:</span>
-          <span className="year">{book.year}</span>
-        </div>
-
-        <div className="pagesField">
-          <span className="pagesTitle">Стор.:</span>
-          <span className="pages">{book.pages}</span>
+        <div className="bookInfo">
+          <span className="bookFieldName">Автор:</span>
+          <span className="bookFieldValue">{book.author}</span>
+          <span className="bookFieldName">Рік:</span>
+          <span className="bookFieldValue">{book.year}</span>
+          <span className="bookFieldName">Стор.:</span>
+          <span className="bookFieldValue">{book.pages}</span>
+          {book.status === "completed" ? (
+            <>
+              <span className="bookFieldName">Рейтинг:</span>
+              <span className="bookFieldValue">*****</span>
+              <span>РЕЗЮМЕ КНОПКА</span>
+            </>
+          ) : null}
         </div>
       </div>
     </BookMobileStyled>

@@ -2,10 +2,14 @@ import styled from "styled-components";
 
 export const BookMobileStyled = styled.div`
   display: flex;
-  background-color: tomato;
-  padding: 20px;
+  background-color: #ffffff;
+  padding: 20px 10px 20px 20px;
+  margin-bottom: 15px;
+
+  box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
 
   .iconWrapper {
+    padding-top: 2px;
   }
 
   .iconSvg {
@@ -13,39 +17,48 @@ export const BookMobileStyled = styled.div`
     width: 22px;
   }
 
-  .icon {
+  .bookInfoWrapper {
+    margin-left: 12px;
+
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.25;
+    color: #242a37;
   }
 
   .bookInfo {
+    display: flex;
+    flex-wrap: wrap;
   }
 
   .bookName {
+    max-width: 170px;
+    font-weight: 500;
+    font-size: 12px;
+    margin-bottom: 15px;
   }
 
-  .authorField {
+  .bookFieldName {
+    flex-basis: 34%;
+    margin-bottom: 15px;
+
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.25;
+    color: #898f9f;
   }
 
-  .authorTitle {
-  }
+  .bookFieldValue {
+    flex-basis: 66%;
+    text-align: left;
+    margin-bottom: 15px;
 
-  .authorName {
-  }
-
-  .yearField {
-  }
-
-  .yearTitle {
-  }
-
-  .year {
-  }
-
-  .pagesField {
-  }
-
-  .pagesTitle {
-  }
-
-  .pages {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.25;
+    color: #242a37;
   }
 `;

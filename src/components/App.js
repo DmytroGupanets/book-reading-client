@@ -7,11 +7,14 @@ import LibraryEmpty from "./libraryEmpty/LibraryEmpty";
 function App() {
   return (
     <>
-      <LibraryEmpty />
+      {/* <LibraryEmpty /> */}
       {/* <Header /> */}
-      <Container>{/* <Main /> */}</Container>
+      <Container>
+        {/* <Main /> */}
+        <LibraryPage />
+      </Container>
       {/* <Statistic /> */}
-      <AuthPage />
+      {/* <AuthPage /> */}
     </>
   );
 }

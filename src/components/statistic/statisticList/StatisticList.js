@@ -1,6 +1,9 @@
 // import React, { useEffect, useState } from "react";
 // import { useDispatch, useSelector } from "react-redux";
-// import { getRecordOperation } from "../../../redux/target/targetOperations";
+// import {
+//   getRecordOperation,
+//   updateRecordOperation,
+// } from "../../../redux/target/targetOperations";
 
 import colors from "../../../styles/colors";
 import StatisticListStyled from "./StatisticListStyled";

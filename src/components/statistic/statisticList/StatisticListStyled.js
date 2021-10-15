@@ -17,7 +17,7 @@ const StatisticListStyled = styled.div`
   .statisticListItem {
     width: 100%;
     font-size: 14px;
-    line-height: 38px;
+    /* line-height: 38px; */
     color: ${({ colors }) => colors.lightColors.primaryText};
   }
   .statisticListItemTime {

@@ -1,27 +1,38 @@
-import { useState } from "react";
 import Select from "react-select";
+import { useEffect, useState } from "react";
+// import { useDispatch, useSelector } from "react-redux";
+// import {
+//   getRecordOperation,
+//   updateRecordOperation,
+// } from "../../../redux/target/targetOperations";
 // import axios from "axios";
 import colors from "../../../styles/colors";
 import StatisticFormStyled from "./StatisticFormStyled";
+import useDate from "../../../hooks/useDate";
 
 const initialState = {
   date: "",
-  countStr: "",
+  pages: "",
+  optionSelectData: [],
 };
-
-const data = [
-  { value: "3.10.1991", label: "3.10.1991" },
-  { value: "5.10.1991", label: "5.10.1991" },
-  { value: "8.10.1991", label: "8.10.1991" },
-];
 
 const StatisticForm = () => {
   const [statistic, setStatistic] = useState(initialState);
 
+  const [stateData, getCurrentData, getCurrentTime, setQuantityDays] =
+    useDate();
+  const { currentDate, quantityDays } = stateData;
+  console.log(stateData);
+  //   const dispatch = useDispatch();
+
+  //   useEffect(() => {
+  //     // dispatch(getRecordOperation());
+  //   }, []);
+
   const onHandleChange = (e) => {
     const { value } = e.target;
 
-    setStatistic((prev) => ({ ...prev, countStr: value }));
+    setStatistic((prev) => ({ ...prev, pages: value }));
   };
 
   const onChangeSelect = (e) => {
@@ -30,20 +41,18 @@ const StatisticForm = () => {
     setStatistic((prev) => ({ ...prev, date: value }));
   };
 
-  //   const test = async () => {
-  //     const targetId = "616750d686be81937b903c04";
-
-  //     const res = axios.get(
-  //       `http://localhost:5000/api/targets/records/${targetId}`
-  //     );
-  //     return res;
-  //   };
-
   const onHandleSubmit = (e) => {
     e.preventDefault();
-    // test().then((res) => console.log(res.data));
+
     setStatistic(initialState);
   };
+
+  const exactDays = quantityDays.map((day) => ({
+    value: day,
+    label: day,
+  }));
+
+  const options = [{ value: "default", label: quantityDays[0] }, ...exactDays];
 
   return (
     <StatisticFormStyled onSubmit={onHandleSubmit} colors={colors}>
@@ -52,9 +61,9 @@ const StatisticForm = () => {
         <label className="statisticFormLabel">
           Дата
           <Select
-            options={data}
+            options={options}
             classNamePrefix="reactSelect"
-            placeholder={""}
+            placeholder={currentDate}
             components={{
               DropdownIndicator: () => null,
               IndicatorSeparator: () => null,
@@ -67,6 +76,7 @@ const StatisticForm = () => {
           Кількість сторінок
           <input
             type="text"
+            value={statistic.pages}
             className="statisticInput"
             onChange={onHandleChange}
             required

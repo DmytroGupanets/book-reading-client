@@ -7,13 +7,20 @@ import desktop1x from "../../../images/auth/mainImg/auth-desktop1x.webp";
 import desktop2x from "../../../images/auth/mainImg/auth-desktop2x.webp";
 
 const AuthStyled = styled.div`
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.9;
+  color: #242a37;
   .leftSideContainer {
+    min-width: 565px;
     width: 100%;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
 
-    background-color: #091e3f;
+    background-color: rgba(9, 30, 63, 0.1);
     background-image: linear-gradient(
         to right,
         rgba(9, 30, 63, 0.8),
@@ -29,7 +36,6 @@ const AuthStyled = styled.div`
 
     @media screen and (min-width: 768px) {
       & {
-        /* max-width: 1600px; */
         background-image: linear-gradient(
             to right,
             rgba(9, 30, 63, 0.8),
@@ -48,8 +54,6 @@ const AuthStyled = styled.div`
     @media screen and (min-width: 1280px) {
       width: 44%;
       & {
-        /* max-width: 1600px;
-        max-height: 600px; */
         background-image: linear-gradient(
             to right,
             rgba(9, 30, 63, 0.8),
@@ -64,26 +68,20 @@ const AuthStyled = styled.div`
         }
       }
     }
-
-    .rightSideContainer {
-      @media screen and (min-width: 1280px) {
-        width: 56%;
-      }
-    }
   }
 
+  .rightSideContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   @media screen and (min-width: 1280px) {
     .authContainer {
       display: flex;
     }
-  }
-
-  .overlayContainer {
-    display: flex;
-    /* justify-content: center; */
-    width: 100%;
-    height: 100%;
-    background-color: rgba(9, 30, 63, 0.8);
+    .rightSideContainer {
+      width: 56%;
+    }
   }
 `;
 

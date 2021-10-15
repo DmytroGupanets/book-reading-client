@@ -1,19 +1,26 @@
+import RegistrationForm from "../RegistrationForm/RegistrationForm";
+import LoginStyled from "./LoginStyled";
+import quotesIcon from "../../../images/auth/quotes.svg";
+
 const Login = () => {
   return (
-    <div className="authContainer">
+    <LoginStyled className="authContainer">
       <div className="leftSideContainer">
-        <div className="overlayContainer">
-          <p>Login</p>
-        </div>
+        <RegistrationForm />
       </div>
       <div className="rightSideContainer">
-        <p className="loginPageText">
-          Книги — это корабли мысли, странствующие по волнам времени и бережно
-          несущие свой драгоценный груз от поколения к поколению.
-        </p>
-        <p>Бэкон Ф.</p>
+        <div className="textContainer">
+          <svg className="quotesIcon" width="31" height="25">
+            <use href={quotesIcon + "#icon-quotes"}></use>
+          </svg>
+          <p className="loginPageText">
+            Книги — это корабли мысли, странствующие по волнам времени и бережно
+            несущие свой драгоценный груз от поколения к поколению.
+          </p>
+          <p className="authorText">Бэкон Ф.</p>
+        </div>
       </div>
-    </div>
+    </LoginStyled>
   );
 };
 

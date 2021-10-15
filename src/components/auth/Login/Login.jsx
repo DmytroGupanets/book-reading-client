@@ -1,12 +1,12 @@
-import RegistrationForm from "../RegistrationForm/RegistrationForm";
 import LoginStyled from "./LoginStyled";
 import quotesIcon from "../../../images/auth/quotes.svg";
+import LoginForm from "../LoginForm/LoginForm";
 
 const Login = () => {
   return (
     <LoginStyled className="authContainer">
       <div className="leftSideContainer">
-        <RegistrationForm />
+        <LoginForm />
       </div>
       <div className="rightSideContainer">
         <div className="textContainer">

@@ -2,7 +2,9 @@ const Login = () => {
   return (
     <div className="authContainer">
       <div className="leftSideContainer">
-        <p>Login</p>
+        <div className="overlayContainer">
+          <p>Login</p>
+        </div>
       </div>
       <div className="rightSideContainer">
         <p className="loginPageText">

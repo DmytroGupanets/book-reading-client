@@ -8,7 +8,7 @@ import desktop2x from "../../../images/auth/mainImg/auth-desktop2x.webp";
 
 const AuthStyled = styled.div`
   .leftSideContainer {
-    width: calc(100% / 2);
+    width: 100%;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -20,11 +20,13 @@ const AuthStyled = styled.div`
         rgba(9, 30, 63, 0.8)
       ),
       url(${mobile1x});
+
     @media screen and (min-device-pixel-ratio: 2),
       screen and (min-resolution: 192dpi),
       screen and (min-resolution: 2dppx) {
       background-image: url(${mobile2x});
     }
+
     @media screen and (min-width: 768px) {
       & {
         /* max-width: 1600px; */
@@ -43,10 +45,8 @@ const AuthStyled = styled.div`
       }
     }
 
-    .rightSideContainer {
-      width: calc(100% / 2);
-    }
     @media screen and (min-width: 1280px) {
+      width: 44%;
       & {
         /* max-width: 1600px;
         max-height: 600px; */
@@ -64,12 +64,26 @@ const AuthStyled = styled.div`
         }
       }
     }
+
+    .rightSideContainer {
+      @media screen and (min-width: 1280px) {
+        width: 56%;
+      }
+    }
   }
 
   @media screen and (min-width: 1280px) {
     .authContainer {
       display: flex;
     }
+  }
+
+  .overlayContainer {
+    display: flex;
+    /* justify-content: center; */
+    width: 100%;
+    height: 100%;
+    background-color: rgba(9, 30, 63, 0.8);
   }
 `;
 

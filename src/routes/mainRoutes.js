@@ -2,8 +2,16 @@ import { lazy } from "react";
 
 export const mainRoutes = [
   {
-    name: "authorization",
-    path: "/",
+    name: "login",
+    path: "/login",
+    exact: true,
+    component: lazy(() => import("../pages/authPage/AuthPage")),
+    isPrivat: true,
+    restricted: false,
+  },
+  {
+    name: "registration",
+    path: "/register",
     exact: true,
     component: lazy(() => import("../pages/authPage/AuthPage")),
     isPrivat: true,

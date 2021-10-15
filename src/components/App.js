@@ -2,14 +2,15 @@
 import Container from "../components/container/Container";
 import LibraryPage from "../pages/libraryPage/LibraryPage";
 import LibraryEmpty from "./libraryEmpty/LibraryEmpty";
-    
+import Statistic from "./statistic/Statistic";
+
 function App() {
   return (
     <>
-     <LibraryEmpty />
+      <LibraryEmpty />
       {/* <Header /> */}
       <Container>{/* <Main /> */}</Container>
-      {/* <Statistic /> */}
+      <Statistic />
     </>
   );
 }

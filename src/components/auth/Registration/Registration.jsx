@@ -1,10 +1,13 @@
 import arrowIcon from "../../../images/auth/arrow.svg";
+import RegistrationForm from "../RegistrationForm/RegistrationForm";
 
 const Registration = () => {
   return (
     <div className="authContainer">
       <div className="leftSideContainer">
-        <p>Registration</p>
+        <div className="overlayContainer">
+          <RegistrationForm />
+        </div>
       </div>
       <div className="rightSideContainer">
         <h2>Books Reading</h2>

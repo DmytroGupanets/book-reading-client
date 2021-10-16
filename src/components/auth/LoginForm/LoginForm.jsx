@@ -3,6 +3,7 @@ import GoogleButton from "../GoogleButton/GoogleButton";
 import LoginFormStyled from "./LoginFormStyled";
 import { loginValidationSchema } from "../validation/validationSchema";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 const LoginForm = () => {
   const formik = useFormik({
@@ -13,8 +14,12 @@ const LoginForm = () => {
 
     validationSchema: loginValidationSchema,
 
-    onSubmit: (data) => {
-      console.log(data);
+    onSubmit: ({ email, password }) => {
+      const user = {
+        email,
+        password,
+      };
+      // dispatch(login(user));
     },
   });
 
@@ -22,7 +27,7 @@ const LoginForm = () => {
     <LoginFormStyled>
       <GoogleButton />
       <form className="form" onSubmit={formik.handleSubmit}>
-        <div className="formGroup">
+        <div className="formGroup emailInput">
           <label className="formLabel" htmlFor="email">
             Електронна адреса
             <span className="formLabelStar"> *</span>
@@ -41,27 +46,34 @@ const LoginForm = () => {
             <div className="inputError">{formik.errors.email}</div>
           )}
         </div>
-        <label className="formLabel" htmlFor="password">
-          Пароль
-          <span className="formLabelStar"> *</span>
-        </label>
-        <input
-          id="password"
-          type="password"
-          className="formInput"
-          name="password"
-          placeholder="..."
-          value={formik.values.password}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-        />
+        <div className="formGroup">
+          <label className="formLabel" htmlFor="password">
+            Пароль
+            <span className="formLabelStar"> *</span>
+          </label>
+          <input
+            id="password"
+            type="password"
+            minlength="5"
+            maxLength="30"
+            className="formInput"
+            name="password"
+            placeholder="Пароль"
+            value={formik.values.password}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+          />
+          {formik.errors.password && formik.touched.password && (
+            <div className="inputError">{formik.errors.password}</div>
+          )}
+        </div>
         <div className="wrapperButton">
           <button type="submit" className="authButton">
             Увійти
           </button>
         </div>
-        <div className="loginContainer">
-          <Link to="/register" className="login">
+        <div className="registContainer">
+          <Link to="/register" className="registerLink">
             Реєстрація
           </Link>
         </div>

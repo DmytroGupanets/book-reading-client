@@ -13,9 +13,13 @@ const AuthStyled = styled.div`
   font-size: 20px;
   line-height: 1.9;
   color: #242a37;
+  width: 100%;
+  height: 100%;
+
   .leftSideContainer {
     min-width: 565px;
     width: 100%;
+    height: 100%;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -54,6 +58,7 @@ const AuthStyled = styled.div`
     @media screen and (min-width: 1280px) {
       width: 44%;
       & {
+        width: 44%;
         background-image: linear-gradient(
             to right,
             rgba(9, 30, 63, 0.8),
@@ -75,6 +80,7 @@ const AuthStyled = styled.div`
     justify-content: center;
     align-items: center;
   }
+
   @media screen and (min-width: 1280px) {
     .authContainer {
       display: flex;

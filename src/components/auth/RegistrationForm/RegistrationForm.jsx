@@ -1,7 +1,8 @@
 import { useFormik } from "formik";
-import { RegistrationFormStyled } from "./RegistrationFormStyled";
+import { Link } from "react-router-dom";
 import GoogleButton from "../GoogleButton/GoogleButton";
 import { registerValidationSchema } from "../validation/validationSchema";
+import { RegistrationFormStyled } from "./RegistrationFormStyled";
 
 const RegistrationForm = () => {
   const formik = useFormik({
@@ -91,9 +92,9 @@ const RegistrationForm = () => {
         </div>
         <div className="loginContainer">
           Вже з нами?
-          <a href="#" className="login">
+          <Link to="/login" className="login">
             Увійти
-          </a>
+          </Link>
         </div>
       </form>
     </RegistrationFormStyled>

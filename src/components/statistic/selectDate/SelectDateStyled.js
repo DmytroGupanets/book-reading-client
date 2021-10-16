@@ -17,7 +17,7 @@ const SelectDateStyled = styled.label`
 
     top: 60%;
     left: 80%;
-    widows: 13px;
+    width: 13px;
     height: 7px;
 
     z-index: 1;

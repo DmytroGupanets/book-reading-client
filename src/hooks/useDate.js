@@ -23,11 +23,11 @@ const dateNow = `${day}-${month + 1}-${year}`;
 
 const useDate = () => {
   const [stateData, setDate] = useState(initialStateDate);
-  const { currentDate, currentTime, quantityDays, startData } = stateData;
+  const { quantityDays, startData } = stateData;
 
   useEffect(() => {
     setCurrentData();
-    // setCurrentTime();
+    setCurrentTime();
     quantityDays && setQuantityBetweenDays(startData);
   }, [initialStateDate]);
 
@@ -38,7 +38,6 @@ const useDate = () => {
   const setCurrentTime = () => {
     const timeNow = moment().toLocaleString().substr(16, 8);
     setDate((prev) => ({ ...prev, currentTime: timeNow }));
-    return timeNow;
   };
 
   const setQuantityBetweenDays = (startTargetData) => {
@@ -50,16 +49,15 @@ const useDate = () => {
 
     const cur = new Date(year, month, day);
     const start = new Date(startYear, startMonth, startDay);
-
     const range = moment.range(start, cur);
 
-    let d = +startDay;
+    let newDateRange = +startDay;
 
     for (let i = 0; i < range.diff("days") + 1; i++) {
       const newDate = moment().set({
         year: startYear,
         month: startMonth,
-        date: d,
+        date: newDateRange + 1,
       });
       setDate((prev) => ({
         ...prev,
@@ -68,7 +66,7 @@ const useDate = () => {
           newDate.toISOString().substr(0, 10).split("-").reverse().join("."),
         ],
       }));
-      d++;
+      newDateRange++;
     }
   };
 

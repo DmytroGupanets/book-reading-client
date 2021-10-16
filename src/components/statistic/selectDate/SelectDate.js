@@ -5,12 +5,11 @@ import SelectDateStyled from "./SelectDateStyled";
 import colors from "../../../styles/colors";
 import sprite from "../../../images/sprite.svg";
 
-const SelectDate = ({ setStatistic }) => {
+const SelectDate = ({ date, setStatistic }) => {
   //   const [date, setDate] = useState(initialState);
 
-  const [stateData, setCurrentData, setCurrentTime, setQuantityBetweenDays] =
-    useDate();
-  const { currentDate, quantityDays, currentTime } = stateData;
+  const [stateData] = useDate();
+  const { quantityDays } = stateData;
 
   const onChange = (e) => {
     const value = e.value;
@@ -32,11 +31,10 @@ const SelectDate = ({ setStatistic }) => {
       </svg>
       Дата
       <Select
-        classNamePrefix="reactSelect"
-        // defaultValue={options[3]}
-        // isSearchable={false}
         options={options}
-        placeholder={currentDate.split("-").join(".")}
+        placeholder={"Selected"}
+        classNamePrefix="reactSelect"
+        value={options.filter(({ value }) => value === date)}
         components={{
           DropdownIndicator: () => null,
           IndicatorSeparator: () => null,

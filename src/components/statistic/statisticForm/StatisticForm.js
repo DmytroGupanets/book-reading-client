@@ -1,12 +1,10 @@
-// import Select from "react-select";
-import Select, { components, InputProps } from "react-select";
 import { useEffect, useState } from "react";
-// import { useDispatch, useSelector } from "react-redux";
-// import {
-//   getRecordOperation,
-//   updateRecordOperation,
-// } from "../../../redux/target/targetOperations";
-// import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getRecordOperation,
+  updateRecordOperation,
+} from "../../../redux/target/targetOperations";
+import axios from "axios";
 import SelectDate from "../selectDate/SelectDate";
 
 import colors from "../../../styles/colors";
@@ -20,25 +18,38 @@ const initialState = {
 
 const StatisticForm = () => {
   const [statistic, setStatistic] = useState(initialState);
-  console.log(statistic);
-  const [stateData, setCurrentTime] = useDate();
-  //   const { currentDate, quantityDays, currentTime } = stateData;
+  const { date, pages } = statistic;
 
-  //   useEffect(() => {
+  const [stateData, moment, setCurrentTime, setCurrentData] = useDate();
+  const { currentDate, currentTime } = stateData;
 
-  //     // dispatch(getRecordOperation());
-  //   }, []);
+  useEffect(() => {
+    console.log(currentDate);
+    setStatistic((prev) => ({
+      ...prev,
+      date: currentDate,
+    }));
+    // dispatch(getRecordOperation());
+  }, []);
 
   const onHandleChange = (e) => {
     const { value } = e.target;
-
-    setStatistic((prev) => ({ ...prev, pages: value }));
+    setStatistic((prev) => ({
+      ...prev,
+      pages: value,
+      time: setCurrentTime(),
+    }));
   };
 
   const onHandleSubmit = (e) => {
     e.preventDefault();
-    setCurrentTime();
-
+    const record = {
+      time: moment().toLocaleString().substr(16, 8),
+      date: date,
+      pages: pages,
+    };
+    console.log(record);
+    // updateRecordOperation("616aef361dd4bfc94ee3684d", initialState);
     setStatistic(initialState);
   };
 
@@ -46,12 +57,12 @@ const StatisticForm = () => {
     <StatisticFormStyled onSubmit={onHandleSubmit} colors={colors}>
       <h3 className="StatisticTitle">Результати</h3>
       <div className="inputWrapper">
-        <SelectDate setStatistic={setStatistic} />
+        <SelectDate setStatistic={setStatistic} date={date} />
         <label className="statisticFormLabel">
           Кількість сторінок
           <input
             type="text"
-            value={statistic.pages}
+            value={pages}
             className="statisticInput"
             onChange={onHandleChange}
             required

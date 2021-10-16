@@ -27,7 +27,7 @@ const useDate = () => {
 
   useEffect(() => {
     setCurrentData();
-    setCurrentTime();
+    // setCurrentTime();
     quantityDays && setQuantityBetweenDays(startData);
   }, [initialStateDate]);
 
@@ -38,6 +38,7 @@ const useDate = () => {
   const setCurrentTime = () => {
     const timeNow = moment().toLocaleString().substr(16, 8);
     setDate((prev) => ({ ...prev, currentTime: timeNow }));
+    return timeNow;
   };
 
   const setQuantityBetweenDays = (startTargetData) => {
@@ -71,7 +72,13 @@ const useDate = () => {
     }
   };
 
-  return [stateData, setCurrentData, setCurrentTime, setQuantityBetweenDays];
+  return [
+    stateData,
+    moment,
+    setCurrentData,
+    setCurrentTime,
+    setQuantityBetweenDays,
+  ];
 };
 
 export default useDate;

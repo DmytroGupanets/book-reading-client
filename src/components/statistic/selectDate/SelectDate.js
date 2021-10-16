@@ -33,6 +33,8 @@ const SelectDate = ({ setStatistic }) => {
       Дата
       <Select
         classNamePrefix="reactSelect"
+        // defaultValue={options[3]}
+        // isSearchable={false}
         options={options}
         placeholder={currentDate.split("-").join(".")}
         components={{
@@ -46,7 +48,6 @@ const SelectDate = ({ setStatistic }) => {
             ...theme.colors,
             primary25: `${colors.lightColors.background}`,
             primary50: `${colors.lightColors.trainingLabel}`,
-
             primary: `${colors.lightColors.accent}`,
           },
         })}

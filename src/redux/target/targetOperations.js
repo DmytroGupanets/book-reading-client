@@ -21,7 +21,7 @@ export const getRecordOperation = (targetId) => async (dispatch, getState) => {
 };
 
 export const updateRecordOperation =
-  (targetId, newRecord) => async (dispatch, getState) => {
+  (targetId, newRecord) => async (dispatch) => {
     try {
       dispatch(updateRecordRequest());
 

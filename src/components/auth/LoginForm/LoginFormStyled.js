@@ -8,6 +8,9 @@ const LoginFormStyled = styled.div`
     margin-top: 20px;
   }
 
+  .emailInput {
+    margin-bottom: 10px;
+  }
   .formLabel {
     display: block;
     color: #ffffff;
@@ -34,7 +37,17 @@ const LoginFormStyled = styled.div`
     box-shadow: inset 0px 1px 2px rgba(29, 29, 27, 0.15);
     border: none;
   }
+  .formGroup {
+    position: relative;
+  }
+  .inputError {
+    position: absolute;
+    top: 78px;
+    font-size: 10px;
+    letter-spacing: 0.04em;
 
+    color: #eb5757;
+  }
   .wrapperButton {
     display: flex;
     justify-content: center;
@@ -43,20 +56,22 @@ const LoginFormStyled = styled.div`
   }
 
   .authButton {
-    padding: 22px 62px;
+    width: 100%;
+    padding: 21px 0;
+
     color: #ffffff;
-    font-family: Montserrat;
-    font-style: normal;
     font-weight: 600;
     font-size: 16px;
     background-color: #ff6b08;
-    text-overflow: ellipsis;
     border: none;
-    overflow: hidden;
     cursor: pointer;
+
+    &:hover {
+      background-color: #d15807;
+    }
   }
 
-  .loginContainer {
+  .registContainer {
     margin-top: 12px;
     text-align: center;
     font-family: Montserrat, sans-serif;
@@ -65,22 +80,22 @@ const LoginFormStyled = styled.div`
     color: #898f9f;
   }
 
-  .login {
+  .registerLink {
     margin-left: 4px;
     color: #ff6b08;
     text-decoration: underline;
     cursor: pointer;
+
+    &:hover {
+      color: #d15807;
+    }
   }
 
   @media screen and (min-width: 768px) {
-    margin: 60px auto;
     padding: 40px 40px 30px 40px;
     width: 100%;
     max-width: 400px;
     background-color: #ffffff;
-
-    .form {
-    }
 
     .formLabel {
       color: #898f9f;
@@ -88,8 +103,6 @@ const LoginFormStyled = styled.div`
   }
 
   @media screen and (min-width: 1280px) {
-    margin-top: 88px;
-    margin-bottom: 92px;
   }
 `;
 

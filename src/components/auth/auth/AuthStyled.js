@@ -14,16 +14,23 @@ const AuthStyled = styled.div`
   line-height: 1.9;
   color: #242a37;
   width: 100%;
-  height: 100%;
+  height: calc(50vw - 60px);
+
+  .authContainer {
+    height: 100%;
+  }
 
   .leftSideContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     min-width: 565px;
     width: 100%;
-    height: 100%;
+    margin-bottom: 5px;
+
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-
     background-color: rgba(9, 30, 63, 0.1);
     background-image: linear-gradient(
         to right,
@@ -58,7 +65,6 @@ const AuthStyled = styled.div`
     @media screen and (min-width: 1280px) {
       width: 44%;
       & {
-        width: 44%;
         background-image: linear-gradient(
             to right,
             rgba(9, 30, 63, 0.8),
@@ -84,6 +90,9 @@ const AuthStyled = styled.div`
   @media screen and (min-width: 1280px) {
     .authContainer {
       display: flex;
+    }
+    .leftSideContainer {
+      margin-bottom: 0;
     }
     .rightSideContainer {
       width: 56%;

@@ -14,10 +14,11 @@ const StatisticListStyled = styled.div`
     padding: 0;
     list-style: none;
   }
+
   .statisticListItem {
     width: 100%;
     font-size: 14px;
-    /* line-height: 38px; */
+    line-height: 20px;
     color: ${({ colors }) => colors.lightColors.primaryText};
   }
   .statisticListItemTime {

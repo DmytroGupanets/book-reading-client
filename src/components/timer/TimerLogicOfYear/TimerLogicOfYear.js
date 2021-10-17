@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
+import { useContext } from "react";
 import { useTranslation } from "react-i18next";
-import colors from "../../../styles/colors";
 import { TimerLogicOfYearStyled } from "./TimerLogicOfYearStyled";
+import { ThemeContext } from "../../App";
 
 const TimerLogicOfYear = () => {
   const { t } = useTranslation();
+  const { theme } = useContext(ThemeContext);
+
   const year = new Date(new Date().getFullYear() + 1, 0, 1).getTime();
 
   const [, setDateTime] = useState(new Date());
@@ -13,13 +16,10 @@ const TimerLogicOfYear = () => {
   const diff = year + oneDay - new Date().getTime();
 
   const days = () => {
-    if (Math.floor(diff / (1000 * 60 * 60 * 24)) > 99) {
+    if (Math.floor(diff / (1000 * 60 * 60 * 24)) > 9) {
       return Math.floor(diff / (1000 * 60 * 60 * 24));
     }
-    if (Math.floor(diff / (1000 * 60 * 60 * 24)) > 9) {
-      return "0" + Math.floor(diff / (1000 * 60 * 60 * 24));
-    }
-    return "00" + Math.floor(diff / (1000 * 60 * 60 * 24));
+    return "0" + Math.floor(diff / (1000 * 60 * 60 * 24));
   };
 
   const hours = () => {
@@ -57,7 +57,7 @@ const TimerLogicOfYear = () => {
   }, []);
 
   return (
-    <TimerLogicOfYearStyled colors={colors}>
+    <TimerLogicOfYearStyled colors={theme.colors}>
       <div className="time">
         {`${time.days || "00"}`}
         <p className="text">{t("DAYS")}</p>

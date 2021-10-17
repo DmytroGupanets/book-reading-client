@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { TimerLogicOfGoalStyled } from "./TimerLogicOfGoalStyled";
-import colors from "../../../styles/colors";
+import { useContext } from "react";
+import { ThemeContext } from "../../App";
 
 const TimerLogicOfGoal = () => {
   const { t } = useTranslation();
+  const { theme } = useContext(ThemeContext);
 
-  const endDate = "2021-11-10"; //нужно будет ссылатся на день конца чтения
+  const endDate = "2021-10-19"; //нужно будет ссылатся на день конца чтения
 
   const goal = new Date(endDate).getTime();
 
@@ -16,13 +18,10 @@ const TimerLogicOfGoal = () => {
   const diff = goal + oneDay - new Date().getTime();
 
   const days = () => {
-    if (Math.floor(diff / (1000 * 60 * 60 * 24)) > 99) {
+    if (Math.floor(diff / (1000 * 60 * 60 * 24)) > 9) {
       return Math.floor(diff / (1000 * 60 * 60 * 24));
     }
-    if (Math.floor(diff / (1000 * 60 * 60 * 24)) > 9) {
-      return "0" + Math.floor(diff / (1000 * 60 * 60 * 24));
-    }
-    return "00" + Math.floor(diff / (1000 * 60 * 60 * 24));
+    return "0" + Math.floor(diff / (1000 * 60 * 60 * 24));
   };
 
   const hours = () => {
@@ -60,7 +59,7 @@ const TimerLogicOfGoal = () => {
   }, []);
 
   return (
-    <TimerLogicOfGoalStyled colors={colors}>
+    <TimerLogicOfGoalStyled colors={theme.colors}>
       <div className="time">
         {`${time.days || "00"}`}
         <p className="text">{t("DAYS")}</p>

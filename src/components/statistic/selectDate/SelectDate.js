@@ -6,8 +6,6 @@ import colors from "../../../styles/colors";
 import sprite from "../../../images/sprite.svg";
 
 const SelectDate = ({ date, setStatistic }) => {
-  //   const [date, setDate] = useState(initialState);
-
   const [stateData] = useDate();
   const { quantityDays } = stateData;
 
@@ -17,12 +15,12 @@ const SelectDate = ({ date, setStatistic }) => {
     setStatistic((prev) => ({ ...prev, date: value }));
   };
 
-  const exactDays = quantityDays.map((day) => ({
+  const optionDays = quantityDays.map((day) => ({
     value: day,
     label: day,
   }));
 
-  const options = [...exactDays.reverse()];
+  const options = [...optionDays.reverse()];
 
   return (
     <SelectDateStyled colors={colors}>
@@ -31,6 +29,7 @@ const SelectDate = ({ date, setStatistic }) => {
       </svg>
       Дата
       <Select
+        // isSearchable={false}
         options={options}
         placeholder={"Selected"}
         classNamePrefix="reactSelect"

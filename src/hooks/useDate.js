@@ -29,7 +29,7 @@ const useDate = () => {
     setCurrentData();
     setCurrentTime();
     quantityDays && setQuantityBetweenDays(startData);
-  }, [initialStateDate]);
+  }, []);
 
   const setCurrentData = () => {
     setDate((prev) => ({ ...prev, currentDate: dateNow }));
@@ -57,7 +57,7 @@ const useDate = () => {
       const newDate = moment().set({
         year: startYear,
         month: startMonth,
-        date: newDateRange + 1,
+        date: newDateRange,
       });
       setDate((prev) => ({
         ...prev,

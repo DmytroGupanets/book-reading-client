@@ -1,9 +1,11 @@
-import React from "react";
-import { useState } from "react";
-import { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { TimerLogicOfGoalStyled } from "./TimerLogicOfGoalStyled";
+import colors from "../../../styles/colors";
 
 const TimerLogicOfGoal = () => {
+  const { t } = useTranslation();
+
   const endDate = "2021-11-10"; //нужно будет ссылатся на день конца чтения
 
   const goal = new Date(endDate).getTime();
@@ -58,23 +60,23 @@ const TimerLogicOfGoal = () => {
   }, []);
 
   return (
-    <TimerLogicOfGoalStyled>
+    <TimerLogicOfGoalStyled colors={colors}>
       <div className="time">
         {`${time.days || "00"}`}
-        <p className="text">ДН</p>
+        <p className="text">{t("DAYS")}</p>
       </div>
-      <p className="upText">До досягнення мети залишилось</p>
+      <p className="upText">{t("Goal countdown")}</p>
       <div className="time">{`:`}</div>
       <div className="time">
-        {`${time.hours || "00"}`} <p className="text">ГОД</p>
-      </div>
-      <div className="time">{`:`}</div>
-      <div className="time">
-        {`${time.minutes || "00"}`} <p className="text">ХВ</p>
+        {`${time.hours || "00"}`} <p className="text">{t("HRS")}</p>
       </div>
       <div className="time">{`:`}</div>
       <div className="time">
-        {`${time.seconds || "00"}`} <p className="text">СЕК</p>
+        {`${time.minutes || "00"}`} <p className="text">{t("MINS")}</p>
+      </div>
+      <div className="time">{`:`}</div>
+      <div className="time">
+        {`${time.seconds || "00"}`} <p className="text">{t("SECS")}</p>
       </div>
     </TimerLogicOfGoalStyled>
   );

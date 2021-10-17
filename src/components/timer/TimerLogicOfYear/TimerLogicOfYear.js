@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import colors from "../../../styles/colors";
 import { TimerLogicOfYearStyled } from "./TimerLogicOfYearStyled";
 
 const TimerLogicOfYear = () => {
+  const { t } = useTranslation();
   const year = new Date(new Date().getFullYear() + 1, 0, 1).getTime();
-  console.log("🚀 ~ year", year);
 
   const [, setDateTime] = useState(new Date());
   const oneDay = 86400000;
@@ -55,23 +57,23 @@ const TimerLogicOfYear = () => {
   }, []);
 
   return (
-    <TimerLogicOfYearStyled>
+    <TimerLogicOfYearStyled colors={colors}>
       <div className="time">
         {`${time.days || "00"}`}
-        <p className="text">ДН</p>
+        <p className="text">{t("DAYS")}</p>
       </div>
-      <p className="upText">До закінчення року залишилось</p>
+      <p className="upText">{t("Year countdown")}</p>
       <div className="time">{`:`}</div>
       <div className="time">
-        {`${time.hours || "00"}`} <p className="text">ГОД</p>
-      </div>
-      <div className="time">{`:`}</div>
-      <div className="time">
-        {`${time.minutes || "00"}`} <p className="text">ХВ</p>
+        {`${time.hours || "00"}`} <p className="text">{t("HRS")}</p>
       </div>
       <div className="time">{`:`}</div>
       <div className="time">
-        {`${time.seconds || "00"}`} <p className="text">СЕК</p>
+        {`${time.minutes || "00"}`} <p className="text">{t("MINS")}</p>
+      </div>
+      <div className="time">{`:`}</div>
+      <div className="time">
+        {`${time.seconds || "00"}`} <p className="text">{t("SECS")}</p>
       </div>
     </TimerLogicOfYearStyled>
   );

@@ -6,9 +6,13 @@ export const TimerLogicOfYearStyled = styled.div`
   width: 270px;
   height: 60px;
 
-  background-color: #fff;
+  background-color: ${(props) => props.colors.lightColors.secondaryBg};
   box-shadow: 4px 4px 8px rgba(36, 42, 55, 0.15);
 
+  @media (max-width: 767px) {
+    margin-bottom: 46px;
+  }
+  
   @media (min-width: 768px) {
     width: 290px;
     margin-right: 30px;
@@ -16,10 +20,6 @@ export const TimerLogicOfYearStyled = styled.div`
 
   @media (min-width: 1280px) {
     margin-right: 68px;
-  }
-
-  @media (max-width: 767px) {
-    margin-bottom: 10px;
   }
 
   .upText {
@@ -34,7 +34,7 @@ export const TimerLogicOfYearStyled = styled.div`
     font-size: 14px;
     font-weight: 500;
 
-    color: #898f9f;
+    color: ${(props) => props.colors.lightColors.secondaryText};
   }
 
   .time {
@@ -46,7 +46,7 @@ export const TimerLogicOfYearStyled = styled.div`
     line-height: 1.52;
     margin-left: 10px;
 
-    color: #091e3f;
+    color: ${(props) => props.colors.lightColors.digits};
   }
 
   .time:first-child {
@@ -67,6 +67,6 @@ export const TimerLogicOfYearStyled = styled.div`
     font-size: 10px;
     line-height: 3.8;
 
-    color: #898f9f;
+    color: ${(props) => props.colors.lightColors.secondaryText};
   }
 `;

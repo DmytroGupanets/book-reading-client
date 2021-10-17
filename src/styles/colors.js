@@ -9,6 +9,8 @@ const darkColors = {
   resume: "#6D7A8D",
   trainingLabel: "#B1B5C2",
   digits: "#091E3F",
+  langBtn: "#6D7A8D",
+  langBtnActive: "#3c4148",
 };
 const lightColors = {
   primaryText: "#242A37",
@@ -21,6 +23,8 @@ const lightColors = {
   resume: "#6D7A8D",
   trainingLabel: "#B1B5C2",
   digits: "#091E3F",
+  langBtn: "#6D7A8D",
+  langBtnActive: "#3c4148",
 };
 const colors = { darkColors, lightColors };
 export default colors;

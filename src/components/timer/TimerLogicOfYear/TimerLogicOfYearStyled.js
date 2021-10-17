@@ -3,16 +3,16 @@ import styled from "styled-components";
 export const TimerLogicOfYearStyled = styled.div`
   position: relative;
   display: flex;
-  width: 270px;
+  min-width: 270px;
   height: 60px;
 
-  background-color: ${(props) => props.colors.lightColors.secondaryBg};
+  background-color: ${(props) => props.colors.secondaryBg};
   box-shadow: 4px 4px 8px rgba(36, 42, 55, 0.15);
 
   @media (max-width: 767px) {
     margin-bottom: 46px;
   }
-  
+
   @media (min-width: 768px) {
     width: 290px;
     margin-right: 30px;
@@ -34,7 +34,7 @@ export const TimerLogicOfYearStyled = styled.div`
     font-size: 14px;
     font-weight: 500;
 
-    color: ${(props) => props.colors.lightColors.secondaryText};
+    color: ${(props) => props.colors.secondaryText};
   }
 
   .time {
@@ -46,7 +46,7 @@ export const TimerLogicOfYearStyled = styled.div`
     line-height: 1.52;
     margin-left: 10px;
 
-    color: ${(props) => props.colors.lightColors.digits};
+    color: ${(props) => props.colors.digits};
   }
 
   .time:first-child {
@@ -67,6 +67,6 @@ export const TimerLogicOfYearStyled = styled.div`
     font-size: 10px;
     line-height: 3.8;
 
-    color: ${(props) => props.colors.lightColors.secondaryText};
+    color: ${(props) => props.colors.secondaryText};
   }
 `;

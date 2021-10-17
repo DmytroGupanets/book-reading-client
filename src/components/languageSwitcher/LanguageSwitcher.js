@@ -1,14 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useTranslation } from "react-i18next";
 import { LanguageSwitcherStyled } from "./LanguageSwitcherStyled";
-import colors from "../styles/colors";
+import { ThemeContext } from "../App";
 
 const LanguageSwitcher = () => {
   const { i18n } = useTranslation();
+  const { theme } = useContext(ThemeContext);
 
   return (
     <>
-      <LanguageSwitcherStyled colors={colors}>
+      <LanguageSwitcherStyled colors={theme.colors}>
         {i18n.language === "en" && (
           <button className="langBtn" onClick={() => i18n.changeLanguage("ru")}>
             EN

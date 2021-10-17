@@ -12,6 +12,7 @@ export const TimerLogicOfYearStyled = styled.div`
   @media (max-width: 767px) {
     margin-bottom: 46px;
   }
+  
   @media (min-width: 768px) {
     width: 290px;
     margin-right: 30px;

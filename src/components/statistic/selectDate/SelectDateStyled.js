@@ -22,16 +22,20 @@ const SelectDateStyled = styled.label`
 
     z-index: 1;
   }
+
   .reactSelect-container {
   }
+
   .reactSelect__value-container {
     padding: 0 0 0 13px;
   }
+
   .reactSelect__input-container {
     margin: 0;
   }
+
   .reactSelect__control {
-    height: 40px;
+    height: 42px;
     width: 100%;
     font-size: 14px;
     color: ${({ colors }) => colors.lightColors.primaryText};
@@ -43,10 +47,7 @@ const SelectDateStyled = styled.label`
   .reactSelect__placeholder {
     color: ${({ colors }) => colors.lightColors.primaryText};
   }
-  /* .reactSelect__value-container {
-    height: 100%;
-    padding: 0px 8px 0px 13px;
-  } */
+
   .reactSelect__input-container {
     width: 100px;
   }

@@ -12,7 +12,7 @@ import {
   getCurrentUserRequest,
   getCurrentUserSuccess,
   getCurrentUserError,
-} from "./auth-actions";
+} from "./authActions";
 
 axios.defaults.baseURL = "https://";
 

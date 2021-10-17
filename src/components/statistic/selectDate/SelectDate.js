@@ -31,7 +31,7 @@ const SelectDate = ({ date, setStatistic }) => {
       <Select
         // isSearchable={false}
         options={options}
-        placeholder={"Selected"}
+        placeholder={""}
         classNamePrefix="reactSelect"
         value={options.filter(({ value }) => value === date)}
         components={{

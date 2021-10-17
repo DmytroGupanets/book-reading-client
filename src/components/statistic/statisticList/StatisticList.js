@@ -34,18 +34,20 @@ const sortArrDate = () => {
 const StatisticList = () => {
   return (
     <StatisticListStyled colors={colors}>
-      <h3 className="statisticTitle">Статистика</h3>
+      <h2 className="statisticTitle">Статистика</h2>
 
-      {sortArrDate().map(({ date, time, str }) => (
-        <ul key={date} className="statisticList">
-          <li className="statisticListItem">{date}</li>
-          <li className="statisticListItemTime">{time}</li>
-          <li className="statisticListItemWrapper">
-            {str}
-            <p className="statisticListItemTime">стор.</p>
-          </li>
-        </ul>
-      ))}
+      <div className="listWrapper">
+        {sortArrDate().map(({ date, time, str }) => (
+          <ul key={date} className="statisticList">
+            <li className="statisticListItem">{date}</li>
+            <li className="statisticListItemTime">{time}</li>
+            <li className="statisticListItemWrapper">
+              {str}
+              <p className="statisticListItemTime">стор.</p>
+            </li>
+          </ul>
+        ))}
+      </div>
     </StatisticListStyled>
   );
 };

@@ -52,23 +52,26 @@ const StatisticForm = () => {
 
   return (
     <StatisticFormStyled onSubmit={onHandleSubmit} colors={colors}>
-      <h3 className="StatisticTitle">Результати</h3>
-      <div className="inputWrapper">
-        <SelectDate setStatistic={setStatistic} date={date} />
-        <label className="statisticFormLabel">
-          Кількість сторінок
-          <input
-            type="text"
-            value={pages}
-            className="statisticInput"
-            onChange={onHandleChange}
-            required
-          />
-        </label>
+      <h2 className="StatisticTitle">Результати</h2>
+      <div className="formWrapper">
+        <div className="inputWrapper">
+          <SelectDate setStatistic={setStatistic} date={date} />
+          <label className="statisticFormLabel">
+            Кількість сторінок
+            <input
+              type="text"
+              value={pages}
+              className="statisticInput"
+              placeholder="*"
+              onChange={onHandleChange}
+              required
+            />
+          </label>
+        </div>
+        <button className="statisticBtn" type="submit">
+          Додати результат
+        </button>
       </div>
-      <button className="statisticBtn" type="submit">
-        Додати результат
-      </button>
     </StatisticFormStyled>
   );
 };

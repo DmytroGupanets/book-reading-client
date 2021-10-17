@@ -1,6 +1,6 @@
 import StatisticForm from "./statisticForm/StatisticForm";
 import StatisticList from "./statisticList/StatisticList";
-
+import StatisticModal from "./statisticModal/StatisticModal";
 import StatisticStyled from "./StatisticStyled";
 
 const Statistic = () => {
@@ -8,6 +8,7 @@ const Statistic = () => {
     <StatisticStyled>
       <StatisticForm />
       <StatisticList />
+      <StatisticModal />
     </StatisticStyled>
   );
 };

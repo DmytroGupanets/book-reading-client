@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-// import { useDispatch, useSelector } from "react-redux";
-// import {
-//   getRecordOperation,
-//   updateRecordOperation,
-// } from "../../../redux/target/targetOperations";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getRecordOperation,
+  updateRecordOperation,
+} from "../../../redux/target/targetOperations";
 import SelectDate from "../selectDate/SelectDate";
 
 import StatisticFormStyled from "./StatisticFormStyled";
@@ -22,12 +22,13 @@ const StatisticForm = () => {
   const [stateData, moment] = useDate();
   const { currentDate } = stateData;
 
+  const tId = "61673b3d4a8e62f6385065e7";
+  const dispatch = useDispatch();
   useEffect(() => {
     setStatistic((prev) => ({
       ...prev,
       date: currentDate.split("-").join("."),
     }));
-    // dispatch(getRecordOperation());
   }, [currentDate]);
 
   const onHandleChange = (e) => {
@@ -46,6 +47,7 @@ const StatisticForm = () => {
       pages: pages,
     };
     console.log(record);
+    dispatch(getRecordOperation(tId));
     // updateRecordOperation("616aef361dd4bfc94ee3684d", record);
     setStatistic(initialState);
   };

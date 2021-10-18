@@ -6,7 +6,7 @@ axios.defaults.headers.common = { Authorization: `Bearer ${token}` };
 
 export const getTarget = async (targetId) => {
   try {
-    return await axios.get(`api/targets/records/${targetId}`);
+    return await axios.get(`api/targets/${targetId}`);
   } catch (error) {
     throw error;
   }

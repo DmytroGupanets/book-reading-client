@@ -5,11 +5,11 @@ const Modal = ({ children, onClose }) => {
   useEffect(() => {
     window.addEventListener("keydown", onHandleEsc);
     const body = document.querySelector("body");
-    body.style.overflow = "hidden";
+    body.overflow = "hidden";
     return () => {
       window.removeEventListener("keydown", onHandleEsc);
       const body = document.querySelector("body");
-      body.style.overflow = "auto";
+      body.overflow = "auto";
     };
   });
 

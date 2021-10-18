@@ -11,6 +11,10 @@ import {
 
 const targetsReducer = createReducer([], {
   [getRecordSuccess]: (_, { payload }) => payload.result,
+  [updateRecordSuccess]: (state, { payload }) => ({
+    ...state,
+    records: payload,
+  }),
 });
 
 const isLoadingReducer = createReducer(false, {

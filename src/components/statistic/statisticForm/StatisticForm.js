@@ -20,7 +20,7 @@ const StatisticForm = () => {
   const { date, pages } = statistic;
 
   const [stateData, moment] = useDate();
-  const { currentDate, currentTime } = stateData;
+  const { currentDate } = stateData;
 
   useEffect(() => {
     setStatistic((prev) => ({
@@ -28,7 +28,7 @@ const StatisticForm = () => {
       date: currentDate.split("-").join("."),
     }));
     // dispatch(getRecordOperation());
-  }, [currentDate, currentTime]);
+  }, [currentDate]);
 
   const onHandleChange = (e) => {
     const { value } = e.target;

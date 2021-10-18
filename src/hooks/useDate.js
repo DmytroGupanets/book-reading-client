@@ -6,7 +6,7 @@ const moment = extendMoment(Moment);
 
 const initialStateDate = {
   currentDate: "",
-  currentTime: "",
+  // currentTime: "",
   startData: "10-3-2021",
   quantityDays: [],
 };
@@ -27,7 +27,7 @@ const useDate = () => {
 
   useEffect(() => {
     setCurrentData();
-    setCurrentTime();
+    // setCurrentTime();
     quantityDays && setQuantityBetweenDays(startData);
   }, []);
 
@@ -35,10 +35,10 @@ const useDate = () => {
     setDate((prev) => ({ ...prev, currentDate: dateNow }));
   };
 
-  const setCurrentTime = () => {
-    const timeNow = moment().toLocaleString().substr(16, 8);
-    setDate((prev) => ({ ...prev, currentTime: timeNow }));
-  };
+  // const setCurrentTime = () => {
+  //   const timeNow = moment().toLocaleString().substr(16, 8);
+  //   setDate((prev) => ({ ...prev, currentTime: timeNow }));
+  // };
 
   const setQuantityBetweenDays = (startTargetData) => {
     const startTarget = new Date(startTargetData);
@@ -74,7 +74,7 @@ const useDate = () => {
     stateData,
     moment,
     setCurrentData,
-    setCurrentTime,
+    // setCurrentTime,
     setQuantityBetweenDays,
   ];
 };

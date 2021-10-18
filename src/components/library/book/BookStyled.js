@@ -32,11 +32,7 @@ export const BookStyled = styled.div`
     margin-left: 18px;
     margin-right: 10px;
 
-    @media screen and (min-width: 1280px) {
-      margin-right: 0;
-    }
-
-    flex-basis: ${({ isCompleted }) => (isCompleted ? "30%" : "44%")};
+    flex-basis: ${({ isCompleted }) => (isCompleted ? "26%" : "44%")};
 
     font-family: "Montserrat", sans-serif;
     font-weight: 500;
@@ -45,24 +41,25 @@ export const BookStyled = styled.div`
     text-align: start;
 
     @media screen and (min-width: 1280px) {
+      margin-right: 0;
       line-height: 2.71;
-      flex-basis: ${({ isCompleted }) => (isCompleted ? "30%" : "49%")};
+      flex-basis: ${({ isCompleted }) => (isCompleted ? "29%" : "49%")};
     }
   }
 
   .bookAuthor {
-    flex-basis: ${({ isCompleted }) => (isCompleted ? "18%" : "28%")};
+    flex-basis: ${({ isCompleted }) => (isCompleted ? "17%" : "28%")};
 
     @media screen and (min-width: 1280px) {
       line-height: 2.71;
-      flex-basis: ${({ isCompleted }) => (isCompleted ? "18%" : "29%")};
+      flex-basis: ${({ isCompleted }) => (isCompleted ? "16.5%" : "29%")};
     }
 
     text-align: start;
   }
 
   .bookYear {
-    flex-basis: 9%;
+    flex-basis: 5%;
 
     @media screen and (min-width: 1280px) {
       flex-basis: 3%;
@@ -72,21 +69,34 @@ export const BookStyled = styled.div`
   }
 
   .bookPages {
-    flex-basis: 9%;
+    flex-basis: 9.3%;
 
     text-align: end;
   }
 
   .resume {
     display: flex;
-    flex-basis: 40%;
-    justify-content: center;
-  }
-
-  .bookResume {
+    align-items: center;
+    flex-basis: 32.7%;
+    justify-content: flex-end;
   }
 
   .resumeButton {
-    margin-left: 30px;
+    padding: 0 9px;
+    background: #6d7a8d;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+
+    margin-left: 18px;
+
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 2.71;
+    color: #ffffff;
+
+    @media screen and (min-width: 1280px) {
+      margin-left: 46px;
+      padding: 0 34px;
+    }
   }
 `;

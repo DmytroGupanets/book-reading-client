@@ -1,10 +1,17 @@
 import { combineReducers } from "redux";
+import persistReducer from "redux-persist/es/persistReducer";
+import storage from "redux-persist/lib/storage";
 import authReducer from "./auth/authReducer";
-
 import booksReducer from "./books/booksReducer";
 
+const authPersistConfig = {
+  key: "auth",
+  storage,
+  whitelist: ["isAuthenticated", "token", "error"],
+};
+
 const rootReducer = combineReducers({
-  auth: authReducer,
+  auth: persistReducer(authPersistConfig, authReducer),
   books: booksReducer,
   // target: targetReducer,
 });

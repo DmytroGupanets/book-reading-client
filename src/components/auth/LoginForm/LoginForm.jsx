@@ -58,7 +58,7 @@ const LoginForm = () => {
           <input
             id="password"
             type="password"
-            minlength="5"
+            minLength="5"
             maxLength="30"
             className="formInput"
             name="password"

@@ -1,10 +1,5 @@
 import axios from "axios";
 
-// const token = process.env.REACT_APP_TOKEN;
-
-// axios.defaults.baseURL = "http://localhost:5000";
-// axios.defaults.headers.common = { Authorization: `Bearer ${token}` };
-
 export const getAllBooks = async () => {
   try {
     return await axios.get("api/books");

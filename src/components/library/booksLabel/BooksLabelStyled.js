@@ -56,7 +56,7 @@ export const BooksLabelStyled = styled.div`
   }
 
   .labelRating {
-    padding-left: 20px;
+    padding-left: 24px;
     flex-basis: 36%;
 
     @media screen and (min-width: 1280px) {

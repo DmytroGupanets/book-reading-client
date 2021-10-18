@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const StatisticStyled = styled.div`
   margin: 0 auto;
-  margin-top: 100px;
+  margin-top: 20px;
   padding: 10px 13px 10px 17px;
   width: 270px;
   text-align: center;
@@ -12,7 +12,7 @@ const StatisticStyled = styled.div`
   @media screen and (min-width: 768px) {
     display: flex;
     flex-wrap: wrap;
-    padding: 10px 84px 40px 84px;
+    padding: 21px 84px 40px 84px;
     width: 678px;
   }
 

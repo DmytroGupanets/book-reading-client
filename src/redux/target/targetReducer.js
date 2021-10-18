@@ -9,7 +9,7 @@ import {
   updateRecordError,
 } from "./targetActions";
 
-const recordsReducer = createReducer([], {
+const targetsReducer = createReducer([], {
   [getRecordSuccess]: (_, { payload }) => payload.data.records,
 });
 
@@ -30,7 +30,7 @@ const errorReducer = createReducer("", {
 });
 
 const targetReducer = combineReducers({
-  records: recordsReducer,
+  target: targetsReducer,
   isLoading: isLoadingReducer,
   error: errorReducer,
 });

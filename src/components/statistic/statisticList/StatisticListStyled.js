@@ -47,8 +47,6 @@ const StatisticListStyled = styled.div`
   @media screen and (min-width: 1280px) {
     text-align: center;
 
-    .statisticListItemTime {
-    }
     .listWrapper {
       overflow: scroll;
       height: 80px;

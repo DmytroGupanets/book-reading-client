@@ -1,14 +1,13 @@
 import React from "react";
 import Container from "../../components/container/Container";
-import Statistic from "../../components/statistic/Statistic";
+import Training from "../../components/training/Training";
 
 const TrainingPage = () => {
   return (
     <Container>
-      <Statistic />
+      <Training />
     </Container>
   );
-
 };
 
 export default TrainingPage;

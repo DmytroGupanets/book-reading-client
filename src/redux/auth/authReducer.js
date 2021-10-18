@@ -13,7 +13,7 @@ import {
   registerError,
   registerRequest,
   getCurrentUserSuccess,
-} from "./auth-actions";
+} from "./authActions";
 
 const setError = (_, { payload }) => payload;
 const refreshError = () => null;
@@ -57,9 +57,11 @@ const isAuthenticated = createReducer(false, {
   [logoutSuccess]: () => false,
 });
 
-export default combineReducers({
+const authReducer = combineReducers({
   user,
   token,
   error,
   isAuthenticated,
 });
+
+export default authReducer;

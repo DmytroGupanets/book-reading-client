@@ -14,24 +14,29 @@ const AuthStyled = styled.div`
   line-height: 1.9;
   color: #242a37;
   width: 100%;
-  height: calc(50vw - 60px);
+  height: calc(50vw - 132px);
 
   .authContainer {
     height: 100%;
+  }
+
+  .rightSideContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .leftSideContainer {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-width: 565px;
     width: 100%;
     margin-bottom: 5px;
 
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    background-color: rgba(9, 30, 63, 0.1);
+    background-color: rgba(9, 30, 63, 0.8);
     background-image: linear-gradient(
         to right,
         rgba(9, 30, 63, 0.8),
@@ -42,11 +47,18 @@ const AuthStyled = styled.div`
     @media screen and (min-device-pixel-ratio: 2),
       screen and (min-resolution: 192dpi),
       screen and (min-resolution: 2dppx) {
-      background-image: url(${mobile2x});
+      background-image: linear-gradient(
+          to right,
+          rgba(9, 30, 63, 0.8),
+          rgba(9, 30, 63, 0.8)
+        ),
+        url(${mobile2x});
     }
 
     @media screen and (min-width: 768px) {
       & {
+        padding-top: 70px;
+        padding-bottom: 70px;
         background-image: linear-gradient(
             to right,
             rgba(9, 30, 63, 0.8),
@@ -57,7 +69,12 @@ const AuthStyled = styled.div`
         @media screen and (min-device-pixel-ratio: 2),
           screen and (min-resolution: 192dpi),
           screen and (min-resolution: 2dppx) {
-          background-image: url(${tablet2x});
+          background-image: linear-gradient(
+              to right,
+              rgba(9, 30, 63, 0.8),
+              rgba(9, 30, 63, 0.8)
+            ),
+            url(${tablet2x});
         }
       }
     }
@@ -75,16 +92,15 @@ const AuthStyled = styled.div`
         @media screen and (min-device-pixel-ratio: 2),
           screen and (min-resolution: 192dpi),
           screen and (min-resolution: 2dppx) {
-          background-image: url(${desktop2x});
+          background-image: linear-gradient(
+              to right,
+              rgba(9, 30, 63, 0.8),
+              rgba(9, 30, 63, 0.8)
+            ),
+            url(${desktop2x});
         }
       }
     }
-  }
-
-  .rightSideContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 
   @media screen and (min-width: 1280px) {

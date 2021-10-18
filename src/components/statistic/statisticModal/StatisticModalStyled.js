@@ -4,8 +4,9 @@ const StatisticModalStyled = styled.div`
   .StatisticModalWrapper {
     width: 390px;
     height: 290px;
-    border: 1px solid;
-    border-color: #a6abb9;
+    /* border: 1px solid; */
+    border-color: none;
+    background-color: #ffffff;
     box-shadow: 10px 10px 20px rgba(9, 30, 63, 0.2);
   }
   .StatisticModalIcon {

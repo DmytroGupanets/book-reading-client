@@ -4,6 +4,8 @@ const LoginStyled = styled.div`
   .textContainer {
     text-align: center;
     width: 229px;
+    padding-top: 18px;
+    padding-bottom: 18px;
   }
   .quotesIcon {
     margin-bottom: 15px;
@@ -35,7 +37,10 @@ const LoginStyled = styled.div`
   }
   @media screen and (min-width: 768px) {
     .textContainer {
-      width: 397px;
+      width: 526px;
+      padding-top: 21px;
+      padding-bottom: 21px;
+      margin-top: 62px;
     }
     .loginPageText {
       margin-bottom: 28px;
@@ -53,6 +58,12 @@ const LoginStyled = styled.div`
   }
 
   @media screen and (min-width: 1280px) {
+    .textContainer {
+      width: 397px;
+      padding-top: 0;
+      padding-bottom: 0;
+      margin-top: 0;
+    }
     .quotesIcon {
       margin-bottom: 15px;
     }

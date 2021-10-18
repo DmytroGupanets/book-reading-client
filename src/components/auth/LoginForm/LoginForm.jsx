@@ -3,9 +3,13 @@ import GoogleButton from "../GoogleButton/GoogleButton";
 import LoginFormStyled from "./LoginFormStyled";
 import { loginValidationSchema } from "../validation/validationSchema";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
+// import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { login } from "../../../redux/auth/authOperations";
 
 const LoginForm = () => {
+  const dispatch = useDispatch();
+
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -19,7 +23,7 @@ const LoginForm = () => {
         email,
         password,
       };
-      // dispatch(login(user));
+      dispatch(login(user));
     },
   });
 

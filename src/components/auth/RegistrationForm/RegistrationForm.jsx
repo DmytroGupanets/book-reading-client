@@ -4,10 +4,10 @@ import GoogleButton from "../GoogleButton/GoogleButton";
 import { registerValidationSchema } from "../validation/validationSchema";
 import { RegistrationFormStyled } from "./RegistrationFormStyled";
 import { register } from "../../../redux/auth/authOperations";
-// import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const RegistrationForm = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -19,7 +19,14 @@ const RegistrationForm = () => {
     validationSchema: registerValidationSchema,
 
     onSubmit: (data) => {
-      // dispatch(register(data));
+      // Формат данных для бэка
+      const newUser = {
+        name: data.name,
+        email: data.email,
+        password: data.password,
+      };
+
+      dispatch(register(newUser));
     },
   });
 
@@ -89,7 +96,7 @@ const RegistrationForm = () => {
           onBlur={formik.handleBlur}
         />
         <div className="wrapperButton">
-          <button type="button" className="authButton">
+          <button type="submit" className="authButton">
             Зареєструватися
           </button>
         </div>

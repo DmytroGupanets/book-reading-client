@@ -64,7 +64,6 @@ const StatisticForm = () => {
               type="text"
               value={pages}
               className="statisticInput"
-              placeholder="*"
               onChange={onHandleChange}
               required
             />

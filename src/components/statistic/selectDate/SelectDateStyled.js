@@ -46,6 +46,7 @@ const SelectDateStyled = styled.label`
   }
 
   .reactSelect__placeholder {
+    font-size: 10px;
     color: ${({ colors }) => colors.lightColors.primaryText};
   }
 

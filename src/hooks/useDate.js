@@ -35,14 +35,14 @@ const useDate = () => {
     setDate((prev) => ({ ...prev, currentDate: dateNow }));
   };
 
-  const arr = "";
+  // const arr = "";
 
-  const sortArrByDate = (arr) => {
-    const year = moment().get("year");
-    const month = moment().get("month");
-    const day = moment().get("date");
-    const dateNow = `${month + 1}-${day}-${year}`;
-  };
+  // const sortArrByDate = (arr) => {
+  //   const year = moment().get("year");
+  //   const month = moment().get("month");
+  //   const day = moment().get("date");
+  //   const dateNow = `${month + 1}-${day}-${year}`;
+  // };
 
   const setQuantityBetweenDays = (startTargetData) => {
     const startTarget = new Date(startTargetData);

@@ -22,9 +22,10 @@ const StatisticForm = () => {
   const [stateData, moment] = useDate();
   const { currentDate } = stateData;
 
-  const tId = "61673b3d4a8e62f6385065e7";
+  const ownerId = "616d5345c63863b6b44cf45f";
   const dispatch = useDispatch();
   useEffect(() => {
+    dispatch(getRecordOperation(ownerId));
     setStatistic((prev) => ({
       ...prev,
       date: currentDate.split("-").join("."),
@@ -47,7 +48,7 @@ const StatisticForm = () => {
       pages: pages,
     };
     console.log(record);
-    dispatch(getRecordOperation(tId));
+
     // updateRecordOperation("616aef361dd4bfc94ee3684d", record);
     setStatistic(initialState);
   };

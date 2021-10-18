@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const token = "";
+const token =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNmQ1MzQ1YzYzODYzYjZiNDRjZjQ1ZiIsImlhdCI6MTYzNDU1ODU5MywiZXhwIjoxNjM0NjQ0OTkzfQ.I2hcDVzE_RhAqvpBbpb8KeShJceu423p-Mu3KoonfZY";
 axios.defaults.baseURL = "http://localhost:5000";
 axios.defaults.headers.common = { Authorization: `Bearer ${token}` };
 

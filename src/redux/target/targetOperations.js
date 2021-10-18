@@ -14,7 +14,7 @@ export const getRecordOperation = (targetId) => async (dispatch, getState) => {
 
     const result = await getTarget(targetId);
 
-    dispatch(getRecordSuccess(result.data));
+    dispatch(getRecordSuccess(result.data.data));
   } catch (error) {
     dispatch(getRecordError(error.message));
   }

@@ -35,9 +35,13 @@ const useDate = () => {
     setDate((prev) => ({ ...prev, currentDate: dateNow }));
   };
 
-  // const setCurrentTime = () => {
-  //   const timeNow = moment().toLocaleString().substr(16, 8);
-  //   setDate((prev) => ({ ...prev, currentTime: timeNow }));
+  // const arr = "";
+
+  // const sortArrByDate = (arr) => {
+  //   const year = moment().get("year");
+  //   const month = moment().get("month");
+  //   const day = moment().get("date");
+  //   const dateNow = `${month + 1}-${day}-${year}`;
   // };
 
   const setQuantityBetweenDays = (startTargetData) => {

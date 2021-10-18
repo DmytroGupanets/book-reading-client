@@ -29,18 +29,17 @@ const SelectDate = ({ date, setStatistic }) => {
       </svg>
       Дата
       <Select
-        // isSearchable={false}
         options={options}
-        placeholder={""}
+        placeholder={"DD/MM/YYYY"}
         classNamePrefix="reactSelect"
         value={options.filter(({ value }) => value === date)}
         components={{
           DropdownIndicator: () => null,
           IndicatorSeparator: () => null,
+          getValue: () => true,
         }}
         theme={(theme) => ({
           ...theme,
-
           colors: {
             ...theme.colors,
             primary25: `${colors.lightColors.background}`,

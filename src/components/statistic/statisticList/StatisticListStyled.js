@@ -12,26 +12,33 @@ const StatisticListStyled = styled.div`
   .statisticList {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     margin: 0;
     padding: 0;
+    width: 100%;
     list-style: none;
   }
 
   .statisticListItem {
-    width: 70px;
+    width: calc(100% / 3);
     font-size: 14px;
     line-height: 20px;
+    margin-right: 0;
     color: ${({ colors }) => colors.lightColors.primaryText};
   }
   .statisticListItemTime {
+    width: calc(100% / 3);
+
     margin-left: 5px;
     color: ${({ colors }) => colors.lightColors.secondaryText};
   }
   .statisticListItemWrapper {
+    width: calc(100% / 3);
+
     display: flex;
     align-items: center;
-    margin-left: 20px;
+    justify-content: end;
+    padding-right: 20px;
   }
 
   @media screen and (min-width: 768px) {
@@ -42,6 +49,10 @@ const StatisticListStyled = styled.div`
     .statisticTitle {
       font-size: 14px;
     }
+
+    .statisticListItemTime {
+      text-align: center;
+    }
   }
 
   @media screen and (min-width: 1280px) {
@@ -50,6 +61,10 @@ const StatisticListStyled = styled.div`
     .listWrapper {
       overflow: scroll;
       height: 80px;
+    }
+
+    .statisticListItem {
+      margin-right: 0;
     }
   } ;
 `;

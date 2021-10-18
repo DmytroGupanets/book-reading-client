@@ -3,6 +3,7 @@ import persistReducer from "redux-persist/es/persistReducer";
 import storage from "redux-persist/lib/storage";
 import authReducer from "./auth/authReducer";
 import booksReducer from "./books/booksReducer";
+import targetReducer from "./target/targetReducer";
 
 const authPersistConfig = {
   key: "auth",
@@ -13,7 +14,7 @@ const authPersistConfig = {
 const rootReducer = combineReducers({
   auth: persistReducer(authPersistConfig, authReducer),
   books: booksReducer,
-  // target: targetReducer,
+  target: targetReducer,
 });
 
 export default rootReducer;

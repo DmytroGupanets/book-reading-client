@@ -77,7 +77,7 @@ const LoginForm = () => {
           </button>
         </div>
         <div className="registContainer">
-          <Link to="/register" className="registerLink">
+          <Link to="/auth/register" className="registerLink">
             Реєстрація
           </Link>
         </div>

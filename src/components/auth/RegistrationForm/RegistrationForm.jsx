@@ -102,7 +102,7 @@ const RegistrationForm = () => {
         </div>
         <div className="loginContainer">
           Вже з нами?
-          <Link to="/login" className="login">
+          <Link to="/auth/login" className="login">
             Увійти
           </Link>
         </div>

@@ -10,7 +10,6 @@ import MyGoalBooks from "./myGoalBooks/MyGoalBooks";
 
 const Training = () => {
   const [state, setState] = useState(false);
-
   const dispatch = useDispatch();
 
   const ownerId = useSelector(getOwnerId);

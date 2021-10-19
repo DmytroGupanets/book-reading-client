@@ -7,8 +7,7 @@ const initialState = {
        title: "",
        author: "",
        year: "",
-       pages: "",
-       book: {}     
+       pages: ""    
 }
 
 const LibraryEmpty = () => {
@@ -22,8 +21,13 @@ const LibraryEmpty = () => {
 
     const onHandleSubmit = (e) => {
        e.preventDefault();
-
-       dispatch(addNewBookOperation(state))
+       const newBook = {
+           name: state.title,
+           author: state.author,
+           year: state.year,
+           pages: state.pages
+       }
+       dispatch(addNewBookOperation(newBook))
        setState({ ...initialState });
     }
 

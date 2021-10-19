@@ -70,8 +70,9 @@ export const getCurrentUser = () => async (dispatch, getState) => {
   token.set(persistedToken);
   dispatch(getCurrentUserRequest());
   try {
-    const response = await axios.get("api/users/current");
-    dispatch(getCurrentUserSuccess(response.data));
+    const response = await axios.post("api/users/current");
+
+    dispatch(getCurrentUserSuccess(response.data.data));
   } catch (error) {
     dispatch(getCurrentUserError(error.message));
   }

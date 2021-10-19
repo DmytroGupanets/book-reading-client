@@ -1,0 +1,65 @@
+[
+  {
+    "id": "1",
+    "ownerId": "1",
+    "name": "Психбольница в руках пациентов",
+    "pages": 183,
+    "author": "Купер Алан",
+    "year": "2009",
+    "status": "completed",
+    "resume": {
+      "rating": 0,
+      "text": "text"
+    }
+  },
+  {
+    "id": "2",
+    "ownerId": "1",
+    "name": "Разработка ценностных предложений.",
+    "pages": 368,
+    "author": "Алекс Остервальдер, Ив Пинье",
+    "year": "2013",
+    "status": "inProgress",
+    "resume": null
+  },
+  {
+    "id": "3",
+    "ownerId": "1",
+    "name": "Управление продуктом в Scrum. Agile-методы для вашего бизнеса.",
+    "pages": 92,
+    "author": "Роман Пихлер",
+    "year": "2010",
+    "status": "inProgress",
+    "resume": null
+  },
+  {
+    "id": "4",
+    "ownerId": "1",
+    "name": "Scrum. Революционный метод управлениями проектами.",
+    "pages": 25,
+    "author": "Джефф Сазерленд",
+    "year": "2014",
+    "status": "planned",
+    "resume": null
+  },
+  {
+    "id": "5",
+    "ownerId": "1",
+    "name": "Deadline. Роман об управлении проектами.",
+    "pages": 188,
+    "author": "Том ДеМарко",
+    "year": "2006",
+    "status": "planned",
+    "resume": null
+  },
+  {
+    "id": "6",
+    "ownerId": "1",
+    "name": "5 Пороков команды. Притчи о лидерстве.",
+    "pages": 125,
+    "author": "Патрик Ленсиони",
+    "year": "2011",
+    "status": "planned",
+    "resume": null
+  }
+]

@@ -1,12 +1,15 @@
 import styled from "styled-components";
 
 const StatisticFormStyled = styled.form`
+  margin-bottom: 24px;
   .StatisticTitle {
     margin: 0;
     font-weight: 600;
     font-size: 12px;
     line-height: 38px;
-    color: #242a37;
+    color: ${({ colors }) => colors.lightColors.primaryText};
+
+    text-transform: uppercase;
   }
   .inputWrapper {
     display: flex;
@@ -20,53 +23,71 @@ const StatisticFormStyled = styled.form`
     display: flex;
     flex-direction: column;
     text-align: start;
-    margin: 0;
     width: 110px;
     font-weight: 500px;
     font-size: 11px;
-    line-height: 38px;
-    color: #898f9f;
+    line-height: 20px;
+    color: ${({ colors }) => colors.lightColors.secondaryText};
   }
   .statisticInput {
     padding: 0 0 0 13px;
-    height: 40px;
+    height: 42px;
     font-size: 14px;
-    line-height: 38px;
-    color: #242a37;
-    background: #f6f7fb;
-    border: 1px solid #a6abb9;
+
+    color: ${({ colors }) => colors.lightColors.primaryText};
+    background: ${({ colors }) => colors.lightColors.background};
+    border: 1px solid ${({ colors }) => colors.lightColors.icons};
   }
   .statisticBtn {
     width: 171px;
     height: 42px;
     font-weight: 500;
     font-size: 14px;
-    line-height: 38px;
-    color: #fff;
-    background: #ff6b08;
+    color: ${({ colors }) => colors.lightColors.secondaryBg};
+    background: ${({ colors }) => colors.lightColors.accent};
     border: none;
     cursor: pointer;
   }
-  //Select styled ==================================
-  .reactSelect__control {
-    padding: 0;
-    height: 42px;
-    width: 100%;
-    font-size: 14px;
-    line-height: 38px;
-    color: #242a37;
-    background: #f6f7fb;
-    border: 1px solid #a6abb9;
-    border-radius: 0;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 12px;
+
+    .StatisticTitle {
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+    .formWrapper {
+      display: flex;
+      align-items: flex-end;
+    }
+    .inputWrapper {
+      margin: 0 30px 0 0;
+    }
+    .statisticBtn {
+      width: 240px;
+    }
   }
-  .reactSelect__value-container {
-    height: 100%;
-    padding: 0px 8px 0px 13px;
-  }
-  .reactSelect__input-container {
-    width: 100px;
-  }
-  //Select styled ==================================
+
+  @media screen and (min-width: 1280px) {
+    margin-bottom: 24px;
+
+    .StatisticTitle {
+      font-size: 12px;
+      margin-bottom: 0;
+    }
+    .formWrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .inputWrapper {
+      margin: 0 0 20px 0;
+    }
+
+    .statisticBtn {
+      width: 240px;
+    }
+  } ;
 `;
 
 export default StatisticFormStyled;

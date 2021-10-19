@@ -1,71 +1,78 @@
-import { useState } from "react";
-import Select from "react-select";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { updateRecordOperation } from "../../../redux/target/targetOperations";
+
+import SelectDate from "../selectDate/SelectDate";
 
 import StatisticFormStyled from "./StatisticFormStyled";
+import colors from "../../../styles/colors";
+import useDate from "../../../hooks/useDate";
+
+import { getTargetId } from "../../../redux/target/targetSelectors";
 
 const initialState = {
   date: "",
-  countStr: "",
+  pages: "",
 };
-
-const data = [
-  { value: "3.10.1991", label: "3.10.1991" },
-  { value: "5.10.1991", label: "5.10.1991" },
-  { value: "8.10.1991", label: "8.10.1991" },
-];
 
 const StatisticForm = () => {
   const [statistic, setStatistic] = useState(initialState);
+  const { date, pages } = statistic;
+
+  const [stateData, moment] = useDate();
+  const { currentDate } = stateData;
+
+  const targetId = useSelector(getTargetId);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    setStatistic((prev) => ({
+      ...prev,
+      date: currentDate.split("-").join("."),
+    }));
+  }, [currentDate]);
 
   const onHandleChange = (e) => {
     const { value } = e.target;
-
-    setStatistic((prev) => ({ ...prev, countStr: value }));
-  };
-
-  const onChangeSelect = (e) => {
-    const value = e.value;
-
-    setStatistic((prev) => ({ ...prev, date: value }));
+    setStatistic((prev) => ({
+      ...prev,
+      pages: value,
+    }));
   };
 
   const onHandleSubmit = (e) => {
     e.preventDefault();
-    console.log(statistic);
+    const record = {
+      time: moment().toLocaleString().substr(16, 8),
+      date: date,
+      pages: pages,
+    };
+
+    dispatch(updateRecordOperation(targetId, record));
     setStatistic(initialState);
   };
 
   return (
-    <StatisticFormStyled onSubmit={onHandleSubmit}>
-      <h3 className="StatisticTitle">Результати</h3>
-      <div className="inputWrapper">
-        <label className="statisticFormLabel">
-          Дата
-          <Select
-            options={data}
-            classNamePrefix="reactSelect"
-            placeholder={""}
-            components={{
-              DropdownIndicator: () => null,
-              IndicatorSeparator: () => null,
-            }}
-            onChange={onChangeSelect}
-            required
-          />
-        </label>
-        <label className="statisticFormLabel">
-          Кількість сторінок
-          <input
-            type="text"
-            className="statisticInput"
-            onChange={onHandleChange}
-            required
-          />
-        </label>
+    <StatisticFormStyled onSubmit={onHandleSubmit} colors={colors}>
+      <h2 className="StatisticTitle">Результати</h2>
+      <div className="formWrapper">
+        <div className="inputWrapper">
+          <SelectDate setStatistic={setStatistic} date={date} />
+          <label className="statisticFormLabel">
+            Кількість сторінок
+            <input
+              type="text"
+              value={pages}
+              className="statisticInput"
+              onChange={onHandleChange}
+              required
+            />
+          </label>
+        </div>
+        <button className="statisticBtn" type="submit">
+          Додати результат
+        </button>
       </div>
-      <button className="statisticBtn" type="submit">
-        Додати результат
-      </button>
     </StatisticFormStyled>
   );
 };

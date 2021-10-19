@@ -5,7 +5,7 @@ const PrivatRoutes = ({ isAuth, path, exact, component }) =>
   isAuth ? (
     <Route path={path} exact={exact} component={component} />
   ) : (
-    <Redirect to="/login" />
+    <Redirect to="/auth" />
   );
 
 export default PrivatRoutes;

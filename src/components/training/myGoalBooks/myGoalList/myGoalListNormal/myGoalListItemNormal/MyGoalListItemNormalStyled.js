@@ -10,18 +10,23 @@ const MyGoalListItemNormalStyled = styled.li`
   height: 60px;
   flex-direction: row;
   align-items: center;
-  border-bottom: 1px solid #e0e5eb;
+  :not(:last-child) {
+    border-bottom: 1px solid #e0e5eb;
+    @media screen and (min-width: 1280px) {
+      border-bottom: none;
+    }
+  }
 
-  .books_List__BookSvg {
+  .myGoalListNorm_Item__BookSvg {
     width: 22px;
     height: 17px;
     margin-right: 17px;
   }
-  .books_List__DeleteSvg {
+  .myGoalListNorm_Item__DeleteSvg {
     width: 14px;
     height: 18px;
   }
-  .books_ListFull {
+  .myGoalListNorm_Item__ListFull {
     @media screen and (min-width: 768px) {
       display: flex;
       list-style: none;
@@ -32,35 +37,54 @@ const MyGoalListItemNormalStyled = styled.li`
     }
   }
 
-  .books_ListFull__Item {
+  .myGoalListNorm_Item_ListFull_Item {
     color: ${darkColors.primaryText};
     font-size: 14px;
     font-weight: 500;
     line-height: 1.2;
   }
-  .books_ListFull__Item:nth-child(1) {
+  .myGoalListNorm_Item_ListFull_Item:nth-child(1) {
     width: 180px;
     margin-right: 44px;
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+    @media screen and (min-width: 1280px) {
+      -webkit-line-clamp: 1;
+      width: 241px;
+      margin-right: 70px;
+    }
   }
-  .books_ListFull__Item:nth-child(2) {
+  .myGoalListNorm_Item_ListFull_Item:nth-child(2) {
     width: 139px;
     margin-right: 43px;
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+    @media screen and (min-width: 1280px) {
+      -webkit-line-clamp: 1;
+      margin-right: 86px;
+    }
   }
-  .books_ListFull__Item:nth-child(3) {
+  .myGoalListNorm_Item_ListFull_Item:nth-child(3) {
     width: 32px;
     margin-right: 70px;
+    @media screen and (min-width: 1280px) {
+      margin-right: 65px;
+    }
   }
-  .books_ListFull__Item:nth-child(4) {
+  .myGoalListNorm_Item_ListFull_Item:nth-child(4) {
     width: 24px;
     margin-right: 48px;
+    @media screen and (min-width: 1280px) {
+      margin-right: 116px;
+    }
+  }
+  .myGoalListNorm_Item__ButtonDelete {
+    border: none;
+    background-color: inherit;
   }
 `;
 

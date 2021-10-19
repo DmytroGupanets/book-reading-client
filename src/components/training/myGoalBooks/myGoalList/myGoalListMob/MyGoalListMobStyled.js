@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const MyGoalListMobStyled = styled.section`
-  .book_ListMob {
+  .books_ListMob {
     padding-left: 0;
   }
 `;

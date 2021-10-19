@@ -5,13 +5,13 @@ const MyGoalListItemMob = ({ item }) => {
   const { bookName, author, year, pages } = item;
   return (
     <MyGoalListItemMobStyled>
-      <svg className="myGoalList_SvgBook">
+      <svg className="myGoalListMob_SvgBook">
         <use href={sprite + "#icon-Book"}></use>
       </svg>
-      <div className="myGoalList_ContainerInfo">
-        <h3 className="myGoalList_Item_BookTitle">{bookName}</h3>
-        <div className="myGoalList_Item__ListContainer">
-          <ul className="myGoalList_Item__ListInfo1">
+      <div className="myGoalListMob_ContainerInfo">
+        <h3 className="myGoalListMob_BookTitle">{bookName}</h3>
+        <div className="myGoalListMob_ListContainer">
+          <ul className="myGoalListMob_ListInfo1">
             <li>
               <p>Автор:</p>
             </li>
@@ -22,16 +22,18 @@ const MyGoalListItemMob = ({ item }) => {
               <p>Стор.:</p>
             </li>
           </ul>
-          <ul className="myGoalList_Item__ListInfo2">
+          <ul className="myGoalListMob_ListInfo2">
             <li>{author}</li>
             <li>{year}</li>
             <li>{pages}</li>
           </ul>
         </div>
       </div>
-      <svg className="myGoalList_SvgDelete">
-        <use href={sprite + "#icon-delete"}></use>
-      </svg>
+      <button className="myGoalListMob_ButtonDelete">
+        <svg className="myGoalListMob_SvgDelete">
+          <use href={sprite + "#icon-delete"}></use>
+        </svg>
+      </button>
     </MyGoalListItemMobStyled>
   );
 };

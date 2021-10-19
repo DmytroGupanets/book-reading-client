@@ -3,36 +3,48 @@ import colors from "../../../../../styles/colors";
 const { darkColors } = colors;
 
 const MyGoalListNormalStyled = styled.section`
-  .head_List {
+  margin: 0 auto;
+  margin-top: 20px;
+  width: 100%;
+  .myGoalListNorm_ListHead {
     @media screen and (min-width: 768px) {
       display: flex;
       list-style: none;
       border-top: 1px solid #e0e5eb;
-      border-bottom: 1px solid #e0e5eb;
-      margin-top: 0;
-      margin-bottom: 0;
       padding-left: 0;
+      margin: 0;
     }
   }
-  .head_item {
+  .myGoalListNorm_item {
     color: ${darkColors.secondaryText};
     font-size: 14px;
     font-weight: 500;
     line-height: 2.7;
   }
-  .head_item:nth-child(1) {
+  .myGoalListNorm_item:nth-child(1) {
     margin-right: 180px;
+    @media screen and (min-width: 1280px) {
+      margin-right: 269px;
+    }
   }
-  .head_item:nth-child(2) {
+  .myGoalListNorm_item:nth-child(2) {
     margin-right: 145px;
+    @media screen and (min-width: 1280px) {
+      margin-right: 185px;
+    }
   }
-  .head_item:nth-child(3) {
+  .myGoalListNorm_item:nth-child(3) {
     margin-right: 78px;
+    @media screen and (min-width: 1280px) {
+      margin-right: 73px;
+    }
   }
-  .books_List {
+  .myGoalListNorm_ListBooks {
     padding-left: 0;
     margin-top: 0;
     margin-bottom: 0;
+    border-top: 1px solid #e0e5eb;
+    border-bottom: 1px solid #e0e5eb;
     @media screen and (min-width: 768px) {
       height: 235px;
 
@@ -55,17 +67,16 @@ const MyGoalListNormalStyled = styled.section`
       }
     }
   }
-  .moreBooksContainer {
+  .myGoalListNorm_MoreBooksContainer {
     display: flex;
     align-items: center;
-    border-bottom: 1px solid #e0e5eb;
   }
-  .moreBooksContainer_svgBook {
+  .myGoalListNorm_SvgBook {
     width: 22px;
     height: 17px;
     margin-right: 17px;
   }
-  .moreBooksContainer_points {
+  .myGoalListNorm_Points {
     height: 22px;
   }
 `;

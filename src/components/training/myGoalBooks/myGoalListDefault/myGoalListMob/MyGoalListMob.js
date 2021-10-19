@@ -4,13 +4,13 @@ import sprite from "../../../../../images/Training/sprite.svg";
 const MyGoalListDefMob = () => {
   return (
     <MyGoalListDefMobStyled>
-      <div className="container">
-        <svg className="myGoalList_SvgBook">
+      <div className="goalListMob_container">
+        <svg className="goalListMob_SvgBook">
           <use href={sprite + "#icon-Book"}></use>
         </svg>
-        <span className="myGoalList_points">...</span>
-        <div className="list_container">
-          <ul className="myGoalList_Item_ListInfo1">
+        <span className="goalListMob_points">...</span>
+        <div className="goalListMob_List__container">
+          <ul className="goalListMob_List__ItemListInfo1">
             <li>
               <p>Автор: </p>
             </li>
@@ -21,14 +21,14 @@ const MyGoalListDefMob = () => {
               <p>Стор.:</p>
             </li>
           </ul>
-          <ul className="myGoalList_Item_ListInfo2">
-            <li className="inner_Item">
+          <ul className="goalListMob_List__ItemListInfo2">
+            <li className="goalListMob_List_ItemListInfo2__Inner">
               <p>...</p>
             </li>
-            <li className="inner_Item">
+            <li className="goalListMob_List_ItemListInfo2__Inner">
               <p>...</p>
             </li>
-            <li className="inner_Item">
+            <li className="goalListMob_List_ItemListInfo2__Inner">
               <p>...</p>
             </li>
           </ul>

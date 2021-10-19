@@ -38,7 +38,7 @@ const MyGoalListItemMobStyled = styled.li`
 
   font-family: "Montserrat", sans-serif;
 
-  .myGoalList_Item_BookTitle {
+  .myGoalListMob_BookTitle {
     color: ${darkColors.primaryText};
     line-height: 1.2;
     margin: 0;
@@ -47,23 +47,23 @@ const MyGoalListItemMobStyled = styled.li`
     margin-bottom: 5px;
     width: 127px;
   }
-  .myGoalList_SvgBook {
+  .myGoalListMob_SvgBook {
     height: 17px;
     width: 22px;
     margin-right: 13px;
   }
-  .myGoalList_SvgDelete {
+  .myGoalListMob_SvgDelete {
     height: 18px;
     width: 14px;
   }
 
-  .myGoalList_Item__ListContainer {
+  .myGoalListMob_ListContainer {
     display: flex;
   }
-  .myGoalList_ContainerInfo {
+  .myGoalListMob_ContainerInfo {
     width: 219px;
   }
-  .myGoalList_Item__ListInfo1 {
+  .myGoalListMob_ListInfo1 {
     list-style-type: none;
     padding-left: 0;
     margin-right: 30px;
@@ -72,12 +72,16 @@ const MyGoalListItemMobStyled = styled.li`
     color: ${darkColors.secondaryText};
     font-weight: 500;
   }
-  .myGoalList_Item__ListInfo2 {
+  .myGoalListMob_ListInfo2 {
     list-style-type: none;
     padding-left: 0;
     font-size: 14px;
     font-weight: 500;
     line-height: 2.7;
+  }
+  .myGoalListMob_ButtonDelete {
+    border: none;
+    background-color: inherit;
   }
 `;
 

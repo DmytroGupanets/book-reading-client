@@ -20,8 +20,10 @@ const MyGoalListNormalStyled = styled.div`
     padding: 0;
     border: 0;
   }
+  width: 100%;
+  margin: 0 auto;
   font-family: "Montserrat", sans-serif;
-  .goal_List {
+  .goalListNorm_List {
     @media screen and (min-width: 768px) {
       margin-top: 26px;
       list-style: none;
@@ -29,34 +31,65 @@ const MyGoalListNormalStyled = styled.div`
       border-top: 1px solid #e0e5eb;
       border-bottom: 1px solid #e0e5eb;
     }
-    .goal_item:nth-child(1) {
+    .goalListNorm_List__Item:nth-child(1) {
       margin-right: 234px;
+      @media screen and (min-width: 1280px) {
+        margin-right: 269px;
+      }
     }
-    .goal_item:nth-child(2) {
+    .goalListNorm_List__Item:nth-child(2) {
       margin-right: 168px;
+      @media screen and (min-width: 1280px) {
+        margin-right: 185px;
+      }
     }
-    .goal_item:nth-child(3) {
+    .goalListNorm_List__Item:nth-child(3) {
       margin-right: 47px;
+      @media screen and (min-width: 1280px) {
+        margin-right: 73px;
+      }
     }
   }
-  .goal_item {
+  .goalListNorm_List__Item {
     color: ${darkColors.secondaryText};
     font-size: 14px;
     font-weight: 500;
     line-height: 2.7;
   }
-  .goal_svg {
+  .goalListNorm_Svg {
     width: 22px;
     height: 17px;
     margin-right: 17px;
   }
-  .goal_emptyContainer {
-    padding-top: 22px;
-    padding-bottom: 22px;
+  .goalListNorm_EmptyContainer {
+    padding: 22px 0;
     border-bottom: 1px solid #e0e5eb;
     display: flex;
     flex-direction: row;
     align-items: center;
+    @media screen and (min-width: 768px) {
+      overflow-y: scroll;
+      scrollbar-width: none;
+      scrollbar-color: #b1b5c2 #e7e4e4;
+
+      ::-webkit-scrollbar {
+        width: 5px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: #e7e4e4;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background-color: #b1b5c2;
+        border-radius: 0px;
+        border: 3px none #ffffff;
+      }
+    }
+    @media screen and (min-width: 1280px) {
+      height: 1px;
+      padding: 33px 0;
+    }
   }
 `;
 

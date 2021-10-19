@@ -5,18 +5,20 @@ const MyGoalListItemNormal = ({ item }) => {
   const { bookName, author, year, pages } = item;
   return (
     <MyGoalListItemNormalStyled>
-      <svg className="books_List__BookSvg">
+      <svg className="myGoalListNorm_Item__BookSvg">
         <use href={sprite + "#icon-Book"}></use>
       </svg>
-      <ul className="books_ListFull">
-        <li className="books_ListFull__Item">{bookName}</li>
-        <li className="books_ListFull__Item">{author}</li>
-        <li className="books_ListFull__Item">{year}</li>
-        <li className="books_ListFull__Item">{pages}</li>
+      <ul className="myGoalListNorm_Item__ListFull">
+        <li className="myGoalListNorm_Item_ListFull_Item">{bookName}</li>
+        <li className="myGoalListNorm_Item_ListFull_Item">{author}</li>
+        <li className="myGoalListNorm_Item_ListFull_Item">{year}</li>
+        <li className="myGoalListNorm_Item_ListFull_Item">{pages}</li>
       </ul>
-      <svg className="books_List__DeleteSvg">
-        <use href={sprite + "#icon-delete"}></use>
-      </svg>
+      <button className="myGoalListNorm_Item__ButtonDelete">
+        <svg className="myGoalListNorm_Item__DeleteSvg ">
+          <use href={sprite + "#icon-delete"}></use>
+        </svg>
+      </button>
     </MyGoalListItemNormalStyled>
   );
 };

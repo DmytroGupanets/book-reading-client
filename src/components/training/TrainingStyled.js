@@ -1,5 +1,5 @@
 import styled from "styled-components";
 
-const TrainingStyled = styled.div``;
+const TargetStyled = styled.div``;
 
-export default TrainingStyled;
+export default TargetStyled;

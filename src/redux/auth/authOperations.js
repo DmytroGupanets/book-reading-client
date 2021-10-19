@@ -12,9 +12,9 @@ import {
   getCurrentUserRequest,
   getCurrentUserSuccess,
   getCurrentUserError,
-} from "./auth-actions";
+} from "./authActions";
 
-axios.defaults.baseURL = "https://";
+axios.defaults.baseURL = "http://localhost:5000";
 
 const token = {
   set(token) {
@@ -28,9 +28,9 @@ const token = {
 export const register = (user) => async (dispatch) => {
   dispatch(registerRequest());
   try {
-    const response = await axios.post("/users/signup", user);
-    token.set(response.data.token);
-    dispatch(registerSuccess(response.data));
+    const response = await axios.post("api/auth/register", user);
+    token.set(response.data.data.token);
+    dispatch(registerSuccess(response.data.data));
   } catch (error) {
     dispatch(registerError(error.message));
   }
@@ -39,9 +39,9 @@ export const register = (user) => async (dispatch) => {
 export const login = (user) => async (dispatch) => {
   dispatch(loginRequest());
   try {
-    const response = await axios.post("/users/login", user);
-    token.set(response.data.token);
-    dispatch(loginSuccess(response.data));
+    const response = await axios.post("api/auth/login", user);
+    token.set(response.data.data.token);
+    dispatch(loginSuccess(response.data.data));
   } catch (error) {
     dispatch(loginError(error.message));
   }
@@ -50,7 +50,7 @@ export const login = (user) => async (dispatch) => {
 export const logOut = () => async (dispatch) => {
   dispatch(logoutRequest());
   try {
-    await axios.post("/users/logout");
+    await axios.get("api/auth/logout");
     token.unset();
     dispatch(logoutSuccess());
   } catch (error) {
@@ -70,8 +70,9 @@ export const getCurrentUser = () => async (dispatch, getState) => {
   token.set(persistedToken);
   dispatch(getCurrentUserRequest());
   try {
-    const response = await axios.get("/users/current");
-    dispatch(getCurrentUserSuccess(response.data));
+    const response = await axios.post("api/users/current");
+
+    dispatch(getCurrentUserSuccess(response.data.data));
   } catch (error) {
     dispatch(getCurrentUserError(error.message));
   }

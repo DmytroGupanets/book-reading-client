@@ -1,14 +1,15 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { getUserName } from "../../../redux/auth/authSelectors";
 
-import userInfo from "./userInfo.json";
 import UserMenuStyled from "./UserMenuStyled";
 
 const UserMenu = () => {
-  const userName = userInfo.name;
+  const userName = useSelector(getUserName);
 
   return (
     <UserMenuStyled>
-      <span className="userNameFirstLet">{userName[0].toUpperCase()}</span>
+      <span className="userNameFirstLet">{userName?.[0]?.toUpperCase()}</span>
       <span className="userName">{userName}</span>
     </UserMenuStyled>
   );

@@ -1,33 +1,35 @@
-// import React, { useEffect, useState } from "react";
-// import { useDispatch, useSelector } from "react-redux";
-// import { getRecordOperation } from "../../../redux/target/targetOperations";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+// import {
+//   getRecordOperation,
+//   updateRecordOperation,
+// } from "../../../redux/target/targetOperations";
+import { getRecords } from "../../../redux/target/targetSelectors";
 
 import colors from "../../../styles/colors";
 import StatisticListStyled from "./StatisticListStyled";
 
-const arr = [
-  { date: "10.10.2021", time: "18:10:23", str: "32" },
-  { date: "10.10.2021", time: "18:10:23", str: "32" },
-  { date: "10.10.2021", time: "18:10:23", str: "32" },
-  { date: "10.10.2021", time: "18:10:23", str: "32" },
-  { date: "10.10.2021", time: "18:10:23", str: "32" },
-];
-
 const StatisticList = () => {
+  const records = useSelector(getRecords);
+
+  const copeRecords = JSON.parse(JSON.stringify(records)).slice(-10).reverse();
+
   return (
     <StatisticListStyled colors={colors}>
-      <h3 className="statisticTitle">Статистика</h3>
+      <h2 className="statisticTitle">Статистика</h2>
 
-      {arr.map(({ date, time, str }) => (
-        <ul className="statisticList">
-          <li className="statisticListItem">{date}</li>
-          <li className="statisticListItemTime">{time}</li>
-          <li className="statisticListItemWrapper">
-            {str}
-            <p className="statisticListItemTime">стор.</p>
-          </li>
-        </ul>
-      ))}
+      <div className="listWrapper">
+        {copeRecords.map(({ date, time, pages, _id }) => (
+          <ul key={_id} className="statisticList">
+            <li className="statisticListItem">{date}</li>
+            <li className="statisticListItemTime">{time}</li>
+            <li className="statisticListItemWrapper">
+              {pages}
+              <p className="statisticListItemTime">стор.</p>
+            </li>
+          </ul>
+        ))}
+      </div>
     </StatisticListStyled>
   );
 };

@@ -7,13 +7,36 @@ import desktop1x from "../../../images/auth/mainImg/auth-desktop1x.webp";
 import desktop2x from "../../../images/auth/mainImg/auth-desktop2x.webp";
 
 const AuthStyled = styled.div`
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.9;
+  color: #242a37;
+  width: 100%;
+  height: calc(50vw - 132px);
+
+  .authContainer {
+    height: 100%;
+  }
+
+  .rightSideContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .leftSideContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
+    margin-bottom: 5px;
+
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-
-    background-color: #091e3f;
+    background-color: rgba(9, 30, 63, 0.8);
     background-image: linear-gradient(
         to right,
         rgba(9, 30, 63, 0.8),
@@ -24,12 +47,18 @@ const AuthStyled = styled.div`
     @media screen and (min-device-pixel-ratio: 2),
       screen and (min-resolution: 192dpi),
       screen and (min-resolution: 2dppx) {
-      background-image: url(${mobile2x});
+      background-image: linear-gradient(
+          to right,
+          rgba(9, 30, 63, 0.8),
+          rgba(9, 30, 63, 0.8)
+        ),
+        url(${mobile2x});
     }
 
     @media screen and (min-width: 768px) {
       & {
-        /* max-width: 1600px; */
+        padding-top: 70px;
+        padding-bottom: 70px;
         background-image: linear-gradient(
             to right,
             rgba(9, 30, 63, 0.8),
@@ -40,7 +69,12 @@ const AuthStyled = styled.div`
         @media screen and (min-device-pixel-ratio: 2),
           screen and (min-resolution: 192dpi),
           screen and (min-resolution: 2dppx) {
-          background-image: url(${tablet2x});
+          background-image: linear-gradient(
+              to right,
+              rgba(9, 30, 63, 0.8),
+              rgba(9, 30, 63, 0.8)
+            ),
+            url(${tablet2x});
         }
       }
     }
@@ -48,8 +82,6 @@ const AuthStyled = styled.div`
     @media screen and (min-width: 1280px) {
       width: 44%;
       & {
-        /* max-width: 1600px;
-        max-height: 600px; */
         background-image: linear-gradient(
             to right,
             rgba(9, 30, 63, 0.8),
@@ -60,14 +92,13 @@ const AuthStyled = styled.div`
         @media screen and (min-device-pixel-ratio: 2),
           screen and (min-resolution: 192dpi),
           screen and (min-resolution: 2dppx) {
-          background-image: url(${desktop2x});
+          background-image: linear-gradient(
+              to right,
+              rgba(9, 30, 63, 0.8),
+              rgba(9, 30, 63, 0.8)
+            ),
+            url(${desktop2x});
         }
-      }
-    }
-
-    .rightSideContainer {
-      @media screen and (min-width: 1280px) {
-        width: 56%;
       }
     }
   }
@@ -76,14 +107,12 @@ const AuthStyled = styled.div`
     .authContainer {
       display: flex;
     }
-  }
-
-  .overlayContainer {
-    display: flex;
-    /* justify-content: center; */
-    width: 100%;
-    height: 100%;
-    background-color: rgba(9, 30, 63, 0.8);
+    .leftSideContainer {
+      margin-bottom: 0;
+    }
+    .rightSideContainer {
+      width: 56%;
+    }
   }
 `;
 

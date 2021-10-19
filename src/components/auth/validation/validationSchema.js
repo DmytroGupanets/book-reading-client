@@ -1,16 +1,17 @@
 import * as Yup from "yup";
 
 const email = Yup.string()
-  .required("НЕОБХОДИМО ЗАПОЛНИТЬ ПОЛЕ")
+  .required("необхідно заповнити поле")
+  .max(63, "email повинен складатися не бiльше ніж з 63 символів")
   .matches(
     /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/i,
-    "Invalid format"
+    "невірний формат"
   );
 
 const password = Yup.string()
-  .required("this is mandatory area")
-  .min(8, "password must be at least 8 characters")
-  .matches(/(?=.*[0-9])/, "password must contain a number");
+  .required("необхідно заповнити поле")
+  .min(5, "пароль повинен складатися не менше ніж з 5 символів")
+  .matches(/(?=.*[0-9])/, "пароль повинен містити цифри");
 
 export const loginValidationSchema = Yup.object({
   email,
@@ -18,11 +19,11 @@ export const loginValidationSchema = Yup.object({
 });
 
 export const registerValidationSchema = Yup.object({
-  name: Yup.string().required("НЕОБХОДИМО ЗАПОЛНИТЬ ПОЛЕ"),
+  name: Yup.string().required("необхідно заповнити поле"),
   email,
   password,
   confirmPassword: Yup.string().oneOf(
     [Yup.ref("password"), null],
-    "Passwords must match"
+    "паролі повинні співпадати"
   ),
 });

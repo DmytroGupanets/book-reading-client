@@ -13,7 +13,8 @@ import {
   registerError,
   registerRequest,
   getCurrentUserSuccess,
-} from "./auth-actions";
+  setGoogleToken,
+} from "./authActions";
 
 const setError = (_, { payload }) => payload;
 const refreshError = () => null;
@@ -34,6 +35,7 @@ const token = createReducer(null, {
   [registerSuccess]: (_, action) => action.payload.token,
   [loginSuccess]: (_, action) => action.payload.token,
   [logoutSuccess]: refreshError,
+  [setGoogleToken]: (_, action) => action.payload,
 });
 
 const error = createReducer(null, {
@@ -57,9 +59,11 @@ const isAuthenticated = createReducer(false, {
   [logoutSuccess]: () => false,
 });
 
-export default combineReducers({
+const authReducer = combineReducers({
   user,
   token,
   error,
   isAuthenticated,
 });
+
+export default authReducer;

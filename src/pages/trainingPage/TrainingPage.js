@@ -1,11 +1,13 @@
 import React from "react";
-import MyTraining from "../../components/training/myTraining/MyTraining";
+
+import Container from "../../components/container/Container";
+import Training from "../../components/training/Training";
 
 const TrainingPage = () => {
   return (
-    <>
-      <MyTraining />
-    </>
+    <Container>
+      <Training />
+    </Container>
   );
 };
 

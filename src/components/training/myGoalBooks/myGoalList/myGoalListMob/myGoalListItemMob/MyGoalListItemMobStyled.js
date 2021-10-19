@@ -3,23 +3,6 @@ import colors from "../../../../../../styles/colors";
 const { darkColors } = colors;
 
 const MyGoalListItemMobStyled = styled.li`
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  a,
-  p,
-  span,
-  ol,
-  ul,
-  li,
-  img {
-    margin: 0;
-    padding: 0;
-    border: 0;
-  }
   :not(:last-child) {
     margin-bottom: 15px;
   }

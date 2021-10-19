@@ -1,15 +1,19 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addNewBookOperation } from '../../redux/books/booksOperations';
 import { LibraryEmptyStyled } from './LibraryEmptyStyled';
 
 const initialState = {
        title: "",
        author: "",
        year: "",
-       pages: "",     
+       pages: "",
+       book: {}     
 }
 
 const LibraryEmpty = () => {
     const [state, setState] = useState(initialState);
+    const dispatch = useDispatch()
 
     const onHandleChange = (e) => {
         const { name, value } = e.target;
@@ -18,6 +22,8 @@ const LibraryEmpty = () => {
 
     const onHandleSubmit = (e) => {
        e.preventDefault();
+
+       dispatch(addNewBookOperation(state))
        setState({ ...initialState });
     }
 

@@ -17,6 +17,7 @@ height: 425px;
     font-weight: 600;
     font-size: 14px;
     line-height: 1.2;
+    color: #242A37;
     margin-bottom: 8px;
   }
   .aboutStep {
@@ -66,5 +67,33 @@ height: 425px;
 
       margin-right: 9px;
       margin-left: 46px; 
+  }
+  @media screen and (min-width: 768px) {
+    width: 570px;
+    height: 270px;
+
+    .btnOk {
+      display: none;
+    }
+    .stepContainer {
+      align-items: center;
+    }
+    .step {
+    font-size: 19px;
+    line-height: 2;
+    }
+    .stepOne, .stepTwo {
+      font-size: 16px;
+      line-height: 2.37;
+      margin-bottom: 0;
+    }
+    .aboutStepOne, .aboutStepTwo {
+      width: 100%;
+      line-height: 2.71;
+    }
+
+  }
+  @media screen and (min-width: 1280px) {
+    margin: 0 auto;
   }
 `

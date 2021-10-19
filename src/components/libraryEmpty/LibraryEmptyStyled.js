@@ -2,6 +2,9 @@ import styled from "styled-components";
 
 export const LibraryEmptyStyled = styled.form`
   display: inline-flex;
+  .bookContainer {
+      margin-top: 52px;
+  }
 
     .aboutBook {
         display: block;

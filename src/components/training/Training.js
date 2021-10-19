@@ -6,6 +6,7 @@ import GraphContainer from "../LineGraph/GraphContainer";
 import Statistic from "../statistic/Statistic";
 import TargetRead from "./targetRead/TargetRead";
 import TrainingStyled from "./TrainingStyled";
+import MyGoalBooks from "./myGoalBooks/MyGoalBooks";
 
 const Training = () => {
   const [state, setState] = useState(false);
@@ -25,6 +26,7 @@ const Training = () => {
       <button onClick={onHandleClick}>Початок тренування</button>
       <TargetRead state={state} />
       {state && <Statistic state={state} />}
+      <MyGoalBooks />
       <GraphContainer />
     </TrainingStyled>
   );

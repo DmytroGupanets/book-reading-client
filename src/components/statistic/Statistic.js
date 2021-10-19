@@ -21,7 +21,7 @@ export default function Statistic() {
       <StatisticList />
       <div>
         <button type="button" onClick={onChange}>
-          MODAL
+          STATISTIC MODAL
         </button>
       </div>
       {showModal && <StatisticModal onClose={onClose} />}

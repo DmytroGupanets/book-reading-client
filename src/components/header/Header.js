@@ -4,10 +4,12 @@ import Navigation from "../navigation/Navigation";
 import UserMenu from "../navigation/userMenu/UserMenu";
 import LanguageSwitcher from "../languageSwitcher/LanguageSwitcher";
 import HeaderStyled from "./HeaderStyled";
-import ThemeSwitcher from "../themeSwitcher/ThemeSwitcher";
+// import ThemeSwitcher from "../themeSwitcher/ThemeSwitcher";
+import { useSelector } from "react-redux";
+import { getAuthenticated } from "../../redux/auth/authSelectors";
 
 const Header = () => {
-  const isAuth = true;
+  const isAuth = useSelector(getAuthenticated);
   return (
     <HeaderStyled>
       <Logo />
@@ -21,7 +23,7 @@ const Header = () => {
           <LogOut />
         </>
       )}
-      <ThemeSwitcher />
+      {/* <ThemeSwitcher /> */}
     </HeaderStyled>
   );
 };

@@ -1,10 +1,14 @@
 import GoogleLogin from "react-google-login";
 import iconGoogle from "../../../images/auth/googleIcon.svg";
 import { GoogleButtonStyled } from "./GoogleButtonStyled";
+import { useDispatch } from "react-redux";
+import { googleAuth } from "../../../redux/auth/authOperations";
 
 const GoogleButton = () => {
+  const dispatch = useDispatch();
   const responseGoogle = (response) => {
-    console.log(response);
+    const { tokenId } = response;
+    if (tokenId) dispatch(googleAuth(tokenId));
   };
   return (
     <>

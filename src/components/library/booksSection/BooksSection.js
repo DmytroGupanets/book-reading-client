@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Book from "../book/Book";
 import BookMobile from "../bookMobile/BookMobile";
-import BooksLabel from "../booksTitle/BooksLabel";
+import BooksLabel from "../booksLabel/BooksLabel";
 import { BooksSectionStyled } from "./BooksSectionStyled";
 
 const BooksSection = ({ title, books }) => {

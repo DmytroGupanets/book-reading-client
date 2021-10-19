@@ -21,6 +21,7 @@ const SelectDateStyled = styled.label`
     height: 7px;
 
     z-index: 1;
+    pointer-events: none;
   }
 
   .reactSelect-container {
@@ -45,6 +46,7 @@ const SelectDateStyled = styled.label`
   }
 
   .reactSelect__placeholder {
+    font-size: 10px;
     color: ${({ colors }) => colors.lightColors.primaryText};
   }
 

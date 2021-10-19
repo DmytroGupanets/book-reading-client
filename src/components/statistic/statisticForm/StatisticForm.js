@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
-// import { useDispatch, useSelector } from "react-redux";
-// import {
-//   getRecordOperation,
-//   updateRecordOperation,
-// } from "../../../redux/target/targetOperations";
+import { useDispatch, useSelector } from "react-redux";
+import { updateRecordOperation } from "../../../redux/target/targetOperations";
+
 import SelectDate from "../selectDate/SelectDate";
 
 import StatisticFormStyled from "./StatisticFormStyled";
 import colors from "../../../styles/colors";
 import useDate from "../../../hooks/useDate";
+
+import { getTargetId } from "../../../redux/target/targetSelectors";
 
 const initialState = {
   date: "",
@@ -20,15 +20,17 @@ const StatisticForm = () => {
   const { date, pages } = statistic;
 
   const [stateData, moment] = useDate();
-  const { currentDate, currentTime } = stateData;
+  const { currentDate } = stateData;
+
+  const targetId = useSelector(getTargetId);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setStatistic((prev) => ({
       ...prev,
       date: currentDate.split("-").join("."),
     }));
-    // dispatch(getRecordOperation());
-  }, [currentDate, currentTime]);
+  }, [currentDate]);
 
   const onHandleChange = (e) => {
     const { value } = e.target;
@@ -45,8 +47,8 @@ const StatisticForm = () => {
       date: date,
       pages: pages,
     };
-    console.log(record);
-    // updateRecordOperation("616aef361dd4bfc94ee3684d", record);
+
+    dispatch(updateRecordOperation(targetId, record));
     setStatistic(initialState);
   };
 
@@ -62,7 +64,6 @@ const StatisticForm = () => {
               type="text"
               value={pages}
               className="statisticInput"
-              placeholder="*"
               onChange={onHandleChange}
               required
             />

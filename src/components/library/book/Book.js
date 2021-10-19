@@ -2,6 +2,7 @@ import React from "react";
 import { BookStyled } from "./BookStyled";
 
 import bookIcon from "../../../images/books-sprite.svg";
+import RatingStars from "../ratingStars/RatingStars";
 
 const Book = ({ book }) => {
   return (
@@ -25,9 +26,9 @@ const Book = ({ book }) => {
       <span className="bookPages">{book.pages}</span>
       {book.status === "completed" ? (
         <div className="resume">
-          <span className="bookResume">***********</span>
+          <RatingStars book={book} />
           <button className="resumeButton" type="button">
-            КНОПКА
+            Резюме
           </button>
         </div>
       ) : null}

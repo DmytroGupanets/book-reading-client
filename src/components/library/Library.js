@@ -6,6 +6,7 @@ import AddBookModal from "../addBookModal/AddBookModal";
 import { getAllBooksOperation } from "../../redux/books/booksOperations";
 import { useDispatch, useSelector } from "react-redux";
 import { getAuthenticated } from "../../redux/auth/authSelectors";
+import { NavLink } from "react-router-dom";
 
 const Library = () => {
   const isAuth = useSelector(getAuthenticated)
@@ -24,6 +25,9 @@ const Library = () => {
         <BooksList />
         </>
       )}       
+      <NavLink to="/training" className="trainingLink">
+        Далі
+      </NavLink>
     </LibraryStyled>
   );
 };

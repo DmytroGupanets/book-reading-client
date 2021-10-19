@@ -1,12 +1,8 @@
 import axios from "axios";
 
-const token = "";
-axios.defaults.baseURL = "http://localhost:5000";
-axios.defaults.headers.common = { Authorization: `Bearer ${token}` };
-
-export const getTarget = async (targetId) => {
+export const getTarget = async (ownerId) => {
   try {
-    return await axios.get(`api/targets/records/${targetId}`);
+    return await axios.get(`api/targets/${ownerId}`);
   } catch (error) {
     throw error;
   }

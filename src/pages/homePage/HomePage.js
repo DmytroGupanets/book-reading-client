@@ -1,8 +1,8 @@
 import React from "react";
-import Container from "../../components/container/Container";
+import { Redirect } from "react-router";
 
 const LibraryPage = () => {
-  return <Container></Container>;
+  return <Redirect to="/library" />;
 };
 
 export default LibraryPage;

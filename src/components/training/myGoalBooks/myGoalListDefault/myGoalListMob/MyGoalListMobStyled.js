@@ -3,23 +3,6 @@ import colors from "../../../../../styles/colors";
 const { darkColors } = colors;
 
 const MyGoalListDefMobStyled = styled.div`
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  a,
-  p,
-  span,
-  ol,
-  ul,
-  li,
-  img {
-    margin: 0;
-    padding: 0;
-    border: 0;
-  }
   margin-top: 20px;
   width: 100%;
   font-family: "Montserrat", sans-serif;

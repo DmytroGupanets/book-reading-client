@@ -24,11 +24,12 @@ export const LibraryEmptyStyled = styled.form`
         box-shadow: inset 0px 1px 2px rgba(29, 29, 27, 0.15);
         margin-bottom: 10px;
         border: none;
+
+        &:focus {
+            background-color: white;
+        }
     }
 
-    .aboutBookInput:focus {
-        background-color: white;
-    }
 
     .addButton {
         display: block;

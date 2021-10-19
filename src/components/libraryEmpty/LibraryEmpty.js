@@ -5,7 +5,7 @@ const initialState = {
        title: "",
        author: "",
        year: "",
-       page: 0,     
+       pages: "",     
 }
 
 const LibraryEmpty = () => {
@@ -23,7 +23,7 @@ const LibraryEmpty = () => {
 
     return (
         
-        <LibraryEmptyStyled  onClick={onHandleSubmit}>
+        <LibraryEmptyStyled  onSubmit={onHandleSubmit}>
             <div className="bookContainer">
             <label className="aboutBook aboutBook-title">
             Назва книги
@@ -41,7 +41,8 @@ const LibraryEmpty = () => {
             Автор книги
             <input 
             type="text"
-            name="title"
+            name="author"
+            value={state.author}
             placeholder="..."
             className="aboutBookInput aboutBookInput-author"
             onChange={onHandleChange}
@@ -51,7 +52,8 @@ const LibraryEmpty = () => {
             Рік випуску
             <input 
             type="text"
-            name="title"
+            name="year"
+            value={state.year}
             placeholder="..."
             className="aboutBookInput aboutBookInput-year"
             onChange={onHandleChange}
@@ -61,7 +63,8 @@ const LibraryEmpty = () => {
             Кількість сторінок
             <input 
             type="text"
-            name="title"
+            name="pages"
+            value={state.pages}
             placeholder="..."
             className="aboutBookInput aboutBookInput-page"
             onChange={onHandleChange}

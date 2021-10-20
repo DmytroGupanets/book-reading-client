@@ -1,7 +1,16 @@
 import styled from "styled-components";
+import nextArrow from "../../../images/auth/arrowsSlider/nextArrow.svg";
+import prevArrow from "../../../images/auth/arrowsSlider/prevArrow.svg";
 
 const LoginStyled = styled.div`
+  /* position: relative; */
   .textContainer {
+    text-align: center;
+    width: 229px;
+    padding-top: 18px;
+    padding-bottom: 18px;
+  }
+  .sliderContainer {
     text-align: center;
     width: 229px;
     padding-top: 18px;
@@ -35,12 +44,54 @@ const LoginStyled = styled.div`
       transform: translate(-50%, -50%);
     }
   }
+  .slick-arrow {
+    z-index: 5;
+    display: "block";
+    background-color: #f5f7fa;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+  }
+  .slick-prev:before,
+  .slick-next:before {
+    content: "";
+    display: block;
+    background-image: url(${nextArrow}+"#icon-nextArrow");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-color: #898f9f;
+  }
+  .slick-prev {
+    position: absolute;
+    top: 50%;
+    left: -40px;
+  }
+  .slick-next {
+    position: absolute;
+    top: 50%;
+    right: -40px;
+  }
+
   @media screen and (min-width: 768px) {
+    .slick-arrow {
+      width: 50px;
+      height: 50px;
+    }
+    .slick-prev {
+      left: -100px;
+    }
+    .slick-next {
+      right: -100px;
+    }
     .textContainer {
       width: 526px;
       padding-top: 21px;
       padding-bottom: 21px;
       margin-top: 62px;
+    }
+    .sliderContainer {
+      width: 526px;
     }
     .loginPageText {
       margin-bottom: 28px;
@@ -58,9 +109,19 @@ const LoginStyled = styled.div`
   }
 
   @media screen and (min-width: 1280px) {
+    .slick-arrow {
+      width: 23px;
+      height: 23px;
+    }
     .textContainer {
       width: 397px;
-      padding-top: 0;
+      padding-top: 100px;
+      padding-bottom: 0;
+      margin-top: 0;
+    }
+    .sliderContainer {
+      width: 397px;
+      padding-top: 100px;
       padding-bottom: 0;
       margin-top: 0;
     }

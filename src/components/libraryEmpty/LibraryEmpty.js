@@ -1,15 +1,18 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addNewBookOperation } from '../../redux/books/booksOperations';
 import { LibraryEmptyStyled } from './LibraryEmptyStyled';
 
 const initialState = {
        title: "",
        author: "",
        year: "",
-       page: 0,     
+       pages: ""    
 }
 
 const LibraryEmpty = () => {
     const [state, setState] = useState(initialState);
+    const dispatch = useDispatch()
 
     const onHandleChange = (e) => {
         const { name, value } = e.target;
@@ -18,12 +21,19 @@ const LibraryEmpty = () => {
 
     const onHandleSubmit = (e) => {
        e.preventDefault();
+       const newBook = {
+           name: state.title,
+           author: state.author,
+           year: state.year,
+           pages: state.pages
+       }
+       dispatch(addNewBookOperation(newBook))
        setState({ ...initialState });
     }
 
     return (
         
-        <LibraryEmptyStyled  onClick={onHandleSubmit}>
+        <LibraryEmptyStyled  onSubmit={onHandleSubmit}>
             <div className="bookContainer">
             <label className="aboutBook aboutBook-title">
             Назва книги
@@ -41,7 +51,8 @@ const LibraryEmpty = () => {
             Автор книги
             <input 
             type="text"
-            name="title"
+            name="author"
+            value={state.author}
             placeholder="..."
             className="aboutBookInput aboutBookInput-author"
             onChange={onHandleChange}
@@ -51,7 +62,8 @@ const LibraryEmpty = () => {
             Рік випуску
             <input 
             type="text"
-            name="title"
+            name="year"
+            value={state.year}
             placeholder="..."
             className="aboutBookInput aboutBookInput-year"
             onChange={onHandleChange}
@@ -61,7 +73,8 @@ const LibraryEmpty = () => {
             Кількість сторінок
             <input 
             type="text"
-            name="title"
+            name="pages"
+            value={state.pages}
             placeholder="..."
             className="aboutBookInput aboutBookInput-page"
             onChange={onHandleChange}

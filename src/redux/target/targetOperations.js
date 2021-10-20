@@ -1,4 +1,8 @@
-import { getTarget, updateRecord } from "../../services/targetApi";
+import {
+  completeTarget,
+  getTarget,
+  updateRecord,
+} from "../../services/targetApi";
 import {
   getRecordRequest,
   getRecordSuccess,
@@ -6,9 +10,9 @@ import {
   updateRecordRequest,
   updateRecordSuccess,
   updateRecordError,
-  addTargetRequest,
-  addTargetSuccess,
-  addTargetError,
+  completeTargetRequest,
+  completeTargetSuccess,
+  completeTargetError,
 } from "../../redux/target/targetActions";
 
 export const getRecordOperation = (ownerId) => async (dispatch, getState) => {
@@ -36,4 +40,14 @@ export const updateRecordOperation =
     }
   };
 
-// export const addTargetOperations = (target) => async(si);
+export const completeTargetOperation = (targetId) => async (dispatch) => {
+  try {
+    dispatch(completeTargetRequest());
+
+    const result = await completeTarget(targetId);
+
+    dispatch(completeTargetSuccess(result.data.data));
+  } catch (error) {
+    dispatch(completeTargetError(error.message));
+  }
+};

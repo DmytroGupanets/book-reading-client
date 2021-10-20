@@ -1,24 +1,36 @@
 import React, { useEffect } from "react";
 import { LibraryStyled } from "./LibraryStyled";
 import BooksList from "./booksList/BooksList";
+import LibraryEmpty from "../libraryEmpty/LibraryEmpty";
+import AddBookModal from "../addBookModal/AddBookModal";
 import { getAllBooksOperation } from "../../redux/books/booksOperations";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getAuthenticated } from "../../redux/auth/authSelectors";
 import { NavLink } from "react-router-dom";
+import { getAllBooks } from "../../redux/books/booksSelectors";
 
 const Library = () => {
+  const isAuth = useSelector(getAuthenticated);
+  const books = useSelector(getAllBooks);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getAllBooksOperation());
   }, [dispatch]);
 
+  const isUserHaveAnyBooks = Boolean(books.length);
+
   return (
     <LibraryStyled>
-      <BooksList />
+      {isAuth && <LibraryEmpty />}
+      {isAuth && !isUserHaveAnyBooks && <AddBookModal />}
+      {isAuth && isUserHaveAnyBooks && <BooksList />}
 
-      <NavLink to="/training" className="trainingLink">
-        Далі
-      </NavLink>
+      {isAuth && isUserHaveAnyBooks && (
+        <NavLink to="/training" className="trainingLink">
+          Далі
+        </NavLink>
+      )}
     </LibraryStyled>
   );
 };

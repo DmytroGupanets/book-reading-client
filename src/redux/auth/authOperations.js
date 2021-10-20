@@ -47,6 +47,19 @@ export const login = (user) => async (dispatch) => {
   }
 };
 
+export const googleAuth = (tokenId) => async (dispatch) => {
+  try {
+    const {
+      data: { data },
+    } = await axios.post("api/auth/google", { token: tokenId });
+    console.log(data);
+    token.set(data.token);
+    dispatch(loginSuccess(data));
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const logOut = () => async (dispatch) => {
   dispatch(logoutRequest());
   try {

@@ -10,8 +10,16 @@ export const mainRoutes = [
     restricted: true,
   },
   {
+    name: "auth",
+    path: "/auth",
+    exact: true,
+    component: lazy(() => import("../pages/authPage/AuthPage")),
+    isPrivat: false,
+    restricted: true,
+  },
+  {
     name: "login",
-    path: "/login",
+    path: "/auth/login",
     exact: true,
     component: lazy(() => import("../pages/authPage/AuthPage")),
     isPrivat: false,
@@ -19,7 +27,7 @@ export const mainRoutes = [
   },
   {
     name: "registration",
-    path: "/register",
+    path: "/auth/register",
     exact: true,
     component: lazy(() => import("../pages/authPage/AuthPage")),
     isPrivat: false,

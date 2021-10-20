@@ -2,6 +2,7 @@ import React from "react";
 import { BookMobileStyled } from "./BookMobileStyled";
 
 import bookIcon from "../../../images/books-sprite.svg";
+import RatingStars from "../ratingStars/RatingStars";
 
 const BookMobile = ({ book }) => {
   return (
@@ -30,8 +31,10 @@ const BookMobile = ({ book }) => {
           {book.status === "completed" ? (
             <>
               <span className="bookFieldName">Рейтинг:</span>
-              <span className="bookFieldValue">*****</span>
-              <span>РЕЗЮМЕ КНОПКА</span>
+              <RatingStars book={book} />
+              <button className="resumeButtonMobile" type="button">
+                Резюме
+              </button>
             </>
           ) : null}
         </div>

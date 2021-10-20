@@ -11,7 +11,7 @@ const Navigation = () => {
           <NavLink
             className="navigationLink"
             activeClassName="activeNavigationLink"
-            to="/"
+            to="/training"
             exact
           >
             <svg className="navHomeSvg">

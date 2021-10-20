@@ -7,6 +7,9 @@ import {
   updateRecordRequest,
   updateRecordSuccess,
   updateRecordError,
+  completeTargetRequest,
+  completeTargetSuccess,
+  completeTargetError,
 } from "./targetActions";
 
 const targetsReducer = createReducer([], {
@@ -15,6 +18,7 @@ const targetsReducer = createReducer([], {
     ...state,
     records: payload,
   }),
+  [completeTargetSuccess]: (state, { payload }) => payload,
 });
 
 const isLoadingReducer = createReducer(false, {
@@ -24,6 +28,9 @@ const isLoadingReducer = createReducer(false, {
   [updateRecordRequest]: () => true,
   [updateRecordSuccess]: () => false,
   [updateRecordError]: () => false,
+  [completeTargetRequest]: () => true,
+  [completeTargetSuccess]: () => false,
+  [completeTargetError]: () => false,
 });
 
 const errorReducer = createReducer("", {
@@ -31,6 +38,8 @@ const errorReducer = createReducer("", {
   [getRecordError]: (_, { payload }) => payload,
   [updateRecordRequest]: () => "",
   [updateRecordError]: (_, { payload }) => payload,
+  [completeTargetRequest]: () => "",
+  [completeTargetError]: (_, { payload }) => payload,
 });
 
 const targetReducer = combineReducers({

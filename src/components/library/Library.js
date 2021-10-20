@@ -13,7 +13,7 @@ const Library = () => {
   const isAuth = useSelector(getAuthenticated);
   const books = useSelector(getAllBooks);
   const dispatch = useDispatch();
-
+  console.log(books);
   useEffect(() => {
     dispatch(getAllBooksOperation());
   }, [dispatch]);

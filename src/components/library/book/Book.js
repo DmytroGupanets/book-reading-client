@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { BookStyled } from "./BookStyled";
 
 import bookIcon from "../../../images/books-sprite.svg";
 import RatingStars from "../ratingStars/RatingStars";
+import Modal from "../../modal/Modal";
 
 const Book = ({ book }) => {
+  const [modalState, setModalState] = useState(false);
+
+  const toggleModal = () => {
+    setModalState((state) => !state);
+  };
+
   return (
     <BookStyled isCompleted={book.status === "completed"}>
       {book.status === "inProgress" ? (
@@ -27,11 +34,16 @@ const Book = ({ book }) => {
       {book.status === "completed" ? (
         <div className="resume">
           <RatingStars book={book} />
-          <button className="resumeButton" type="button">
+          <button className="resumeButton" type="button" onClick={toggleModal}>
             Резюме
           </button>
         </div>
       ) : null}
+      {modalState && (
+        <Modal onClose={toggleModal}>
+          <h1>Modal is open</h1>
+        </Modal>
+      )}
     </BookStyled>
   );
 };

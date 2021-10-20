@@ -4,6 +4,7 @@ import { BookStyled } from "./BookStyled";
 import bookIcon from "../../../images/books-sprite.svg";
 import RatingStars from "../ratingStars/RatingStars";
 import Modal from "../../modal/Modal";
+import ModalResume from "../modalResume/ModalResume";
 
 const Book = ({ book }) => {
   const [modalState, setModalState] = useState(false);
@@ -41,7 +42,7 @@ const Book = ({ book }) => {
       ) : null}
       {modalState && (
         <Modal onClose={toggleModal}>
-          <h1>Modal is open</h1>
+          <ModalResume />
         </Modal>
       )}
     </BookStyled>

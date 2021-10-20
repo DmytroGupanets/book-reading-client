@@ -2,14 +2,14 @@ import MyGoalListItemMobStyled from "./MyGoalListItemMobStyled";
 import sprite from "../../../../../../images/Training/sprite.svg";
 
 const MyGoalListItemMob = ({ item }) => {
-  const { bookName, author, year, pages } = item;
+  const { name, author, year, pages } = item;
   return (
     <MyGoalListItemMobStyled>
       <svg className="myGoalListMob_SvgBook">
         <use href={sprite + "#icon-Book"}></use>
       </svg>
       <div className="myGoalListMob_ContainerInfo">
-        <h3 className="myGoalListMob_BookTitle">{bookName}</h3>
+        <h3 className="myGoalListMob_BookTitle">{name}</h3>
         <div className="myGoalListMob_ListContainer">
           <ul className="myGoalListMob_ListInfo1">
             <li>

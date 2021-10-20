@@ -2,7 +2,7 @@ import MyGoalListNormalItem from "./myGoalListItemNormal/MyGoalListItemNormal";
 import MyGoalListNormalStyled from "./MyGoalListNormalStyled";
 import spite from "../../../../../images/Training/sprite.svg";
 
-const MyGoalListNormal = ({ data }) => {
+const MyGoalListNormal = ({ data, onClickDelete }) => {
   return (
     <MyGoalListNormalStyled>
       <ul className="myGoalListNorm_ListHead">
@@ -13,7 +13,11 @@ const MyGoalListNormal = ({ data }) => {
       </ul>
       <ul className="myGoalListNorm_ListBooks">
         {data.map((item) => (
-          <MyGoalListNormalItem item={item} key={item._id} />
+          <MyGoalListNormalItem
+            item={item}
+            key={item._id}
+            onClickDelete={onClickDelete}
+          />
         ))}
         <div className="myGoalListNorm_MoreBooksContainer">
           <svg className="myGoalListNorm_SvgBook">

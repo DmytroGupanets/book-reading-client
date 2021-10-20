@@ -85,6 +85,8 @@ const MyGoalListItemNormalStyled = styled.li`
   }
   .myGoalListNorm_Item__ButtonDelete {
     border: none;
+    cursor: pointer;
+    padding: 0;
     background-color: inherit;
   }
 `;

@@ -1,8 +1,8 @@
 import MyGoalListItemNormalStyled from "./MyGoalListItemNormalStyled";
 import sprite from "../../../../../../images/Training/sprite.svg";
 
-const MyGoalListItemNormal = ({ item }) => {
-  const { name, author, year, pages } = item;
+const MyGoalListItemNormal = ({ item, onClickDelete }) => {
+  const { name, author, year, pages, _id } = item;
   return (
     <MyGoalListItemNormalStyled>
       <svg className="myGoalListNorm_Item__BookSvg">
@@ -14,7 +14,11 @@ const MyGoalListItemNormal = ({ item }) => {
         <li className="myGoalListNorm_Item_ListFull_Item">{year}</li>
         <li className="myGoalListNorm_Item_ListFull_Item">{pages}</li>
       </ul>
-      <button className="myGoalListNorm_Item__ButtonDelete">
+      <button
+        onClick={onClickDelete}
+        bookid={_id}
+        className="myGoalListNorm_Item__ButtonDelete"
+      >
         <svg className="myGoalListNorm_Item__DeleteSvg ">
           <use href={sprite + "#icon-delete"}></use>
         </svg>

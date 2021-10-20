@@ -1,8 +1,8 @@
 import MyGoalListItemMobStyled from "./MyGoalListItemMobStyled";
 import sprite from "../../../../../../images/Training/sprite.svg";
 
-const MyGoalListItemMob = ({ item }) => {
-  const { name, author, year, pages } = item;
+const MyGoalListItemMob = ({ item, onClickDelete }) => {
+  const { name, author, year, pages, _id } = item;
   return (
     <MyGoalListItemMobStyled>
       <svg className="myGoalListMob_SvgBook">
@@ -29,7 +29,11 @@ const MyGoalListItemMob = ({ item }) => {
           </ul>
         </div>
       </div>
-      <button className="myGoalListMob_ButtonDelete">
+      <button
+        bookid={_id}
+        onClick={onClickDelete}
+        className="myGoalListMob_ButtonDelete"
+      >
         <svg className="myGoalListMob_SvgDelete">
           <use href={sprite + "#icon-delete"}></use>
         </svg>

@@ -1,9 +1,6 @@
 import styled from "styled-components";
-import nextArrow from "../../../images/auth/arrowsSlider/nextArrow.svg";
-import prevArrow from "../../../images/auth/arrowsSlider/prevArrow.svg";
 
 const LoginStyled = styled.div`
-  /* position: relative; */
   .textContainer {
     text-align: center;
     width: 229px;
@@ -54,13 +51,7 @@ const LoginStyled = styled.div`
   }
   .slick-prev:before,
   .slick-next:before {
-    content: "";
-    display: block;
-    background-image: url(${nextArrow}+"#icon-nextArrow");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    background-color: #898f9f;
+    display: none;
   }
   .slick-prev {
     position: absolute;

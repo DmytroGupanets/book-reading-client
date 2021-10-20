@@ -1,0 +1,207 @@
+[
+  {
+    "name": "Dmytro Gupanets",
+    "id": "dima",
+    "position": "Team Lead",
+    "links": [
+      {
+        "name": "github",
+        "href": "https://github.com/DmytroGupanets",
+        "icon": "#icon-github"
+      },
+      {
+        "name": "linkedin",
+        "href": "https://www.linkedin.com/",
+        "icon": "#icon-linkedin"
+      }
+    ]
+  },
+  {
+    "name": "Yulia Dobrova",
+    "id": "yulia",
+    "position": "Scrum Master",
+    "links": [
+      {
+        "name": "github",
+        "href": "https://github.com/YuliaDobrova",
+        "icon": "#icon-github"
+      },
+      {
+        "name": "linkedin",
+        "href": "https://www.linkedin.com/in/yulia-dobrova-37a335217/",
+        "icon": "#icon-linkedin"
+      }
+    ]
+  },
+  {
+    "name": "Iryna Kolesnyk",
+    "id": "iryna",
+    "position": "Full-Stack Developer",
+    "links": [
+      {
+        "name": "github",
+        "href": "https://github.com/IrynaKolesnyk",
+        "icon": "#icon-github"
+      },
+      {
+        "name": "linkedin",
+        "href": "https://www.linkedin.com/",
+        "icon": "#icon-linkedin"
+      }
+    ]
+  },
+  {
+    "name": "Alina Akompi",
+    "id": "alina",
+    "position": "Full-Stack Developer",
+    "links": [
+      {
+        "name": "github",
+        "href": "https://github.com/linablossom",
+        "icon": "#icon-github"
+      },
+      {
+        "name": "linkedin",
+        "href": "https://www.linkedin.com/",
+        "icon": "#icon-linkedin"
+      }
+    ]
+  },
+  {
+    "name": "Serhii Bulynin",
+    "id": "serhii",
+    "position": "Full-Stack Developer",
+    "links": [
+      {
+        "name": "github",
+        "href": "https://github.com/serhiibulynin",
+        "icon": "#icon-github"
+      },
+      {
+        "name": "linkedin",
+        "href": "https://www.linkedin.com/",
+        "icon": "#icon-linkedin"
+      }
+    ]
+  },
+
+  {
+    "name": "Natalia Polovynko",
+    "id": "natalia",
+    "position": "Full-Stack Developer",
+    "links": [
+      {
+        "name": "github",
+        "href": "https://github.com/Afrikanochka",
+        "icon": "#icon-github"
+      },
+      {
+        "name": "linkedin",
+        "href": "https://www.linkedin.com/",
+        "icon": "#icon-linkedin"
+      }
+    ]
+  },
+  {
+    "name": "Aleksandr Kasian",
+    "id": "sanya",
+    "position": "Full-Stack Developer",
+    "links": [
+      {
+        "name": "github",
+        "href": "https://github.com/aleksandr031091",
+        "icon": "#icon-github"
+      },
+      {
+        "name": "linkedin",
+        "href": "https://www.linkedin.com/",
+        "icon": "#icon-linkedin"
+      }
+    ]
+  },
+  {
+    "name": "Tofik Hasanov",
+    "id": "tofik",
+    "position": "Full-Stack Developer",
+    "links": [
+      {
+        "name": "github",
+        "href": "https://github.com/tofikwest",
+        "icon": "#icon-github"
+      },
+      {
+        "name": "linkedin",
+        "href": "https://www.linkedin.com/",
+        "icon": "#icon-linkedin"
+      }
+    ]
+  },
+  {
+    "name": "Aleksandr Nepiyvoda",
+    "id": "alex",
+    "position": "Full-Stack Developer",
+    "links": [
+      {
+        "name": "github",
+        "href": "https://github.com/trukozak",
+        "icon": "#icon-github"
+      },
+      {
+        "name": "linkedin",
+        "href": "https://www.linkedin.com/",
+        "icon": "#icon-linkedin"
+      }
+    ]
+  },
+  {
+    "name": "Vladyslav Bochkovskyi",
+    "id": "vlad",
+    "position": "Full-Stack Developer",
+    "links": [
+      {
+        "name": "github",
+        "href": "https://github.com/absoul345",
+        "icon": "#icon-github"
+      },
+      {
+        "name": "linkedin",
+        "href": "https://www.linkedin.com/",
+        "icon": "#icon-linkedin"
+      }
+    ]
+  },
+  {
+    "name": "Denys Petrenko",
+    "id": "denis",
+    "position": "Full-Stack Developer",
+    "links": [
+      {
+        "name": "github",
+        "href": "https://github.com/DenysPetrenk0",
+        "icon": "#icon-github"
+      },
+      {
+        "name": "linkedin",
+        "href": "https://www.linkedin.com/",
+        "icon": "#icon-linkedin"
+      }
+    ]
+  },
+  {
+    "name": "Anatolij Dejneko",
+    "id": "tolik",
+    "position": "Full-Stack Developer",
+    "links": [
+      {
+        "name": "github",
+        "href": "https://github.com/anadej",
+        "icon": "#icon-github"
+      },
+      {
+        "name": "linkedin",
+        "href": "https://www.linkedin.com/",
+        "icon": "#icon-linkedin"
+      }
+    ]
+  }
+]

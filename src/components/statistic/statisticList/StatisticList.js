@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 //   updateRecordOperation,
 // } from "../../../redux/target/targetOperations";
 import { getRecords } from "../../../redux/target/targetSelectors";
+// import { getInProgressdBooks } from "../../../redux/books/booksSelectors";
 
 import colors from "../../../styles/colors";
 import StatisticListStyled from "./StatisticListStyled";
@@ -17,9 +18,9 @@ const StatisticList = () => {
   const [pagesState, setQuantityPages] = useState(initialState);
 
   const records = useSelector(getRecords);
-  const copeRecords = JSON.parse(JSON.stringify(records)).slice(-10).reverse();
+  // const bookInProgress = useSelector(getInProgressdBooks);
+  // console.log(bookInProgress);
 
-  console.log(pagesState);
   useEffect(() => {
     countPages();
     return () => {
@@ -41,17 +42,20 @@ const StatisticList = () => {
       <h2 className="statisticTitle">Статистика</h2>
 
       <div className="listWrapper">
-        {copeRecords.map(({ date, time, pages, _id }) => (
-          <ul key={_id} className="statisticList">
-            <li className="statisticListItem">{date}</li>
-            <li className="statisticListItemTime">{time}</li>
-            <li className="statisticListItemWrapper">
-              {pages}
-              <p className="statisticListItemTime">стор.</p>
-            </li>
-          </ul>
-        ))}
-        }
+        {records &&
+          records
+            .slice(-10)
+            .reverse()
+            .map(({ date, time, pages, _id }) => (
+              <ul key={_id} className="statisticList">
+                <li className="statisticListItem">{date}</li>
+                <li className="statisticListItemTime">{time}</li>
+                <li className="statisticListItemWrapper">
+                  {pages}
+                  <p className="statisticListItemTime">стор.</p>
+                </li>
+              </ul>
+            ))}
       </div>
     </StatisticListStyled>
   );

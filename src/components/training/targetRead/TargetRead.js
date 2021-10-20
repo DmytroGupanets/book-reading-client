@@ -1,11 +1,28 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { getInProgressdBooks } from "../../../redux/books/booksSelectors";
+import { endDate, startDate } from "../../../redux/target/targetSelectors";
+import useDate from "../../../hooks/useDate";
+
 import TargetReadStyled from "./TargetReadStyled";
 import colors from "../../../styles/colors";
 
 const TargetRead = ({ state }) => {
-  const qttBooks = 5;
-  const qttDays = 12;
   const readingBooks = 3;
+
+  const [
+    stateData,
+    moment,
+    setCurrentData,
+    setQuantityBetweenDays,
+    rangeBetwenStartAndEndDates,
+  ] = useDate();
+
+  const start = useSelector(startDate);
+  const end = useSelector(endDate);
+  const quantityBooks = useSelector(getInProgressdBooks);
+
+  const quantityDays = start && end && rangeBetwenStartAndEndDates(start, end);
 
   return (
     <TargetReadStyled colors={colors} state={state}>
@@ -17,11 +34,11 @@ const TargetRead = ({ state }) => {
 
       <ul className="targetReadlist">
         <li className="targetReadItem">
-          <div className="targetReadDig">{qttBooks}</div>
+          <div className="targetReadDig">{quantityBooks.length}</div>
           <p className="targetReadItemDescription">Кількість книжок</p>
         </li>
         <li className="targetReadItem">
-          <div className="targetReadDig">{qttDays}</div>
+          <div className="targetReadDig">{quantityDays}</div>
           <p className="targetReadItemDescription">Кількість днів</p>
         </li>
         {state && (

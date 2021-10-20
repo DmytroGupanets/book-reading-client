@@ -16,10 +16,8 @@ const initialState = {
 const StatisticList = () => {
   const [pagesState, setQuantityPages] = useState(initialState);
 
-
   const records = useSelector(getRecords);
   const copeRecords = JSON.parse(JSON.stringify(records)).slice(-10).reverse();
-
 
   console.log(pagesState);
   useEffect(() => {
@@ -43,7 +41,7 @@ const StatisticList = () => {
       <h2 className="statisticTitle">Статистика</h2>
 
       <div className="listWrapper">
-        {{copeRecords.map(({ date, time, pages, _id }) => (
+        {copeRecords.map(({ date, time, pages, _id }) => (
           <ul key={_id} className="statisticList">
             <li className="statisticListItem">{date}</li>
             <li className="statisticListItemTime">{time}</li>
@@ -52,7 +50,8 @@ const StatisticList = () => {
               <p className="statisticListItemTime">стор.</p>
             </li>
           </ul>
-        ))}}
+        ))}
+        }
       </div>
     </StatisticListStyled>
   );

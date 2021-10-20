@@ -34,20 +34,26 @@ const RegistrationForm = () => {
     <RegistrationFormStyled>
       <GoogleButton />
       <form className="form" onSubmit={formik.handleSubmit}>
-        <label className="formLabel" htmlFor="name">
-          Ім’я
-          <span className="formLabelStar"> *</span>
-        </label>
-        <input
-          id="name"
-          type="text"
-          className="formInput"
-          name="name"
-          placeholder="..."
-          value={formik.values.name}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-        />
+        <div className="formGroup">
+          <label className="formLabel" htmlFor="name">
+            Ім’я
+            <span className="formLabelStar"> *</span>
+          </label>
+          <input
+            id="name"
+            type="text"
+            className="formInput"
+            name="name"
+            placeholder="..."
+            value={formik.values.name}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+          />
+          {formik.errors.name && formik.touched.name && (
+            <div className="inputError">{formik.errors.name}</div>
+          )}
+        </div>
+
         <div className="formGroup">
           <label className="formLabel" htmlFor="email">
             Електронна адреса

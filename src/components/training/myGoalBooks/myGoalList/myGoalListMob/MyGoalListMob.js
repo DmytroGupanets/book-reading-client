@@ -6,7 +6,7 @@ const MyGoalListMob = ({ data }) => {
     <MyGoalListMobStyled>
       <ul className="books_ListMob">
         {data.map((item) => (
-          <MyGoalListItemMob item={item} key={item.id} />
+          <MyGoalListItemMob item={item} key={item._id} />
         ))}
       </ul>
     </MyGoalListMobStyled>

@@ -13,7 +13,7 @@ const MyGoalListNormal = ({ data }) => {
       </ul>
       <ul className="myGoalListNorm_ListBooks">
         {data.map((item) => (
-          <MyGoalListNormalItem item={item} key={item.id} />
+          <MyGoalListNormalItem item={item} key={item._id} />
         ))}
         <div className="myGoalListNorm_MoreBooksContainer">
           <svg className="myGoalListNorm_SvgBook">

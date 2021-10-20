@@ -63,6 +63,8 @@ const MyGoalListItemMobStyled = styled.li`
     line-height: 3.1;
   }
   .myGoalListMob_ButtonDelete {
+    cursor: pointer;
+    padding: 0;
     border: none;
     background-color: inherit;
   }

@@ -2,24 +2,32 @@ import MyGoalList from "./myGoalList/MyGoalList";
 import MyGoalListDefault from "./myGoalListDefault/MyGoalListDefault";
 import { getPlannedBooks } from "../../../redux/books/booksSelectors";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { getAllBooksOperation } from "../../../redux/books/booksOperations";
 
 const MyGoalBooks = () => {
   const books = useSelector(getPlannedBooks);
+  const [bookState, setsBooks] = useState(books);
   const dispatch = useDispatch();
-  console.log(books);
+
+  const onClickDelete = (e) => {
+    e.preventDefault();
+    const bookId = e.currentTarget.getAttribute("bookid");
+    setsBooks(bookState.filter((item) => item._id !== bookId));
+  };
+
   useEffect(() => {
     dispatch(getAllBooksOperation());
   }, [dispatch]);
 
-  // const onDeleteBook = useCallback((_id=>{dispatch(booskOperations.deleteBook(_id))
-  // }, [dispatch]);
+  useEffect(() => {
+    setsBooks(books);
+  }, [books]);
 
   return (
     <>
       {books.length > 0 ? (
-        <MyGoalList data={books} /* onDeleteBook={onDeleteBook} */ />
+        <MyGoalList data={bookState} onClickDelete={onClickDelete} />
       ) : (
         <MyGoalListDefault />
       )}

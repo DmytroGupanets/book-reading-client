@@ -10,6 +10,7 @@ import { setUserToken } from "../redux/auth/authActions";
 import { parse } from "query-string";
 import { useEffect } from "react";
 import { getCurrentUser } from "../redux/auth/authOperations";
+import Footer from "./footer/Footer";
 
 export const ThemeContext = createContext();
 
@@ -37,6 +38,7 @@ function App() {
       <Suspense fallback={<Spinner />}>
         <Header />
         <Main />
+        <Footer />
       </Suspense>
     </ThemeContext.Provider>
   );

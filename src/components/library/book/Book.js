@@ -5,12 +5,22 @@ import bookIcon from "../../../images/books-sprite.svg";
 import RatingStars from "../ratingStars/RatingStars";
 import Modal from "../../modal/Modal";
 import ModalResume from "../modalResume/ModalResume";
+import ModalFilled from "../modalResume/modalFilled.js/ModalFilled";
 
 const Book = ({ book }) => {
   const [modalState, setModalState] = useState(false);
+  const hasResume = Boolean(book.resume);
+  const [modalForm, setModalForm] = useState(hasResume);
 
   const toggleModal = () => {
     setModalState((state) => !state);
+  };
+
+  const onHandleChangeResume = (e) => {
+    if (e === true) {
+      return setModalForm(e);
+    }
+    setModalForm((state) => !state);
   };
 
   return (
@@ -42,7 +52,19 @@ const Book = ({ book }) => {
       ) : null}
       {modalState && (
         <Modal onClose={toggleModal}>
-          <ModalResume />
+          {modalForm ? (
+            <ModalFilled
+              book={book}
+              onClose={toggleModal}
+              openForm={onHandleChangeResume}
+            />
+          ) : (
+            <ModalResume
+              onClose={toggleModal}
+              bookId={book._id}
+              openForm={onHandleChangeResume}
+            />
+          )}
         </Modal>
       )}
     </BookStyled>

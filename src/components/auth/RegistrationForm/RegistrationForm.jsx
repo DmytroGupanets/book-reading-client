@@ -1,10 +1,10 @@
+import { useDispatch } from "react-redux";
 import { useFormik } from "formik";
 import { Link } from "react-router-dom";
 import GoogleButton from "../GoogleButton/GoogleButton";
 import { registerValidationSchema } from "../validation/validationSchema";
-import { RegistrationFormStyled } from "./RegistrationFormStyled";
 import { register } from "../../../redux/auth/authOperations";
-import { useDispatch } from "react-redux";
+import { RegistrationFormStyled } from "./RegistrationFormStyled";
 
 const RegistrationForm = () => {
   const dispatch = useDispatch();

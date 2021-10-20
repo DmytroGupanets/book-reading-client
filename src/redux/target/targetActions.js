@@ -7,3 +7,11 @@ export const getRecordError = createAction("targets/getRecordError");
 export const updateRecordRequest = createAction("targets/updateRecordRequest");
 export const updateRecordSuccess = createAction("targets/updateRecordSuccess");
 export const updateRecordError = createAction("targets/updateRecordError");
+
+export const completeTargetRequest = createAction(
+  "target/completeTargetRequest"
+);
+export const completeTargetSuccess = createAction(
+  "target/completeTargetSuccess"
+);
+export const completeTargetError = createAction("target/completeTargetError");

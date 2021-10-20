@@ -15,3 +15,11 @@ export const updateRecord = async (targetId, newRecords) => {
     throw error;
   }
 };
+
+export const completeTarget = async (targetId) => {
+  try {
+    return await axios.get(`api/targets/completed/${targetId}`);
+  } catch (error) {
+    throw error;
+  }
+};

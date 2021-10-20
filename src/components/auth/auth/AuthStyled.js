@@ -7,6 +7,7 @@ import desktop1x from "../../../images/auth/mainImg/auth-desktop1x.webp";
 import desktop2x from "../../../images/auth/mainImg/auth-desktop2x.webp";
 
 const AuthStyled = styled.div`
+  background-color: #ffff;
   font-family: Montserrat;
   font-style: normal;
   font-weight: 500;
@@ -27,6 +28,7 @@ const AuthStyled = styled.div`
   }
 
   .leftSideContainer {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;

@@ -3,6 +3,13 @@ import styled from "styled-components";
 const FooterStyled = styled.div`
   .FooterWrapper {
     position: relative;
+    margin-top: 666px;
+    @media screen and (min-width: 768px) {
+      margin-top: 900px;
+    }
+    @media screen and (min-width: 1280px) {
+      margin-top: 10px;
+    }
   }
   .FooterIcon {
     fill: #a6abb9;
@@ -39,9 +46,13 @@ const FooterStyled = styled.div`
       line-height: 1.22;
       margin-top: 60px;
       margin-bottom: 27px;
+      margin-left: auto;
+      margin-right: auto;
+      width: 200px;
     }
 
     @media screen and (min-width: 768px) {
+      width: 450px;
       font-size: 16px;
       margin-top: 60px;
       margin-bottom: 18px;
@@ -49,6 +60,7 @@ const FooterStyled = styled.div`
 
     @media screen and (min-width: 1280px) {
       margin-top: 80px;
+      width: 900px;
     }
   }
 

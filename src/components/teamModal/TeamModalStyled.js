@@ -17,7 +17,20 @@ const FooterStyled = styled.div`
     @media screen and (min-width: 1280px) {
       width: 1000px;
       height: 700px;
+      overflow-y: hidden;
     }
+  }
+  .TeamName {
+    margin-top: 5px;
+    margin-bottom: 15px;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 16px;
+    line-height: 1.25;
+    letter-spacing: 0.04em;
+    color: #6d7a8d;
+    /* text-transform: uppercase; */
   }
   .TeamModalList {
     display: flex;
@@ -31,8 +44,7 @@ const FooterStyled = styled.div`
     }
   }
   .TeamModalListItem {
-    width: 200px;
-    height: 200px;
+    height: 240px;
     box-shadow: 4px 6px 15px rgba(0, 0, 0, 0.1);
     border-radius: 6px;
     transition: transform 250ms linear;
@@ -45,41 +57,53 @@ const FooterStyled = styled.div`
     flex-basis: calc((100% / 2) - 10px);
 
     @media screen and (min-width: 768px) {
-      flex-basis: calc((100% / 3) - 10px);
+      height: 300px;
+      flex-basis: calc((100% / 4) - 10px);
     }
 
     @media screen and (min-width: 1280px) {
+      height: 300px;
       flex-basis: calc((100% / 6) - 20px);
       margin-top: 20px;
       margin-left: 20px;
     }
   }
 
-  .TeamPhoto {
+  .TeamMemberPhoto {
     margin-bottom: 10px;
-    width: 180px;
+    /* width: 180px; */
     height: 150px;
     object-fit: cover;
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
+    @media screen and (min-width: 768px) {
+      /* width: 200px; */
+      height: 200px;
+    }
+
+    @media screen and (min-width: 1280px) {
+      /* width: 150px; */
+      height: 200px;
+    }
   }
   .TeamMemberInfo {
     display: flex;
   }
-  .TeamName {
+  .TeamMemberName {
     margin-bottom: 5px;
+    color: #6d7a8d;
     width: 60%;
+    text-align: center;
     margin-right: auto;
     margin-left: auto;
-    /* padding-left: 48px; */
     font-size: 12px;
     line-height: 1.25;
     letter-spacing: 0.04em;
     text-transform: uppercase;
   }
-  .TeamPosition {
+  .TeamMemberPosition {
     margin-bottom: 5px;
-    /* padding-left: 48px; */
+    text-align: center;
     font-size: 10px;
     line-height: 1.2;
     letter-spacing: 0.04em;
@@ -87,10 +111,16 @@ const FooterStyled = styled.div`
   }
   .SocialList {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    width: 80px;
+    margin-right: auto;
+    margin-left: auto;
   }
+
   .SocialListItem {
-    margin-right: 5px;
+    margin-right: 15px;
+    margin-right: auto;
+    margin-left: auto;
   }
   .SocialListLinkIcon {
     fill: #a6abb9;

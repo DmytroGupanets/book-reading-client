@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { getInProgressdBooks } from "../../../redux/books/booksSelectors";
 // import {
 //   getRecordOperation,
 //   updateRecordOperation,
@@ -10,16 +11,48 @@ import { getRecords } from "../../../redux/target/targetSelectors";
 import colors from "../../../styles/colors";
 import StatisticListStyled from "./StatisticListStyled";
 
-const initialState = {
-  quantityPages: 0,
-};
+// const initialState = {
+//   quantityPages: 0,
+//   pagesOfReadedBook: 0,
+// };
 
 const StatisticList = () => {
-  const [pagesState, setQuantityPages] = useState(initialState);
+  const [pagesState, setQuantityPages] = useState(0);
 
+  // console.log(pagesState);
   const records = useSelector(getRecords);
-  // const bookInProgress = useSelector(getInProgressdBooks);
-  // console.log(bookInProgress);
+  const booksInProgress = useSelector(getInProgressdBooks);
+
+  console.log(pagesState);
+
+  const fn = (arr) => {
+    let pagesOfReadedBook = 0;
+
+    console.log(pagesOfReadedBook);
+
+    return arr.reduce((acc, item, idx) => {
+      // console.log(acc[idx]);
+
+      if (item.pages === pagesState - pagesOfReadedBook) {
+        // console.log(pagesState.pagesOfReadedBook);
+        acc = idx;
+        pagesOfReadedBook += item.pages;
+        // acc.accPages = p;
+        // const a = pages;
+        // const b = pages;
+        // console.log(a);
+        // console.log(b);
+      }
+
+      return acc;
+    }, 0);
+  };
+
+  console.log(fn(booksInProgress));
+
+  // console.log();
+  // console.log(booksInProgress);
+  // console.log(pagesState);
 
   useEffect(() => {
     countPages();
@@ -34,7 +67,7 @@ const StatisticList = () => {
       return (pages += +el.pages);
     });
 
-    setQuantityPages(() => ({ quantityPages: pages }));
+    setQuantityPages(pages);
   };
 
   return (

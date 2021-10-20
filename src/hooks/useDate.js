@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import Moment from "moment";
 import { extendMoment } from "moment-range";
+import { useSelector } from "react-redux";
+import { startDate } from "../redux/target/targetSelectors";
 
 const moment = extendMoment(Moment);
 
 const initialStateDate = {
   currentDate: "",
-  // currentTime: "",
-  startData: "10-3-2021",
   quantityDays: [],
 };
 
@@ -16,33 +16,41 @@ const month = moment().get("month");
 const day = moment().get("date");
 const dateNow = `${day}-${month + 1}-${year}`;
 
-// const hour = moment().get("hour");
-// const minute = moment().get("minute");
-// const seconds = moment().get("second");
-// const timeNow = `${hour}:${minute}:${seconds}`;
-
 const useDate = () => {
   const [stateData, setDate] = useState(initialStateDate);
-  const { quantityDays, startData } = stateData;
+  const { quantityDays } = stateData;
+
+  const start = useSelector(startDate);
 
   useEffect(() => {
     setCurrentData();
-    // setCurrentTime();
-    quantityDays && setQuantityBetweenDays(startData);
+    quantityDays && start && setQuantityBetweenDays(chengeStartDataIdx(start));
   }, []);
 
   const setCurrentData = () => {
     setDate((prev) => ({ ...prev, currentDate: dateNow }));
   };
 
-  // const arr = "";
+  const chengeStartDataIdx = (str) => {
+    const startDateStr = str.slice().split(".");
+    [startDateStr[0], startDateStr[1]] = [startDateStr[1], startDateStr[0]];
+    return startDateStr.join("-");
+  };
 
-  // const sortArrByDate = (arr) => {
-  //   const year = moment().get("year");
-  //   const month = moment().get("month");
-  //   const day = moment().get("date");
-  //   const dateNow = `${month + 1}-${day}-${year}`;
+  // const chengeEndDataIdx = (str) => {
+  //   const startDateStr = str.slice().split(".");
+  //   [startDateStr[0], startDateStr[1]] = [startDateStr[1], startDateStr[0]];
+  //   return startDateStr.join("-");
   // };
+
+  const rangeBetwenStartAndEndDates = (startDate, endDate) => {
+    const reverseStart = startDate.split(".").reverse().join("-");
+    const reverseEnd = endDate.split(".").reverse().join("-");
+    const start = new Date(reverseStart);
+    const end = new Date(reverseEnd);
+    const range = moment.range(start, end);
+    return range.diff("days");
+  };
 
   const setQuantityBetweenDays = (startTargetData) => {
     const startTarget = new Date(startTargetData);
@@ -78,8 +86,8 @@ const useDate = () => {
     stateData,
     moment,
     setCurrentData,
-    // setCurrentTime,
     setQuantityBetweenDays,
+    rangeBetwenStartAndEndDates,
   ];
 };
 

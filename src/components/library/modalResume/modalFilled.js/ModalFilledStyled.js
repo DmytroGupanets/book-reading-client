@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ModalResumeStyled = styled.div`
+export const ModalFilledStyled = styled.div`
   text-align: start;
   padding: 30px;
   background-color: white;
@@ -17,40 +17,29 @@ export const ModalResumeStyled = styled.div`
     max-width: 270px;
   }
 
-  .chooseRating {
-  }
-
   .resumeModalSvg {
     height: 17px;
     width: 17px;
   }
 
-  .ResumeTextArea {
-    margin-bottom: 25px;
-    height: 170px;
-    resize: none;
-    padding: 10px;
-
-    border: 1px solid #a6abb9;
+  .yourResumeText {
+    margin-top: 20px;
+    margin-bottom: 40px;
 
     font-family: "Montserrat", sans-serif;
     font-weight: 500;
     font-size: 14px;
-    line-height: 1.37;
+    line-height: 1.17;
 
     color: #898f9f;
-
-    @media screen and (min-width: 768px) {
-      width: 510px;
-    }
   }
 
-  .buttonsWrapper {
+  .filledButtonsWrapper {
     display: flex;
     justify-content: center;
   }
 
-  .resumeModalBackBtn {
+  .filledResumeModalBackBtn {
     width: 140px;
 
     background-color: white;
@@ -63,7 +52,6 @@ export const ModalResumeStyled = styled.div`
     text-align: center;
 
     color: #242a37;
-
     cursor: pointer;
 
     &:hover,
@@ -72,7 +60,7 @@ export const ModalResumeStyled = styled.div`
     }
   }
 
-  .resumeModalSubmitBtn {
+  .FilledResumeModalEditBtn {
     width: 140px;
 
     background-color: #ff6b08;
@@ -87,7 +75,6 @@ export const ModalResumeStyled = styled.div`
     text-align: center;
 
     color: #ffffff;
-
     cursor: pointer;
 
     &:hover,

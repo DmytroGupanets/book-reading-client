@@ -28,9 +28,9 @@ const BooksSection = ({ title, books }) => {
       {!isMobile && <BooksLabel title={title} isPC={isPC} />}
       {isMobile && <h2 className="title">{title} </h2>}
 
-      {!isMobile && books.map((book) => <Book key={book.id} book={book} />)}
+      {!isMobile && books.map((book) => <Book key={book._id} book={book} />)}
       {isMobile &&
-        books.map((book) => <BookMobile key={book.id} book={book} />)}
+        books.map((book) => <BookMobile key={book._id} book={book} />)}
     </BooksSectionStyled>
   );
 };

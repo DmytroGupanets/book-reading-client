@@ -57,10 +57,10 @@ const MobileAuth = () => {
         </li>
       </ul>
       <div className="linkContainer">
-        <Link to="/auth/login" className="authLink">
+        <Link to="/auth/login" className="loginLink">
           Увійти
         </Link>
-        <Link to="/auth/register" className="authLink">
+        <Link to="/auth/register" className="registerLink">
           Реєстрація
         </Link>
       </div>

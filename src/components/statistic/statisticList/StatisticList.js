@@ -9,17 +9,41 @@ import { getRecords } from "../../../redux/target/targetSelectors";
 import colors from "../../../styles/colors";
 import StatisticListStyled from "./StatisticListStyled";
 
-const StatisticList = () => {
-  const records = useSelector(getRecords);
+const initialState = {
+  quantityPages: 0,
+};
 
-  // const copeRecords = JSON.parse(JSON.stringify(records)).slice(-10).reverse();
+const StatisticList = () => {
+  const [pagesState, setQuantityPages] = useState(initialState);
+
+
+  const records = useSelector(getRecords);
+  const copeRecords = JSON.parse(JSON.stringify(records)).slice(-10).reverse();
+
+
+  console.log(pagesState);
+  useEffect(() => {
+    countPages();
+    return () => {
+      countPages();
+    };
+  }, [records]);
+
+  const countPages = () => {
+    let pages = 0;
+    records.forEach((el) => {
+      return (pages += +el.pages);
+    });
+
+    setQuantityPages(() => ({ quantityPages: pages }));
+  };
 
   return (
     <StatisticListStyled colors={colors}>
       <h2 className="statisticTitle">Статистика</h2>
 
       <div className="listWrapper">
-        {/* {copeRecords.map(({ date, time, pages, _id }) => (
+        {{copeRecords.map(({ date, time, pages, _id }) => (
           <ul key={_id} className="statisticList">
             <li className="statisticListItem">{date}</li>
             <li className="statisticListItemTime">{time}</li>
@@ -28,7 +52,7 @@ const StatisticList = () => {
               <p className="statisticListItemTime">стор.</p>
             </li>
           </ul>
-        ))} */}
+        ))}}
       </div>
     </StatisticListStyled>
   );

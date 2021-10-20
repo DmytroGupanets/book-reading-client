@@ -8,43 +8,43 @@ const TeamModal = () => {
   return (
     <TeamModalStyled>
       <div className="TeamModalWrapper">
-        <h2>
-          Наша команда <b>Bootcamp 8</b>
+        <h2 className="TeamName">
+          Наша команда розробників <b>"Bootсamp 8"</b>
         </h2>
         <ul className="TeamModalList">
           {teamdata.map((data) => (
             <li className="TeamModalListItem" key={data.name}>
               <img
                 src={photos[data.id]}
-                className="TeamPhoto"
+                className="TeamMemberPhoto"
                 alt={data.name}
               />
-              <div className="TeamMemberInfo">
-                <div>
-                  <h3 className="TeamName">{data.name}</h3>
-                  <p className="TeamPosition">{data.position}</p>
-                </div>
-                <ul className="SocialList">
-                  {data.links.map((link) => (
-                    <li className="SocialListItem" key={link.name}>
-                      <a
-                        className="SocialListLink"
-                        href={link.href}
-                        target="_blank"
-                        rel="noreferrer noopener"
-                      >
-                        <svg
-                          className="SocialListLinkIcon"
-                          width="15"
-                          height="15"
-                        >
-                          <use href={sprite + `${link.icon}`}></use>
-                        </svg>
-                      </a>
-                    </li>
-                  ))}
-                </ul>
+              {/* <div className="TeamMemberInfo"> */}
+              <div>
+                <h3 className="TeamMemberName">{data.name}</h3>
+                <p className="TeamMemberPosition">{data.position}</p>
               </div>
+              <ul className="SocialList">
+                {data.links.map((link) => (
+                  <li className="SocialListItem" key={link.name}>
+                    <a
+                      className="SocialListLink"
+                      href={link.href}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                    >
+                      <svg
+                        className="SocialListLinkIcon"
+                        width="15"
+                        height="15"
+                      >
+                        <use href={sprite + `${link.icon}`}></use>
+                      </svg>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+              {/* </div> */}
             </li>
           ))}
         </ul>

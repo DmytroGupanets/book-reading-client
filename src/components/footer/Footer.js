@@ -3,6 +3,7 @@ import Modal from "../modal/Modal";
 import TeamModal from "../teamModal/TeamModal";
 import FooterStyled from "./FooterStyled";
 import footerBookIcon from "./footerBookIcon.svg";
+import ThemeSwitcher from "../themeSwitcher/ThemeSwitcher";
 
 export default function Footer() {
   const [showModal, setShowModal] = useState(false);
@@ -24,13 +25,13 @@ export default function Footer() {
             Студентами GoIT
             {/* GoIT Students ⌨ (<b>BootCamp 8</b>) */}
           </button>
-          {/* onClick={toggleModal} */}
-          {showModal && (
-            <Modal onClose={toggleModal}>
-              <TeamModal onClose={toggleModal} />
-            </Modal>
-          )}
         </p>
+        <ThemeSwitcher />
+        {showModal && (
+          <Modal onClose={toggleModal}>
+            <TeamModal onClose={toggleModal} />
+          </Modal>
+        )}
       </div>
     </FooterStyled>
   );

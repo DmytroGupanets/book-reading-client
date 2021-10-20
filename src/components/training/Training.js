@@ -6,6 +6,7 @@ import { getRecordOperation } from "../../redux/target/targetOperations";
 import Statistic from "../statistic/Statistic";
 import TargetRead from "./targetRead/TargetRead";
 import TrainingStyled from "./TrainingStyled";
+import MyTraining from "./myTraining/MyTraining";
 
 const Training = () => {
   const [state, setState] = useState(false);
@@ -24,6 +25,7 @@ const Training = () => {
     <TrainingStyled>
       <button onClick={onHandleClick}>Початок тренування</button>
       <TargetRead state={state} />
+      <MyTraining />
       {state && <Statistic state={state} />}
     </TrainingStyled>
   );

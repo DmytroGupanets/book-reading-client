@@ -42,6 +42,19 @@ const MyTrainingStyled = styled.div`
     width: 13px;
     height: 7px;
   }
+  .navLibrarySvg {
+    width: 22px;
+    height: 18px;
+  }
+  .iconDelete {
+    width: 14px;
+    height: 18px;
+  }
+  .selectedBooksListWrapper {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+  }
 `;
 
 export default MyTrainingStyled;

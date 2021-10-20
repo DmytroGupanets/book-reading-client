@@ -6,6 +6,9 @@ import {
   updateRecordRequest,
   updateRecordSuccess,
   updateRecordError,
+  addTargetRequest,
+  addTargetSuccess,
+  addTargetError,
 } from "../../redux/target/targetActions";
 
 export const getRecordOperation = (ownerId) => async (dispatch, getState) => {
@@ -32,3 +35,5 @@ export const updateRecordOperation =
       dispatch(updateRecordError(error.message));
     }
   };
+
+// export const addTargetOperations = (target) => async(si);

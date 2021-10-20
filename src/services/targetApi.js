@@ -20,3 +20,11 @@ export const updateRecord = async (targetId, newRecords) => {
     throw error;
   }
 };
+
+export const addTarget = async (target) => {
+  try {
+    return await axios.post(`api/targets`, target);
+  } catch (error) {
+    throw error;
+  }
+};

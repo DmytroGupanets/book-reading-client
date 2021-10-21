@@ -3,12 +3,12 @@ import styled from "styled-components";
 const FooterStyled = styled.div`
   .FooterWrapper {
     position: relative;
-    margin-top: 666px;
+    /* margin-top: 666px; */
     @media screen and (min-width: 768px) {
-      margin-top: 900px;
+      /* margin-top: 900px; */
     }
     @media screen and (min-width: 1280px) {
-      margin-top: 10px;
+      /* margin-top: 10px; */
     }
   }
   .FooterIcon {

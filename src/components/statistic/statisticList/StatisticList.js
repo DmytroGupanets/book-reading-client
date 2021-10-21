@@ -15,8 +15,6 @@ import StatisticListStyled from "./StatisticListStyled";
 const StatisticList = () => {
   const [pagesState, setQuantityPages] = useState(0);
 
-  console.log(pagesState);
-
   const records = useSelector(getRecords);
   const booksInProgress = useSelector(getInProgressdBooks);
 

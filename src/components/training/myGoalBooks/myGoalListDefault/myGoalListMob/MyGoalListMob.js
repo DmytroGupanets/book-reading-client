@@ -1,10 +1,10 @@
 import MyGoalListDefMobStyled from "./MyGoalListMobStyled";
 import sprite from "../../../../../images/Training/sprite.svg";
-import { createContext } from "react";
+import { useContext } from "react";
 import { ThemeContext } from "../../../../App";
 
 const MyGoalListDefMob = () => {
-  const { theme } = createContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
 
   return (
     <MyGoalListDefMobStyled colors={theme}>

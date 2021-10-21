@@ -8,6 +8,7 @@ import TargetRead from "./targetRead/TargetRead";
 import TrainingStyled from "./TrainingStyled";
 import MyTraining from "./myTraining/MyTraining";
 import MyGoalBooks from "./myGoalBooks/MyGoalBooks";
+import { getAllBooksOperation } from "../../redux/books/booksOperations";
 
 const Training = () => {
   const [state, setState] = useState(false);
@@ -17,6 +18,7 @@ const Training = () => {
 
   useEffect(() => {
     dispatch(getRecordOperation(ownerId));
+    dispatch(getAllBooksOperation());
   }, []);
 
   const onHandleClick = () => setState(true);

@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 const TargetReadStyled = styled.div`
-  margin: 0 auto;
+  /* margin: 0 auto; */
+  margin-bottom: 30px;
   width: 270px;
 
   background-color: ${({ colors }) => colors.secondaryBg};

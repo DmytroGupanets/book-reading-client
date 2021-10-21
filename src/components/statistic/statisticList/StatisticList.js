@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { getInProgressdBooks } from "../../../redux/books/booksSelectors";
+import { setBookInTrainingSuccess } from "../../../redux/target/targetActions";
 // import {
 //   getRecordOperation,
 //   updateRecordOperation,
@@ -11,43 +12,25 @@ import { getRecords } from "../../../redux/target/targetSelectors";
 import { ThemeContext } from "../../App";
 import StatisticListStyled from "./StatisticListStyled";
 
-// const initialState = {
-//   quantityPages: 0,
-//   pagesOfReadedBook: 0,
-// };
-
 const StatisticList = () => {
   const { theme } = useContext(ThemeContext);
   const [pagesState, setQuantityPages] = useState(0);
 
-  // console.log(pagesState);
+
+  console.log(pagesState);
+
   const records = useSelector(getRecords);
   const booksInProgress = useSelector(getInProgressdBooks);
 
-  const fn = (arr) => {
-    let pagesOfReadedBook = 0;
+  const dispatch = useDispatch();
 
-    return arr.reduce((acc, item, idx) => {
-      // console.log(acc[idx]);
+  useEffect(() => {
+    dispatch(setBookInTrainingSuccess(countIdxOfReadedBook(pagesState)));
+    return () => {
+      dispatch(setBookInTrainingSuccess(countIdxOfReadedBook(pagesState)));
+    };
+  }, [pagesState]);
 
-      if (item.pages === pagesState - pagesOfReadedBook) {
-        // console.log(pagesState.pagesOfReadedBook);
-        acc = idx;
-        pagesOfReadedBook += item.pages;
-        // acc.accPages = p;
-        // const a = pages;
-        // const b = pages;
-        // console.log(a);
-        // console.log(b);
-      }
-
-      return acc;
-    }, 0);
-  };
-
-  // console.log();
-  console.log(booksInProgress);
-  // console.log(pagesState);
 
   useEffect(() => {
     countPages();
@@ -55,6 +38,39 @@ const StatisticList = () => {
       countPages();
     };
   }, [records]);
+
+  const countIdxOfReadedBook = (statisticAmount) => {
+    let result = -1;
+
+    for (let i = 0; i < booksInProgress.length; i++) {
+      if (statisticAmount >= booksInProgress[i].pages) {
+        statisticAmount -= booksInProgress[i].pages;
+        result = i;
+      } else {
+        return (result = i - 1);
+      }
+    }
+    return result;
+  };
+
+  // const result = ;
+  // const fn = (arr) => {
+  //   let pagesOfReadedBook = 0;
+  //   return arr.reduce((acc, item, idx) => {
+  //     console.log(pagesOfReadedBook);
+  //     // console.log(acc[idx]);
+
+  //     if (item.pages === pagesState - pagesOfReadedBook) {
+  //       // console.log(pagesState.pagesOfReadedBook);
+  //       acc = idx;
+  //       pagesOfReadedBook += item.pages;
+  //       // acc.accPages = p;
+  //       return acc;
+  //     }
+
+  //     return acc;
+  //   }, 0);
+  // };
 
   const countPages = () => {
     let pages = 0;

@@ -10,6 +10,7 @@ import {
   completeTargetRequest,
   completeTargetSuccess,
   completeTargetError,
+  setBookInTrainingSuccess,
   addTargetRequest,
   addTargetSucces,
   addTargetError,
@@ -23,6 +24,10 @@ const targetsReducer = createReducer([], {
   }),
   [completeTargetSuccess]: (state, { payload }) => payload,
   [addTargetSucces]: (state, { payload }) => payload,
+});
+
+const bookInTrainingReducer = createReducer([], {
+  [setBookInTrainingSuccess]: (_, { payload }) => payload,
 });
 
 const isLoadingReducer = createReducer(false, {
@@ -53,6 +58,7 @@ const errorReducer = createReducer("", {
 
 const targetReducer = combineReducers({
   target: targetsReducer,
+  bookInTraining: bookInTrainingReducer,
   isLoading: isLoadingReducer,
   error: errorReducer,
 });

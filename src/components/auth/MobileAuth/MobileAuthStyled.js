@@ -53,7 +53,8 @@ export const MobileAuthStyled = styled.div`
     margin-top: 40px;
   }
 
-  .authLink {
+  .loginLink,
+  .registerLink {
     text-align: center;
     width: calc(100% / 2 - 8px);
     font-family: Montserrat, sans-serif;
@@ -61,20 +62,22 @@ export const MobileAuthStyled = styled.div`
     font-weight: 500;
     font-size: 14px;
     line-height: 38px;
-    color: #242a37;
-    border: 1px solid #000000;
     cursor: pointer;
-    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-      background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-      border 250ms cubic-bezier(0.4, 0, 0.2, 1),
-      box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .authLink:hover,
-  .authLink:focus {
+  .loginLink {
+    color: #242a37;
+    border: 1px solid #000000;
+  }
+
+  .registerLink {
     color: #ffffff;
     background-color: #ff6b08;
     border: none;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  }
+
+  .authLink:hover,
+  .authLink:focus {
   }
 `;

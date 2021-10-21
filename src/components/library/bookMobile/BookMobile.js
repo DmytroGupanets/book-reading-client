@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { BookMobileStyled } from "./BookMobileStyled";
+import colors from "../../../styles/colors";
 
 import bookIcon from "../../../images/books-sprite.svg";
 import RatingStars from "../ratingStars/RatingStars";
@@ -24,7 +25,7 @@ const BookMobile = ({ book }) => {
   };
 
   return (
-    <BookMobileStyled>
+    <BookMobileStyled colors={colors}>
       <div className="iconWrapper">
         {book.status === "inProgress" ? (
           <svg className="iconSvg">

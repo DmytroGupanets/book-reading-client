@@ -47,6 +47,7 @@ export const BookMobileStyled = styled.div`
     font-weight: 500;
     font-size: 12px;
     line-height: 1.25;
+
     color: #898f9f;
   }
 

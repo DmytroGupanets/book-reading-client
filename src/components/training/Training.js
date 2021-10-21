@@ -20,15 +20,17 @@ const Training = () => {
     dispatch(getAllBooksOperation());
   }, []);
 
-  const onHandleClick = () => setState(true);
+  const onHandleClickStart = () => setState(true);
 
   return (
     <TrainingStyled>
-      <button onClick={onHandleClick}>Початок тренування</button>
       <TargetRead state={state} />
-      {state && <Statistic state={state} />}
       <MyGoalBooks />
+      <button className="startTrainingBtn" onClick={onHandleClickStart}>
+        Початок тренування
+      </button>
       <GraphContainer />
+      {state && <Statistic state={state} />}
     </TrainingStyled>
   );
 };

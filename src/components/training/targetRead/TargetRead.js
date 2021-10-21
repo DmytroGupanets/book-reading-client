@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { getInProgressdBooks } from "../../../redux/books/booksSelectors";
 import {
@@ -9,9 +9,13 @@ import {
 import useDate from "../../../hooks/useDate";
 
 import TargetReadStyled from "./TargetReadStyled";
-import colors from "../../../styles/colors";
+import { useContext } from "react";
+import { ThemeContext } from "../../App";
 
 const TargetRead = ({ state }) => {
+  const { theme } = useContext(ThemeContext);
+  const readingBooks = 3;
+
   const [
     stateData,
     moment,
@@ -30,7 +34,7 @@ const TargetRead = ({ state }) => {
   const quantityDays = start && end && rangeBetwenStartAndEndDates(start, end);
 
   return (
-    <TargetReadStyled colors={colors} state={state}>
+    <TargetReadStyled colors={theme} state={state}>
       <div className="tabletWrapperStyled">
         <div className="titleWrapper">
           <h3 className="targetReadTitle">Моя мета прочитати</h3>

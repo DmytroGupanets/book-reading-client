@@ -25,7 +25,7 @@ const LoginStyled = styled.div`
   .authorText {
     position: relative;
     padding-top: 9px;
-    color: #898f9f;
+    color: ${({ colors }) => colors.secondaryText};
     font-size: 14px;
     line-height: 2.7;
 
@@ -44,7 +44,7 @@ const LoginStyled = styled.div`
   .slick-arrow {
     z-index: 5;
     display: "block";
-    background-color: #f5f7fa;
+    background-color: ${({ colors }) => colors.iconsActive};
     border-radius: 50%;
     width: 30px;
     height: 30px;

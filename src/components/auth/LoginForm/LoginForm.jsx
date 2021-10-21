@@ -6,9 +6,12 @@ import { Link } from "react-router-dom";
 // import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { login } from "../../../redux/auth/authOperations";
+import { useContext } from "react";
+import { ThemeContext } from "../../App";
 
 const LoginForm = () => {
   const dispatch = useDispatch();
+  const { theme } = useContext(ThemeContext);
 
   const formik = useFormik({
     initialValues: {
@@ -29,7 +32,7 @@ const LoginForm = () => {
   });
 
   return (
-    <LoginFormStyled>
+    <LoginFormStyled colors={theme}>
       <GoogleButton />
       <form className="form" onSubmit={formik.handleSubmit}>
         <div className="formGroup emailInput">

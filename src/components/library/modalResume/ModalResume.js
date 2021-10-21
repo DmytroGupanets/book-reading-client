@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import ReactStars from "react-rating-stars-component";
 import { ModalResumeStyled } from "./ModalResumeStyled";
 import starsRating from "../../../images/rating-stars.svg";
 import { useDispatch } from "react-redux";
 import { addBookResumeByIdOperation } from "../../../redux/books/booksOperations";
+import { ThemeContext } from "../../App";
 
 const ModalResume = ({ onClose, bookId, openForm }) => {
   const emptyStar = starsRating + "#star-active-empty";
@@ -11,6 +12,7 @@ const ModalResume = ({ onClose, bookId, openForm }) => {
   const [stars, setStars] = useState(0);
   const [textArea, setTextArea] = useState("");
   const dispatch = useDispatch();
+  const { theme } = useContext(ThemeContext);
 
   const onHandleClose = () => {
     openForm(true);
@@ -37,7 +39,7 @@ const ModalResume = ({ onClose, bookId, openForm }) => {
   };
 
   return (
-    <ModalResumeStyled>
+    <ModalResumeStyled colors={theme}>
       <p className="chooseRating">Обрати рейтинг книги</p>
       <ReactStars
         count={5}

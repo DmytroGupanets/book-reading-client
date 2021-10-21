@@ -13,8 +13,8 @@ const LoginFormStyled = styled.div`
   }
   .formLabel {
     display: block;
-    color: #ffffff;
-    font-family: Montserrat, sans-serif;
+    color: ${({ colors }) => colors.secondaryBg};
+    font-family: "Montserrat", sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 14px;
@@ -30,10 +30,10 @@ const LoginFormStyled = styled.div`
     width: 100%;
     height: 42px;
     display: block;
-    font-family: Montserrat;
+    font-family: "Montserrat", sans-serif;
     font-weight: normal;
     font-size: 14px;
-    background-color: #f5f7fa;
+    background-color: ${({ colors }) => colors.iconActive};
     box-shadow: inset 0px 1px 2px rgba(29, 29, 27, 0.15);
     border: none;
   }
@@ -59,15 +59,15 @@ const LoginFormStyled = styled.div`
     width: 100%;
     padding: 21px 0;
 
-    color: #ffffff;
+    color: ${({ colors }) => colors.secondaryBg};
     font-weight: 600;
     font-size: 16px;
-    background-color: #ff6b08;
+    background-color: ${({ colors }) => colors.accent};
     border: none;
     cursor: pointer;
 
     &:hover {
-      background-color: #d15807;
+      background-color: ${({ colors }) => colors.accentActive};
     }
   }
 
@@ -77,17 +77,17 @@ const LoginFormStyled = styled.div`
     font-family: Montserrat, sans-serif;
     font-weight: 500;
     font-size: 13px;
-    color: #898f9f;
+    color: ${({ colors }) => colors.secondaryText};
   }
 
   .registerLink {
     margin-left: 4px;
-    color: #ff6b08;
+    color: ${({ colors }) => colors.accent};
     text-decoration: underline;
     cursor: pointer;
 
     &:hover {
-      color: #d15807;
+      color: ${({ colors }) => colors.accentActive};
     }
   }
 
@@ -95,10 +95,10 @@ const LoginFormStyled = styled.div`
     padding: 40px 40px 30px 40px;
     width: 100%;
     max-width: 400px;
-    background-color: #ffffff;
+    background-color: ${({ colors }) => colors.secondaryBg};
 
     .formLabel {
-      color: #898f9f;
+      color: ${({ colors }) => colors.secondaryText};
     }
   }
 

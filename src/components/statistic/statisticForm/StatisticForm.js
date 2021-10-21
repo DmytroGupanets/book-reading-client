@@ -1,14 +1,14 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateRecordOperation } from "../../../redux/target/targetOperations";
 
 import SelectDate from "../selectDate/SelectDate";
 
 import StatisticFormStyled from "./StatisticFormStyled";
-import colors from "../../../styles/colors";
 import useDate from "../../../hooks/useDate";
 
 import { getTargetId } from "../../../redux/target/targetSelectors";
+import { ThemeContext } from "../../App";
 
 const initialState = {
   date: "",
@@ -16,6 +16,8 @@ const initialState = {
 };
 
 const StatisticForm = () => {
+  const { theme } = useContext(ThemeContext);
+
   const [statistic, setStatistic] = useState(initialState);
   const { date, pages } = statistic;
 
@@ -53,7 +55,7 @@ const StatisticForm = () => {
   };
 
   return (
-    <StatisticFormStyled onSubmit={onHandleSubmit} colors={colors}>
+    <StatisticFormStyled onSubmit={onHandleSubmit} colors={theme}>
       <h2 className="StatisticTitle">Результати</h2>
       <div className="formWrapper">
         <div className="inputWrapper">

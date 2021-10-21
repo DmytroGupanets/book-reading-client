@@ -1,15 +1,19 @@
+import { useContext } from "react";
 import arrowIcon from "../../../images/auth/arrow.svg";
+import { ThemeContext } from "../../App";
 import RegistrationForm from "../RegistrationForm/RegistrationForm";
 import { RegistrationStyled } from "./RegistrationStyled";
 
 const Registration = () => {
+  const { theme } = useContext(ThemeContext);
+
   return (
     <div className="authContainer">
       <div className="leftSideContainer">
         <RegistrationForm />
       </div>
       <div className="rightSideContainer">
-        <RegistrationStyled>
+        <RegistrationStyled colors={theme}>
           <h2 className="title">Books Reading</h2>
           <p className="listTitle">Допоможе вам</p>
           <ul className="list">

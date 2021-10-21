@@ -5,12 +5,11 @@ const MyTrainingStyled = styled.div`
     font-weight: 600;
     font-size: 20px;
     line-height: 1.9;
-    /* identical to box height, or 190% */
     padding: 11px 47px;
     margin-bottom: 20px;
     text-align: center;
 
-    color: #ffffff;
+    color: ${({ colors }) => colors.secondaryBg};
     background: #b1b5c2;
     box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
   }
@@ -18,12 +17,12 @@ const MyTrainingStyled = styled.div`
     font-size: 14px;
     line-height: 2.71;
 
-    color: #a6abb9;
+    color: ${({ colors }) => colors.trainingLabel};
     padding-left: 47px;
     width: 270px;
     height: 42px;
     margin-bottom: 20px;
-    border: 1px solid #a6abb9;
+    border: 1px solid ${({ colors }) => colors.icons};
   }
   .datePickerWrapper {
     position: relative;

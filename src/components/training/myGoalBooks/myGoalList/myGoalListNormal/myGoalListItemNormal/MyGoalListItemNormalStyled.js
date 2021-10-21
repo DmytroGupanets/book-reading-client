@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import colors from "../../../../../../styles/colors";
-const { darkColors } = colors;
 
 const MyGoalListItemNormalStyled = styled.li`
   font-family: "Montserrat", sans-serif;
@@ -38,7 +36,7 @@ const MyGoalListItemNormalStyled = styled.li`
   }
 
   .myGoalListNorm_Item_ListFull_Item {
-    color: ${darkColors.primaryText};
+    color: ${({ colors }) => colors.primaryText};
     font-size: 14px;
     font-weight: 500;
     line-height: 1.2;

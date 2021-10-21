@@ -5,7 +5,7 @@ const StatisticListStyled = styled.div`
     font-weight: 700;
     font-size: 12px;
     line-height: 38px;
-    color: ${({ colors }) => colors.lightColors.primaryText};
+    color: ${({ colors }) => colors.primaryText};
 
     text-transform: uppercase;
   }
@@ -24,13 +24,13 @@ const StatisticListStyled = styled.div`
     font-size: 14px;
     line-height: 20px;
     margin-right: 0;
-    color: ${({ colors }) => colors.lightColors.primaryText};
+    color: ${({ colors }) => colors.primaryText};
   }
   .statisticListItemTime {
     width: calc(100% / 3);
 
     margin-left: 5px;
-    color: ${({ colors }) => colors.lightColors.secondaryText};
+    color: ${({ colors }) => colors.secondaryText};
   }
   .statisticListItemWrapper {
     width: calc(100% / 3);

@@ -5,7 +5,7 @@ const NavigationStyled = styled.nav`
   display: flex;
   align-items: center;
   height: 33px;
-  border-right: 2px solid #898f9f;
+  border-right: 2px solid ${({ colors }) => colors.secondaryText};
 
   .navigationList {
     margin: 0;

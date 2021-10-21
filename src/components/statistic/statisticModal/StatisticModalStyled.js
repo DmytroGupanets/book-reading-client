@@ -5,7 +5,7 @@ const StatisticModalStyled = styled.div`
     width: 270px;
     height: 500px;
     border-color: none;
-    background-color: #ffffff;
+    background-color: ${({ colors }) => colors.secondaryBg};
     box-shadow: 10px 10px 20px rgba(9, 30, 63, 0.2);
     @media screen and (min-width: 768px) {
       width: 390px;
@@ -18,7 +18,7 @@ const StatisticModalStyled = styled.div`
     margin-top: 48px;
     margin-bottom: 21px;
     overflow: visible;
-    fill: #a6abb9;
+    fill: ${({ colors }) => colors.icons};
 
     animation-name: StatisticModalIconColor;
     animation-duration: 2000ms;
@@ -29,25 +29,25 @@ const StatisticModalStyled = styled.div`
 
   @keyframes StatisticModalIconColor {
     0% {
-      fill: #a6abb9;
+      fill: ${({ colors }) => colors.icons};
     }
     50% {
       transform: scale(1.03);
     }
     100% {
-      fill: #ff6b08;
+      fill: ${({ colors }) => colors.accent};
     }
   }
 
   .StatisticModalText {
     width: 240px;
     height: 80px;
-    font-family: Montserrat;
+    font-family: "Montserrat", sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
     line-height: 22px;
-    color: #242a37;
+    color: ${({ colors }) => colors.primaryText};
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 25px;
@@ -80,7 +80,8 @@ const StatisticModalStyled = styled.div`
     margin-bottom: 5px;
     font-size: 14px;
     line-height: 1.2;
-    color: #f6f7fb;
+    color: ${({ colors }) => colors.primaryBg};
+
     @media screen and (min-width: 768px) {
       font-size: 15px;
     }
@@ -89,10 +90,11 @@ const StatisticModalStyled = styled.div`
   .StatisticModalAuthorText {
     position: relative;
     padding-top: 5px;
-    color: #f6f7fb;
+    color: ${({ colors }) => colors.primaryBg};
     font-size: 13px;
     line-height: 2.7;
     margin-bottom: 15px;
+
     @media screen and (min-width: 768px) {
       font-size: 14px;
     }
@@ -114,14 +116,14 @@ const StatisticModalStyled = styled.div`
   .StatisticModalButton {
     width: 100px;
     height: 40px;
-    background-color: #ff6b08;
+    background-color: ${({ colors }) => colors.accent};
     font-family: Montserrat;
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
     line-height: 38px;
     text-align: center;
-    color: #ffffff;
+    color: ${({ colors }) => colors.secondaryBg};
     border: none;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
     cursor: pointer;
@@ -134,7 +136,7 @@ const StatisticModalStyled = styled.div`
   .StatisticModalButton:hover,
   .StatisticModalButton:focus {
     transform: scale(1.03);
-    color: #242a37;
+    color: ${({ colors }) => colors.primaryText};
   }
 `;
 

@@ -14,7 +14,7 @@ export const GoogleButtonStyled = styled.div`
     font-weight: bold;
     font-size: 16px;
     text-align: center;
-    background-color: #f5f7fa;
+    background-color: ${({ colors }) => colors.iconActive};
     box-shadow: 0px 2px 2px rgba(9, 30, 63, 0.15);
     border: none;
     cursor: pointer;

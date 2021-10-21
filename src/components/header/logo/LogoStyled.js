@@ -7,7 +7,7 @@ const LogoStyled = styled.div`
 
     /* LOGO animation */
     filter: drop-shadow(3px 3px 2px rgba(255, 107, 8, 0.45));
-    fill: #242a37;
+    fill: ${({ colors }) => colors.primaryText};
 
     animation-name: LogoColor, LogoShadowColor;
     animation-duration: 5000ms;
@@ -18,7 +18,7 @@ const LogoStyled = styled.div`
 
   @keyframes LogoColor {
     0% {
-      fill: #242a37;
+      fill: ${({ colors }) => colors.primaryText};
     }
     45% {
       fill: #3c4148;
@@ -27,7 +27,7 @@ const LogoStyled = styled.div`
       fill: #3c4148;
     }
     100% {
-      fill: #ff6b08;
+      fill: ${({ colors }) => colors.accent};
     }
   }
 

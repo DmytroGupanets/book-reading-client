@@ -5,8 +5,11 @@ import GoogleButton from "../GoogleButton/GoogleButton";
 import { registerValidationSchema } from "../validation/validationSchema";
 import { register } from "../../../redux/auth/authOperations";
 import { RegistrationFormStyled } from "./RegistrationFormStyled";
+import { useContext } from "react";
+import { ThemeContext } from "../../App";
 
 const RegistrationForm = () => {
+  const { theme } = useContext(ThemeContext);
   const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
@@ -31,7 +34,7 @@ const RegistrationForm = () => {
   });
 
   return (
-    <RegistrationFormStyled>
+    <RegistrationFormStyled colors={theme}>
       <GoogleButton />
       <form className="form" onSubmit={formik.handleSubmit}>
         <div className="formGroup">

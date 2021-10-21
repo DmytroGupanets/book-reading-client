@@ -1,4 +1,5 @@
 import React from "react";
+
 import Container from "../../components/container/Container";
 import Footer from "../../components/footer/Footer";
 import Training from "../../components/training/Training";

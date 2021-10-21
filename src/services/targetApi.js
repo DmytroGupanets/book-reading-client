@@ -16,6 +16,14 @@ export const updateRecord = async (targetId, newRecords) => {
   }
 };
 
+export const addTarget = async (target) => {
+  try {
+    return await axios.post(`api/targets`, target);
+  } catch (error) {
+    throw error;
+  }
+};
+
 export const completeTarget = async (targetId) => {
   try {
     return await axios.get(`api/targets/completed/${targetId}`);

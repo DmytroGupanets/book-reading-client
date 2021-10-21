@@ -7,6 +7,11 @@ import sprite from "../../../images/sprite.svg";
 import SelectBooks from "./selectBooks/SelectBooks";
 import { ThemeContext } from "../../App";
 import { useContext } from "react";
+import { useDispatch } from "react-redux";
+import {
+  addPreplanningEndtDate,
+  addPreplanningStartDate,
+} from "../../../redux/target/targetActions";
 
 const initialState = {
   startDate: null,
@@ -14,6 +19,7 @@ const initialState = {
 };
 
 const MyTraining = () => {
+  const dispatch = useDispatch();
   const { theme } = useContext(ThemeContext);
   const [startDate, setStartDate] = useState(initialState.startDate);
   const [endDate, setEndDate] = useState(initialState.endDate);
@@ -22,6 +28,16 @@ const MyTraining = () => {
     const result = new Date(date);
     result.setDate(result.getDate() + days);
     return result;
+  };
+
+  const onHandleStartDateChange = (date) => {
+    setStartDate(date);
+    dispatch(addPreplanningStartDate(date));
+  };
+
+  const onHandleEndDateChange = (date) => {
+    setEndDate(date);
+    dispatch(addPreplanningEndtDate(date));
   };
 
   return (
@@ -33,7 +49,7 @@ const MyTraining = () => {
           placeholderText="ПОЧАТОК"
           dateFormat="dd.MM.yyyy"
           selected={startDate}
-          onChange={(date) => setStartDate(date)}
+          onChange={onHandleStartDateChange}
           selectsStart
           minDate={startDate}
           startDate={startDate}
@@ -52,7 +68,7 @@ const MyTraining = () => {
           dateFormat="dd.MM.yyyy"
           placeholderText="КІНЕЦЬ"
           selected={endDate}
-          onChange={(date) => setEndDate(date)}
+          onChange={onHandleEndDateChange}
           selectsEnd
           startDate={startDate}
           endDate={endDate}

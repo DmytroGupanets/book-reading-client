@@ -1,14 +1,34 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Select from "react-select";
 import { getPlannedBooks } from "../../../../redux/books/booksSelectors";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import MyGoalList from "../../myGoalBooks/myGoalList/MyGoalList";
+import {
+  addSelectedBook,
+  removeSelectedBook,
+  setPlannedBooksForSelect,
+} from "../../../../redux/target/targetActions";
+import {
+  getAllPlannedBooks,
+  getAllSelectedBooks,
+} from "../../../../redux/target/targetSelectors";
 
 const SelectBooks = () => {
+  const dispatch = useDispatch();
   const books = useSelector(getPlannedBooks);
+  const plannedBooks = useSelector(getAllPlannedBooks);
+  const selectedBooks = useSelector(getAllSelectedBooks);
+
   const [value, setValue] = useState(books);
   const [selectedBook, setSelectedBook] = useState({});
-  const [addTrainingBooks, setAddTrainingBooks] = useState([]);
+
+  useEffect(() => {
+    dispatch(setPlannedBooksForSelect(books));
+  }, []);
+
+  useEffect(() => {
+    setValue(plannedBooks);
+  }, [plannedBooks]);
 
   const handleInputChange = (value, e) => {
     if (e.action === "input-change") {
@@ -22,11 +42,7 @@ const SelectBooks = () => {
   };
 
   const onHandleClick = (e) => {
-    setAddTrainingBooks((state) => [...state, selectedBook]);
-
-    setValue((state) => [
-      ...state.filter((book) => book._id !== selectedBook._id),
-    ]);
+    dispatch(addSelectedBook(selectedBook));
   };
 
   const options = value.map(({ name, author, year, pages, _id }) => ({
@@ -36,15 +52,9 @@ const SelectBooks = () => {
 
   const onHandleDelete = (e) => {
     const bookId = e.currentTarget.getAttribute("bookid");
+    const bookToRemove = books.find((book) => book._id === bookId);
 
-    setAddTrainingBooks((state) => [
-      ...state.filter((book) => book._id !== bookId),
-    ]);
-
-    setValue((state) => [
-      ...state,
-      ...books.filter((book) => book._id === bookId),
-    ]);
+    dispatch(removeSelectedBook(bookToRemove));
   };
 
   return (
@@ -55,7 +65,7 @@ const SelectBooks = () => {
         onChange={onChange}
         onInputChange={handleInputChange}
       />
-      <MyGoalList data={addTrainingBooks} onClickDelete={onHandleDelete} />
+      <MyGoalList data={selectedBooks} onClickDelete={onHandleDelete} />
       <button onClick={onHandleClick}>Додати</button>
     </>
   );

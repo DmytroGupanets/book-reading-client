@@ -22,7 +22,7 @@ const RegistrationForm = () => {
       // Формат данных для бэка
       const newUser = {
         name: data.name,
-        email: data.email,
+        email: data.email.toLowerCase(),
         password: data.password,
       };
 
@@ -34,20 +34,26 @@ const RegistrationForm = () => {
     <RegistrationFormStyled>
       <GoogleButton />
       <form className="form" onSubmit={formik.handleSubmit}>
-        <label className="formLabel" htmlFor="name">
-          Ім’я
-          <span className="formLabelStar"> *</span>
-        </label>
-        <input
-          id="name"
-          type="text"
-          className="formInput"
-          name="name"
-          placeholder="..."
-          value={formik.values.name}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-        />
+        <div className="formGroup">
+          <label className="formLabel" htmlFor="name">
+            Ім’я
+            <span className="formLabelStar"> *</span>
+          </label>
+          <input
+            id="name"
+            type="text"
+            className="formInput"
+            name="name"
+            placeholder="..."
+            value={formik.values.name}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+          />
+          {formik.errors.name && formik.touched.name && (
+            <div className="inputError">{formik.errors.name}</div>
+          )}
+        </div>
+
         <div className="formGroup">
           <label className="formLabel" htmlFor="email">
             Електронна адреса
@@ -67,34 +73,46 @@ const RegistrationForm = () => {
             <div className="inputError">{formik.errors.email}</div>
           )}
         </div>
-        <label className="formLabel" htmlFor="password">
-          Пароль
-          <span className="formLabelStar"> *</span>
-        </label>
-        <input
-          id="password"
-          type="password"
-          className="formInput"
-          name="password"
-          placeholder="..."
-          value={formik.values.password}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-        />
-        <label className="formLabel" htmlFor="confirmPassword">
-          Підтвердити пароль
-          <span className="formLabelStar"> *</span>
-        </label>
-        <input
-          id="confirmPassword"
-          type="password"
-          className="formInput"
-          name="confirmPassword"
-          placeholder="..."
-          value={formik.values.confirmPassword}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-        />
+        <div className="formGroup">
+          <label className="formLabel" htmlFor="password">
+            Пароль
+            <span className="formLabelStar"> *</span>
+          </label>
+          <input
+            id="password"
+            type="password"
+            className="formInput"
+            name="password"
+            minLength="5"
+            maxLength="30"
+            placeholder="..."
+            value={formik.values.password}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+          />
+          {formik.errors.password && formik.touched.password && (
+            <div className="inputError">{formik.errors.password}</div>
+          )}
+        </div>
+        <div className="formGroup">
+          <label className="formLabel" htmlFor="confirmPassword">
+            Підтвердити пароль
+            <span className="formLabelStar"> *</span>
+          </label>
+          <input
+            id="confirmPassword"
+            type="password"
+            className="formInput"
+            name="confirmPassword"
+            placeholder="..."
+            value={formik.values.confirmPassword}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+          />
+          {formik.errors.confirmPassword && formik.touched.confirmPassword && (
+            <div className="inputError">{formik.errors.confirmPassword}</div>
+          )}
+        </div>
         <div className="wrapperButton">
           <button type="submit" className="authButton">
             Зареєструватися

@@ -38,7 +38,11 @@ const LibraryEmpty = () => {
             <label className="aboutBook aboutBook-title">
             Назва книги
             <input 
+            required
+            id="title"
             type="text"
+            minLength="1"
+            maxLength="50"
             name="title"
             value={state.title}
             placeholder="..."
@@ -50,7 +54,11 @@ const LibraryEmpty = () => {
             <label className="aboutBook aboutBook-author">
             Автор книги
             <input 
+            required
+            id="author"
             type="text"
+            minLength="1"
+            maxLength="50"
             name="author"
             value={state.author}
             placeholder="..."
@@ -61,7 +69,9 @@ const LibraryEmpty = () => {
             <label className="aboutBook aboutBook-year">
             Рік випуску
             <input 
-            type="text"
+            required
+            id="year"
+            type="number"
             name="year"
             value={state.year}
             placeholder="..."
@@ -71,8 +81,10 @@ const LibraryEmpty = () => {
             </label>
             <label className="aboutBook aboutBook-page">
             Кількість сторінок
-            <input 
-            type="text"
+            <input
+            required 
+            id="pages"
+            type="number"
             name="pages"
             value={state.pages}
             placeholder="..."

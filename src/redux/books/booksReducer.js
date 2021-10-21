@@ -20,14 +20,14 @@ const booksListReducer = createReducer([], {
   [addBookSuccess]: (state, action) => [...state, action.payload.book],
   [updateBookStatusSuccess]: (state, action) =>
     state.map((book) =>
-      book.id === action.payload.book.id
+      book.id === action.payload.result.id
         ? { ...book, status: action.payload.book.status }
         : book
     ),
 
   [addBookResumeSuccess]: (state, action) =>
     state.map((book) =>
-      book.id === action.payload.book.id ? action.payload.book : book
+      book._id === action.payload.result._id ? action.payload.result : book
     ),
 });
 

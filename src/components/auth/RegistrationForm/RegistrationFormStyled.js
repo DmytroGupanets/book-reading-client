@@ -71,6 +71,17 @@ export const RegistrationFormStyled = styled.div`
     text-decoration: underline;
     cursor: pointer;
   }
+  .formGroup {
+    position: relative;
+  }
+  .inputError {
+    position: absolute;
+    top: 78px;
+    font-size: 10px;
+    letter-spacing: 0.04em;
+
+    color: #eb5757;
+  }
 
   @media screen and (min-width: 768px) {
     margin: 60px auto;

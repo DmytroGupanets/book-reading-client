@@ -12,6 +12,7 @@ const MyGoalListItemMobStyled = styled.li`
   list-style: none;
   display: flex;
   align-items: flex-start;
+  justify-content: center;
   background: #ffffff;
   border-top: 1px solid #e0e5eb;
 
@@ -28,7 +29,6 @@ const MyGoalListItemMobStyled = styled.li`
     font-size: 12px;
     font-weight: 500;
     margin-bottom: 5px;
-    width: 127px;
   }
   .myGoalListMob_SvgBook {
     height: 17px;
@@ -58,11 +58,13 @@ const MyGoalListItemMobStyled = styled.li`
   .myGoalListMob_ListInfo2 {
     list-style-type: none;
     padding-left: 0;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 500;
-    line-height: 2.7;
+    line-height: 3.1;
   }
   .myGoalListMob_ButtonDelete {
+    cursor: pointer;
+    padding: 0;
     border: none;
     background-color: inherit;
   }

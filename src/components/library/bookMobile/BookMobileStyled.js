@@ -47,6 +47,7 @@ export const BookMobileStyled = styled.div`
     font-weight: 500;
     font-size: 12px;
     line-height: 1.25;
+
     color: #898f9f;
   }
 
@@ -66,6 +67,8 @@ export const BookMobileStyled = styled.div`
     margin-left: 20px;
     padding: 0 32px;
     background: #6d7a8d;
+
+    border: none;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
 
     font-family: "Montserrat", sans-serif;
@@ -73,5 +76,11 @@ export const BookMobileStyled = styled.div`
     font-size: 14px;
     line-height: 2.71;
     color: #ffffff;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      color: #242a37;
+    }
   }
 `;

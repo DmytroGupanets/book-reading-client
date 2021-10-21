@@ -20,9 +20,10 @@ const LoginForm = () => {
 
     onSubmit: ({ email, password }) => {
       const user = {
-        email,
+        email: email.toLowerCase(),
         password,
       };
+      console.log(user);
       dispatch(login(user));
     },
   });

@@ -6,6 +6,7 @@ import GraphContainer from "../LineGraph/GraphContainer";
 import Statistic from "../statistic/Statistic";
 import TargetRead from "./targetRead/TargetRead";
 import TrainingStyled from "./TrainingStyled";
+import MyTraining from "./myTraining/MyTraining";
 import MyGoalBooks from "./myGoalBooks/MyGoalBooks";
 import { getAllBooksOperation } from "../../redux/books/booksOperations";
 
@@ -26,8 +27,9 @@ const Training = () => {
     <TrainingStyled>
       <button onClick={onHandleClick}>Початок тренування</button>
       <TargetRead state={state} />
+      <MyTraining />
       {state && <Statistic state={state} />}
-      <MyGoalBooks />
+      {/* <MyGoalBooks /> */}
       <GraphContainer />
     </TrainingStyled>
   );

@@ -53,7 +53,7 @@ const MyGoalListItemNormalStyled = styled.li`
     @media screen and (min-width: 1280px) {
       -webkit-line-clamp: 1;
       width: 241px;
-      margin-right: 70px;
+      margin-right: 81px;
     }
   }
   .myGoalListNorm_Item_ListFull_Item:nth-child(2) {
@@ -65,14 +65,15 @@ const MyGoalListItemNormalStyled = styled.li`
     -webkit-box-orient: vertical;
     @media screen and (min-width: 1280px) {
       -webkit-line-clamp: 1;
-      margin-right: 86px;
+      margin-right: 83px;
     }
   }
   .myGoalListNorm_Item_ListFull_Item:nth-child(3) {
     width: 32px;
     margin-right: 70px;
     @media screen and (min-width: 1280px) {
-      margin-right: 65px;
+      margin-right: 80px;
+      width: 36px;
     }
   }
   .myGoalListNorm_Item_ListFull_Item:nth-child(4) {
@@ -84,6 +85,8 @@ const MyGoalListItemNormalStyled = styled.li`
   }
   .myGoalListNorm_Item__ButtonDelete {
     border: none;
+    cursor: pointer;
+    padding: 0;
     background-color: inherit;
   }
 `;

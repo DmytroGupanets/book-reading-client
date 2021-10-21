@@ -1,45 +1,35 @@
 import MyGoalList from "./myGoalList/MyGoalList";
 import MyGoalListDefault from "./myGoalListDefault/MyGoalListDefault";
+import { getPlannedBooks } from "../../../redux/books/booksSelectors";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getAllBooksOperation } from "../../../redux/books/booksOperations";
+import { useStickyState } from "../../../hooks";
 
-const data = [
-  {
-    id: 1,
-    author: "Jeff Sazerlend",
-    bookName: "Scrum Fsdfierer Fvfkdfkdf FEREEEERasdasdasdas dasdasdasd",
-    year: "2014",
-    pages: "140",
-  },
-  {
-    id: 2,
-    author: "Alexander Bushkov",
-    bookName: "Queen of the dark river",
-    year: "2021",
-    pages: "270",
-  },
-  {
-    id: 3,
-    author: "Albian Nury",
-    bookName: "Sleeping City",
-    year: "2021",
-    pages: "310",
-  },
-  {
-    id: 4,
-    author: "Albian Nury",
-    bookName: "Sleeping City",
-    year: "2021",
-    pages: "310",
-  },
-];
+function MyGoalBooks() {
+  const books = useSelector(getPlannedBooks);
+  const [bookState, setsBooks] = useStickyState(books, "books");
+  const dispatch = useDispatch();
 
-const variables = true;
+  const onClickDelete = (e) => {
+    e.preventDefault();
+    const bookId = e.currentTarget.getAttribute("bookid");
+    setsBooks(bookState.filter((item) => item._id !== bookId));
+  };
 
-const MyGoalBooks = () => {
+  useEffect(() => {
+    dispatch(getAllBooksOperation());
+  }, [dispatch]);
+
   return (
     <>
-      {variables === true ? <MyGoalList data={data} /> : <MyGoalListDefault />}
+      {books.length > 0 ? (
+        <MyGoalList data={bookState} onClickDelete={onClickDelete} />
+      ) : (
+        <MyGoalListDefault />
+      )}
     </>
   );
-};
+}
 
 export default MyGoalBooks;

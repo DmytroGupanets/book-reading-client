@@ -84,6 +84,8 @@ export const BookStyled = styled.div`
   .resumeButton {
     padding: 0 9px;
     background: #6d7a8d;
+
+    border: none;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
 
     margin-left: 18px;
@@ -93,6 +95,13 @@ export const BookStyled = styled.div`
     font-size: 14px;
     line-height: 2.71;
     color: #ffffff;
+
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      color: #242a37;
+    }
 
     @media screen and (min-width: 1280px) {
       margin-left: 46px;

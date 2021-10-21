@@ -6,6 +6,7 @@ import GraphContainer from "../LineGraph/GraphContainer";
 import Statistic from "../statistic/Statistic";
 import TargetRead from "./targetRead/TargetRead";
 import TrainingStyled from "./TrainingStyled";
+import MyTraining from "./myTraining/MyTraining";
 import MyGoalBooks from "./myGoalBooks/MyGoalBooks";
 import { getAllBooksOperation } from "../../redux/books/booksOperations";
 
@@ -29,6 +30,7 @@ const Training = () => {
       <button className="startTrainingBtn" onClick={onHandleClickStart}>
         Початок тренування
       </button>
+      <MyTraining />
       <GraphContainer />
       {state && <Statistic state={state} />}
     </TrainingStyled>

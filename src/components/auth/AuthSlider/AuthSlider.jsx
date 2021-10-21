@@ -1,27 +1,28 @@
 import Slider from "react-slick";
 import quotesIcon from "../../../images/auth/quotes.svg";
 import quotesUA from "../../quotes/ua/quotesUA.json";
+import nextArrow from "../../../images/auth/arrowsSlider/nextArrow.svg";
+import prevArrow from "../../../images/auth/arrowsSlider/prevArrow.svg";
 
 function SampleNextArrow(props) {
   const { onClick } = props;
-  return <button className="slick-next slick-arrow" onClick={onClick}></button>;
+  return (
+    <button className="slick-next slick-arrow" onClick={onClick}>
+      <svg className="sliderIcon" width="5" height="10">
+        <use href={nextArrow + "#icon-nextArrow"}></use>
+      </svg>
+    </button>
+  );
 }
 
 function SamplePrevArrow(props) {
   const { onClick } = props;
   return (
-    <button className="slick-prev slick-arrow" onClick={onClick}></button>
-    // <div
-    //   className={className}
-    //   style={{
-    //     ...style,
-    //     width: 23,
-    //     height: 23,
-    //     display: "block",
-    //     background: "#F5F7FA",
-    //   }}
-    //   onClick={onClick}
-    // />
+    <button className="slick-prev slick-arrow" onClick={onClick}>
+      <svg className="sliderIcon" width="5" height="10">
+        <use href={prevArrow + "#icon-prevArrow"}></use>
+      </svg>
+    </button>
   );
 }
 
@@ -57,14 +58,3 @@ const AuthSlider = () => {
 };
 
 export default AuthSlider;
-
-// <div>
-//   <svg className="quotesIcon" width="31" height="25">
-//     <use href={quotesIcon + "#icon-quotes"}></use>
-//   </svg>
-//   <p className="loginPageText">
-//     Книги — это корабли мысли, странствующие по волнам времени и бережно несущие
-//     свой драгоценный груз от поколения к поколению.
-//   </p>
-//   <p className="authorText">Бэкон Ф.</p>
-// </div>;

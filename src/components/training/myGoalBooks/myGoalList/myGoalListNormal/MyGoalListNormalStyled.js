@@ -8,7 +8,7 @@ const MyGoalListNormalStyled = styled.section`
   margin-bottom: 40px;
   width: 100%;
   border-bottom: 1px solid #e0e5eb;
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: 1280px) {
     width: 886px;
   }
   .myGoalListNorm_ListHead {

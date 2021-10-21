@@ -2,12 +2,13 @@ import MyGoalList from "./myGoalList/MyGoalList";
 import MyGoalListDefault from "./myGoalListDefault/MyGoalListDefault";
 import { getPlannedBooks } from "../../../redux/books/booksSelectors";
 import { useDispatch, useSelector } from "react-redux";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect } from "react";
 import { getAllBooksOperation } from "../../../redux/books/booksOperations";
+import { useStickyState } from "../../../hooks";
 
-const MyGoalBooks = () => {
+function MyGoalBooks() {
   const books = useSelector(getPlannedBooks);
-  const [bookState, setsBooks] = useState(books);
+  const [bookState, setsBooks] = useStickyState(books, "books");
   const dispatch = useDispatch();
 
   const onClickDelete = (e) => {
@@ -20,10 +21,6 @@ const MyGoalBooks = () => {
     dispatch(getAllBooksOperation());
   }, [dispatch]);
 
-  useEffect(() => {
-    setsBooks(books);
-  }, [books]);
-
   return (
     <>
       {books.length > 0 ? (
@@ -33,6 +30,6 @@ const MyGoalBooks = () => {
       )}
     </>
   );
-};
+}
 
 export default MyGoalBooks;

@@ -21,7 +21,7 @@ export default function Footer() {
           </svg>
           <b> Books Reading </b>© 2021 | Усі права захищені | Розроблено
           {/* © 2021 | All Rights Reserved | Developed by */}
-          <button type="button" class="FooterButton" onClick={toggleModal}>
+          <button type="button" className="FooterButton" onClick={toggleModal}>
             Студентами GoIT
             {/* GoIT Students ⌨ (<b>BootCamp 8</b>) */}
           </button>

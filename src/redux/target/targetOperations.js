@@ -2,6 +2,7 @@ import {
   completeTarget,
   getTarget,
   updateRecord,
+  addTarget,
 } from "../../services/targetApi";
 import {
   getRecordRequest,
@@ -13,6 +14,9 @@ import {
   completeTargetRequest,
   completeTargetSuccess,
   completeTargetError,
+  addTargetRequest,
+  addTargetSucces,
+  addTargetError,
 } from "../../redux/target/targetActions";
 
 export const getRecordOperation = (ownerId) => async (dispatch, getState) => {
@@ -40,14 +44,26 @@ export const updateRecordOperation =
     }
   };
 
-export const completeTargetOperation = (targetId) => async (dispatch) => {
+export const completeTargetOperation = (target) => async (dispatch) => {
   try {
     dispatch(completeTargetRequest());
 
-    const result = await completeTarget(targetId);
+    const result = await completeTarget(target);
 
     dispatch(completeTargetSuccess(result.data.data));
   } catch (error) {
     dispatch(completeTargetError(error.message));
+  }
+};
+
+export const addTargetOperation = (target) => async (dispatch) => {
+  try {
+    dispatch(addTargetRequest());
+
+    const result = await addTarget(target);
+
+    dispatch(addTargetSucces(result.data.data));
+  } catch (error) {
+    dispatch(addTargetError(error.message));
   }
 };

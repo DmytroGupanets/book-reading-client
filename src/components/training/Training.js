@@ -27,7 +27,7 @@ const Training = () => {
       <TargetRead state={state} />
       <MyTraining />
       {state && <Statistic state={state} />}
-      <MyGoalBooks />
+      {/* <MyGoalBooks /> */}
       <GraphContainer />
     </TrainingStyled>
   );

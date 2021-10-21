@@ -1,41 +1,43 @@
 import React, { useContext } from "react";
+import { useTranslation } from "react-i18next";
 import sprite from "../../images/sprite.svg";
 import { ThemeContext } from "../App";
 import { AddBookModalStyled } from "./AddBookModalStyled";
 
 const AddBookModal = () => {
   const { theme } = useContext(ThemeContext);
+  const { t } = useTranslation();
 
   return (
     <AddBookModalStyled colors={theme}>
-      <p className="step">Крок 1.</p>
+      <p className="step">{t("Step 1.")}</p>
       <div className="stepContainer">
         <svg className="librarySvg">
           <use href={sprite + "#icon-library"} />
         </svg>
-        <p className="stepOne">Створіть особисту бібліотеку</p>
+        <p className="stepOne">{t("Create your own library.")}</p>
       </div>
       <div className="aboutStep">
         <svg className="vectorSvg">
           <use href={sprite + "#icon-Vector"} />
         </svg>
         <p className="aboutStepOne">
-          Додайте до неї книжки, які маєте намір прочитати.
+          {t("Add there books which you are going to read.")}
         </p>
       </div>
-      <p className="step">Крок 2.</p>
+      <p className="step">{t("Step 2.")}</p>
       <div className="stepContainer">
         <svg className="flagSvg">
           <use href={sprite + "#icon-flag"} />
         </svg>
-        <p className="stepTwo">Сформуйте своє перше тренування</p>
+        <p className="stepTwo">{t("Create your first training.")}</p>
       </div>
       <div className="aboutStep">
         <svg className="vectorSvg">
           <use href={sprite + "#icon-Vector"} />
         </svg>
         <p className="aboutStepTwo">
-          Визначте ціль, оберіть період, розпочинайте тренування.
+          {t("Set a goal, choose a period, start training.")}
         </p>
       </div>
       <button type="button" className="btnOk">

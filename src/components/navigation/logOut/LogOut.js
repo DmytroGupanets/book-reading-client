@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { useDispatch } from "react-redux";
+import { useTranslation } from "react-i18next";
 import { logOut } from "../../../redux/auth/authOperations";
 import LogOutStyled from "./LogOutStyled";
 import { ThemeContext } from "../../App";
@@ -12,10 +13,12 @@ const LogOut = () => {
     dispatch(logOut());
   };
 
+  const { t } = useTranslation();
+
   return (
     <LogOutStyled colors={theme}>
       <button className="logOutButton" type="button" onClick={onHandleClick}>
-        Вихід
+        {t("Logout")}
       </button>
     </LogOutStyled>
   );

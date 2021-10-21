@@ -8,10 +8,11 @@ i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    fallbackLng: "en",
-    debug: true,
+    fallbackLng: "ua",
+    whitelist: ["ua", "ru", "en"],
+    debug: false,
     detection: {
-      order: ["queryString", "cookie"],
+      order: ["localStorage", "queryString", "cookie"],
       cache: ["cookie"],
     },
     interpolation: {

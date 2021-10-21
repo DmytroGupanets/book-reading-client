@@ -1,16 +1,40 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
 import { Link } from "react-router-dom";
 import GoogleButton from "../GoogleButton/GoogleButton";
 import { registerValidationSchema } from "../validation/validationSchema";
 import { register } from "../../../redux/auth/authOperations";
 import { RegistrationFormStyled } from "./RegistrationFormStyled";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { ThemeContext } from "../../App";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { getError } from "../../../redux/auth/authSelectors";
+import { resetError } from "../../../redux/auth/authActions";
 
 const RegistrationForm = () => {
   const { theme } = useContext(ThemeContext);
   const dispatch = useDispatch();
+  const isError = useSelector(getError);
+
+  const notify = () =>
+    toast.error("Kористувач вже зареєстрований", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+
+  useEffect(() => {
+    if (isError !== null) {
+      notify();
+    }
+    return dispatch(resetError());
+  }, [isError, dispatch]);
+
   const formik = useFormik({
     initialValues: {
       name: "",

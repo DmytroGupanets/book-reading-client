@@ -20,7 +20,9 @@ const TargetRead = ({ state }) => {
 
   const start = useSelector(startDate);
   const end = useSelector(endDate);
-  const quantityBooks = useSelector(getInProgressdBooks);
+  const booksInProgress = useSelector(getInProgressdBooks);
+
+  useEffect(() => {}, []);
 
   const quantityDays = start && end && rangeBetwenStartAndEndDates(start, end);
 
@@ -34,7 +36,7 @@ const TargetRead = ({ state }) => {
 
       <ul className="targetReadlist">
         <li className="targetReadItem">
-          <div className="targetReadDig">{quantityBooks.length}</div>
+          <div className="targetReadDig">{booksInProgress.length}</div>
           <p className="targetReadItemDescription">Кількість книжок</p>
         </li>
         <li className="targetReadItem">

@@ -22,7 +22,7 @@ const RegistrationForm = () => {
       // Формат данных для бэка
       const newUser = {
         name: data.name,
-        email: data.email,
+        email: data.email.toLowerCase(),
         password: data.password,
       };
 
@@ -73,20 +73,27 @@ const RegistrationForm = () => {
             <div className="inputError">{formik.errors.email}</div>
           )}
         </div>
-        <label className="formLabel" htmlFor="password">
-          Пароль
-          <span className="formLabelStar"> *</span>
-        </label>
-        <input
-          id="password"
-          type="password"
-          className="formInput"
-          name="password"
-          placeholder="..."
-          value={formik.values.password}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-        />
+        <div className="formGroup">
+          <label className="formLabel" htmlFor="password">
+            Пароль
+            <span className="formLabelStar"> *</span>
+          </label>
+          <input
+            id="password"
+            type="password"
+            className="formInput"
+            name="password"
+            minLength="5"
+            maxLength="30"
+            placeholder="..."
+            value={formik.values.password}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+          />
+          {formik.errors.password && formik.touched.password && (
+            <div className="inputError">{formik.errors.password}</div>
+          )}
+        </div>
         <label className="formLabel" htmlFor="confirmPassword">
           Підтвердити пароль
           <span className="formLabelStar"> *</span>

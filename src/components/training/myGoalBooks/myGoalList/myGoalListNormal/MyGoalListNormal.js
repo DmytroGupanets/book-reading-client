@@ -1,10 +1,14 @@
 import MyGoalListNormalItem from "./myGoalListItemNormal/MyGoalListItemNormal";
 import MyGoalListNormalStyled from "./MyGoalListNormalStyled";
 import spite from "../../../../../images/Training/sprite.svg";
+import { createContext } from "react";
+import { ThemeContext } from "../../../../App";
 
 const MyGoalListNormal = ({ data, onClickDelete }) => {
+  const { theme } = createContext(ThemeContext);
+
   return (
-    <MyGoalListNormalStyled>
+    <MyGoalListNormalStyled colors={theme}>
       <ul className="myGoalListNorm_ListHead">
         <li className="myGoalListNorm_item">Назва книги</li>
         <li className="myGoalListNorm_item">Автор</li>

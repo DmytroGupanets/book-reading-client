@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import TeamModalStyled from "./TeamModalStyled";
 import photos from "./team-data/team-photo";
 import teamdata from "./team-data/team-data.json";
 import sprite from "./team-data/sprite.svg";
+import { ThemeContext } from "../App";
 
 const TeamModal = () => {
+  const { theme } = useContext(ThemeContext);
+
   return (
-    <TeamModalStyled>
+    <TeamModalStyled colors={theme}>
       <div className="TeamModalWrapper">
         <h2 className="TeamName">
           Наша команда розробників <b>"Bootсamp 8"</b>

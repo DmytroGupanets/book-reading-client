@@ -17,7 +17,7 @@ const HeaderStyled = styled.header`
     bottom: 0;
     left: 0;
     right: 0;
-    border-bottom: 2px solid #898f9f;
+    border-bottom: 2px solid ${({ colors }) => colors.secondaryText};
   }
 
   .headerWrapper {

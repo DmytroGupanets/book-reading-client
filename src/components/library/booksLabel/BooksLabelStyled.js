@@ -5,7 +5,7 @@ export const BooksLabelStyled = styled.div`
     margin-top: 20px;
     margin-bottom: 10px;
 
-    font-family: Montserrat;
+    font-family: "Montserrat", sans-serif;
     font-weight: 600;
     font-size: 19px;
     line-height: 2;
@@ -20,7 +20,7 @@ export const BooksLabelStyled = styled.div`
     font-size: 14px;
     line-height: 2.71;
 
-    color: #898f9f;
+    color: ${({ colors }) => colors.secondaryText};
   }
 
   .labelName {

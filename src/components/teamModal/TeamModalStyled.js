@@ -8,7 +8,7 @@ const FooterStyled = styled.div`
     width: 300px;
     height: 500px;
     border-color: none;
-    background-color: #ffffff;
+    background-color: ${({ colors }) => colors.secondaryBg};
     box-shadow: 10px 10px 20px rgba(9, 30, 63, 0.2);
     @media screen and (min-width: 768px) {
       width: 700px;
@@ -29,8 +29,7 @@ const FooterStyled = styled.div`
     font-size: 16px;
     line-height: 1.25;
     letter-spacing: 0.04em;
-    color: #6d7a8d;
-    /* text-transform: uppercase; */
+    color: ${({ colors }) => colors.buttonPrimary};
   }
   .TeamModalList {
     display: flex;
@@ -71,18 +70,14 @@ const FooterStyled = styled.div`
 
   .TeamMemberPhoto {
     margin-bottom: 10px;
-    /* width: 180px; */
     height: 150px;
     object-fit: cover;
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
     @media screen and (min-width: 768px) {
-      /* width: 200px; */
       height: 200px;
     }
-
     @media screen and (min-width: 1280px) {
-      /* width: 150px; */
       height: 200px;
     }
   }
@@ -91,7 +86,7 @@ const FooterStyled = styled.div`
   }
   .TeamMemberName {
     margin-bottom: 5px;
-    color: #6d7a8d;
+    color: ${({ colors }) => colors.buttonPrimary};
     width: 60%;
     text-align: center;
     margin-right: auto;
@@ -123,7 +118,7 @@ const FooterStyled = styled.div`
     margin-left: auto;
   }
   .SocialListLinkIcon {
-    fill: #a6abb9;
+    fill: ${({ colors }) => colors.icons};
     animation-name: changeBookColor;
     animation-duration: 2000ms;
     animation-timing-function: linear;
@@ -136,15 +131,15 @@ const FooterStyled = styled.div`
 
   @keyframes changeBookColor {
     0% {
-      fill: #a6abb9;
+      fill: ${({ colors }) => colors.icons};
     }
 
     70% {
-      fill: #6d7a8d;
+      fill: ${({ colors }) => colors.buttonPrimary};
     }
 
     100% {
-      fill: #ff6b08;
+      fill: ${({ colors }) => colors.accent};
     }
   }
 `;

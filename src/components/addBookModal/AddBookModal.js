@@ -1,48 +1,49 @@
-import React from 'react';
+import React, { useContext } from "react";
 import sprite from "../../images/sprite.svg";
-import { AddBookModalStyled } from './AddBookModalStyled';
+import { ThemeContext } from "../App";
+import { AddBookModalStyled } from "./AddBookModalStyled";
 
 const AddBookModal = () => {
-    return (
-        <AddBookModalStyled>
-            <p className="step">Крок 1.</p>
-            <div className="stepContainer">
-            <svg className="librarySvg">
-              <use href={sprite + "#icon-library"} />
-            </svg>
-            <p className="stepOne">
-                Створіть особисту бібліотеку
-            </p>
-            </div>
-            <div className="aboutStep">
-            <svg className="vectorSvg">
-              <use href={sprite + "#icon-Vector"} />
-            </svg>
-            <p className="aboutStepOne">
-                Додайте до неї книжки, які маєте намір прочитати.
-            </p>
-            </div>
-            <p className="step">Крок 2.</p>
-            <div className="stepContainer">
-            <svg className="flagSvg">
-              <use href={sprite + "#icon-flag"} />
-            </svg>
-            <p className="stepTwo">
-                Сформуйте своє перше тренування
-            </p>
-            </div>
-            <div className="aboutStep">
-            <svg className="vectorSvg">
-              <use href={sprite + "#icon-Vector"} />
-            </svg>
-            <p className="aboutStepTwo">
-            Визначте ціль, оберіть період, розпочинайте тренування.
-            </p>
-            </div>
-            <button type="button" className="btnOk">Ok</button>
-        </AddBookModalStyled>
-    );
-}
+  const { theme } = useContext(ThemeContext);
+
+  return (
+    <AddBookModalStyled colors={theme}>
+      <p className="step">Крок 1.</p>
+      <div className="stepContainer">
+        <svg className="librarySvg">
+          <use href={sprite + "#icon-library"} />
+        </svg>
+        <p className="stepOne">Створіть особисту бібліотеку</p>
+      </div>
+      <div className="aboutStep">
+        <svg className="vectorSvg">
+          <use href={sprite + "#icon-Vector"} />
+        </svg>
+        <p className="aboutStepOne">
+          Додайте до неї книжки, які маєте намір прочитати.
+        </p>
+      </div>
+      <p className="step">Крок 2.</p>
+      <div className="stepContainer">
+        <svg className="flagSvg">
+          <use href={sprite + "#icon-flag"} />
+        </svg>
+        <p className="stepTwo">Сформуйте своє перше тренування</p>
+      </div>
+      <div className="aboutStep">
+        <svg className="vectorSvg">
+          <use href={sprite + "#icon-Vector"} />
+        </svg>
+        <p className="aboutStepTwo">
+          Визначте ціль, оберіть період, розпочинайте тренування.
+        </p>
+      </div>
+      <button type="button" className="btnOk">
+        Ok
+      </button>
+    </AddBookModalStyled>
+  );
+};
 
 export default AddBookModal;
 

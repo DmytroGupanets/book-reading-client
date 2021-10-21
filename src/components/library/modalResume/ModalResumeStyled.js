@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const ModalResumeStyled = styled.div`
   text-align: start;
   padding: 30px;
-  background-color: white;
+  background-color: ${({ colors }) => colors.secondaryBg};
   max-width: 570px;
 
   font-family: "Montserrat", sans-serif;
@@ -11,7 +11,7 @@ export const ModalResumeStyled = styled.div`
   font-size: 16px;
   line-height: 2.37;
 
-  color: #242a37;
+  color: ${({ colors }) => colors.primaryText};
 
   @media screen and (max-width: 767px) {
     max-width: 270px;
@@ -31,14 +31,14 @@ export const ModalResumeStyled = styled.div`
     resize: none;
     padding: 10px;
 
-    border: 1px solid #a6abb9;
+    border: 1px solid ${({ colors }) => colors.icons};
 
     font-family: "Montserrat", sans-serif;
     font-weight: 500;
     font-size: 14px;
     line-height: 1.37;
 
-    color: #898f9f;
+    color: ${({ colors }) => colors.secondaryText};
 
     @media screen and (min-width: 768px) {
       width: 510px;
@@ -54,7 +54,7 @@ export const ModalResumeStyled = styled.div`
     width: 140px;
 
     background-color: white;
-    border: 1px solid #242a37;
+    border: 1px solid ${({ colors }) => colors.primaryText};
 
     font-family: "Montserrat", sans-serif;
     font-weight: 500;
@@ -62,20 +62,20 @@ export const ModalResumeStyled = styled.div`
     line-height: 2.71;
     text-align: center;
 
-    color: #242a37;
+    color: ${({ colors }) => colors.primaryText};
 
     cursor: pointer;
 
     &:hover,
     &:focus {
-      background-color: #b1b5c2;
+      background-color: ${({ colors }) => colors.icons};
     }
   }
 
   .resumeModalSubmitBtn {
     width: 140px;
 
-    background-color: #ff6b08;
+    background-color: ${({ colors }) => colors.accent};
     border: none;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
     margin-left: 30px;
@@ -86,13 +86,13 @@ export const ModalResumeStyled = styled.div`
     line-height: 2.71;
     text-align: center;
 
-    color: #ffffff;
+    color: ${({ colors }) => colors.secondaryBg};
 
     cursor: pointer;
 
     &:hover,
     &:focus {
-      color: #242a37;
+      color: ${({ colors }) => colors.primaryText};
     }
   }
 `;

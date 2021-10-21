@@ -1,10 +1,14 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import arrowIcon from "../../../images/auth/arrow.svg";
 import { MobileAuthStyled } from "./MobileAuthStyled";
+import { ThemeContext } from "../../App";
 
 const MobileAuth = () => {
+  const { theme } = useContext(ThemeContext);
+
   return (
-    <MobileAuthStyled>
+    <MobileAuthStyled colors={theme}>
       <h2 className="title">Books Reading</h2>
       <p className="listTitle">Допоможе вам</p>
       <ul className="list">

@@ -7,7 +7,7 @@ import Statistic from "../statistic/Statistic";
 import TargetRead from "./targetRead/TargetRead";
 import TrainingStyled from "./TrainingStyled";
 import MyTraining from "./myTraining/MyTraining";
-import MyGoalBooks from "./myGoalBooks/MyGoalBooks";
+// import MyGoalBooks from "./myGoalBooks/MyGoalBooks";
 
 const Training = () => {
   const [state, setState] = useState(false);

@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Modal from "../modal/Modal";
 import TeamModal from "../teamModal/TeamModal";
 import FooterStyled from "./FooterStyled";
 import footerBookIcon from "./footerBookIcon.svg";
 import ThemeSwitcher from "../themeSwitcher/ThemeSwitcher";
+import { ThemeContext } from "../App";
 
 export default function Footer() {
+  const { theme } = useContext(ThemeContext);
   const [showModal, setShowModal] = useState(false);
 
   const toggleModal = () => {
@@ -13,7 +15,7 @@ export default function Footer() {
   };
 
   return (
-    <FooterStyled>
+    <FooterStyled colors={theme}>
       <div className="FooterWrapper">
         <p className="FooterText">
           <svg className="FooterIcon" width="18" height="18">

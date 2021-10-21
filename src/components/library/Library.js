@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { LibraryStyled } from "./LibraryStyled";
 import BooksList from "./booksList/BooksList";
 import LibraryEmpty from "../libraryEmpty/LibraryEmpty";
@@ -8,11 +8,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAuthenticated } from "../../redux/auth/authSelectors";
 import { NavLink } from "react-router-dom";
 import { getAllBooks } from "../../redux/books/booksSelectors";
+import { ThemeContext } from "../App";
 
 const Library = () => {
   const isAuth = useSelector(getAuthenticated);
   const books = useSelector(getAllBooks);
   const dispatch = useDispatch();
+  const { theme } = useContext(ThemeContext);
 
   useEffect(() => {
     dispatch(getAllBooksOperation());
@@ -21,7 +23,7 @@ const Library = () => {
   const isUserHaveAnyBooks = Boolean(books.length);
 
   return (
-    <LibraryStyled>
+    <LibraryStyled colors={theme}>
       {isAuth && <LibraryEmpty />}
       {isAuth && !isUserHaveAnyBooks && <AddBookModal />}
       {isAuth && isUserHaveAnyBooks && <BooksList />}

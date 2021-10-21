@@ -1,10 +1,14 @@
 import MyGoalListItemNormalStyled from "./MyGoalListItemNormalStyled";
 import sprite from "../../../../../../images/Training/sprite.svg";
+import { createContext } from "react";
+import { ThemeContext } from "../../../../../App";
 
 const MyGoalListItemNormal = ({ item, onClickDelete }) => {
+  const { theme } = createContext(ThemeContext);
   const { name, author, year, pages, _id } = item;
+
   return (
-    <MyGoalListItemNormalStyled>
+    <MyGoalListItemNormalStyled colors={theme}>
       <svg className="myGoalListNorm_Item__BookSvg">
         <use href={sprite + "#icon-Book"}></use>
       </svg>

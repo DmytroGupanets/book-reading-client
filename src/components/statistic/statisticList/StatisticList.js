@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useContext, useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { getInProgressdBooks } from "../../../redux/books/booksSelectors";
 // import {
 //   getRecordOperation,
@@ -8,7 +8,7 @@ import { getInProgressdBooks } from "../../../redux/books/booksSelectors";
 import { getRecords } from "../../../redux/target/targetSelectors";
 // import { getInProgressdBooks } from "../../../redux/books/booksSelectors";
 
-import colors from "../../../styles/colors";
+import { ThemeContext } from "../../App";
 import StatisticListStyled from "./StatisticListStyled";
 
 // const initialState = {
@@ -17,18 +17,15 @@ import StatisticListStyled from "./StatisticListStyled";
 // };
 
 const StatisticList = () => {
+  const { theme } = useContext(ThemeContext);
   const [pagesState, setQuantityPages] = useState(0);
 
   // console.log(pagesState);
   const records = useSelector(getRecords);
   const booksInProgress = useSelector(getInProgressdBooks);
 
-  console.log(pagesState);
-
   const fn = (arr) => {
     let pagesOfReadedBook = 0;
-
-    console.log(pagesOfReadedBook);
 
     return arr.reduce((acc, item, idx) => {
       // console.log(acc[idx]);
@@ -48,10 +45,8 @@ const StatisticList = () => {
     }, 0);
   };
 
-  console.log(fn(booksInProgress));
-
   // console.log();
-  // console.log(booksInProgress);
+  console.log(booksInProgress);
   // console.log(pagesState);
 
   useEffect(() => {
@@ -71,7 +66,7 @@ const StatisticList = () => {
   };
 
   return (
-    <StatisticListStyled colors={colors}>
+    <StatisticListStyled colors={theme}>
       <h2 className="statisticTitle">Статистика</h2>
 
       <div className="listWrapper">

@@ -4,14 +4,14 @@ const TargetReadStyled = styled.div`
   margin: 0 auto;
   width: 270px;
 
-  background-color: ${({ colors }) => colors.lightColors.secondaryBg};
+  background-color: ${({ colors }) => colors.secondaryBg};
   box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
 
   .titleWrapper {
     display: flex;
     align-items: center;
     height: 60px;
-    background: ${({ colors }) => colors.lightColors.trainingLabel};
+    background: ${({ colors }) => colors.trainingLabel};
     box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
   }
 
@@ -19,7 +19,7 @@ const TargetReadStyled = styled.div`
     margin: 0 auto;
     font-size: 20px;
     line-height: 1.9;
-    color: ${({ colors }) => colors.lightColors.secondaryBg};
+    color: ${({ colors }) => colors.secondaryBg};
   }
 
   .targetReadlist {
@@ -49,8 +49,8 @@ const TargetReadStyled = styled.div`
     font-size: ${({ state }) => (!state ? "45px" : "35px")};
     line-height: 0.84;
 
-    color: ${({ colors }) => colors.lightColors.digits};
-    background: ${({ colors }) => colors.lightColors.iconsActive};
+    color: ${({ colors }) => colors.digits};
+    background: ${({ colors }) => colors.iconsActive};
     box-shadow: 4px 4px 8px rgba(36, 42, 55, 0.15);
   }
 
@@ -68,8 +68,8 @@ const TargetReadStyled = styled.div`
     font-size: ${({ state }) => (!state ? "45px" : "35px")};
     line-height: 0.84;
 
-    color: ${({ colors }) => colors.lightColors.accent};
-    background: ${({ colors }) => colors.lightColors.iconsActive};
+    color: ${({ colors }) => colors.accent};
+    background: ${({ colors }) => colors.iconsActive};
     box-shadow: 4px 4px 8px rgba(36, 42, 55, 0.15);
   }
 
@@ -78,7 +78,7 @@ const TargetReadStyled = styled.div`
     font-size: ${({ state }) => (!state ? "14px" : "11px")};
     line-height: ${({ state }) => (!state ? "1.21" : "1.18")};
 
-    color: ${({ colors }) => colors.lightColors.secondaryText};
+    color: ${({ colors }) => colors.secondaryText};
   }
 
   @media screen and (min-width: 768px) {

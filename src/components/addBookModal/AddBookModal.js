@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useTranslation } from "react-i18next";
 import sprite from "../../images/sprite.svg";
+import { ThemeContext } from "../App";
 import { AddBookModalStyled } from "./AddBookModalStyled";
 
 const AddBookModal = () => {
+  const { theme } = useContext(ThemeContext);
   const { t } = useTranslation();
+
   return (
-    <AddBookModalStyled>
+    <AddBookModalStyled colors={theme}>
       <p className="step">{t("Step 1.")}</p>
       <div className="stepContainer">
         <svg className="librarySvg">

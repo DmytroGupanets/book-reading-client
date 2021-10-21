@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useTranslation } from "react-i18next";
 import TeamModalStyled from "./TeamModalStyled";
 import photos from "./team-data/team-photo";
 import teamdata from "./team-data/team-data.json";
 import sprite from "./team-data/sprite.svg";
+import { ThemeContext } from "../App";
 
 const TeamModal = () => {
+  const { theme } = useContext(ThemeContext);
   const { t } = useTranslation();
+
   return (
-    <TeamModalStyled>
+    <TeamModalStyled colors={theme}>
       <div className="TeamModalWrapper">
         <h2 className="TeamName">
           {t("Our development team")} <b>"{t("Bootсamp 8")}"</b>

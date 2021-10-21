@@ -12,7 +12,7 @@ const UserMenuStyled = styled.div`
     font-size: 14px;
     line-height: 2.71;
 
-    color: #242a37;
+    color: ${({ colors }) => colors.primaryText};
   }
   @media screen and (min-width: 768px) {
     display: flex;

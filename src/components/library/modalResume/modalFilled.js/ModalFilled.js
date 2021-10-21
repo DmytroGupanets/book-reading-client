@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import ReactStars from "react-rating-stars-component";
 import starsRating from "../../../../images/rating-stars.svg";
+import { ThemeContext } from "../../../App";
 import { ModalFilledStyled } from "./ModalFilledStyled";
 
 const ModalFilled = ({ book, onClose, openForm }) => {
+  const { theme } = useContext(ThemeContext);
   const emptyStar = starsRating + "#star-active-empty";
   const filledStar = starsRating + "#star-active";
 
@@ -16,7 +18,7 @@ const ModalFilled = ({ book, onClose, openForm }) => {
   };
 
   return (
-    <ModalFilledStyled>
+    <ModalFilledStyled colors={theme}>
       <p className="yourRating">Рейтинг книги</p>
       <ReactStars
         value={book.resume.rating}

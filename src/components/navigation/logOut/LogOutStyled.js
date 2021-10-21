@@ -13,7 +13,7 @@ const LogOutStyled = styled.div`
 
     text-decoration-line: underline;
 
-    color: #242a37;
+    color: ${({ colors }) => colors.primaryText};
   }
 `;
 

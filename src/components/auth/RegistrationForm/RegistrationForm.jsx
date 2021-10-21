@@ -5,8 +5,11 @@ import GoogleButton from "../GoogleButton/GoogleButton";
 import { registerValidationSchema } from "../validation/validationSchema";
 import { register } from "../../../redux/auth/authOperations";
 import { RegistrationFormStyled } from "./RegistrationFormStyled";
+import { useContext } from "react";
+import { ThemeContext } from "../../App";
 
 const RegistrationForm = () => {
+  const { theme } = useContext(ThemeContext);
   const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
@@ -31,7 +34,7 @@ const RegistrationForm = () => {
   });
 
   return (
-    <RegistrationFormStyled>
+    <RegistrationFormStyled colors={theme}>
       <GoogleButton />
       <form className="form" onSubmit={formik.handleSubmit}>
         <div className="formGroup">
@@ -94,20 +97,25 @@ const RegistrationForm = () => {
             <div className="inputError">{formik.errors.password}</div>
           )}
         </div>
-        <label className="formLabel" htmlFor="confirmPassword">
-          Підтвердити пароль
-          <span className="formLabelStar"> *</span>
-        </label>
-        <input
-          id="confirmPassword"
-          type="password"
-          className="formInput"
-          name="confirmPassword"
-          placeholder="..."
-          value={formik.values.confirmPassword}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-        />
+        <div className="formGroup">
+          <label className="formLabel" htmlFor="confirmPassword">
+            Підтвердити пароль
+            <span className="formLabelStar"> *</span>
+          </label>
+          <input
+            id="confirmPassword"
+            type="password"
+            className="formInput"
+            name="confirmPassword"
+            placeholder="..."
+            value={formik.values.confirmPassword}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+          />
+          {formik.errors.confirmPassword && formik.touched.confirmPassword && (
+            <div className="inputError">{formik.errors.confirmPassword}</div>
+          )}
+        </div>
         <div className="wrapperButton">
           <button type="submit" className="authButton">
             Зареєструватися

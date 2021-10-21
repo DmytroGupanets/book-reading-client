@@ -1,16 +1,20 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { BookMobileStyled } from "./BookMobileStyled";
+import colors from "../../../styles/colors";
 
 import bookIcon from "../../../images/books-sprite.svg";
 import RatingStars from "../ratingStars/RatingStars";
 import Modal from "../../modal/Modal";
 import ModalFilled from "../modalResume/modalFilled.js/ModalFilled";
 import ModalResume from "../modalResume/ModalResume";
+import { ThemeContext } from "../../App";
 
 const BookMobile = ({ book }) => {
   const [modalState, setModalState] = useState(false);
   const hasResume = Boolean(book.resume);
   const [modalForm, setModalForm] = useState(hasResume);
+
+  const { theme } = useContext(ThemeContext);
 
   const toggleModal = () => {
     setModalState((state) => !state);
@@ -24,7 +28,7 @@ const BookMobile = ({ book }) => {
   };
 
   return (
-    <BookMobileStyled>
+    <BookMobileStyled colors={theme}>
       <div className="iconWrapper">
         {book.status === "inProgress" ? (
           <svg className="iconSvg">

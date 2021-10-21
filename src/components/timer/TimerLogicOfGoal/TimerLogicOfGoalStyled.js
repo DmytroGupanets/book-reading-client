@@ -6,7 +6,7 @@ export const TimerLogicOfGoalStyled = styled.div`
   min-width: 270px;
   height: 60px;
 
-  background-color: ${(props) => props.colors.secondaryBg};
+  background-color: ${({ colors }) => colors.secondaryBg};
   box-shadow: 4px 4px 8px rgba(36, 42, 55, 0.15);
 
   @media (min-width: 768px) {
@@ -25,7 +25,7 @@ export const TimerLogicOfGoalStyled = styled.div`
     font-size: 14px;
     font-weight: 500;
 
-    color: ${(props) => props.colors.secondaryText};
+    color: ${({ colors }) => colors.secondaryText};
   }
 
   .time {
@@ -37,7 +37,7 @@ export const TimerLogicOfGoalStyled = styled.div`
     line-height: 1.52;
     margin-left: 10px;
 
-    color: ${(props) => props.colors.digits};
+    color: ${({ colors }) => colors.digits};
   }
 
   .time:first-child {
@@ -53,11 +53,11 @@ export const TimerLogicOfGoalStyled = styled.div`
     left: 50%;
     transform: translateX(-50%);
 
-    font-family: Montserrat;
+    font-family: "Montserrat", sans-serif;
     font-weight: 500;
     font-size: 10px;
     line-height: 3.8;
 
-    color: ${(props) => props.colors.secondaryText};
+    color: ${({ colors }) => colors.secondaryText};
   }
 `;

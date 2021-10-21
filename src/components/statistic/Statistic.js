@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Modal from "../modal/Modal";
 import StatisticForm from "./statisticForm/StatisticForm";
-import StatisticList from "./statisticList/StatisticList";
+// import StatisticList from "./statisticList/StatisticList";
 import StatisticModal from "./statisticModal/StatisticModal";
 import StatisticStyled from "./StatisticStyled";
 

@@ -3,16 +3,16 @@ import styled from "styled-components";
 const FooterStyled = styled.div`
   .FooterWrapper {
     position: relative;
-    margin-top: 666px;
+    /* margin-top: 666px; */
     @media screen and (min-width: 768px) {
-      margin-top: 900px;
+      /* margin-top: 900px; */
     }
     @media screen and (min-width: 1280px) {
-      margin-top: 10px;
+      /* margin-top: 10px; */
     }
   }
   .FooterIcon {
-    fill: #a6abb9;
+    fill: ${({ colors }) => colors.icons};
     animation-name: changeBookColor;
     animation-duration: 2000ms;
     animation-timing-function: linear;
@@ -25,23 +25,23 @@ const FooterStyled = styled.div`
 
   @keyframes changeBookColor {
     0% {
-      fill: #a6abb9;
+      fill: ${({ colors }) => colors.icons};
     }
 
     70% {
-      fill: #6d7a8d;
+      fill: ${({ colors }) => colors.buttonPrimary};
     }
 
     100% {
-      fill: #ff6b08;
+      fill: ${({ colors }) => colors.accent};
     }
   }
 
   .FooterText {
     @media screen and (min-width: 280px) {
-      color: #6d7a8d;
+      color: ${({ colors }) => colors.buttonPrimary};
       text-align: center;
-      font-family: Montserrat;
+      font-family: "Montserrat", sans-serif;
       font-size: 14px;
       line-height: 1.22;
       margin-top: 60px;
@@ -65,10 +65,10 @@ const FooterStyled = styled.div`
   }
 
   .FooterButton {
-    color: #6d7a8d;
+    color: ${({ colors }) => colors.buttonPrimary};
     font-size: 16px;
     font-weight: bold;
-    font-family: Montserrat;
+    font-family: "Montserrat", sans-serif;
     line-height: 1.22;
     background-color: transparent;
     border: none;
@@ -86,15 +86,15 @@ const FooterStyled = styled.div`
 
   @keyframes changeColor {
     0% {
-      color: #6d7a8d;
+      color: ${({ colors }) => colors.buttonPrimary};
     }
 
     70% {
-      color: #6d7a8d;
+      color: ${({ colors }) => colors.buttonPrimary};
     }
 
     100% {
-      color: #ff6b08;
+      color: ${({ colors }) => colors.accent};
     }
   }
 `;

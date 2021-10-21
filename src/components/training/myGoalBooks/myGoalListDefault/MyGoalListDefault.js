@@ -1,6 +1,6 @@
 import MyGoalListDefMob from "./myGoalListMob/MyGoalListMob";
 import MyGoalListNormal from "./myGoalListNormal/MyGoalListNormal";
-import resize from "../../../../hooks";
+import { resize } from "../../../../hooks";
 
 const MyGoalListDefault = () => {
   const { width } = resize();

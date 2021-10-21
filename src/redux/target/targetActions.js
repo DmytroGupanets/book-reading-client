@@ -15,3 +15,14 @@ export const completeTargetSuccess = createAction(
   "target/completeTargetSuccess"
 );
 export const completeTargetError = createAction("target/completeTargetError");
+
+
+
+export const setBookInTrainingSuccess = createAction(
+  "target/setBookInTrainingSuccess"
+);
+
+export const addTargetRequest = createAction("target/addTargetRequest");
+export const addTargetSucces = createAction("target/addTargetSucces");
+export const addTargetError = createAction("target/addTargetError");
+

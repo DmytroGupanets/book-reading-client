@@ -6,7 +6,11 @@ import GraphContainer from "../LineGraph/GraphContainer";
 import Statistic from "../statistic/Statistic";
 import TargetRead from "./targetRead/TargetRead";
 import TrainingStyled from "./TrainingStyled";
+import MyTraining from "./myTraining/MyTraining";
+
 import MyGoalBooks from "./myGoalBooks/MyGoalBooks";
+import { getAllBooksOperation } from "../../redux/books/booksOperations";
+
 
 const Training = () => {
   const [state, setState] = useState(false);
@@ -16,17 +20,21 @@ const Training = () => {
 
   useEffect(() => {
     dispatch(getRecordOperation(ownerId));
+    dispatch(getAllBooksOperation());
   }, []);
 
-  const onHandleClick = () => setState(true);
+  const onHandleClickStart = () => setState(true);
 
   return (
     <TrainingStyled>
-      <button onClick={onHandleClick}>Початок тренування</button>
       <TargetRead state={state} />
-      {state && <Statistic state={state} />}
       <MyGoalBooks />
+      <button className="startTrainingBtn" onClick={onHandleClickStart}>
+        Початок тренування
+      </button>
+      <MyTraining />
       <GraphContainer />
+      {state && <Statistic state={state} />}
     </TrainingStyled>
   );
 };

@@ -10,6 +10,10 @@ import {
   completeTargetRequest,
   completeTargetSuccess,
   completeTargetError,
+  setBookInTrainingSuccess,
+  addTargetRequest,
+  addTargetSucces,
+  addTargetError,
 } from "./targetActions";
 
 const targetsReducer = createReducer([], {
@@ -19,6 +23,11 @@ const targetsReducer = createReducer([], {
     records: payload,
   }),
   [completeTargetSuccess]: (state, { payload }) => payload,
+  [addTargetSucces]: (state, { payload }) => payload,
+});
+
+const bookInTrainingReducer = createReducer([], {
+  [setBookInTrainingSuccess]: (_, { payload }) => payload,
 });
 
 const isLoadingReducer = createReducer(false, {
@@ -31,6 +40,9 @@ const isLoadingReducer = createReducer(false, {
   [completeTargetRequest]: () => true,
   [completeTargetSuccess]: () => false,
   [completeTargetError]: () => false,
+  [addTargetRequest]: () => true,
+  [addTargetSucces]: () => false,
+  [addTargetError]: () => false,
 });
 
 const errorReducer = createReducer("", {
@@ -40,10 +52,13 @@ const errorReducer = createReducer("", {
   [updateRecordError]: (_, { payload }) => payload,
   [completeTargetRequest]: () => "",
   [completeTargetError]: (_, { payload }) => payload,
+  [addTargetRequest]: () => "",
+  [addTargetError]: (_, { payload }) => payload,
 });
 
 const targetReducer = combineReducers({
   target: targetsReducer,
+  bookInTraining: bookInTrainingReducer,
   isLoading: isLoadingReducer,
   error: errorReducer,
 });

@@ -9,7 +9,7 @@ const LanguageSwitcher = () => {
 
   return (
     <>
-      <LanguageSwitcherStyled colors={theme.colors}>
+      <LanguageSwitcherStyled colors={theme}>
         {i18n.language === "en" && (
           <button className="langBtn" onClick={() => i18n.changeLanguage("ru")}>
             EN

@@ -57,7 +57,7 @@ const TimerLogicOfYear = () => {
   }, []);
 
   return (
-    <TimerLogicOfYearStyled colors={theme.colors}>
+    <TimerLogicOfYearStyled colors={theme}>
       <div className="time">
         {`${time.days || "00"}`}
         <p className="text">{t("DAYS")}</p>

@@ -8,15 +8,14 @@ export const LanguageSwitcherStyled = styled.div`
     font-weight: bold;
     line-height: 17px;
     text-align: center;
-    color: ${(props) => props.colors.primaryText};
-    background-color: ${(props) => props.colors.langBtn};
+    color: ${({ colors }) => colors.primaryText};
+    background-color: ${({ colors }) => colors.iconsActive};
     border: none;
     border-radius: 50%;
     cursor: pointer;
   }
   .langBtn:hover,
   .langBtn:focus {
-    background-color: ${(props) => props.colors.langBtnActive};
-    color: ${(props) => props.colors.secondaryText};
+    background-color: ${({ colors }) => colors.trainingLabel};
   }
 `;

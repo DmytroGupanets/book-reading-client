@@ -4,8 +4,9 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import sprite from "../../../images/sprite.svg";
 
-import { useDispatch, useSelector } from "react-redux";
 import SelectBooks from "./selectBooks/SelectBooks";
+import { ThemeContext } from "../../App";
+import { useContext } from "react";
 
 const initialState = {
   startDate: null,
@@ -13,6 +14,7 @@ const initialState = {
 };
 
 const MyTraining = () => {
+  const { theme } = useContext(ThemeContext);
   const [startDate, setStartDate] = useState(initialState.startDate);
   const [endDate, setEndDate] = useState(initialState.endDate);
 
@@ -23,7 +25,7 @@ const MyTraining = () => {
   };
 
   return (
-    <MyTrainingStyled>
+    <MyTrainingStyled colors={theme}>
       <h3 className="trainingTitle">Моє тренування</h3>
       <div className="datePickerWrapper">
         <DatePicker

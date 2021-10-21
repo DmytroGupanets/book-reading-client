@@ -10,7 +10,7 @@ const SelectDateStyled = styled.label`
   font-weight: 500px;
   font-size: 11px;
   line-height: 20px;
-  color: ${({ colors }) => colors.lightColors.secondaryText};
+  color: ${({ colors }) => colors.secondaryText};
 
   .iconSelectDate {
     position: absolute;
@@ -39,15 +39,15 @@ const SelectDateStyled = styled.label`
     height: 42px;
     width: 100%;
     font-size: 14px;
-    color: ${({ colors }) => colors.lightColors.primaryText};
-    background: ${({ colors }) => colors.lightColors.background};
-    border-color: ${({ colors }) => colors.lightColors.icons};
+    color: ${({ colors }) => colors.primaryText};
+    background: ${({ colors }) => colors.background};
+    border-color: ${({ colors }) => colors.icons};
     border-radius: 0;
   }
 
   .reactSelect__placeholder {
     font-size: 10px;
-    color: ${({ colors }) => colors.lightColors.primaryText};
+    color: ${({ colors }) => colors.primaryText};
   }
 
   .reactSelect__input-container {

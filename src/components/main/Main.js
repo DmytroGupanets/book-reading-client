@@ -1,17 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useSelector } from "react-redux";
 import { Switch } from "react-router";
 import { getAuthenticated } from "../../redux/auth/authSelectors";
 import { mainRoutes } from "../../routes/mainRoutes";
 import PrivatRoutes from "../../routes/privatRoutes";
 import PublicRoutes from "../../routes/publicRoutes";
+import { ThemeContext } from "../App";
 import { MainStyled } from "./MainStyled";
 
 const Main = () => {
+  const { theme } = useContext(ThemeContext);
   const isAuth = useSelector(getAuthenticated);
 
   return (
-    <MainStyled>
+    <MainStyled colors={theme}>
       <Switch>
         {mainRoutes.map(({ path, exact, component, isPrivat, restricted }) =>
           isPrivat ? (

@@ -7,13 +7,13 @@ import desktop1x from "../../../images/auth/mainImg/auth-desktop1x.webp";
 import desktop2x from "../../../images/auth/mainImg/auth-desktop2x.webp";
 
 const AuthStyled = styled.div`
-  background-color: #ffff;
-  font-family: Montserrat;
+  background-color: ${({ colors }) => colors.secondaryBg};
+  font-family: "Montserrat", sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
   line-height: 1.9;
-  color: #242a37;
+  color: ${({ colors }) => colors.primaryText};
   width: 100%;
   height: calc(50vw - 132px);
 

@@ -4,7 +4,7 @@ export const LibraryStyled = styled.div`
   .trainingLink {
     display: block;
 
-    background-color: #ff6b08;
+    background-color: ${({ colors }) => colors.accent};
 
     margin: 20px auto;
     text-align: center;
@@ -15,6 +15,6 @@ export const LibraryStyled = styled.div`
     font-weight: 600;
     font-size: 16px;
     line-height: 2.37;
-    color: #ffffff;
+    color: ${({ colors }) => colors.secondaryBg};
   }
 `;

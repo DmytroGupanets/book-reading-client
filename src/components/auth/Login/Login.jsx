@@ -1,10 +1,14 @@
 import LoginStyled from "./LoginStyled";
 import LoginForm from "../LoginForm/LoginForm";
 import AuthSlider from "../AuthSlider/AuthSlider";
+import { useContext } from "react";
+import { ThemeContext } from "../../App";
 
 const Login = () => {
+  const { theme } = useContext(ThemeContext);
+
   return (
-    <LoginStyled className="authContainer">
+    <LoginStyled className="authContainer" colors={theme}>
       <div className="leftSideContainer">
         <LoginForm />
       </div>

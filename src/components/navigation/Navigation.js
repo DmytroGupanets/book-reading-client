@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import NavigationStyled from "./NavigationStyled";
 import sprite from "../../images/sprite.svg";
+import { ThemeContext } from "../App";
 
 const Navigation = () => {
+  const { theme } = useContext(ThemeContext);
+
   return (
-    <NavigationStyled>
+    <NavigationStyled colors={theme}>
       <ul className="navigationList">
         <li className="navigationItem">
           <NavLink

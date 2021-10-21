@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useContext, useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { getInProgressdBooks } from "../../../redux/books/booksSelectors";
 import { setBookInTrainingSuccess } from "../../../redux/target/targetActions";
 // import {
@@ -9,11 +9,13 @@ import { setBookInTrainingSuccess } from "../../../redux/target/targetActions";
 import { getRecords } from "../../../redux/target/targetSelectors";
 // import { getInProgressdBooks } from "../../../redux/books/booksSelectors";
 
-import colors from "../../../styles/colors";
+import { ThemeContext } from "../../App";
 import StatisticListStyled from "./StatisticListStyled";
 
 const StatisticList = () => {
+  const { theme } = useContext(ThemeContext);
   const [pagesState, setQuantityPages] = useState(0);
+
 
   console.log(pagesState);
 
@@ -28,6 +30,7 @@ const StatisticList = () => {
       dispatch(setBookInTrainingSuccess(countIdxOfReadedBook(pagesState)));
     };
   }, [pagesState]);
+
 
   useEffect(() => {
     countPages();
@@ -79,7 +82,7 @@ const StatisticList = () => {
   };
 
   return (
-    <StatisticListStyled colors={colors}>
+    <StatisticListStyled colors={theme}>
       <h2 className="statisticTitle">Статистика</h2>
 
       <div className="listWrapper">

@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import Modal from "../modal/Modal";
 import TeamModal from "../teamModal/TeamModal";
 import FooterStyled from "./FooterStyled";
 import footerBookIcon from "./footerBookIcon.svg";
-import ThemeSwitcher from "../themeSwitcher/ThemeSwitcher";
+// import ThemeSwitcher from "../themeSwitcher/ThemeSwitcher";
 
 export default function Footer() {
   const [showModal, setShowModal] = useState(false);
@@ -12,6 +13,8 @@ export default function Footer() {
     setShowModal((state) => !state);
   };
 
+  const { t } = useTranslation();
+
   return (
     <FooterStyled>
       <div className="FooterWrapper">
@@ -19,14 +22,13 @@ export default function Footer() {
           <svg className="FooterIcon" width="18" height="18">
             <use href={footerBookIcon + "#footerBookIcon"}></use>
           </svg>
-          <b> Books Reading </b>© 2021 | Усі права захищені | Розроблено
-          {/* © 2021 | All Rights Reserved | Developed by */}
+          <b> Books Reading </b>© 2021 | {t("All Rights Reserved")} |{" "}
+          {t("Developed by")}
           <button type="button" class="FooterButton" onClick={toggleModal}>
-            Студентами GoIT
-            {/* GoIT Students ⌨ (<b>BootCamp 8</b>) */}
+            {t("GoIT Students")}
           </button>
         </p>
-        <ThemeSwitcher />
+        {/* <ThemeSwitcher /> */}
         {showModal && (
           <Modal onClose={toggleModal}>
             <TeamModal onClose={toggleModal} />

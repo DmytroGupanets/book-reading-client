@@ -1,15 +1,17 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import TeamModalStyled from "./TeamModalStyled";
 import photos from "./team-data/team-photo";
 import teamdata from "./team-data/team-data.json";
 import sprite from "./team-data/sprite.svg";
 
 const TeamModal = () => {
+  const { t } = useTranslation();
   return (
     <TeamModalStyled>
       <div className="TeamModalWrapper">
         <h2 className="TeamName">
-          Наша команда розробників <b>"Bootсamp 8"</b>
+          {t("Our development team")} <b>"{t("Bootсamp 8")}"</b>
         </h2>
         <ul className="TeamModalList">
           {teamdata.map((data) => (
@@ -21,7 +23,7 @@ const TeamModal = () => {
               />
               {/* <div className="TeamMemberInfo"> */}
               <div>
-                <h3 className="TeamMemberName">{data.name}</h3>
+                <h3 className="TeamMemberName">{t(data.name)}</h3>
                 <p className="TeamMemberPosition">{data.position}</p>
               </div>
               <ul className="SocialList">

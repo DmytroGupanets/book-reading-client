@@ -9,6 +9,7 @@ const LogOutStyled = styled.div`
     font-weight: 300;
     font-size: 14px;
     line-height: 2.71;
+    cursor: pointer;
 
     text-decoration-line: underline;
 

@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import { useTranslation } from "react-i18next";
 import { logOut } from "../../../redux/auth/authOperations";
 import LogOutStyled from "./LogOutStyled";
 
@@ -10,10 +11,12 @@ const LogOut = () => {
     dispatch(logOut());
   };
 
+  const { t } = useTranslation();
+
   return (
     <LogOutStyled>
       <button className="logOutButton" type="button" onClick={onHandleClick}>
-        Вихід
+        {t("Logout")}
       </button>
     </LogOutStyled>
   );

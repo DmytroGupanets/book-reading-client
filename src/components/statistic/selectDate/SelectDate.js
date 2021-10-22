@@ -1,15 +1,11 @@
 import Select from "react-select";
-import useDate from "../../../hooks/useDate";
-
-import SelectDateStyled from "./SelectDateStyled";
-import sprite from "../../../images/sprite.svg";
 import { useContext } from "react";
 import { ThemeContext } from "../../App";
-import { useTranslation } from "react-i18next";
+import SelectDateStyled from "./SelectDateStyled";
+import sprite from "../../../images/sprite.svg";
+import useDate from "../../../hooks/useDate";
 
 const SelectDate = ({ date, setStatistic }) => {
-  const { t } = useTranslation();
-
   const { theme } = useContext(ThemeContext);
   const [stateData] = useDate();
   const { quantityDays } = stateData;
@@ -33,7 +29,7 @@ const SelectDate = ({ date, setStatistic }) => {
       <svg className="iconSelectDate">
         <use href={sprite + "#icon-selectDate"} />
       </svg>
-      {t("Date")}
+      Дата
       <Select
         options={options}
         placeholder={"DD/MM/YYYY"}

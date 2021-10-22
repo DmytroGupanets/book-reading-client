@@ -11,7 +11,6 @@ import {
 import sprite from "../../../../images/sprite.svg";
 
 import { useDispatch } from "react-redux";
-import useDate from "../../../../hooks/useDate";
 
 const initialState = {
   startDate: null,
@@ -22,7 +21,6 @@ const DatePickerTraining = () => {
   const [endDate, setEndDate] = useState(initialState.endDate);
   const { theme } = useContext(ThemeContext);
   const dispatch = useDispatch();
-
 
   const addDays = (date, days) => {
     const result = new Date(date);
@@ -55,7 +53,7 @@ const DatePickerTraining = () => {
           selected={startDate}
           onChange={onHandleStartDateChange}
           selectsStart
-          minDate={currentDay}
+          minDate={startDate}
           startDate={startDate}
           endDate={endDate}
         />

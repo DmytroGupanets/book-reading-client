@@ -12,14 +12,26 @@ import { getRecords } from "../../../redux/target/targetSelectors";
 import { ThemeContext } from "../../App";
 import StatisticListStyled from "./StatisticListStyled";
 
-const StatisticList = () => {
+const StatisticList = ({ toggleModal, setShowModal }) => {
   const { theme } = useContext(ThemeContext);
   const [pagesState, setQuantityPages] = useState(0);
 
   const records = useSelector(getRecords);
   const booksInProgress = useSelector(getInProgressdBooks);
 
+  // console.log(booksInProgress);
+
+  // const open = () => {
+  //   return toggleModal();
+  // };
+
   const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   return () => {
+  //     booksInProgress.length - 1 === 2 && open();
+  //   };
+  // }, []);
 
   useEffect(() => {
     dispatch(setBookInTrainingSuccess(countIdxOfReadedBook(pagesState)));

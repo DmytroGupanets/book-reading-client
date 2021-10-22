@@ -15,7 +15,7 @@ export default function Statistic() {
   return (
     <StatisticStyled>
       <StatisticForm />
-      <StatisticList />
+      <StatisticList toggleModal={toggleModal} setShowModal={setShowModal} />
       <div>
         <button type="button" onClick={toggleModal}>
           STATISTIC MODAL

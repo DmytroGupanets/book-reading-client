@@ -1,5 +1,22 @@
 {
+  "Email": "Електронная почта",
+  "Password": "Пароль",
+  "Login": "Войти",
+  "Registration": "Регистрация",
+  "Name": "Имя",
+  "Confirm password": "Подтвердите пароль",
+  "Register": "Зарегистрироваться",
+  "With us already": "Уже с нами",
   "Logout": "Выход",
+
+  "Will help you to": "Поможет вам",
+  "Create your goal faster and proceed to read": "Скорее сформулировать свою цель и начать читать",
+  "Divide process proportionally for each day": "Пропорционально распределить нагрузку на каждый день",
+  "Track your success": "Отслеживать личный успех",
+  "You may also": "Также вы сможете",
+  "Pose your own independent point of view": "Формировать личное мнение независимую от других",
+  "Improve your professional skills according to new knowledge": "Повысить свои профессиональные качества опираясь на новые знания",
+  "Become an interesting interlocutor": "Стать интересным собеседником",
 
   "Step 1.": "Шаг 1.",
   "Create your own library.": "Создайте личную библиотеку.",
@@ -116,6 +133,7 @@
   "Vladyslav Bochkovskyi": "Владислав Бочковский",
   "Denys Petrenko": "Денис Петренко",
   "Anatolij Dejneko": "Анатолий Дейнеко",
+
   "Book title": "Название книги",
   "Author": "Автор книги",
   "Publication date": "Год издания",

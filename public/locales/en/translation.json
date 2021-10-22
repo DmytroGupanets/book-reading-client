@@ -1,5 +1,22 @@
 {
+  "Email": "Email",
+  "Password": "Password",
+  "Login": "Login",
+  "Registration": "Registration",
+  "Name": "Name",
+  "Confirm password": "Confirm password",
+  "Register": "Register",
+  "With us already": "With us already",
   "Logout": "Logout",
+
+  "Will help you to": "Will help you to",
+  "Create your goal faster and proceed to read": "Create your goal faster and proceed to read",
+  "Divide process proportionally for each day": "Divide process proportionally for each day",
+  "Track your success": "Track your success",
+  "You may also": "You may also",
+  "Pose your own independent point of view": "Pose your own independent point of view",
+  "Improve your professional skills according to new knowledge": "Improve your professional skills according to new knowledge",
+  "Become an interesting interlocutor": "Become an interesting interlocutor",
 
   "Step 1.": "Step 1.",
   "Create your own library.": "Create your own library.",
@@ -116,6 +133,7 @@
   "Vladyslav Bochkovskyi": "Vladyslav Bochkovskyi",
   "Denys Petrenko": "Denys Petrenko",
   "Anatolij Dejneko": "Anatolij Dejneko",
+
   "Book title": "Book title",
   "Author": "Author",
   "Publication date": "Publication date",

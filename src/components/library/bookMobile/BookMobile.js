@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { BookMobileStyled } from "./BookMobileStyled";
 import colors from "../../../styles/colors";
 
@@ -8,7 +9,6 @@ import Modal from "../../modal/Modal";
 import ModalFilled from "../modalResume/modalFilled.js/ModalFilled";
 import ModalResume from "../modalResume/ModalResume";
 import { ThemeContext } from "../../App";
-import { useTranslation } from "react-i18next";
 
 const BookMobile = ({ book }) => {
   const { t } = useTranslation();
@@ -46,7 +46,7 @@ const BookMobile = ({ book }) => {
         <h3 className="bookName">{book.name}</h3>
 
         <div className="bookInfo">
-          <span className="bookFieldName">{t("Author m")}:</span>
+          <span className="bookFieldName">{t("Author")}:</span>
           <span className="bookFieldValue">{book.author}</span>
           <span className="bookFieldName">{t("Year")}:</span>
           <span className="bookFieldValue">{book.year}</span>

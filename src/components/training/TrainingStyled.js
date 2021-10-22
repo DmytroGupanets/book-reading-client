@@ -16,6 +16,16 @@ const TargetStyled = styled.div`
     background: #ff6b08;
     border: none;
   }
+
+  .addTrainingBuuton {
+    cursor: pointer;
+    border: none;
+    background: transparent;
+  }
+  .moreTrainingIcon {
+    width: 52px;
+    height: 52px;
+  }
   @media screen and (min-width: 768px) {
     padding: 30px 0 56px 0;
     .startTrainingBtn {

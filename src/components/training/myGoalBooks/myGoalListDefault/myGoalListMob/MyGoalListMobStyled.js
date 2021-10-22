@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import colors from "../../../../../styles/colors";
-const { darkColors } = colors;
 
 const MyGoalListDefMobStyled = styled.div`
   margin-top: 30px;
@@ -17,14 +15,14 @@ const MyGoalListDefMobStyled = styled.div`
     font-size: 12px;
     margin-right: 26px;
     line-height: 3.1;
-    color: ${darkColors.secondaryText};
+    color: ${({ colors }) => colors.secondaryText};
     font-weight: 500;
   }
   .goalListMob_List__ItemListInfo2 {
     list-style-type: none;
     font-size: 12px;
     line-height: 2.8;
-    color: ${darkColors.primaryText};
+    color: ${({ colors }) => colors.primaryText};
     font-weight: 500;
   }
   .goalListMob_List_ItemListInfo2__Inner:not(:last-child) {

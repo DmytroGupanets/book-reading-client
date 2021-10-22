@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import colors from "../../../../../../styles/colors";
-const { darkColors } = colors;
 
 const MyGoalListItemMobStyled = styled.li`
   :not(:last-child) {
@@ -13,7 +11,7 @@ const MyGoalListItemMobStyled = styled.li`
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  background: #ffffff;
+  background: ${({ colors }) => colors.secondaryBg};
   border-top: 1px solid #e0e5eb;
 
   :last-child {
@@ -23,7 +21,7 @@ const MyGoalListItemMobStyled = styled.li`
   font-family: "Montserrat", sans-serif;
 
   .myGoalListMob_BookTitle {
-    color: ${darkColors.primaryText};
+    color: ${({ colors }) => colors.primaryText};
     line-height: 1.2;
     margin: 0;
     font-size: 12px;
@@ -52,7 +50,7 @@ const MyGoalListItemMobStyled = styled.li`
     margin-right: 30px;
     font-size: 12px;
     line-height: 3.1;
-    color: ${darkColors.secondaryText};
+    color: ${({ colors }) => colors.secondaryText};
     font-weight: 500;
   }
   .myGoalListMob_ListInfo2 {

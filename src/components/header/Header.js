@@ -7,11 +7,15 @@ import HeaderStyled from "./HeaderStyled";
 // import ThemeSwitcher from "../themeSwitcher/ThemeSwitcher";
 import { useSelector } from "react-redux";
 import { getAuthenticated } from "../../redux/auth/authSelectors";
+import { useContext } from "react";
+import { ThemeContext } from "../App";
 
 const Header = () => {
+  const { theme } = useContext(ThemeContext);
   const isAuth = useSelector(getAuthenticated);
+
   return (
-    <HeaderStyled>
+    <HeaderStyled colors={theme}>
       <Logo />
       <LanguageSwitcher />
       {isAuth && (

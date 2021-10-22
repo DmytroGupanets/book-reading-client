@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const ModalFilledStyled = styled.div`
   text-align: start;
   padding: 30px;
-  background-color: white;
+  background-color: ${({ colors }) => colors.secondaryBg};
   max-width: 570px;
 
   font-family: "Montserrat", sans-serif;
@@ -11,7 +11,7 @@ export const ModalFilledStyled = styled.div`
   font-size: 16px;
   line-height: 2.37;
 
-  color: #242a37;
+  color: ${({ colors }) => colors.primaryText};
 
   @media screen and (max-width: 767px) {
     max-width: 270px;
@@ -31,7 +31,7 @@ export const ModalFilledStyled = styled.div`
     font-size: 14px;
     line-height: 1.17;
 
-    color: #898f9f;
+    color: ${({ colors }) => colors.secondaryText};
   }
 
   .filledButtonsWrapper {
@@ -43,7 +43,7 @@ export const ModalFilledStyled = styled.div`
     width: 140px;
 
     background-color: white;
-    border: 1px solid #242a37;
+    border: 1px solid ${({ colors }) => colors.primaryText};
 
     font-family: "Montserrat", sans-serif;
     font-weight: 500;
@@ -51,19 +51,19 @@ export const ModalFilledStyled = styled.div`
     line-height: 2.71;
     text-align: center;
 
-    color: #242a37;
+    color: ${({ colors }) => colors.primaryText};
     cursor: pointer;
 
     &:hover,
     &:focus {
-      background-color: #b1b5c2;
+      background-color: ${({ colors }) => colors.icons};
     }
   }
 
   .FilledResumeModalEditBtn {
     width: 140px;
 
-    background-color: #ff6b08;
+    background-color: ${({ colors }) => colors.accent};
     border: none;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
     margin-left: 30px;
@@ -74,12 +74,12 @@ export const ModalFilledStyled = styled.div`
     line-height: 2.71;
     text-align: center;
 
-    color: #ffffff;
+    color: ${({ colors }) => colors.secondaryBg};
     cursor: pointer;
 
     &:hover,
     &:focus {
-      color: #242a37;
+      color: ${({ colors }) => colors.primaryText};
     }
   }
 `;

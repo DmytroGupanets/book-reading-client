@@ -10,7 +10,8 @@ import {
 } from "../../../../redux/target/targetActions";
 import sprite from "../../../../images/sprite.svg";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import useDate from "../../../../hooks/useDate";
 
 const initialState = {
   startDate: null,
@@ -22,6 +23,12 @@ const DatePickerTraining = () => {
   const { theme } = useContext(ThemeContext);
   const dispatch = useDispatch();
 
+  const [data, setData] = useDate();
+
+  const currentDay = data.currentDate;
+
+  console.log("currentDay :>> ", currentDay);
+
   const addDays = (date, days) => {
     const result = new Date(date);
     result.setDate(result.getDate() + days);
@@ -30,16 +37,21 @@ const DatePickerTraining = () => {
 
   const onHandleStartDateChange = (date) => {
     setStartDate(date);
-    dispatch(addPreplanningStartDate(date));
+    let newDate = new Date(date);
+    const firstDate = newDate.toLocaleDateString().slice(0, 10);
+
+    dispatch(addPreplanningStartDate(firstDate));
   };
 
   const onHandleEndDateChange = (date) => {
     setEndDate(date);
-    dispatch(addPreplanningEndtDate(date));
+    let newDate = new Date(date);
+    const lastDate = newDate.toLocaleDateString().slice(0, 10);
+    dispatch(addPreplanningEndtDate(lastDate));
   };
+
   return (
-    <DatePickerTrainingStyled className="datePickerWrapper" colors={theme}>
-      <h3 className="trainingTitle">Моє тренування</h3>
+    <DatePickerTrainingStyled colors={theme}>
       <div className="datePickerWrapper">
         <DatePicker
           className="datePickerTraining"
@@ -48,7 +60,7 @@ const DatePickerTraining = () => {
           selected={startDate}
           onChange={onHandleStartDateChange}
           selectsStart
-          minDate={startDate}
+          minDate={currentDay}
           startDate={startDate}
           endDate={endDate}
         />

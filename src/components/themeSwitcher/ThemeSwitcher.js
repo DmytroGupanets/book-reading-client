@@ -11,8 +11,8 @@ const ThemeSwitcher = () => {
       <Switch
         onChange={changeTheme}
         checked={theme.title === "light" ? true : false}
-        onColor={theme.colors.on}
-        offColor={theme.colors.off}
+        onColor={theme.accent}
+        offColor={theme.digits}
       />
     </ThemeSwitcherStyled>
   );

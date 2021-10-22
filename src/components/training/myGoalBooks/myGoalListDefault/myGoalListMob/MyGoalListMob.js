@@ -1,9 +1,13 @@
 import MyGoalListDefMobStyled from "./MyGoalListMobStyled";
 import sprite from "../../../../../images/Training/sprite.svg";
+import { useContext } from "react";
+import { ThemeContext } from "../../../../App";
 
 const MyGoalListDefMob = () => {
+  const { theme } = useContext(ThemeContext);
+
   return (
-    <MyGoalListDefMobStyled>
+    <MyGoalListDefMobStyled colors={theme}>
       <div className="goalListMob_container">
         <svg className="goalListMob_SvgBook">
           <use href={sprite + "#icon-Book"}></use>

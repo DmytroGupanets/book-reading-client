@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const BookMobileStyled = styled.div`
   display: flex;
-  background-color: #ffffff;
+  background-color: ${({ colors }) => colors.secondaryBg};
   padding: 20px 10px 20px 20px;
   margin-bottom: 15px;
 
@@ -24,7 +24,7 @@ export const BookMobileStyled = styled.div`
     font-weight: 500;
     font-size: 12px;
     line-height: 1.25;
-    color: #242a37;
+    color: ${({ colors }) => colors.primaryText};
   }
 
   .bookInfo {
@@ -48,7 +48,7 @@ export const BookMobileStyled = styled.div`
     font-size: 12px;
     line-height: 1.25;
 
-    color: #898f9f;
+    color: ${({ colors }) => colors.secondaryText};
   }
 
   .bookFieldValue {
@@ -60,13 +60,13 @@ export const BookMobileStyled = styled.div`
     font-weight: 500;
     font-size: 12px;
     line-height: 1.25;
-    color: #242a37;
+    color: ${({ colors }) => colors.primaryText};
   }
 
   .resumeButtonMobile {
     margin-left: 20px;
     padding: 0 32px;
-    background: #6d7a8d;
+    background: ${({ colors }) => colors.buttonPrimary};
 
     border: none;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
@@ -75,12 +75,12 @@ export const BookMobileStyled = styled.div`
     font-weight: 500;
     font-size: 14px;
     line-height: 2.71;
-    color: #ffffff;
+    color: ${({ colors }) => colors.secondaryBg};
     cursor: pointer;
 
     &:hover,
     &:focus {
-      color: #242a37;
+      color: ${({ colors }) => colors.primaryText};
     }
   }
 `;

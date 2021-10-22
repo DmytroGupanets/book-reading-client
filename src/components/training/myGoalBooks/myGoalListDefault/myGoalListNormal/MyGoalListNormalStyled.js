@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import colors from "../../../../../styles/colors";
-const { darkColors } = colors;
 
 const MyGoalListNormalStyled = styled.div`
   width: 100%;
@@ -40,7 +38,7 @@ const MyGoalListNormalStyled = styled.div`
     }
   }
   .goalListNorm_List__Item {
-    color: ${darkColors.secondaryText};
+    color: ${({ colors }) => colors.secondaryText};
     font-size: 14px;
     font-weight: 500;
     line-height: 2.7;

@@ -6,6 +6,8 @@ const ModalMyTrainingStyled = styled.div`
     bottom: 0;
     width: 100%;
     background: #000;
+    padding: 0;
+    tex
   }
   .modalWrapper.open {
     height: 100%;
@@ -18,8 +20,21 @@ const ModalMyTrainingStyled = styled.div`
   }
   .modalBody {
     max-width: 320px;
-    background: white;
+    background: #F6F7FB;
     max-height: 100%;
+  }
+
+  .modalBackButton{
+    border: none;
+    background: transparent;
+    margin-bottom: 26px;
+    text-align: left;
+
+  }
+
+  .modalBackIcon{
+    width: 24px;
+    height: 12px;
   }
 `;
 

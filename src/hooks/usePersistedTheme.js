@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import themes from "../themes";
+import themes from "../styles";
+
 const usePersistedTheme = () => {
   const getTheme = () => {
     const storageTheme = JSON.parse(localStorage.getItem("theme"));

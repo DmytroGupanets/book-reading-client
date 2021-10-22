@@ -1,6 +1,7 @@
 import Slider from "react-slick";
+import { useTranslation } from "react-i18next";
 import quotesIcon from "../../../images/auth/quotes.svg";
-import quotesUA from "../../quotes/ua/quotesUA.json";
+import quotesEN from "../../quotes/en/quotesEN.json";
 import nextArrow from "../../../images/auth/arrowsSlider/nextArrow.svg";
 import prevArrow from "../../../images/auth/arrowsSlider/prevArrow.svg";
 
@@ -40,16 +41,17 @@ const settings = {
 };
 
 const AuthSlider = () => {
+  const { t } = useTranslation();
   return (
     <div>
       <Slider {...settings}>
-        {quotesUA.map((quote) => (
+        {quotesEN.map((quote) => (
           <div className="sliderContainer" key={quote.id}>
             <svg className="quotesIcon" width="31" height="25">
               <use href={quotesIcon + "#icon-quotes"}></use>
             </svg>
-            <p className="loginPageText">{quote.quote}</p>
-            <p className="authorText">{quote.author}</p>
+            <p className="loginPageText">{t(quote.quote)}</p>
+            <p className="authorText">{t(quote.author)}</p>
           </div>
         ))}
       </Slider>

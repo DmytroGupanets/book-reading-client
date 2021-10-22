@@ -59,7 +59,7 @@ const TimerLogicOfGoal = () => {
   }, []);
 
   return (
-    <TimerLogicOfGoalStyled colors={theme.colors}>
+    <TimerLogicOfGoalStyled colors={theme}>
       <div className="time">
         {`${time.days || "00"}`}
         <p className="text">{t("DAYS")}</p>

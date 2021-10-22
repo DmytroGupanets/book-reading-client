@@ -1,14 +1,37 @@
-import React, { useState } from "react";
-import Select from "react-select";
+import React, { useEffect, useState } from "react";
+import Select, { components } from "react-select";
 import { getPlannedBooks } from "../../../../redux/books/booksSelectors";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import MyGoalList from "../../myGoalBooks/myGoalList/MyGoalList";
+import {
+  addSelectedBook,
+  removeSelectedBook,
+  setPlannedBooksForSelect,
+} from "../../../../redux/target/targetActions";
+import {
+  getAllPlannedBooks,
+  getAllSelectedBooks,
+} from "../../../../redux/target/targetSelectors";
+import SelectBooksStyled from "./SelectBooksStyled";
 
-const SelectBooks = () => {
+import sprite from "../../../../images/sprite.svg";
+
+const SelectBooks = ({ toggleModal }) => {
+  const dispatch = useDispatch();
   const books = useSelector(getPlannedBooks);
+  const plannedBooks = useSelector(getAllPlannedBooks);
+  // const selectedBooks = useSelector(getAllSelectedBooks);
+
   const [value, setValue] = useState(books);
   const [selectedBook, setSelectedBook] = useState({});
-  const [addTrainingBooks, setAddTrainingBooks] = useState([]);
+
+  useEffect(() => {
+    dispatch(setPlannedBooksForSelect(books));
+  }, []);
+
+  useEffect(() => {
+    setValue(plannedBooks);
+  }, [plannedBooks]);
 
   const handleInputChange = (value, e) => {
     if (e.action === "input-change") {
@@ -22,11 +45,8 @@ const SelectBooks = () => {
   };
 
   const onHandleClick = (e) => {
-    setAddTrainingBooks((state) => [...state, selectedBook]);
-
-    setValue((state) => [
-      ...state.filter((book) => book._id !== selectedBook._id),
-    ]);
+    dispatch(addSelectedBook(selectedBook));
+    toggleModal();
   };
 
   const options = value.map(({ name, author, year, pages, _id }) => ({
@@ -34,30 +54,42 @@ const SelectBooks = () => {
     label: name,
   }));
 
-  const onHandleDelete = (e) => {
-    const bookId = e.currentTarget.getAttribute("bookid");
+  // const onHandleDelete = (e) => {
+  //   const bookId = e.currentTarget.getAttribute("bookid");
+  //   const bookToRemove = books.find((book) => book._id === bookId);
 
-    setAddTrainingBooks((state) => [
-      ...state.filter((book) => book._id !== bookId),
-    ]);
+  //   dispatch(removeSelectedBook(bookToRemove));
+  // };
+  const CaretDownIcon = () => {
+    return (
+      <svg className="selectBooksIconPolygon">
+        <use href={sprite + "#icon-polygon"} />
+      </svg>
+    );
+  };
 
-    setValue((state) => [
-      ...state,
-      ...books.filter((book) => book._id === bookId),
-    ]);
+  const DropdownIndicator = (props) => {
+    return (
+      <components.DropdownIndicator {...props}>
+        <CaretDownIcon />
+      </components.DropdownIndicator>
+    );
   };
 
   return (
-    <>
+    <SelectBooksStyled>
       <Select
         options={options}
         closeMenuOnSelect={true}
         onChange={onChange}
         onInputChange={handleInputChange}
+        components={{ DropdownIndicator }}
       />
-      <MyGoalList data={addTrainingBooks} onClickDelete={onHandleDelete} />
-      <button onClick={onHandleClick}>Додати</button>
-    </>
+      {/* <MyGoalList data={selectedBooks} onClickDelete={onHandleDelete} /> */}
+      <button className="selectBooksButton" onClick={onHandleClick}>
+        Додати
+      </button>
+    </SelectBooksStyled>
   );
 };
 

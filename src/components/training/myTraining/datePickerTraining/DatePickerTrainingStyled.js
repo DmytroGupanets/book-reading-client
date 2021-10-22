@@ -29,6 +29,9 @@ const DatePickerTrainingStyled = styled.div`
     width: 13px;
     height: 7px;
   }
+  .react-datepicker__input-container {
+    background: background: #F6F7FB;;
+  }
 `;
 
 export default DatePickerTrainingStyled;

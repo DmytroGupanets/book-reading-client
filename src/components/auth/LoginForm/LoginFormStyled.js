@@ -43,6 +43,7 @@ const LoginFormStyled = styled.div`
   .inputError {
     position: absolute;
     top: 78px;
+    right: 0;
     font-size: 10px;
     letter-spacing: 0.04em;
 

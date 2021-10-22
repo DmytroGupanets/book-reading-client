@@ -11,6 +11,9 @@ const ModalResume = ({ onClose, bookId, openForm }) => {
   const filledStar = starsRating + "#star-active";
   const [stars, setStars] = useState(0);
   const [textArea, setTextArea] = useState("");
+  const [amountSymbols, setAmountSymbols] = useState(1000);
+  const [warning, setWarning] = useState(false);
+
   const dispatch = useDispatch();
   const { theme } = useContext(ThemeContext);
 
@@ -35,11 +38,18 @@ const ModalResume = ({ onClose, bookId, openForm }) => {
   };
 
   const onTextInput = (e) => {
-    setTextArea(e.target.value);
+    const text = e.target.value;
+    setTextArea(text);
+
+    const symbolsRemaining = 1000 - text.length;
+
+    if (symbolsRemaining <= 10) setWarning(true);
+    if (symbolsRemaining > 10 && warning === true) setWarning(false);
+    setAmountSymbols(symbolsRemaining);
   };
 
   return (
-    <ModalResumeStyled colors={theme}>
+    <ModalResumeStyled colors={theme} warning={warning}>
       <p className="chooseRating">Обрати рейтинг книги</p>
       <ReactStars
         count={5}
@@ -64,16 +74,17 @@ const ModalResume = ({ onClose, bookId, openForm }) => {
 
       <label className="resumeLabel" htmlFor="resumeText">
         Резюме
+        <textarea
+          className="ResumeTextArea"
+          type="text"
+          name="resumeText"
+          value={textArea}
+          placeholder="..."
+          onChange={onTextInput}
+          maxLength="1000"
+        />
+        <p className="symbolsAmount">Осталось {amountSymbols} символов</p>
       </label>
-
-      <textarea
-        className="ResumeTextArea"
-        type="text"
-        name="resumeText"
-        value={textArea}
-        placeholder="..."
-        onChange={onTextInput}
-      />
 
       <div className="buttonsWrapper">
         <button

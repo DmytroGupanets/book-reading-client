@@ -11,6 +11,7 @@ import ModalResume from "../modalResume/ModalResume";
 import { ThemeContext } from "../../App";
 
 const BookMobile = ({ book }) => {
+  const { t } = useTranslation();
   const [modalState, setModalState] = useState(false);
   const hasResume = Boolean(book.resume);
   const [modalForm, setModalForm] = useState(hasResume);
@@ -27,8 +28,6 @@ const BookMobile = ({ book }) => {
     }
     setModalForm((state) => !state);
   };
-
-  const { t } = useTranslation();
 
   return (
     <BookMobileStyled colors={theme}>

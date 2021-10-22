@@ -14,10 +14,13 @@ import {
   registerRequest,
   getCurrentUserSuccess,
   setGoogleToken,
+  resetError,
 } from "./authActions";
 
 const setError = (_, { payload }) => payload;
-const refreshError = () => null;
+const refreshError = () => {
+  return null;
+};
 
 const initialUserState = {
   name: null,
@@ -39,6 +42,7 @@ const token = createReducer(null, {
 });
 
 const error = createReducer(null, {
+  [resetError]: refreshError,
   [registerError]: setError,
   [getCurrentUserError]: setError,
   [loginError]: setError,

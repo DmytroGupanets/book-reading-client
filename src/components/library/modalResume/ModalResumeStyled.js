@@ -25,8 +25,12 @@ export const ModalResumeStyled = styled.div`
     width: 17px;
   }
 
+  .resumeLabel {
+    position: relative;
+  }
+
   .ResumeTextArea {
-    margin-bottom: 25px;
+    width: 210px;
     height: 170px;
     resize: none;
     padding: 10px;
@@ -36,18 +40,36 @@ export const ModalResumeStyled = styled.div`
     font-family: "Montserrat", sans-serif;
     font-weight: 500;
     font-size: 14px;
-    line-height: 1.37;
+    line-height: 1.1;
 
     color: ${({ colors }) => colors.secondaryText};
+
+    &:active {
+      border-color: red;
+    }
 
     @media screen and (min-width: 768px) {
       width: 510px;
     }
   }
 
+  .symbolsAmount {
+    position: absolute;
+    bottom: -10px;
+    right: 0;
+
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 1.37;
+    color: ${({ warning }) => (warning ? "#d80000" : "#A6ABB9")};
+  }
+
   .buttonsWrapper {
     display: flex;
     justify-content: center;
+
+    margin-top: 25px;
   }
 
   .resumeModalBackBtn {

@@ -2,8 +2,10 @@ import MyGoalListItemMobStyled from "./MyGoalListItemMobStyled";
 import sprite from "../../../../../../images/Training/sprite.svg";
 import { useContext } from "react";
 import { ThemeContext } from "../../../../../App";
+import { useTranslation } from "react-i18next";
 
 const MyGoalListItemMob = ({ item, onClickDelete }) => {
+  const { t } = useTranslation();
   const { theme } = useContext(ThemeContext);
   const { name, author, year, pages, _id } = item;
 
@@ -17,13 +19,13 @@ const MyGoalListItemMob = ({ item, onClickDelete }) => {
         <div className="myGoalListMob_ListContainer">
           <ul className="myGoalListMob_ListInfo1">
             <li>
-              <p>Автор:</p>
+              <p>{t("Author m")}:</p>
             </li>
             <li>
-              <p>Рік:</p>
+              <p>{t("Year m")}:</p>
             </li>
             <li>
-              <p>Стор.:</p>
+              <p>{t("Pages")}:</p>
             </li>
           </ul>
           <ul className="myGoalListMob_ListInfo2">

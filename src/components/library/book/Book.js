@@ -6,12 +6,14 @@ import Modal from "../../modal/Modal";
 import ModalResume from "../modalResume/ModalResume";
 import ModalFilled from "../modalResume/modalFilled.js/ModalFilled";
 import { ThemeContext } from "../../App";
+import { useTranslation } from "react-i18next";
 
 const Book = ({ book }) => {
   const [modalState, setModalState] = useState(false);
   const hasResume = Boolean(book.resume);
   const [modalForm, setModalForm] = useState(hasResume);
 
+  const { t } = useTranslation();
   const { theme } = useContext(ThemeContext);
 
   const toggleModal = () => {
@@ -48,7 +50,7 @@ const Book = ({ book }) => {
         <div className="resume">
           <RatingStars book={book} />
           <button className="resumeButton" type="button" onClick={toggleModal}>
-            Резюме
+            {t("Resume")}
           </button>
         </div>
       ) : null}

@@ -7,12 +7,14 @@ import Statistic from "../statistic/Statistic";
 import TargetRead from "./targetRead/TargetRead";
 import TrainingStyled from "./TrainingStyled";
 import MyTraining from "./myTraining/MyTraining";
+import { useTranslation } from "react-i18next";
 
 import MyGoalBooks from "./myGoalBooks/MyGoalBooks";
 import { getAllBooksOperation } from "../../redux/books/booksOperations";
 
-
 const Training = () => {
+  const { t } = useTranslation();
+
   const [state, setState] = useState(false);
   const dispatch = useDispatch();
 
@@ -30,7 +32,7 @@ const Training = () => {
       <TargetRead state={state} />
       <MyGoalBooks />
       <button className="startTrainingBtn" onClick={onHandleClickStart}>
-        Початок тренування
+        {t("Start training")}
       </button>
       <MyTraining />
       <GraphContainer />

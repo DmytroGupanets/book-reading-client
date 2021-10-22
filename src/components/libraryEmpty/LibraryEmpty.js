@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { addNewBookOperation } from "../../redux/books/booksOperations";
 import { LibraryEmptyStyled } from "./LibraryEmptyStyled";
 import { ThemeContext } from "../App";
+import { useTranslation } from "react-i18next";
 
 const initialState = {
   title: "",
@@ -13,6 +14,7 @@ const initialState = {
 };
 
 const LibraryEmpty = () => {
+  const { t } = useTranslation();
   const { theme } = useContext(ThemeContext);
   const [state, setState] = useState(initialState);
   const dispatch = useDispatch();
@@ -38,7 +40,7 @@ const LibraryEmpty = () => {
     <LibraryEmptyStyled onSubmit={onHandleSubmit} colors={theme}>
       <div className="bookContainer">
         <label className="aboutBook aboutBook-title">
-          Назва книги
+          {t("Book title")}
           <input
             required
             id="title"
@@ -54,7 +56,7 @@ const LibraryEmpty = () => {
         </label>
         <div className="aboutBookContainer">
           <label className="aboutBook aboutBook-author">
-            Автор книги
+            {t("Author")}
             <input
               required
               id="author"
@@ -69,7 +71,7 @@ const LibraryEmpty = () => {
             />
           </label>
           <label className="aboutBook aboutBook-year">
-            Рік випуску
+            {t("Publication date")}
             <input
               required
               id="year"
@@ -82,7 +84,7 @@ const LibraryEmpty = () => {
             />
           </label>
           <label className="aboutBook aboutBook-page">
-            Кількість сторінок
+            {t("Amount of pages")}
             <input
               required
               id="pages"
@@ -96,7 +98,7 @@ const LibraryEmpty = () => {
           </label>
         </div>
         <button type="submit" className="addButton">
-          Додати
+          {t("Add")}
         </button>
       </div>
     </LibraryEmptyStyled>

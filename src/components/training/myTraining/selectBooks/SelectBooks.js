@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Select, { components } from "react-select";
+import { useTranslation } from "react-i18next";
 import { getPlannedBooks } from "../../../../redux/books/booksSelectors";
 import { useDispatch, useSelector } from "react-redux";
 import MyGoalList from "../../myGoalBooks/myGoalList/MyGoalList";
@@ -18,7 +19,6 @@ import SelectBooksStyled from "./SelectBooksStyled";
 import sprite from "../../../../images/sprite.svg";
 
 const SelectBooks = ({ toggleModal }) => {
-  import { useTranslation } from "react-i18next";
   const { t } = useTranslation();
 
   const dispatch = useDispatch();
@@ -95,7 +95,6 @@ const SelectBooks = ({ toggleModal }) => {
         {t("Add")}
       </button>
     </SelectBooksStyled>
-
   );
 };
 

@@ -8,12 +8,24 @@ import SelectBooks from "./selectBooks/SelectBooks";
 import { ThemeContext } from "../../App";
 import { useContext } from "react";
 
+import { useDispatch } from "react-redux";
+import {
+  addPreplanningEndtDate,
+  addPreplanningStartDate,
+} from "../../../redux/target/targetActions";
+import { useTranslation } from "react-i18next";
+
+
 const initialState = {
   startDate: null,
   endDate: null,
 };
 
 const MyTraining = () => {
+
+  const { t } = useTranslation();
+  const dispatch = useDispatch();
+
   const { theme } = useContext(ThemeContext);
   const [startDate, setStartDate] = useState(initialState.startDate);
   const [endDate, setEndDate] = useState(initialState.endDate);
@@ -26,11 +38,11 @@ const MyTraining = () => {
 
   return (
     <MyTrainingStyled colors={theme}>
-      <h3 className="trainingTitle">Моє тренування</h3>
+      <h3 className="trainingTitle">{t("My training")}</h3>
       <div className="datePickerWrapper">
         <DatePicker
           className="datePickerTraining"
-          placeholderText="ПОЧАТОК"
+          placeholderText={t("Start")}
           dateFormat="dd.MM.yyyy"
           selected={startDate}
           onChange={(date) => setStartDate(date)}
@@ -50,7 +62,7 @@ const MyTraining = () => {
         <DatePicker
           className="datePickerTraining"
           dateFormat="dd.MM.yyyy"
-          placeholderText="КІНЕЦЬ"
+          placeholderText={t("Finish")}
           selected={endDate}
           onChange={(date) => setEndDate(date)}
           selectsEnd

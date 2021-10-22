@@ -3,8 +3,21 @@ import Select from "react-select";
 import { getPlannedBooks } from "../../../../redux/books/booksSelectors";
 import { useSelector } from "react-redux";
 import MyGoalList from "../../myGoalBooks/myGoalList/MyGoalList";
+import {
+  addSelectedBook,
+  removeSelectedBook,
+  setPlannedBooksForSelect,
+} from "../../../../redux/target/targetActions";
+import {
+  getAllPlannedBooks,
+  getAllSelectedBooks,
+} from "../../../../redux/target/targetSelectors";
+import { useTranslation } from "react-i18next";
 
 const SelectBooks = () => {
+  const { t } = useTranslation();
+  const dispatch = useDispatch();
+
   const books = useSelector(getPlannedBooks);
   const [value, setValue] = useState(books);
   const [selectedBook, setSelectedBook] = useState({});
@@ -55,8 +68,10 @@ const SelectBooks = () => {
         onChange={onChange}
         onInputChange={handleInputChange}
       />
-      <MyGoalList data={addTrainingBooks} onClickDelete={onHandleDelete} />
-      <button onClick={onHandleClick}>Додати</button>
+
+      <MyGoalList data={selectedBooks} onClickDelete={onHandleDelete} />
+      <button onClick={onHandleClick}>{t("Add")}</button>
+
     </>
   );
 };

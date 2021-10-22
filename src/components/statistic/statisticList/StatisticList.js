@@ -5,11 +5,19 @@ import { getInProgressdBooks } from "../../../redux/books/booksSelectors";
 import { getRecords } from "../../../redux/target/targetSelectors";
 
 import { ThemeContext } from "../../App";
+import { useTranslation } from "react-i18next";
 import StatisticListStyled from "./StatisticListStyled";
+
 
 const StatisticList = ({ toggleModal }) => {
   const { theme } = useContext(ThemeContext);
   const [pagesState, setQuantityPages] = useState(0);
+
+
+
+  const { t } = useTranslation();
+
+  
 
   const records = useSelector(getRecords);
   const booksInProgress = useSelector(getInProgressdBooks);
@@ -90,7 +98,7 @@ const StatisticList = ({ toggleModal }) => {
 
   return (
     <StatisticListStyled colors={theme}>
-      <h2 className="statisticTitle">Статистика</h2>
+      <h2 className="statisticTitle">{t("STATISTICS")}</h2>
 
       <div className="listWrapper">
         {records &&
@@ -103,7 +111,7 @@ const StatisticList = ({ toggleModal }) => {
                 <li className="statisticListItemTime">{time}</li>
                 <li className="statisticListItemWrapper">
                   {pages}
-                  <p className="statisticListItemTime">стор.</p>
+                  <p className="statisticListItemTime">{t("pages")}</p>
                 </li>
               </ul>
             ))}

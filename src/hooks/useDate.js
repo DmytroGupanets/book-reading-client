@@ -37,12 +37,6 @@ const useDate = () => {
     return startDateStr.join("-");
   };
 
-  // const chengeEndDataIdx = (str) => {
-  //   const startDateStr = str.slice().split(".");
-  //   [startDateStr[0], startDateStr[1]] = [startDateStr[1], startDateStr[0]];
-  //   return startDateStr.join("-");
-  // };
-
   const rangeBetwenStartAndEndDates = (startDate, endDate) => {
     const reverseStart = startDate.split(".").reverse().join("-");
     const reverseEnd = endDate.split(".").reverse().join("-");

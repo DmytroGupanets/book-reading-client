@@ -14,7 +14,6 @@ import { ThemeContext } from "../../App";
 
 const TargetRead = ({ state }) => {
   const { theme } = useContext(ThemeContext);
-  const readingBooks = 3;
 
   const [
     stateData,

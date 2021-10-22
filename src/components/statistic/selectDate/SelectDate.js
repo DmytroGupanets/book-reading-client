@@ -1,10 +1,9 @@
 import Select from "react-select";
-import useDate from "../../../hooks/useDate";
-
-import SelectDateStyled from "./SelectDateStyled";
-import sprite from "../../../images/sprite.svg";
 import { useContext } from "react";
 import { ThemeContext } from "../../App";
+import SelectDateStyled from "./SelectDateStyled";
+import sprite from "../../../images/sprite.svg";
+import useDate from "../../../hooks/useDate";
 
 const SelectDate = ({ date, setStatistic }) => {
   const { theme } = useContext(ThemeContext);

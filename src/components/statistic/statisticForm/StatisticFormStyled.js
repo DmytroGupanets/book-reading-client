@@ -7,7 +7,7 @@ const StatisticFormStyled = styled.form`
     font-weight: 600;
     font-size: 12px;
     line-height: 38px;
-    color: ${({ colors }) => colors.lightColors.primaryText};
+    color: ${({ colors }) => colors.primaryText};
 
     text-transform: uppercase;
   }
@@ -27,24 +27,24 @@ const StatisticFormStyled = styled.form`
     font-weight: 500px;
     font-size: 11px;
     line-height: 20px;
-    color: ${({ colors }) => colors.lightColors.secondaryText};
+    color: ${({ colors }) => colors.secondaryText};
   }
   .statisticInput {
     padding: 0 0 0 13px;
     height: 42px;
     font-size: 14px;
 
-    color: ${({ colors }) => colors.lightColors.primaryText};
-    background: ${({ colors }) => colors.lightColors.background};
-    border: 1px solid ${({ colors }) => colors.lightColors.icons};
+    color: ${({ colors }) => colors.primaryText};
+    background: ${({ colors }) => colors.primaryBg};
+    border: 1px solid ${({ colors }) => colors.icons};
   }
   .statisticBtn {
     width: 171px;
     height: 42px;
     font-weight: 500;
     font-size: 14px;
-    color: ${({ colors }) => colors.lightColors.secondaryBg};
-    background: ${({ colors }) => colors.lightColors.accent};
+    color: ${({ colors }) => colors.secondaryBg};
+    background: ${({ colors }) => colors.accent};
     border: none;
     cursor: pointer;
   }

@@ -15,3 +15,33 @@ export const completeTargetSuccess = createAction(
   "target/completeTargetSuccess"
 );
 export const completeTargetError = createAction("target/completeTargetError");
+
+export const setBookInTrainingSuccess = createAction(
+  "target/setBookInTrainingSuccess"
+);
+
+export const addTargetRequest = createAction("target/addTargetRequest");
+export const addTargetSucces = createAction("target/addTargetSucces");
+export const addTargetError = createAction("target/addTargetError");
+
+export const setPlannedBooksForSelect = createAction(
+  "targets/preplanning/setPlannnedBooksForSelect"
+);
+
+export const addSelectedBook = createAction(
+  "targets/preplanning/addSelectedBook"
+);
+export const removeSelectedBook = createAction(
+  "targets/preplanning/removeSelectedBook"
+);
+
+export const resetPreplanning = createAction(
+  "targets/preplanning/resetPreplanning"
+);
+
+export const addPreplanningStartDate = createAction(
+  "targets/preplanning/addPreplanningStartDate"
+);
+export const addPreplanningEndtDate = createAction(
+  "targets/preplanning/addPreplanningEndDate"
+);

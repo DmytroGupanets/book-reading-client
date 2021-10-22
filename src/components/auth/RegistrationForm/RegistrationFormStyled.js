@@ -10,8 +10,8 @@ export const RegistrationFormStyled = styled.div`
 
   .formLabel {
     display: block;
-    color: #ffffff;
-    font-family: Montserrat, sans-serif;
+    color: ${({ colors }) => colors.secondaryBg};
+    font-family: "Montserrat", sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 14px;
@@ -27,10 +27,10 @@ export const RegistrationFormStyled = styled.div`
     width: 100%;
     height: 42px;
     display: block;
-    font-family: Montserrat;
+    font-family: "Montserrat", sans-serif;
     font-weight: normal;
     font-size: 14px;
-    background-color: #f5f7fa;
+    background-color: ${({ colors }) => colors.iconsActive};
     box-shadow: inset 0px 1px 2px rgba(29, 29, 27, 0.15);
     border: none;
   }
@@ -44,12 +44,12 @@ export const RegistrationFormStyled = styled.div`
 
   .authButton {
     padding: 22px 62px;
-    color: #ffffff;
-    font-family: Montserrat;
+    color: ${({ colors }) => colors.secondaryBg};
+    font-family: "Montserrat", sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 16px;
-    background-color: #ff6b08;
+    background-color: ${({ colors }) => colors.accent};
     text-overflow: ellipsis;
     border: none;
     overflow: hidden;
@@ -59,17 +59,29 @@ export const RegistrationFormStyled = styled.div`
   .loginContainer {
     margin-top: 12px;
     text-align: center;
-    font-family: Montserrat, sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-weight: 500;
     font-size: 13px;
-    color: #898f9f;
+    color: ${({ colors }) => colors.secondaryText};
   }
 
   .login {
     margin-left: 4px;
-    color: #ff6b08;
+    color: ${({ colors }) => colors.accent};
     text-decoration: underline;
     cursor: pointer;
+  }
+  .formGroup {
+    position: relative;
+  }
+  .inputError {
+    position: absolute;
+    top: 78px;
+    right: 0;
+    font-size: 10px;
+    letter-spacing: 0.04em;
+
+    color: #eb5757;
   }
 
   @media screen and (min-width: 768px) {
@@ -77,13 +89,13 @@ export const RegistrationFormStyled = styled.div`
     padding: 40px 40px 30px 40px;
     width: 100%;
     max-width: 400px;
-    background-color: #ffffff;
+    background-color: ${({ colors }) => colors.secondaryBg};
 
     .form {
     }
 
     .formLabel {
-      color: #898f9f;
+      color: ${({ colors }) => colors.secondaryText};
     }
   }
 

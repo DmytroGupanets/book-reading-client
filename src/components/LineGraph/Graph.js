@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import {
   LineChart,
   Line,
@@ -13,14 +14,20 @@ import {
 
 const data = [
   {
+    PLAN: 30,
+    ACT: 29,
     ПЛАН: 30,
     ФАКТ: 29,
   },
   {
+    PLAN: 40,
+    ACT: 40,
     ПЛАН: 40,
     ФАКТ: 40,
   },
   {
+    PLAN: 67,
+    ACT: 56,
     ПЛАН: 67,
     ФАКТ: 56,
   },
@@ -28,12 +35,15 @@ const data = [
 
 const defaultData = [
   {
+    PLAN: 0,
+    ACT: 0,
     ПЛАН: 0,
     ФАКТ: 0,
   },
 ];
 
 export default function Graph() {
+  const { t } = useTranslation();
   return (
     <ResponsiveContainer width={"99%"} height={215}>
       <LineChart
@@ -53,7 +63,7 @@ export default function Graph() {
         <Tooltip />
         <Line
           type="monotone"
-          dataKey="ПЛАН"
+          dataKey={t("PLAN")}
           stroke="#091E3F"
           strokeWidth={2}
           dot={{ r: 5 }}
@@ -61,7 +71,7 @@ export default function Graph() {
         />
         <Line
           type="monotone"
-          dataKey="ФАКТ"
+          dataKey={t("ACT")}
           stroke="#FF6B08"
           strokeWidth={2}
           dot={{ r: 5 }}

@@ -1,14 +1,21 @@
 import Graph from "./Graph";
 import styled from "styled-components";
+import { useContext } from "react";
+import { ThemeContext } from "../App";
+import { useTranslation } from "react-i18next";
 
 const GraphContainer = () => {
+  const { t } = useTranslation();
+  const { theme } = useContext(ThemeContext);
+
   return (
-    <DivStyled>
+    <DivStyled colors={theme}>
       <h3 className="graph__count-page">
-        КОЛИЧЕСТВО СТРАНИЦ / ДЕНЬ <span>{13}</span>
+        {t("Amount of pages / day")}
+        <span>{13}</span>
       </h3>
       <Graph />
-      <p className="time-paragraph">ЧАС</p>
+      <p className="time-paragraph">{t("TIME")}</p>
     </DivStyled>
   );
 };
@@ -20,34 +27,34 @@ const DivStyled = styled.div`
   padding-bottom: 39px;
   padding-left: 22px;
   padding-right: 7px;
-  background-color: #fff;
+  background-color: ${({ colors }) => colors.secondaryBg};
   box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.25);
 
   > h3 {
     width: 215px;
-    font-family: Montserrat;
+    font-family: "Montserrat", sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 11px;
     line-height: 38px;
-    color: #242a37;
+    color: ${({ colors }) => colors.primaryText};
   }
 
   > h3 > span {
     margin-left: 13px;
     font-weight: 600;
-    background: #f5f7fa;
+    background: ${({ colors }) => colors.iconsActive};
   }
   > p {
     position: absolute;
     left: 74%;
     top: 74%;
-    font-family: Montserrat;
+    font-family: "Montserrat", sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 12px;
     line-height: 38px;
-    color: #091e3f;
+    color: ${({ colors }) => colors.digits};
   }
   @media screen and (min-width: 767px) {
     width: 678px;

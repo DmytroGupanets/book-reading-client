@@ -9,10 +9,11 @@ const LogOutStyled = styled.div`
     font-weight: 300;
     font-size: 14px;
     line-height: 2.71;
+    cursor: pointer;
 
     text-decoration-line: underline;
 
-    color: #242a37;
+    color: ${({ colors }) => colors.primaryText};
   }
 `;
 

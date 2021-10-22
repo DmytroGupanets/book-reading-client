@@ -1,10 +1,14 @@
 import styled from "styled-components";
-import colors from "../../../../../styles/colors";
-const { darkColors } = colors;
 
 const MyGoalListNormalStyled = styled.div`
   width: 100%;
   margin: 0 auto;
+  margin-top: 40px;
+  margin-bottom: 50px;
+  @media screen and (min-width: 1200px) {
+    margin-top: 25px;
+    margin-bottom: 40px;
+  }
   font-family: "Montserrat", sans-serif;
   .goalListNorm_List {
     @media screen and (min-width: 768px) {
@@ -34,7 +38,7 @@ const MyGoalListNormalStyled = styled.div`
     }
   }
   .goalListNorm_List__Item {
-    color: ${darkColors.secondaryText};
+    color: ${({ colors }) => colors.secondaryText};
     font-size: 14px;
     font-weight: 500;
     line-height: 2.7;

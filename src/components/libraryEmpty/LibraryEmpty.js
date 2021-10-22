@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useFormik } from "formik";
 import { useDispatch } from 'react-redux';
@@ -5,9 +6,14 @@ import { addNewBookOperation } from '../../redux/books/booksOperations';
 import { LibraryEmptyStyled } from './LibraryEmptyStyled';
 import { libraryValidationSchema } from './validationLibrary/validationSchema';
 
+import { useContext } from "react";
+import { ThemeContext } from "../App";
+import { useTranslation } from "react-i18next";
 
 const LibraryEmpty = () => {
     const dispatch = useDispatch();
+    const { t } = useTranslation();
+    const { theme } = useContext(ThemeContext);
    
     const formik = useFormik({
         initialValues: {
@@ -30,7 +36,6 @@ const LibraryEmpty = () => {
       },
     });
     
-    console.log(formik);
     return (
         
         <LibraryEmptyStyled  onSubmit={formik.handleSubmit}>
@@ -40,8 +45,6 @@ const LibraryEmpty = () => {
              <input 
             id="title"
             type="text"
-            // minLength="1"
-            // maxLength="50"
             name="title"
             value={formik.values.title}
             placeholder="..."
@@ -203,3 +206,5 @@ const LibraryEmpty = () => {
 // }
 
 // export default LibraryEmpty;
+    
+

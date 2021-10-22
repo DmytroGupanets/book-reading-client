@@ -1,14 +1,50 @@
-import { useState } from "react";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { getInProgressdBooks } from "../../../redux/books/booksSelectors";
+import {
+  endDate,
+  getAllPlannedBooks,
+  getAllSelectedBooks,
+  getIdxOfReadedBooksInTraining,
+  getPreplaning,
+  startDate,
+} from "../../../redux/target/targetSelectors";
+import useDate from "../../../hooks/useDate";
+
 import TargetReadStyled from "./TargetReadStyled";
-import colors from "../../../styles/colors";
+import { useContext } from "react";
+import { ThemeContext } from "../../App";
 
 const TargetRead = ({ state }) => {
-  const qttBooks = 5;
-  const qttDays = 12;
-  const readingBooks = 3;
+  const { theme } = useContext(ThemeContext);
+
+  const [
+    stateData,
+    moment,
+    setCurrentData,
+    setQuantityBetweenDays,
+    rangeBetwenStartAndEndDates,
+  ] = useDate();
+
+  const start = useSelector(startDate);
+  const end = useSelector(endDate);
+  const booksInProgress = useSelector(getInProgressdBooks);
+  const booksInSelected = useSelector(getAllSelectedBooks);
+  const preplaning = useSelector(getPreplaning);
+  const idxOfReadedBooksInTraining = useSelector(getIdxOfReadedBooksInTraining);
+  // console.log(booksInSelected);
+  // console.log(preplaning.startDate);
+
+  // useEffect(() => {}, []);
+
+  const trainingQuantityDays =
+    start && end && rangeBetwenStartAndEndDates(start, end);
+
+  // ? rangeBetwenStartAndEndDates(preplaning.startDate, preplaning.endDate)
+  // : rangeBetwenStartAndEndDates(start, end);
 
   return (
-    <TargetReadStyled colors={colors} state={state}>
+    <TargetReadStyled colors={theme} state={state}>
       <div className="tabletWrapperStyled">
         <div className="titleWrapper">
           <h3 className="targetReadTitle">Моя мета прочитати</h3>
@@ -17,16 +53,27 @@ const TargetRead = ({ state }) => {
 
       <ul className="targetReadlist">
         <li className="targetReadItem">
-          <div className="targetReadDig">{qttBooks}</div>
+          <div className="targetReadDig">
+            {!state ? booksInSelected.length : booksInProgress.length}
+          </div>
           <p className="targetReadItemDescription">Кількість книжок</p>
         </li>
         <li className="targetReadItem">
-          <div className="targetReadDig">{qttDays}</div>
+          <div className="targetReadDig">
+            {trainingQuantityDays ? trainingQuantityDays : 0}
+          </div>
           <p className="targetReadItemDescription">Кількість днів</p>
         </li>
         {state && (
           <li className="targetReadItem">
-            <div className="targetReadDigRemain"> {readingBooks}</div>
+            <div className="targetReadDigRemain">
+              {idxOfReadedBooksInTraining === -1
+                ? booksInProgress.length
+                : booksInProgress.slice(
+                    idxOfReadedBooksInTraining,
+                    booksInProgress.length - 1
+                  ).length}
+            </div>
             <p className="targetReadItemDescription">Залишилось книжок</p>
           </li>
         )}

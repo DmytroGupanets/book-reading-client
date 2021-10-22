@@ -10,6 +10,18 @@ import {
   completeTargetRequest,
   completeTargetSuccess,
   completeTargetError,
+  setBookInTrainingSuccess,
+  addTargetRequest,
+  addTargetSucces,
+  addTargetError,
+  addSelectedBook,
+  removeSelectedBook,
+  resetPreplanning,
+  setPlannedBooksForSelect,
+  addPlannedBookForSelect,
+  removePlannedBooksForSelect,
+  addPreplanningStartDate,
+  addPreplanningEndtDate,
 } from "./targetActions";
 
 const targetsReducer = createReducer([], {
@@ -19,6 +31,11 @@ const targetsReducer = createReducer([], {
     records: payload,
   }),
   [completeTargetSuccess]: (state, { payload }) => payload,
+  [addTargetSucces]: (state, { payload }) => payload,
+});
+
+const bookInTrainingReducer = createReducer([], {
+  [setBookInTrainingSuccess]: (_, { payload }) => payload,
 });
 
 const isLoadingReducer = createReducer(false, {
@@ -31,6 +48,9 @@ const isLoadingReducer = createReducer(false, {
   [completeTargetRequest]: () => true,
   [completeTargetSuccess]: () => false,
   [completeTargetError]: () => false,
+  [addTargetRequest]: () => true,
+  [addTargetSucces]: () => false,
+  [addTargetError]: () => false,
 });
 
 const errorReducer = createReducer("", {
@@ -40,10 +60,45 @@ const errorReducer = createReducer("", {
   [updateRecordError]: (_, { payload }) => payload,
   [completeTargetRequest]: () => "",
   [completeTargetError]: (_, { payload }) => payload,
+  [addTargetRequest]: () => "",
+  [addTargetError]: (_, { payload }) => payload,
+});
+
+const plannedBooksReducer = createReducer([], {
+  [setPlannedBooksForSelect]: (_, { payload }) => payload,
+  [removeSelectedBook]: (state, { payload }) => [...state, payload],
+  [addSelectedBook]: (state, { payload }) =>
+    state.filter((book) => book._id !== payload._id),
+  [resetPreplanning]: (_, __) => [],
+});
+
+const selectedBooksReducer = createReducer([], {
+  [addSelectedBook]: (state, { payload }) => [...state, payload],
+  [removeSelectedBook]: (state, { payload }) =>
+    state.filter((book) => book._id !== payload._id),
+
+  [resetPreplanning]: (_, __) => [],
+});
+
+const startDateReducer = createReducer("", {
+  [addPreplanningStartDate]: (_, { payload }) => payload,
+});
+
+const endDateReducer = createReducer("", {
+  [addPreplanningEndtDate]: (_, { payload }) => payload,
+});
+
+const preplanningReducer = combineReducers({
+  plannedBooks: plannedBooksReducer,
+  selectedBooks: selectedBooksReducer,
+  startDate: startDateReducer,
+  endDate: endDateReducer,
 });
 
 const targetReducer = combineReducers({
   target: targetsReducer,
+  bookInTraining: bookInTrainingReducer,
+  preplanning: preplanningReducer,
   isLoading: isLoadingReducer,
   error: errorReducer,
 });

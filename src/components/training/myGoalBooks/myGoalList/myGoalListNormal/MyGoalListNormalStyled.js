@@ -1,11 +1,14 @@
 import styled from "styled-components";
-import colors from "../../../../../styles/colors";
-const { darkColors } = colors;
 
 const MyGoalListNormalStyled = styled.section`
   margin: 0 auto;
   margin-top: 20px;
+  margin-bottom: 40px;
   width: 100%;
+  border-bottom: 1px solid #e0e5eb;
+  @media screen and (min-width: 1280px) {
+    width: 886px;
+  }
   .myGoalListNorm_ListHead {
     @media screen and (min-width: 768px) {
       display: flex;
@@ -16,25 +19,25 @@ const MyGoalListNormalStyled = styled.section`
     }
   }
   .myGoalListNorm_item {
-    color: ${darkColors.secondaryText};
+    color: ${({ colors }) => colors.secondaryText};
     font-size: 14px;
     font-weight: 500;
     line-height: 2.7;
   }
   .myGoalListNorm_item:nth-child(1) {
-    margin-right: 180px;
+    margin-right: 171px;
     @media screen and (min-width: 1280px) {
       margin-right: 269px;
     }
   }
   .myGoalListNorm_item:nth-child(2) {
-    margin-right: 145px;
+    margin-right: 146px;
     @media screen and (min-width: 1280px) {
       margin-right: 185px;
     }
   }
   .myGoalListNorm_item:nth-child(3) {
-    margin-right: 78px;
+    margin-right: 69px;
     @media screen and (min-width: 1280px) {
       margin-right: 73px;
     }
@@ -44,9 +47,8 @@ const MyGoalListNormalStyled = styled.section`
     margin-top: 0;
     margin-bottom: 0;
     border-top: 1px solid #e0e5eb;
-    border-bottom: 1px solid #e0e5eb;
     @media screen and (min-width: 768px) {
-      height: 235px;
+      max-height: 235px;
 
       overflow-y: auto;
       scrollbar-width: none;
@@ -70,6 +72,9 @@ const MyGoalListNormalStyled = styled.section`
   .myGoalListNorm_MoreBooksContainer {
     display: flex;
     align-items: center;
+    padding-top: 10px;
+    padding-bottom: 33px;
+    /* border-bottom: 1px solid #e0e5eb; */
   }
   .myGoalListNorm_SvgBook {
     width: 22px;

@@ -1,11 +1,12 @@
 import Select from "react-select";
+import { useContext } from "react";
+import { ThemeContext } from "../../App";
+import SelectDateStyled from "./SelectDateStyled";
+import sprite from "../../../images/sprite.svg";
 import useDate from "../../../hooks/useDate";
 
-import SelectDateStyled from "./SelectDateStyled";
-import colors from "../../../styles/colors";
-import sprite from "../../../images/sprite.svg";
-
 const SelectDate = ({ date, setStatistic }) => {
+  const { theme } = useContext(ThemeContext);
   const [stateData] = useDate();
   const { quantityDays } = stateData;
 
@@ -21,9 +22,10 @@ const SelectDate = ({ date, setStatistic }) => {
   }));
 
   const options = [...optionDays.reverse()];
+  const colors = theme;
 
   return (
-    <SelectDateStyled colors={colors}>
+    <SelectDateStyled colors={theme}>
       <svg className="iconSelectDate">
         <use href={sprite + "#icon-selectDate"} />
       </svg>
@@ -42,9 +44,9 @@ const SelectDate = ({ date, setStatistic }) => {
           ...theme,
           colors: {
             ...theme.colors,
-            primary25: `${colors.lightColors.background}`,
-            primary50: `${colors.lightColors.trainingLabel}`,
-            primary: `${colors.lightColors.accent}`,
+            primary25: `${colors.primaryBg}`,
+            primary50: `${colors.trainingLabel}`,
+            primary: `${colors.accent}`,
           },
         })}
         onChange={onChange}

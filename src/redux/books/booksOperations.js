@@ -59,6 +59,7 @@ export const addBookResumeByIdOperation =
       dispatch(addBookResumeRequest());
       const res = await addBookResumeById(id, resume);
 
+      console.log(`res.data.data`, res.data.data);
       dispatch(addBookResumeSuccess(res.data.data));
     } catch (error) {
       dispatch(addBookResumeError(error.message));

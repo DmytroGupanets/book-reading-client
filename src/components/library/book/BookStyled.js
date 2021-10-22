@@ -4,7 +4,7 @@ export const BookStyled = styled.div`
   display: flex;
   align-items: center;
 
-  background-color: #ffffff;
+  background-color: ${({ colors }) => colors.secondaryBg};
   padding: 20px;
   margin-bottom: 10px;
 
@@ -19,7 +19,7 @@ export const BookStyled = styled.div`
 
   text-align: right;
 
-  color: #242a37;
+  color: ${({ colors }) => colors.primaryText};
 
   box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
 
@@ -83,7 +83,9 @@ export const BookStyled = styled.div`
 
   .resumeButton {
     padding: 0 9px;
-    background: #6d7a8d;
+    background: ${({ colors }) => colors.buttonPrimary};
+
+    border: none;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
 
     margin-left: 18px;
@@ -92,7 +94,14 @@ export const BookStyled = styled.div`
     font-weight: 500;
     font-size: 14px;
     line-height: 2.71;
-    color: #ffffff;
+    color: ${({ colors }) => colors.secondaryBg};
+
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      color: ${({ colors }) => colors.primaryText};
+    }
 
     @media screen and (min-width: 1280px) {
       margin-left: 46px;

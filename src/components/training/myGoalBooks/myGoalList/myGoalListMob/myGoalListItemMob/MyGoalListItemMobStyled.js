@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import colors from "../../../../../../styles/colors";
-const { darkColors } = colors;
 
 const MyGoalListItemMobStyled = styled.li`
   :not(:last-child) {
@@ -12,7 +10,8 @@ const MyGoalListItemMobStyled = styled.li`
   list-style: none;
   display: flex;
   align-items: flex-start;
-  background: #ffffff;
+  justify-content: center;
+  background: ${({ colors }) => colors.secondaryBg};
   border-top: 1px solid #e0e5eb;
 
   :last-child {
@@ -22,13 +21,12 @@ const MyGoalListItemMobStyled = styled.li`
   font-family: "Montserrat", sans-serif;
 
   .myGoalListMob_BookTitle {
-    color: ${darkColors.primaryText};
+    color: ${({ colors }) => colors.primaryText};
     line-height: 1.2;
     margin: 0;
     font-size: 12px;
     font-weight: 500;
     margin-bottom: 5px;
-    width: 127px;
   }
   .myGoalListMob_SvgBook {
     height: 17px;
@@ -52,17 +50,19 @@ const MyGoalListItemMobStyled = styled.li`
     margin-right: 30px;
     font-size: 12px;
     line-height: 3.1;
-    color: ${darkColors.secondaryText};
+    color: ${({ colors }) => colors.secondaryText};
     font-weight: 500;
   }
   .myGoalListMob_ListInfo2 {
     list-style-type: none;
     padding-left: 0;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 500;
-    line-height: 2.7;
+    line-height: 3.1;
   }
   .myGoalListMob_ButtonDelete {
+    cursor: pointer;
+    padding: 0;
     border: none;
     background-color: inherit;
   }

@@ -83,7 +83,7 @@ const StatisticList = ({ toggleModal }) => {
   const countPages = () => {
     let pages = 0;
 
-    records.forEach((el) => (pages += +el.pages));
+    records && records.forEach((el) => (pages += +el.pages));
 
     setQuantityPages(pages);
   };

@@ -10,12 +10,14 @@ import { getRecords } from "../../../redux/target/targetSelectors";
 // import { getInProgressdBooks } from "../../../redux/books/booksSelectors";
 
 import { ThemeContext } from "../../App";
+import { useTranslation } from "react-i18next";
 import StatisticListStyled from "./StatisticListStyled";
 
 const StatisticList = () => {
+  const { t } = useTranslation();
+
   const { theme } = useContext(ThemeContext);
   const [pagesState, setQuantityPages] = useState(0);
-
 
   console.log(pagesState);
 
@@ -30,7 +32,6 @@ const StatisticList = () => {
       dispatch(setBookInTrainingSuccess(countIdxOfReadedBook(pagesState)));
     };
   }, [pagesState]);
-
 
   useEffect(() => {
     countPages();
@@ -83,7 +84,7 @@ const StatisticList = () => {
 
   return (
     <StatisticListStyled colors={theme}>
-      <h2 className="statisticTitle">Статистика</h2>
+      <h2 className="statisticTitle">{t("STATISTICS")}</h2>
 
       <div className="listWrapper">
         {records &&
@@ -96,7 +97,7 @@ const StatisticList = () => {
                 <li className="statisticListItemTime">{time}</li>
                 <li className="statisticListItemWrapper">
                   {pages}
-                  <p className="statisticListItemTime">стор.</p>
+                  <p className="statisticListItemTime">{t("pages")}</p>
                 </li>
               </ul>
             ))}

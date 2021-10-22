@@ -8,8 +8,10 @@ import Modal from "../../modal/Modal";
 import ModalFilled from "../modalResume/modalFilled.js/ModalFilled";
 import ModalResume from "../modalResume/ModalResume";
 import { ThemeContext } from "../../App";
+import { useTranslation } from "react-i18next";
 
 const BookMobile = ({ book }) => {
+  const { t } = useTranslation();
   const [modalState, setModalState] = useState(false);
   const hasResume = Boolean(book.resume);
   const [modalForm, setModalForm] = useState(hasResume);
@@ -44,22 +46,22 @@ const BookMobile = ({ book }) => {
         <h3 className="bookName">{book.name}</h3>
 
         <div className="bookInfo">
-          <span className="bookFieldName">Автор:</span>
+          <span className="bookFieldName">{t("Author m")}:</span>
           <span className="bookFieldValue">{book.author}</span>
-          <span className="bookFieldName">Рік:</span>
+          <span className="bookFieldName">{t("Year")}:</span>
           <span className="bookFieldValue">{book.year}</span>
-          <span className="bookFieldName">Стор.:</span>
+          <span className="bookFieldName">{t("Pages")}:</span>
           <span className="bookFieldValue">{book.pages}</span>
           {book.status === "completed" ? (
             <>
-              <span className="bookFieldName">Рейтинг:</span>
+              <span className="bookFieldName">{t("Rating")}:</span>
               <RatingStars book={book} />
               <button
                 className="resumeButtonMobile"
                 type="button"
                 onClick={toggleModal}
               >
-                Резюме
+                {t("Resume")}
               </button>
             </>
           ) : null}

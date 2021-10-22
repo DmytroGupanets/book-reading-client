@@ -11,9 +11,10 @@ import useDate from "../../../hooks/useDate";
 import TargetReadStyled from "./TargetReadStyled";
 import { useContext } from "react";
 import { ThemeContext } from "../../App";
+import { useTranslation } from "react-i18next";
 
 const TargetRead = ({ state }) => {
-
+  const { t } = useTranslation();
   const { theme } = useContext(ThemeContext);
   const readingBooks = 3;
 
@@ -38,18 +39,18 @@ const TargetRead = ({ state }) => {
     <TargetReadStyled colors={theme} state={state}>
       <div className="tabletWrapperStyled">
         <div className="titleWrapper">
-          <h3 className="targetReadTitle">Моя мета прочитати</h3>
+          <h3 className="targetReadTitle">{t("My goals")}</h3>
         </div>
       </div>
 
       <ul className="targetReadlist">
         <li className="targetReadItem">
           <div className="targetReadDig">{booksInProgress.length}</div>
-          <p className="targetReadItemDescription">Кількість книжок</p>
+          <p className="targetReadItemDescription">{t("Amount of books")}</p>
         </li>
         <li className="targetReadItem">
           <div className="targetReadDig">{quantityDays}</div>
-          <p className="targetReadItemDescription">Кількість днів</p>
+          <p className="targetReadItemDescription">{t("Amount of days")}</p>
         </li>
         {state && (
           <li className="targetReadItem">
@@ -61,7 +62,7 @@ const TargetRead = ({ state }) => {
                     booksInProgress.length - 1
                   ).length}
             </div>
-            <p className="targetReadItemDescription">Залишилось книжок</p>
+            <p className="targetReadItemDescription">{t("Books left")}</p>
           </li>
         )}
       </ul>

@@ -12,8 +12,10 @@ import {
   getAllPlannedBooks,
   getAllSelectedBooks,
 } from "../../../../redux/target/targetSelectors";
+import { useTranslation } from "react-i18next";
 
 const SelectBooks = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const books = useSelector(getPlannedBooks);
   const plannedBooks = useSelector(getAllPlannedBooks);
@@ -66,7 +68,7 @@ const SelectBooks = () => {
         onInputChange={handleInputChange}
       />
       <MyGoalList data={selectedBooks} onClickDelete={onHandleDelete} />
-      <button onClick={onHandleClick}>Додати</button>
+      <button onClick={onHandleClick}>{t("Add")}</button>
     </>
   );
 };

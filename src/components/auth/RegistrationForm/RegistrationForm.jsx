@@ -8,32 +8,22 @@ import { register } from "../../../redux/auth/authOperations";
 import { RegistrationFormStyled } from "./RegistrationFormStyled";
 import { useContext, useEffect } from "react";
 import { ThemeContext } from "../../App";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { getError } from "../../../redux/auth/authSelectors";
 import { resetError } from "../../../redux/auth/authActions";
+import { error } from "@pnotify/core/dist/PNotify.js";
 
 const RegistrationForm = () => {
   const { theme } = useContext(ThemeContext);
   const dispatch = useDispatch();
-const { t } = useTranslation(); 
-
-const isError = useSelector(getError);
-
-  const notify = () =>
-    toast.error("Kористувач вже зареєстрований", {
-      position: "top-right",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
+  const { t } = useTranslation();
+  const isError = useSelector(getError);
 
   useEffect(() => {
     if (isError !== null) {
-      notify();
+      error({
+        text: "Kористувач вже зареєстрований",
+        delay: 3000,
+      });
     }
     return dispatch(resetError());
   }, [isError, dispatch]);

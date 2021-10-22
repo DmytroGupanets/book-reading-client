@@ -12,6 +12,7 @@ import {
   getAllPlannedBooks,
   getAllSelectedBooks,
 } from "../../../../redux/target/targetSelectors";
+import { useStickyState } from "../../../../hooks";
 
 const SelectBooks = () => {
   const dispatch = useDispatch();
@@ -20,11 +21,14 @@ const SelectBooks = () => {
   const selectedBooks = useSelector(getAllSelectedBooks);
 
   const [value, setValue] = useState(books);
-  const [selectedBook, setSelectedBook] = useState({});
+  const [selectedBook, setSelectedBook] = useStickyState(
+    [selectedBooks],
+    "kekw"
+  );
 
-  useEffect(() => {
-    dispatch(setPlannedBooksForSelect(books));
-  }, []);
+  // useEffect(() => {
+  //   dispatch(setPlannedBooksForSelect(books));
+  // }, [books, dispatch]);
 
   useEffect(() => {
     setValue(plannedBooks);
@@ -38,7 +42,7 @@ const SelectBooks = () => {
 
   const onChange = (e) => {
     const value = e.value;
-    setSelectedBook(value);
+    setSelectedBook([value]);
   };
 
   const onHandleClick = (e) => {
@@ -65,7 +69,7 @@ const SelectBooks = () => {
         onChange={onChange}
         onInputChange={handleInputChange}
       />
-      <MyGoalList data={selectedBooks} onClickDelete={onHandleDelete} />
+      <MyGoalList data={selectedBook} onClickDelete={onHandleDelete} />
       <button onClick={onHandleClick}>Додати</button>
     </>
   );

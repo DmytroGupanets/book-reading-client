@@ -1,4 +1,5 @@
 import { useDispatch } from "react-redux";
+import { useTranslation } from "react-i18next";
 import { useFormik } from "formik";
 import { Link } from "react-router-dom";
 import GoogleButton from "../GoogleButton/GoogleButton";
@@ -11,6 +12,8 @@ import { ThemeContext } from "../../App";
 const RegistrationForm = () => {
   const { theme } = useContext(ThemeContext);
   const dispatch = useDispatch();
+  const { t } = useTranslation();
+
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -39,7 +42,7 @@ const RegistrationForm = () => {
       <form className="form" onSubmit={formik.handleSubmit}>
         <div className="formGroup">
           <label className="formLabel" htmlFor="name">
-            Ім’я
+            {t("Name")}
             <span className="formLabelStar"> *</span>
           </label>
           <input
@@ -59,7 +62,7 @@ const RegistrationForm = () => {
 
         <div className="formGroup">
           <label className="formLabel" htmlFor="email">
-            Електронна адреса
+            {t("Email")}
             <span className="formLabelStar"> *</span>
           </label>
           <input
@@ -78,7 +81,7 @@ const RegistrationForm = () => {
         </div>
         <div className="formGroup">
           <label className="formLabel" htmlFor="password">
-            Пароль
+            {t("Password")}
             <span className="formLabelStar"> *</span>
           </label>
           <input
@@ -99,7 +102,7 @@ const RegistrationForm = () => {
         </div>
         <div className="formGroup">
           <label className="formLabel" htmlFor="confirmPassword">
-            Підтвердити пароль
+            {t("Confirm password")}
             <span className="formLabelStar"> *</span>
           </label>
           <input
@@ -118,13 +121,13 @@ const RegistrationForm = () => {
         </div>
         <div className="wrapperButton">
           <button type="submit" className="authButton">
-            Зареєструватися
+            {t("Register")}
           </button>
         </div>
         <div className="loginContainer">
-          Вже з нами?
+          {t("With us already")}?
           <Link to="/auth/login" className="login">
-            Увійти
+            {t("Login")}
           </Link>
         </div>
       </form>

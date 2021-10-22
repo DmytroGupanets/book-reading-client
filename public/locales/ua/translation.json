@@ -1,5 +1,22 @@
 {
+  "Email": "Електронна адреса",
+  "Password": "Пароль",
+  "Login": "Увійти",
+  "Registration": "Реєстрація",
+  "Name": "Ім’я",
+  "Confirm password": "Підтвердити пароль",
+  "Register": "Зареєструватися",
+  "With us already": "Вже з нами",
   "Logout": "Вихід",
+
+  "Will help you to": "Допоможе вам",
+  "Create your goal faster and proceed to read": "Швидше сформулювати свою ціль і розпочати читати",
+  "Divide process proportionally for each day": "Пропорційно розподілити навантаження на кожний день",
+  "Track your success": "Відстежувати особистий успіх",
+  "You may also": "Також ви зможете",
+  "Pose your own independent point of view": "Формувати особисту думку незалежну від інших",
+  "Improve your professional skills according to new knowledge": "Підвищити свої професійні якості опираючись на нові знання",
+  "Become an interesting interlocutor": "Стати цікавим співрозмовником",
 
   "Step 1.": "Крок 1.",
   "Create your own library": "Створіть особисту бібліотеку.",
@@ -7,6 +24,12 @@
   "Step 2.": "Крок 2.",
   "Create your first training": "Сформуйте своє перше тренування.",
   "Set a goal, choose period, start training.": "Визначте ціль, оберіть період, розпочинайте тренування.",
+
+  "Author": "Автор",
+  "Year": "Рік",
+  "Pages": "Стор.",
+  "Rating": "Рейтинг",
+  "Resume": "Резюме",
 
   "Year countdown": "До закінчення року залишилось",
   "Goal countdown": "До досягнення мети залишилось",

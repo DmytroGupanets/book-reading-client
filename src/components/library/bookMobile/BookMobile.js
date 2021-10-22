@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { BookMobileStyled } from "./BookMobileStyled";
 import colors from "../../../styles/colors";
 
@@ -27,6 +28,8 @@ const BookMobile = ({ book }) => {
     setModalForm((state) => !state);
   };
 
+  const { t } = useTranslation();
+
   return (
     <BookMobileStyled colors={theme}>
       <div className="iconWrapper">
@@ -44,22 +47,22 @@ const BookMobile = ({ book }) => {
         <h3 className="bookName">{book.name}</h3>
 
         <div className="bookInfo">
-          <span className="bookFieldName">Автор:</span>
+          <span className="bookFieldName">{t("Author")}:</span>
           <span className="bookFieldValue">{book.author}</span>
-          <span className="bookFieldName">Рік:</span>
+          <span className="bookFieldName">{t("Year")}:</span>
           <span className="bookFieldValue">{book.year}</span>
-          <span className="bookFieldName">Стор.:</span>
+          <span className="bookFieldName">{t("Pages")}:</span>
           <span className="bookFieldValue">{book.pages}</span>
           {book.status === "completed" ? (
             <>
-              <span className="bookFieldName">Рейтинг:</span>
+              <span className="bookFieldName">{t("Rating")}:</span>
               <RatingStars book={book} />
               <button
                 className="resumeButtonMobile"
                 type="button"
                 onClick={toggleModal}
               >
-                Резюме
+                {t("Resume")}
               </button>
             </>
           ) : null}

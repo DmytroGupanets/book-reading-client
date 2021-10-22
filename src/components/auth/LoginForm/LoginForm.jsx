@@ -1,4 +1,5 @@
 import { useFormik } from "formik";
+import { useTranslation } from "react-i18next";
 import GoogleButton from "../GoogleButton/GoogleButton";
 import LoginFormStyled from "./LoginFormStyled";
 import { loginValidationSchema } from "../validation/validationSchema";
@@ -12,6 +13,7 @@ import { ThemeContext } from "../../App";
 const LoginForm = () => {
   const dispatch = useDispatch();
   const { theme } = useContext(ThemeContext);
+  const { t } = useTranslation();
 
   const formik = useFormik({
     initialValues: {
@@ -37,7 +39,7 @@ const LoginForm = () => {
       <form className="form" onSubmit={formik.handleSubmit}>
         <div className="formGroup emailInput">
           <label className="formLabel" htmlFor="email">
-            Електронна адреса
+            {t("Email")}
             <span className="formLabelStar"> *</span>
           </label>
           <input
@@ -56,7 +58,7 @@ const LoginForm = () => {
         </div>
         <div className="formGroup">
           <label className="formLabel" htmlFor="password">
-            Пароль
+            {t("Password")}
             <span className="formLabelStar"> *</span>
           </label>
           <input
@@ -66,7 +68,7 @@ const LoginForm = () => {
             maxLength="30"
             className="formInput"
             name="password"
-            placeholder="Пароль"
+            placeholder={t("Password")}
             value={formik.values.password}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
@@ -77,12 +79,12 @@ const LoginForm = () => {
         </div>
         <div className="wrapperButton">
           <button type="submit" className="authButton">
-            Увійти
+            {t("Login")}
           </button>
         </div>
         <div className="registContainer">
           <Link to="/auth/register" className="registerLink">
-            Реєстрація
+            {t("Registration")}
           </Link>
         </div>
       </form>

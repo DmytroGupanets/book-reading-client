@@ -8,40 +8,27 @@ import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../../redux/auth/authOperations";
 import { useContext, useEffect } from "react";
 import { ThemeContext } from "../../App";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { getError } from "../../../redux/auth/authSelectors";
 import { resetError } from "../../../redux/auth/authActions";
+import { error } from "@pnotify/core/dist/PNotify.js";
+import "@pnotify/core/dist/BrightTheme.css";
+import "@pnotify/core/dist/PNotify.css";
 
 const LoginForm = () => {
   const dispatch = useDispatch();
   const { theme } = useContext(ThemeContext);
-const { t } = useTranslation();  
-
-const isError = useSelector(getError);
-  const notify = () =>
-    toast.error("Невiрний пароль/email або користувач не зареєстрований", {
-      position: "top-right",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
+  const { t } = useTranslation();
+  const isError = useSelector(getError);
 
   useEffect(() => {
     if (isError !== null) {
-      notify();
+      error({
+        text: "Невiрний пароль/email або користувач не зареєстрований",
+        delay: 3000,
+      });
     }
     return dispatch(resetError());
   }, [isError, dispatch]);
-
-  // useEffect(() => {
-  //   if (isError !== null) {
-  //     notify();
-  //   }
-  // }, [isError, dispatch]);
 
   const formik = useFormik({
     initialValues: {
@@ -116,7 +103,6 @@ const isError = useSelector(getError);
           </Link>
         </div>
       </form>
-      {isError && <h2>Проблемка</h2>}
     </LoginFormStyled>
   );
 };

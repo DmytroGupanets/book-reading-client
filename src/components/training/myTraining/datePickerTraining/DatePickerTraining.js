@@ -23,11 +23,6 @@ const DatePickerTraining = () => {
   const { theme } = useContext(ThemeContext);
   const dispatch = useDispatch();
 
-  const [data, setData] = useDate();
-
-  const currentDay = data.currentDate;
-
-  console.log("currentDay :>> ", currentDay);
 
   const addDays = (date, days) => {
     const result = new Date(date);

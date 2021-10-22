@@ -23,7 +23,7 @@ const Training = () => {
   const dispatch = useDispatch();
 
   const ownerId = useSelector(getOwnerId);
-  // const preplaning = useSelector(getPreplaning);
+  const preplaning = useSelector(getPreplaning);
   // console.log(
   //   preplaning.startDate
   //     .toISOString()

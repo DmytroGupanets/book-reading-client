@@ -15,7 +15,7 @@ const AuthStyled = styled.div`
   line-height: 1.9;
   color: ${({ colors }) => colors.primaryText};
   width: 100%;
-  height: calc(50vw - 132px);
+  height: calc(100vh - 132px);
 
   .authContainer {
     height: 100%;
@@ -111,6 +111,7 @@ const AuthStyled = styled.div`
     }
     .leftSideContainer {
       margin-bottom: 0;
+      height: calc(100vh - 60px);
     }
     .rightSideContainer {
       width: 56%;

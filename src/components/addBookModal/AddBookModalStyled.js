@@ -1,13 +1,16 @@
 import styled from "styled-components";
 
 export const AddBookModalStyled = styled.div`
+  padding: 30px 15px;
   width: 270px;
   height: 425px;
+  background-color: ${({ colors }) => colors.secondaryBg};
+  box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
 
   .step {
     font-weight: 600;
     font-size: 18px;
-    line-height: 2.1;
+    line-height: 2.2;
     margin-bottom: 5px;
   }
 
@@ -78,8 +81,12 @@ export const AddBookModalStyled = styled.div`
     margin-left: 46px;
   }
   @media screen and (min-width: 768px) {
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
     width: 570px;
     height: 270px;
+    padding: 20px 30px 30px 30px;
 
     .btnOk {
       display: none;
@@ -89,7 +96,7 @@ export const AddBookModalStyled = styled.div`
     }
     .step {
       font-size: 19px;
-      line-height: 2;
+      line-height: 1.2;
     }
     .stepOne,
     .stepTwo {
@@ -100,7 +107,7 @@ export const AddBookModalStyled = styled.div`
     .aboutStepOne,
     .aboutStepTwo {
       width: 100%;
-      line-height: 2.71;
+      line-height: 1.11;
     }
   }
   @media screen and (min-width: 1280px) {

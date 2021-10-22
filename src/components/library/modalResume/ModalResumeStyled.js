@@ -35,7 +35,9 @@ export const ModalResumeStyled = styled.div`
     resize: none;
     padding: 10px;
 
-    border: 1px solid ${({ colors }) => colors.icons};
+    border: 1px solid
+      ${({ textAreaIsActive }) => (textAreaIsActive ? "#FF6B08" : "#A6ABB9")};
+    outline: none;
 
     font-family: "Montserrat", sans-serif;
     font-weight: 500;
@@ -43,10 +45,6 @@ export const ModalResumeStyled = styled.div`
     line-height: 1.1;
 
     color: ${({ colors }) => colors.secondaryText};
-
-    &:active {
-      border-color: red;
-    }
 
     @media screen and (min-width: 768px) {
       width: 510px;
@@ -62,7 +60,19 @@ export const ModalResumeStyled = styled.div`
     font-weight: 400;
     font-size: 10px;
     line-height: 1.37;
-    color: ${({ warning }) => (warning ? "#d80000" : "#A6ABB9")};
+    color: ${({ warning }) => (warning ? "#eb5757" : "#A6ABB9")};
+  }
+
+  .symbolsLimit {
+    position: absolute;
+    bottom: -10px;
+    right: 0;
+
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 1.37;
+    color: #eb5757;
   }
 
   .buttonsWrapper {

@@ -69,7 +69,7 @@ const BookMobile = ({ book }) => {
             <Modal onClose={toggleModal}>
               {modalForm ? (
                 <ModalFilled
-                  book={book}
+                  resume={book.resume}
                   onClose={toggleModal}
                   openForm={onHandleChangeResume}
                 />

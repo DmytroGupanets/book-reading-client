@@ -1,7 +1,9 @@
 import styled from "styled-components";
 
 export const LibraryEmptyStyled = styled.form`
-  display: inline-flex;
+  display: flex;
+  justify-content: center;
+
   .bookContainer {
     margin-top: 52px;
   }

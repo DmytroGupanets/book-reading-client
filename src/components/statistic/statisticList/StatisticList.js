@@ -1,28 +1,37 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { getInProgressdBooks } from "../../../redux/books/booksSelectors";
+import { useDispatch, useSelector } from "react-redux";
 import { setBookInTrainingSuccess } from "../../../redux/target/targetActions";
-// import {
-//   getRecordOperation,
-//   updateRecordOperation,
-// } from "../../../redux/target/targetOperations";
+import { getInProgressdBooks } from "../../../redux/books/booksSelectors";
 import { getRecords } from "../../../redux/target/targetSelectors";
-// import { getInProgressdBooks } from "../../../redux/books/booksSelectors";
 
 import { ThemeContext } from "../../App";
 import StatisticListStyled from "./StatisticListStyled";
 
-const StatisticList = () => {
+const StatisticList = ({ toggleModal }) => {
   const { theme } = useContext(ThemeContext);
   const [pagesState, setQuantityPages] = useState(0);
-
-
-  console.log(pagesState);
 
   const records = useSelector(getRecords);
   const booksInProgress = useSelector(getInProgressdBooks);
 
   const dispatch = useDispatch();
+
+  const totalPagesOfBookInProgress = booksInProgress.reduce(
+    (acc, book) => (acc += book.pages),
+    0
+  );
+
+  useEffect(() => {
+    if (pagesState === totalPagesOfBookInProgress) {
+      toggleModal();
+    }
+
+    return () => {
+      if (pagesState === totalPagesOfBookInProgress) {
+        toggleModal();
+      }
+    };
+  }, [pagesState, totalPagesOfBookInProgress]);
 
   useEffect(() => {
     dispatch(setBookInTrainingSuccess(countIdxOfReadedBook(pagesState)));
@@ -30,7 +39,6 @@ const StatisticList = () => {
       dispatch(setBookInTrainingSuccess(countIdxOfReadedBook(pagesState)));
     };
   }, [pagesState]);
-
 
   useEffect(() => {
     countPages();
@@ -74,9 +82,8 @@ const StatisticList = () => {
 
   const countPages = () => {
     let pages = 0;
-    records.forEach((el) => {
-      return (pages += +el.pages);
-    });
+
+    records && records.forEach((el) => (pages += +el.pages));
 
     setQuantityPages(pages);
   };

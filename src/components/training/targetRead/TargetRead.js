@@ -3,7 +3,10 @@ import { useSelector } from "react-redux";
 import { getInProgressdBooks } from "../../../redux/books/booksSelectors";
 import {
   endDate,
+  getAllPlannedBooks,
+  getAllSelectedBooks,
   getIdxOfReadedBooksInTraining,
+  getPreplaning,
   startDate,
 } from "../../../redux/target/targetSelectors";
 import useDate from "../../../hooks/useDate";
@@ -13,9 +16,7 @@ import { useContext } from "react";
 import { ThemeContext } from "../../App";
 
 const TargetRead = ({ state }) => {
-
   const { theme } = useContext(ThemeContext);
-  const readingBooks = 3;
 
   const [
     stateData,
@@ -28,11 +29,19 @@ const TargetRead = ({ state }) => {
   const start = useSelector(startDate);
   const end = useSelector(endDate);
   const booksInProgress = useSelector(getInProgressdBooks);
+  const booksInSelected = useSelector(getAllSelectedBooks);
+  const preplaning = useSelector(getPreplaning);
   const idxOfReadedBooksInTraining = useSelector(getIdxOfReadedBooksInTraining);
+  // console.log(booksInSelected);
+  // console.log(preplaning.startDate);
 
-  useEffect(() => {}, []);
+  // useEffect(() => {}, []);
 
-  const quantityDays = start && end && rangeBetwenStartAndEndDates(start, end);
+  const trainingQuantityDays =
+    start && end && rangeBetwenStartAndEndDates(start, end);
+
+  // ? rangeBetwenStartAndEndDates(preplaning.startDate, preplaning.endDate)
+  // : rangeBetwenStartAndEndDates(start, end);
 
   return (
     <TargetReadStyled colors={theme} state={state}>
@@ -44,11 +53,15 @@ const TargetRead = ({ state }) => {
 
       <ul className="targetReadlist">
         <li className="targetReadItem">
-          <div className="targetReadDig">{booksInProgress.length}</div>
+          <div className="targetReadDig">
+            {!state ? booksInSelected.length : booksInProgress.length}
+          </div>
           <p className="targetReadItemDescription">Кількість книжок</p>
         </li>
         <li className="targetReadItem">
-          <div className="targetReadDig">{quantityDays}</div>
+          <div className="targetReadDig">
+            {trainingQuantityDays ? trainingQuantityDays : 0}
+          </div>
           <p className="targetReadItemDescription">Кількість днів</p>
         </li>
         {state && (

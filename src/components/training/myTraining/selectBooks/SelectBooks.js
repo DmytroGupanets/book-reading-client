@@ -12,11 +12,15 @@ import {
   getAllPlannedBooks,
   getAllSelectedBooks,
 } from "../../../../redux/target/targetSelectors";
+
 import SelectBooksStyled from "./SelectBooksStyled";
 
 import sprite from "../../../../images/sprite.svg";
 
 const SelectBooks = ({ toggleModal }) => {
+  import { useTranslation } from "react-i18next";
+  const { t } = useTranslation();
+
   const dispatch = useDispatch();
   const books = useSelector(getPlannedBooks);
   const plannedBooks = useSelector(getAllPlannedBooks);
@@ -85,11 +89,13 @@ const SelectBooks = ({ toggleModal }) => {
         onInputChange={handleInputChange}
         components={{ DropdownIndicator }}
       />
+
       {/* <MyGoalList data={selectedBooks} onClickDelete={onHandleDelete} /> */}
       <button className="selectBooksButton" onClick={onHandleClick}>
-        Додати
+        {t("Add")}
       </button>
     </SelectBooksStyled>
+
   );
 };
 

@@ -1,14 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateRecordOperation } from "../../../redux/target/targetOperations";
-
+import { getTargetId } from "../../../redux/target/targetSelectors";
 import SelectDate from "../selectDate/SelectDate";
 
 import StatisticFormStyled from "./StatisticFormStyled";
-import useDate from "../../../hooks/useDate";
-
-import { getTargetId } from "../../../redux/target/targetSelectors";
 import { ThemeContext } from "../../App";
+import useDate from "../../../hooks/useDate";
 
 const initialState = {
   date: "",

@@ -13,6 +13,8 @@ const ModalResume = ({ onClose, bookId, openForm }) => {
   const [textArea, setTextArea] = useState("");
   const [amountSymbols, setAmountSymbols] = useState(1000);
   const [warning, setWarning] = useState(false);
+  const [attentionMsg, setAttentionMsg] = useState(false);
+  const [textAreaIsActive, setTextAreaIsActive] = useState(false);
 
   const dispatch = useDispatch();
   const { theme } = useContext(ThemeContext);
@@ -23,6 +25,10 @@ const ModalResume = ({ onClose, bookId, openForm }) => {
   };
 
   const onClickHandleSubmit = () => {
+    if (textArea.trim().length === 0) {
+      setTextArea("");
+    }
+
     const resume = {
       rating: stars,
       text: textArea,
@@ -43,13 +49,26 @@ const ModalResume = ({ onClose, bookId, openForm }) => {
 
     const symbolsRemaining = 1000 - text.length;
 
+    if (text.trim().length >= 1) setTextAreaIsActive(true);
+    else if (text.trim().length < 1 && textAreaIsActive === true)
+      setTextAreaIsActive(false);
+
+    if (symbolsRemaining === 0) setAttentionMsg(true);
+    else if (symbolsRemaining !== 0 && attentionMsg === true)
+      setAttentionMsg(false);
+
     if (symbolsRemaining <= 10) setWarning(true);
     if (symbolsRemaining > 10 && warning === true) setWarning(false);
+
     setAmountSymbols(symbolsRemaining);
   };
 
   return (
-    <ModalResumeStyled colors={theme} warning={warning}>
+    <ModalResumeStyled
+      colors={theme}
+      warning={warning}
+      textAreaIsActive={textAreaIsActive}
+    >
       <p className="chooseRating">Обрати рейтинг книги</p>
       <ReactStars
         count={5}
@@ -83,7 +102,12 @@ const ModalResume = ({ onClose, bookId, openForm }) => {
           onChange={onTextInput}
           maxLength="1000"
         />
-        <p className="symbolsAmount">Осталось {amountSymbols} символов</p>
+        {!attentionMsg && (
+          <p className="symbolsAmount">Залишилось {amountSymbols} символів</p>
+        )}
+        {attentionMsg && (
+          <p className="symbolsLimit">Ліміт символів вичерпано</p>
+        )}
       </label>
 
       <div className="buttonsWrapper">

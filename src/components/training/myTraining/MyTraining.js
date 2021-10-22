@@ -4,9 +4,11 @@ import MyTrainingStyled from "./MyTrainingStyled";
 import SelectBooks from "./selectBooks/SelectBooks";
 import { ThemeContext } from "../../App";
 import { useContext } from "react";
+
 import DatePickerTraining from "./datePickerTraining/DatePickerTraining";
 
 const MyTraining = ({ toggleModal }) => {
+
   const { theme } = useContext(ThemeContext);
 
   return (

@@ -18,7 +18,7 @@ const LogOut = () => {
   return (
     <LogOutStyled colors={theme}>
       <button className="logOutButton" type="button" onClick={onHandleClick}>
-        {t("Logout")}
+        <span className="logOutWrapper">{t("Logout")}</span>
       </button>
     </LogOutStyled>
   );

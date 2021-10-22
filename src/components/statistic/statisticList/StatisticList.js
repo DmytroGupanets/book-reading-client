@@ -1,30 +1,37 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { getInProgressdBooks } from "../../../redux/books/booksSelectors";
+import { useDispatch, useSelector } from "react-redux";
 import { setBookInTrainingSuccess } from "../../../redux/target/targetActions";
-// import {
-//   getRecordOperation,
-//   updateRecordOperation,
-// } from "../../../redux/target/targetOperations";
+import { getInProgressdBooks } from "../../../redux/books/booksSelectors";
 import { getRecords } from "../../../redux/target/targetSelectors";
-// import { getInProgressdBooks } from "../../../redux/books/booksSelectors";
 
 import { ThemeContext } from "../../App";
-import { useTranslation } from "react-i18next";
 import StatisticListStyled from "./StatisticListStyled";
 
-const StatisticList = () => {
-  const { t } = useTranslation();
-
+const StatisticList = ({ toggleModal }) => {
   const { theme } = useContext(ThemeContext);
   const [pagesState, setQuantityPages] = useState(0);
-
-  console.log(pagesState);
 
   const records = useSelector(getRecords);
   const booksInProgress = useSelector(getInProgressdBooks);
 
   const dispatch = useDispatch();
+
+  const totalPagesOfBookInProgress = booksInProgress.reduce(
+    (acc, book) => (acc += book.pages),
+    0
+  );
+
+  useEffect(() => {
+    if (pagesState === totalPagesOfBookInProgress) {
+      toggleModal();
+    }
+
+    return () => {
+      if (pagesState === totalPagesOfBookInProgress) {
+        toggleModal();
+      }
+    };
+  }, [pagesState, totalPagesOfBookInProgress]);
 
   useEffect(() => {
     dispatch(setBookInTrainingSuccess(countIdxOfReadedBook(pagesState)));
@@ -75,16 +82,15 @@ const StatisticList = () => {
 
   const countPages = () => {
     let pages = 0;
-    records.forEach((el) => {
-      return (pages += +el.pages);
-    });
+
+    records.forEach((el) => (pages += +el.pages));
 
     setQuantityPages(pages);
   };
 
   return (
     <StatisticListStyled colors={theme}>
-      <h2 className="statisticTitle">{t("STATISTICS")}</h2>
+      <h2 className="statisticTitle">Статистика</h2>
 
       <div className="listWrapper">
         {records &&
@@ -97,7 +103,7 @@ const StatisticList = () => {
                 <li className="statisticListItemTime">{time}</li>
                 <li className="statisticListItemWrapper">
                   {pages}
-                  <p className="statisticListItemTime">{t("pages")}</p>
+                  <p className="statisticListItemTime">стор.</p>
                 </li>
               </ul>
             ))}

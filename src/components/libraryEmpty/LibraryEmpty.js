@@ -1,95 +1,98 @@
 import React, { useState } from 'react';
+import { useFormik } from "formik";
 import { useDispatch } from 'react-redux';
 import { addNewBookOperation } from '../../redux/books/booksOperations';
 import { LibraryEmptyStyled } from './LibraryEmptyStyled';
+import { libraryValidationSchema } from './validationLibrary/validationSchema';
 
-const initialState = {
-       title: "",
-       author: "",
-       year: "",
-       pages: ""    
-}
 
 const LibraryEmpty = () => {
-    const [state, setState] = useState(initialState);
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+   
+    const formik = useFormik({
+        initialValues: {
+            title: "",
+            author: "",
+            year: "",
+            pages: "",    
+        },
+        validationSchema: libraryValidationSchema,
 
-    const onHandleChange = (e) => {
-        const { name, value } = e.target;
-        setState((prev) => ({ ...prev, [name]: value }));
-    }
+    onSubmit: ({ title, author, year, pages }) => {
+        const newBook = {
+           name: title,
+           author,
+           year,
+           pages,
+       };
 
-    const onHandleSubmit = (e) => {
-       e.preventDefault();
-       const newBook = {
-           name: state.title,
-           author: state.author,
-           year: state.year,
-           pages: state.pages
-       }
-       dispatch(addNewBookOperation(newBook))
-       setState({ ...initialState });
-    }
-
+       dispatch(addNewBookOperation(newBook));
+      },
+    });
+    
+    console.log(formik);
     return (
         
-        <LibraryEmptyStyled  onSubmit={onHandleSubmit}>
+        <LibraryEmptyStyled  onSubmit={formik.handleSubmit}>
             <div className="bookContainer">
-            <label className="aboutBook aboutBook-title">
-            Назва книги
-            <input 
-            required
+             <label className="aboutBook aboutBook-title" htmlFor="title">
+             Назва книги
+             <input 
             id="title"
             type="text"
-            minLength="1"
-            maxLength="50"
+            // minLength="1"
+            // maxLength="50"
             name="title"
-            value={state.title}
+            value={formik.values.title}
             placeholder="..."
             className="aboutBookInput aboutBookInput-title"
-            onChange={onHandleChange}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
             />
             </label>
             <div className="aboutBookContainer">
-            <label className="aboutBook aboutBook-author">
+            <label className="aboutBook aboutBook-author" htmlFor="author">
             Автор книги
             <input 
-            required
             id="author"
             type="text"
             minLength="1"
             maxLength="50"
             name="author"
-            value={state.author}
+            value={formik.values.author}
             placeholder="..."
             className="aboutBookInput aboutBookInput-author"
-            onChange={onHandleChange}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
             />
+            {formik.errors.title && formik.touched.title && (
+            <div className="inputError">{formik.errors.title}</div>
+          )}
             </label>
-            <label className="aboutBook aboutBook-year">
+            <label className="aboutBook aboutBook-year" htmlFor="year">
             Рік випуску
             <input 
-            required
             id="year"
             type="number"
             name="year"
-            value={state.year}
+            value={formik.values.year}
             placeholder="..."
             className="aboutBookInput aboutBookInput-year"
-            onChange={onHandleChange}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
             />
             </label>
-            <label className="aboutBook aboutBook-page">
+            <label className="aboutBook aboutBook-page" htmlFor="pages">
             Кількість сторінок
             <input
-            required 
             id="pages"
             type="number"
             name="pages"
-            value={state.pages}
+            value={formik.values.pages}
             placeholder="..."
             className="aboutBookInput aboutBookInput-page"
-            onChange={onHandleChange}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
             />
             </label>
             </div>
@@ -97,8 +100,106 @@ const LibraryEmpty = () => {
             </div>
 
         </LibraryEmptyStyled>
-        
-    );
-}
+        );
+    }
+    
+    export default LibraryEmpty;
+    
+    // const initialState = {
+    //        title: "",
+    //        author: "",
+    //        year: "",
+    //        pages: ""    
+    // }
+    // const LibraryEmpty = () => {
+//     const [state, setState] = useState(initialState);
+//     const dispatch = useDispatch()
 
-export default LibraryEmpty;
+//     const onHandleChange = (e) => {
+//         const { name, value } = e.target;
+//         setState((prev) => ({ ...prev, [name]: value }));
+//     }
+
+//     const onHandleSubmit = (e) => {
+//        e.preventDefault();
+//        const newBook = {
+//            name: state.title,
+//            author: state.author,
+//            year: state.year,
+//            pages: state.pages
+//        }
+//        dispatch(addNewBookOperation(newBook))
+//        setState({ ...initialState });
+//     }
+
+//     return (
+        
+//         <LibraryEmptyStyled  onSubmit={onHandleSubmit}>
+//             <div className="bookContainer">
+//             <label className="aboutBook aboutBook-title">
+//             Назва книги
+//             <input 
+//             required
+//             id="title"
+//             type="text"
+//             minLength="1"
+//             maxLength="50"
+//             name="title"
+//             value={state.title}
+//             placeholder="..."
+//             className="aboutBookInput aboutBookInput-title"
+//             onChange={onHandleChange}
+//             />
+//             </label>
+//             <div className="aboutBookContainer">
+//             <label className="aboutBook aboutBook-author">
+//             Автор книги
+//             <input 
+//             required
+//             id="author"
+//             type="text"
+//             minLength="1"
+//             maxLength="50"
+//             name="author"
+//             value={state.author}
+//             placeholder="..."
+//             className="aboutBookInput aboutBookInput-author"
+//             onChange={onHandleChange}
+//             />
+//             </label>
+//             <label className="aboutBook aboutBook-year">
+//             Рік випуску
+//             <input 
+//             required
+//             id="year"
+//             type="number"
+//             name="year"
+//             value={state.year}
+//             placeholder="..."
+//             className="aboutBookInput aboutBookInput-year"
+//             onChange={onHandleChange}
+//             />
+//             </label>
+//             <label className="aboutBook aboutBook-page">
+//             Кількість сторінок
+//             <input
+//             required 
+//             id="pages"
+//             type="number"
+//             name="pages"
+//             value={state.pages}
+//             placeholder="..."
+//             className="aboutBookInput aboutBookInput-page"
+//             onChange={onHandleChange}
+//             />
+//             </label>
+//             </div>
+//             <button type="submit" className="addButton">Додати</button>
+//             </div>
+
+//         </LibraryEmptyStyled>
+        
+//     );
+// }
+
+// export default LibraryEmpty;

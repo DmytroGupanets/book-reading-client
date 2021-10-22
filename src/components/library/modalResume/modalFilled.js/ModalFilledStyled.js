@@ -22,16 +22,31 @@ export const ModalFilledStyled = styled.div`
     width: 17px;
   }
 
-  .yourResumeText {
+  .textBox {
+    width: 210px;
+
     margin-top: 20px;
     margin-bottom: 40px;
 
+    @media screen and (min-width: 768px) {
+      width: 510px;
+    }
+  }
+
+  .yourResumeText {
+    display: block;
+    max-height: 300px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     font-family: "Montserrat", sans-serif;
     font-weight: 500;
     font-size: 14px;
     line-height: 1.17;
 
     color: ${({ colors }) => colors.secondaryText};
+
+    word-wrap: break-word;
+    overflow: auto;
   }
 
   .filledButtonsWrapper {

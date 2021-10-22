@@ -26,7 +26,7 @@ export default function Footer() {
           </svg>
           <b> Books Reading </b>© 2021 | {t("All Rights Reserved")} |{" "}
           {t("Developed by")}
-          <button type="button" class="FooterButton" onClick={toggleModal}>
+          <button type="button" className="FooterButton" onClick={toggleModal}>
             {t("GoIT Students")}
           </button>
         </p>

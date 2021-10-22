@@ -4,9 +4,13 @@ import sprite from "../../images/sprite.svg";
 import { ThemeContext } from "../App";
 import { AddBookModalStyled } from "./AddBookModalStyled";
 
-const AddBookModal = () => {
+const AddBookModal = ({ onClose }) => {
   const { theme } = useContext(ThemeContext);
   const { t } = useTranslation();
+
+  const onHadleClick = () => {
+    onClose();
+  };
 
   return (
     <AddBookModalStyled colors={theme}>
@@ -40,7 +44,7 @@ const AddBookModal = () => {
           {t("Set a goal, choose a period, start training.")}
         </p>
       </div>
-      <button type="button" className="btnOk">
+      <button type="button" className="btnOk" onClick={onHadleClick}>
         Ok
       </button>
     </AddBookModalStyled>

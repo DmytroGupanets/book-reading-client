@@ -1,18 +1,50 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import arrowIcon from "../../../images/auth/arrow.svg";
 import { ThemeContext } from "../../App";
 import RegistrationForm from "../RegistrationForm/RegistrationForm";
 import { RegistrationStyled } from "./RegistrationStyled";
+import { useSelector } from "react-redux";
+import { getConfirmEmail } from "../../../redux/auth/authSelectors";
+import { useDispatch } from "react-redux";
+import { registerReset } from "../../../redux/auth/authActions";
+import { useCallback } from "react";
+import { useHistory } from "react-router";
 
 const Registration = () => {
   const { theme } = useContext(ThemeContext);
   const { t } = useTranslation();
+  const dispatch = useDispatch();
+  const confirmEmail = useSelector(getConfirmEmail);
+  const history = useHistory();
+
+  useEffect(() => {
+    return () => {
+      dispatch(registerReset());
+    };
+  }, []);
+
+  const onConfirmEmailOk = useCallback(() => {
+    history.push("/");
+  }, [history]);
 
   return (
     <div className="authContainer">
       <div className="leftSideContainer">
-        <RegistrationForm />
+        {confirmEmail ? (
+          <>
+            <div>Please, confirm your email address</div>
+            <button
+              type="button"
+              className="authButton"
+              onClick={onConfirmEmailOk}
+            >
+              OK
+            </button>
+          </>
+        ) : (
+          <RegistrationForm />
+        )}
       </div>
       <div className="rightSideContainer">
         <RegistrationStyled colors={theme}>

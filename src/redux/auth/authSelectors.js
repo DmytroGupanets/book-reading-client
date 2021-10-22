@@ -4,4 +4,4 @@ export const getAuthenticated = (state) => Boolean(state.auth.token);
 export const getToken = (state) => state.auth.token;
 export const getUserName = (state) => state.auth.user.name;
 export const getOwnerId = (state) => state.auth.user.id;
-
+export const getConfirmEmail = (state) => state.auth.confirmEmail;

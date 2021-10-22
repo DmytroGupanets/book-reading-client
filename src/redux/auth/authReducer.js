@@ -15,6 +15,7 @@ import {
   getCurrentUserSuccess,
   setGoogleToken,
   resetError,
+  registerReset,
 } from "./authActions";
 
 const setError = (_, { payload }) => payload;
@@ -63,11 +64,17 @@ const isAuthenticated = createReducer(false, {
   [logoutSuccess]: () => false,
 });
 
+const confirmEmail = createReducer(false, {
+  [registerSuccess]: () => true,
+  [registerReset]: () => false,
+});
+
 const authReducer = combineReducers({
   user,
   token,
   error,
   isAuthenticated,
+  confirmEmail,
 });
 
 export default authReducer;

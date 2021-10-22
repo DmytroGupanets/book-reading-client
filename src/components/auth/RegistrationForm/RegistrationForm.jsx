@@ -16,9 +16,9 @@ import { resetError } from "../../../redux/auth/authActions";
 const RegistrationForm = () => {
   const { theme } = useContext(ThemeContext);
   const dispatch = useDispatch();
-const { t } = useTranslation(); 
+  const { t } = useTranslation(); 
 
-const isError = useSelector(getError);
+  const isError = useSelector(getError);
 
   const notify = () =>
     toast.error("Kористувач вже зареєстрований", {

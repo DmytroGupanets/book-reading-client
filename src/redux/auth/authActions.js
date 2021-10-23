@@ -6,6 +6,7 @@ export const setGoogleToken = createAction("auth/setGoogleToken");
 export const registerRequest = createAction("auth/registerRequest");
 export const registerSuccess = createAction("auth/registerSuccess");
 export const registerError = createAction("auth/registerError");
+export const registerReset = createAction("auth/registerReset");
 
 export const loginRequest = createAction("auth/loginRequest");
 export const loginSuccess = createAction("auth/loginSuccess");

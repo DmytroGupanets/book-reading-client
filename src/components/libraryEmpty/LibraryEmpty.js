@@ -40,7 +40,7 @@ const LibraryEmpty = () => {
       <div className="bookContainer">
         <div className="booGroup">
         <label className="aboutBook aboutBook-title" htmlFor="title">
-          Назва книги
+        {t("Book title")}
           <input
             id="title"
             type="text"
@@ -59,7 +59,7 @@ const LibraryEmpty = () => {
         <div className="aboutBookContainer">
         <div className="booGroup">
           <label className="aboutBook aboutBook-author" htmlFor="author">
-            Автор книги
+          {t("Author")}
             <input
               id="author"
               type="text"
@@ -79,7 +79,7 @@ const LibraryEmpty = () => {
           </div>
           <div className="booGroup">
           <label className="aboutBook aboutBook-year" htmlFor="year">
-            Рік випуску
+          {t("Publication date")}
             <input
               id="year"
               type="number"
@@ -97,7 +97,7 @@ const LibraryEmpty = () => {
           </div>
           <div className="booGroup">
           <label className="aboutBook aboutBook-page" htmlFor="pages">
-            Кількість сторінок
+          {t("Amount of pages")}
             <input
               id="pages"
               type="number"
@@ -115,7 +115,7 @@ const LibraryEmpty = () => {
           </div>
         </div>
         <button type="submit" className="addButton">
-          Додати
+        {t("Add")}
         </button>
       </div>
     </LibraryEmptyStyled>

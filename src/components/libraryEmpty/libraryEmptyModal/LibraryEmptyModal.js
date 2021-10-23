@@ -75,7 +75,7 @@ const LibraryEmptyModal = ({ toggleModal }) => {
           </svg>
         </button>
         <label className="aboutBookModal aboutBook-titleModal" htmlFor="title">
-          Назва книги
+          {t("Book title")}
           <input
             id="title"
             type="text"
@@ -92,7 +92,7 @@ const LibraryEmptyModal = ({ toggleModal }) => {
             className="aboutBookModal aboutBook-authorModal"
             htmlFor="author"
           >
-            Автор книги
+            {t("Author")}
             <input
               id="author"
               type="text"
@@ -110,7 +110,7 @@ const LibraryEmptyModal = ({ toggleModal }) => {
             )}
           </label>
           <label className="aboutBookModal aboutBook-yearModal" htmlFor="year">
-            Рік випуску
+            {t("Publication date")}
             <input
               id="year"
               type="number"
@@ -123,7 +123,7 @@ const LibraryEmptyModal = ({ toggleModal }) => {
             />
           </label>
           <label className="aboutBookModal aboutBook-pageModal" htmlFor="pages">
-            Кількість сторінок
+            {t("Amount of pages")}
             <input
               id="pages"
               type="number"
@@ -142,7 +142,7 @@ const LibraryEmptyModal = ({ toggleModal }) => {
           )}
         </div>
         <button type="submit" className="addButtonModal">
-          Додати
+          {t("Add")}
         </button>
       </div>
     </LibraryEmptyModalStyled>

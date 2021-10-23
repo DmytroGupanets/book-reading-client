@@ -3,6 +3,7 @@ import Book from "../book/Book";
 import BookMobile from "../bookMobile/BookMobile";
 import BooksLabel from "../booksLabel/BooksLabel";
 import { BooksSectionStyled } from "./BooksSectionStyled";
+import AddBookMobileIcon from "../../libraryEmpty/addBookMobileIcon/AddBookMobileIcon";
 
 const BooksSection = ({ title, books }) => {
   const [deviceWidth, setDeviceWidth] = useState(window.innerWidth);
@@ -31,6 +32,7 @@ const BooksSection = ({ title, books }) => {
       {!isMobile && books.map((book) => <Book key={book._id} book={book} />)}
       {isMobile &&
         books.map((book) => <BookMobile key={book._id} book={book} />)}
+      {isMobile && <AddBookMobileIcon />}
     </BooksSectionStyled>
   );
 };

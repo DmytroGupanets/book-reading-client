@@ -13,6 +13,7 @@ import Modal from "../modal/Modal";
 import useWindowDimensions from "../../hooks/resize";
 import { useState } from "react";
 import LibraryEmptyModal from "../libraryEmpty/libraryEmptyModal/LibraryEmptyModal";
+import AddBookMobileIcon from "../libraryEmpty/addBookMobileIcon/AddBookMobileIcon";
 
 const Library = () => {
   const isAuth = useSelector(getAuthenticated);
@@ -41,9 +42,7 @@ const Library = () => {
     <LibraryStyled colors={theme}>
       {isAuth && !isMobile && <LibraryEmpty />}
       {isAuth && isMobile && addBookLibraryModal && (
-        <Modal onClose={toggleAddBookModal}>
-          <LibraryEmptyModal onClose={toggleAddBookModal} />
-        </Modal>
+        <LibraryEmptyModal toggleModal={toggleAddBookModal} />
       )}
       {isAuth && !isUserHaveAnyBooks && !isMobile && <AddBookModal />}
       {isAuth && !isUserHaveAnyBooks && isMobile && modalState && (
@@ -58,6 +57,7 @@ const Library = () => {
           Далі
         </NavLink>
       )}
+      {isMobile && <AddBookMobileIcon toggleModal={toggleAddBookModal} />}
     </LibraryStyled>
   );
 };

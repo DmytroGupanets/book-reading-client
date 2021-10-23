@@ -1,25 +1,10 @@
 import styled from "styled-components";
 
 export const LibraryEmptyModalStyled = styled.form`
-  /* .ModalOverlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(43, 43, 43, 0.15);
-    z-index: 100;
-  } */
-
-  .ModalOverlay > .Modal {
-    max-width: 0;
-    max-height: 0;
-    width: 100vw;
-    height: 100vh;
-  }
+  position: fixed;
+  top: 60px;
+  left: 0;
+  z-index: 60;
 
   display: flex;
   justify-content: center;
@@ -27,18 +12,30 @@ export const LibraryEmptyModalStyled = styled.form`
   height: 100vh;
   width: 100vw;
 
-  .bookContainer {
-    margin-top: 52px;
+  .modalClose {
+    border: none;
+    background-color: inherit;
+
+    cursor: pointer;
   }
 
-  .aboutBook {
+  .closeAddBookModalSvg {
+    width: 24px;
+    height: 12px;
+  }
+
+  .bookContainerModal {
+    margin-top: 25px;
+  }
+
+  .aboutBookModal {
     display: block;
     font-weight: 500;
     font-size: 14px;
     line-height: 2.7;
     color: ${({ colors }) => colors.secondaryText};
   }
-  .aboutBookInput {
+  .aboutBookInputModal {
     display: block;
     outline: none;
     width: 270px;
@@ -58,7 +55,7 @@ export const LibraryEmptyModalStyled = styled.form`
     }
   }
 
-  .addButton {
+  .addButtonModal {
     display: block;
     width: 171px;
     height: 42px;
@@ -67,46 +64,45 @@ export const LibraryEmptyModalStyled = styled.form`
     line-height: 2.7;
     margin: 0 auto;
     border: 1px solid ${({ colors }) => colors.primaryText};
+    background-color: ${({ colors }) => colors.primaryBg};
     cursor: pointer;
+
+    &:hover,
+    :focus {
+      background-color: ${({ colors }) => colors.trainingLabel};
+    }
   }
 
-  @media screen and (min-width: 768px) {
-    .aboutBookContainer {
-      display: flex;
-      margin-bottom: 40px;
-    }
-    .aboutBookInput {
-      width: 145px;
-    }
-    .aboutBookInput-title {
-      width: 594px;
-    }
-    .aboutBookInput-author {
-      width: 250px;
-      margin-right: 27px;
-    }
-    .aboutBookInput-year {
-      margin-right: 27px;
-    }
+  .aboutBookContainerModal {
+    position: relative;
+    margin-bottom: 35px;
   }
-  @media screen and (min-width: 1280px) {
-    .bookContainer {
-      display: inline-flex;
-    }
-    .aboutBookInput {
-      width: 130px;
-      margin-right: 15px;
-    }
-    .aboutBookInput-title {
-      width: 346px;
-    }
-    .aboutBookInput-author {
-      width: 250px;
-    }
-    .addButton {
-      margin: auto;
-      margin-left: 30px;
-      margin-top: 36px;
-    }
+
+  .aboutBookInputModal {
+    border: 1px solid ${({ colors }) => colors.icons};
+  }
+
+  .aboutBookInput-titleModal {
+    border: 1px solid ${({ colors }) => colors.icons};
+  }
+
+  .aboutBookInput-authorModal {
+    border: 1px solid ${({ colors }) => colors.icons};
+  }
+
+  .aboutBookInput-yearModal {
+    border: 1px solid ${({ colors }) => colors.icons};
+  }
+
+  .warningText {
+    position: absolute;
+    bottom: -15px;
+    left: 0px;
+
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 1.1;
+    color: #eb5757;
   }
 `;

@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { AddBookMobileIconStyled } from "./AddBookMobileIconStyled";
-import addIcon from "../../../images/sprite.svg";
+import addIcon from "../../../images/Training/sprite.svg";
+import { ThemeContext } from "../../App";
 
-const AddBookMobileIcon = () => {
+const AddBookMobileIcon = ({ toggleModal }) => {
+  const { theme } = useContext(ThemeContext);
   return (
-    <AddBookMobileIconStyled>
-      <svg className="resumeModalSvg">
-        <use className="resumeModalIcon" href={addIcon + "icon-more"} />
-      </svg>
+    <AddBookMobileIconStyled className="addBookMobile" colors={theme}>
+      <button className="addBookBtn" type="button">
+        <svg className="addBookModalSvg" onClick={toggleModal}>
+          <use className="addBookModalIcon" href={addIcon + "#icon-plus"} />
+        </svg>
+      </button>
     </AddBookMobileIconStyled>
   );
 };

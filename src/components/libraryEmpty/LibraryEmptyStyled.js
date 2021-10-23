@@ -34,6 +34,32 @@ export const LibraryEmptyStyled = styled.form`
       background-color: ${({ colors }) => colors.secondaryBg};
     }
   }
+  .bookGroup {
+    position: relative;
+  }
+  .inputError {
+    right: auto;
+    font-size: 10px;
+    letter-spacing: 0.04em;
+
+    color: #eb5757;
+  }
+  .inputErrorTitle {
+    position: absolute;
+    top: 185px; 
+  }
+  .inputErrorAuthor {
+    position: absolute;
+    top: 260px;
+  }
+  .inputErrorYear {
+    position: absolute;
+    top: 350px;
+  }
+  .inputErrorPages {
+    position: absolute;
+    top: 440px;
+  }
 
   .addButton {
     display: block;
@@ -65,6 +91,12 @@ export const LibraryEmptyStyled = styled.form`
     .aboutBookInput-year {
       margin-right: 27px;
     }
+    .inputErrorYear {
+      top: 260px;
+    }
+    .inputErrorPages {
+      top: 260px;
+    }
   }
   @media screen and (min-width: 1280px) {
     .bookContainer {
@@ -79,6 +111,16 @@ export const LibraryEmptyStyled = styled.form`
     }
     .aboutBookInput-author {
       width: 250px;
+    }
+    .inputErrorAuthor {
+      top: 185px;
+    }
+    .inputErrorYear {
+      top: 185px;
+    
+    }
+    .inputErrorPages {
+      top: 185px;
     }
     .addButton {
       margin: auto;

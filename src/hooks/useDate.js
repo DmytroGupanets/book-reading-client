@@ -24,7 +24,9 @@ const useDate = () => {
 
   useEffect(() => {
     setCurrentData();
-    quantityDays && start && setQuantityBetweenDays(chengeStartDataIdx(start));
+    if (quantityDays && start) {
+      setQuantityBetweenDays(chengeStartDataIdx(start));
+    }
   }, []);
 
   const setCurrentData = () => {

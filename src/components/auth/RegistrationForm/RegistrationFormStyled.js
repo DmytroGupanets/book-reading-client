@@ -43,6 +43,7 @@ export const RegistrationFormStyled = styled.div`
   }
 
   .authButton {
+    width: 100%;
     padding: 22px 62px;
     color: ${({ colors }) => colors.secondaryBg};
     font-family: "Montserrat", sans-serif;

@@ -16,19 +16,7 @@ const RegistrationForm = () => {
   const { theme } = useContext(ThemeContext);
   const dispatch = useDispatch();
   const { t } = useTranslation();
-
   const isError = useSelector(getError);
-
-  const notify = () =>
-    toast.error("Kористувач вже зареєстрований", {
-      position: "top-right",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
 
   useEffect(() => {
     if (isError !== null) {

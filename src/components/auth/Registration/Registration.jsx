@@ -25,23 +25,25 @@ const Registration = () => {
   }, []);
 
   const onConfirmEmailOk = useCallback(() => {
-    history.push("/");
+    history.push("/auth/login");
   }, [history]);
 
   return (
     <div className="authContainer">
       <div className="leftSideContainer">
         {confirmEmail ? (
-          <>
-            <div>Please, confirm your email address</div>
+          <div className="confirmContainer">
+            <div className="confirmMassage">
+              {t("Please confirm your email address")}
+            </div>
             <button
+              className="confirmButton"
               type="button"
-              className="authButton"
               onClick={onConfirmEmailOk}
             >
               OK
             </button>
-          </>
+          </div>
         ) : (
           <RegistrationForm />
         )}

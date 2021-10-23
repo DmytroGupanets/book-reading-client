@@ -21,7 +21,7 @@ const SelectBooks = () => {
   const plannedBooks = useSelector(getAllPlannedBooks);
   const selectedBooks = useSelector(getAllSelectedBooks);
 
-  const [value, setValue] = useStickyState(books, "book");
+  const [value, setValue] = useState(books);
   const [selectedBook, setSelectedBook] = useState({});
 
   useEffect(() => {
@@ -30,40 +30,37 @@ const SelectBooks = () => {
 
   useEffect(() => {
     setValue(plannedBooks);
-  }, [plannedBooks, setValue]);
+  }, [plannedBooks]);
 
-  const handleInputChange = useCallback((value, e) => {
+  const handleInputChange = (value, e) => {
     if (e.action === "input-change") {
-      setSelectedBook((state) => [...state, value]);
+      setSelectedBook((state) => [...state, { value }]);
     }
-  }, []);
+  };
 
   const onChange = (e) => {
     const value = e.value;
     setSelectedBook(value);
   };
 
-  const onHandleClick = useCallback(
-    (e) => {
-      dispatch(addSelectedBook(selectedBook));
-    },
-    [dispatch, selectedBook]
-  );
+  const onHandleClick = (e) => {
+    dispatch(addSelectedBook(selectedBook));
+  };
 
   const options = value.map(({ name, author, year, pages, _id }) => ({
     value: { name, author, year, pages, _id },
     label: name,
   }));
 
-  const onHandleDelete = useCallback(
-    (e) => {
-      const bookId = e.currentTarget.getAttribute("bookid");
-      const bookToRemove = books.find((book) => book._id === bookId);
+  // const onHandleDelete = useCallback(
+  //   (e) => {
+  //     const bookId = e.currentTarget.getAttribute("bookid");
+  //     const bookToRemove = books.find((book) => book._id === bookId);
 
-      dispatch(removeSelectedBook(bookToRemove));
-    },
-    [books, dispatch]
-  );
+  //     dispatch(removeSelectedBook(bookToRemove));
+  //   },
+  //   [books, dispatch]
+  // );
 
   return (
     <>
@@ -73,7 +70,7 @@ const SelectBooks = () => {
         onChange={onChange}
         onInputChange={handleInputChange}
       />
-      <MyGoalList data={selectedBooks} onClickDelete={onHandleDelete} />
+      {/* <MyGoalList data={selectedBooks} onClickDelete={onHandleDelete} /> */}
       <button onClick={onHandleClick}>Додати</button>
     </>
   );

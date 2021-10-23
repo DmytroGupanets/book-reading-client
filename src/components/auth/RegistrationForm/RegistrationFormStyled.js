@@ -43,6 +43,7 @@ export const RegistrationFormStyled = styled.div`
   }
 
   .authButton {
+    width: 100%;
     padding: 22px 62px;
     color: ${({ colors }) => colors.secondaryBg};
     font-family: "Montserrat", sans-serif;
@@ -54,6 +55,12 @@ export const RegistrationFormStyled = styled.div`
     border: none;
     overflow: hidden;
     cursor: pointer;
+
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover {
+      background-color: ${({ colors }) => colors.accentActive};
+    }
   }
 
   .loginContainer {

@@ -38,8 +38,9 @@ const LibraryEmpty = () => {
   return (
     <LibraryEmptyStyled onSubmit={formik.handleSubmit} colors={theme}>
       <div className="bookContainer">
+        <div className="booGroup">
         <label className="aboutBook aboutBook-title" htmlFor="title">
-          Назва книги
+        {t("Book title")}
           <input
             id="title"
             type="text"
@@ -50,10 +51,15 @@ const LibraryEmpty = () => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
           />
+          {formik.errors.title && formik.touched.title && (
+              <div className="inputError inputErrorTitle">{formik.errors.title}</div>
+            )}
         </label>
+        </div>
         <div className="aboutBookContainer">
+        <div className="booGroup">
           <label className="aboutBook aboutBook-author" htmlFor="author">
-            Автор книги
+          {t("Author")}
             <input
               id="author"
               type="text"
@@ -66,12 +72,14 @@ const LibraryEmpty = () => {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
             />
-            {formik.errors.title && formik.touched.title && (
-              <div className="inputError">{formik.errors.title}</div>
+            {formik.errors.author && formik.touched.author && (
+              <div className="inputError inputErrorAuthor">{formik.errors.author}</div>
             )}
           </label>
+          </div>
+          <div className="booGroup">
           <label className="aboutBook aboutBook-year" htmlFor="year">
-            Рік випуску
+          {t("Publication date")}
             <input
               id="year"
               type="number"
@@ -82,9 +90,14 @@ const LibraryEmpty = () => {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
             />
+            {formik.errors.year && formik.touched.year && (
+              <div className="inputError inputErrorYear">{formik.errors.year}</div>
+            )}
           </label>
+          </div>
+          <div className="booGroup">
           <label className="aboutBook aboutBook-page" htmlFor="pages">
-            Кількість сторінок
+          {t("Amount of pages")}
             <input
               id="pages"
               type="number"
@@ -95,10 +108,14 @@ const LibraryEmpty = () => {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
             />
+            {formik.errors.pages && formik.touched.pages && (
+              <div className="inputError inputErrorPages">{formik.errors.pages}</div>
+            )}
           </label>
+          </div>
         </div>
         <button type="submit" className="addButton">
-          Додати
+        {t("Add")}
         </button>
       </div>
     </LibraryEmptyStyled>

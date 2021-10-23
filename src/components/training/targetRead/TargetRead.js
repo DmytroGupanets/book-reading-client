@@ -1,9 +1,9 @@
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { getInProgressdBooks } from "../../../redux/books/booksSelectors";
 import {
   endDate,
-  getAllPlannedBooks,
+  // getAllPlannedBooks,
   getAllSelectedBooks,
   getIdxOfReadedBooksInTraining,
   getPreplaning,
@@ -15,7 +15,7 @@ import TargetReadStyled from "./TargetReadStyled";
 import { useContext } from "react";
 import { ThemeContext } from "../../App";
 
-const TargetRead = ({ state }) => {
+const TargetRead = ({ isActive }) => {
   const { theme } = useContext(ThemeContext);
 
   const [
@@ -32,19 +32,15 @@ const TargetRead = ({ state }) => {
   const booksInSelected = useSelector(getAllSelectedBooks);
   const preplaning = useSelector(getPreplaning);
   const idxOfReadedBooksInTraining = useSelector(getIdxOfReadedBooksInTraining);
-  // console.log(booksInSelected);
-  // console.log(preplaning.startDate);
-
-  // useEffect(() => {}, []);
-
+  // console.log(idxOfReadedBooksInTraining);
   const trainingQuantityDays =
     start && end && rangeBetwenStartAndEndDates(start, end);
 
   // ? rangeBetwenStartAndEndDates(preplaning.startDate, preplaning.endDate)
   // : rangeBetwenStartAndEndDates(start, end);
-
+  // console.log(booksInProgress);
   return (
-    <TargetReadStyled colors={theme} state={state}>
+    <TargetReadStyled colors={theme} isActive={isActive}>
       <div className="tabletWrapperStyled">
         <div className="titleWrapper">
           <h3 className="targetReadTitle">Моя мета прочитати</h3>
@@ -54,7 +50,7 @@ const TargetRead = ({ state }) => {
       <ul className="targetReadlist">
         <li className="targetReadItem">
           <div className="targetReadDig">
-            {!state ? booksInSelected.length : booksInProgress.length}
+            {!isActive ? booksInSelected.length : booksInProgress.length}
           </div>
           <p className="targetReadItemDescription">Кількість книжок</p>
         </li>
@@ -64,7 +60,7 @@ const TargetRead = ({ state }) => {
           </div>
           <p className="targetReadItemDescription">Кількість днів</p>
         </li>
-        {state && (
+        {isActive && (
           <li className="targetReadItem">
             <div className="targetReadDigRemain">
               {idxOfReadedBooksInTraining === -1

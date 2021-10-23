@@ -25,8 +25,8 @@ const TargetReadStyled = styled.div`
 
   .targetReadlist {
     display: flex;
-    padding: ${({ state }) =>
-      !state ? "55px 25px 55px 25px" : "30px 25px 30px 25px"};
+    padding: ${({ isActive }) =>
+      !isActive ? "55px 25px 55px 25px" : "30px 25px 30px 25px"};
   }
 
   .targetReadItem {
@@ -34,7 +34,7 @@ const TargetReadStyled = styled.div`
   }
 
   .targetReadItem:not(:last-child) {
-    margin-right: ${({ state }) => (!state ? "20px" : "12px")};
+    margin-right: ${({ isActive }) => (!isActive ? "20px" : "12px")};
   }
 
   .targetReadDig {
@@ -42,12 +42,12 @@ const TargetReadStyled = styled.div`
     align-items: center;
     justify-content: center;
     margin-bottom: 14px;
-    width: ${({ state }) => (!state ? "100px" : "63px")};
-    height: ${({ state }) => (!state ? "100px" : "63px")};
+    width: ${({ isActive }) => (!isActive ? "100px" : "63px")};
+    height: ${({ isActive }) => (!isActive ? "100px" : "63px")};
 
     font-family: Open Sans;
     font-weight: 700;
-    font-size: ${({ state }) => (!state ? "45px" : "35px")};
+    font-size: ${({ isActive }) => (!isActive ? "45px" : "35px")};
     line-height: 0.84;
 
     color: ${({ colors }) => colors.digits};
@@ -61,12 +61,12 @@ const TargetReadStyled = styled.div`
     justify-content: center;
     margin: 0 auto;
     margin-bottom: 14px;
-    width: ${({ state }) => (!state ? "100px" : "63px")};
-    height: ${({ state }) => (!state ? "100px" : "63px")};
+    width: ${({ isActive }) => (!isActive ? "100px" : "63px")};
+    height: ${({ isActive }) => (!isActive ? "100px" : "63px")};
 
     font-family: Open Sans;
     font-weight: 700;
-    font-size: ${({ state }) => (!state ? "45px" : "35px")};
+    font-size: ${({ isActive }) => (!isActive ? "45px" : "35px")};
     line-height: 0.84;
 
     color: ${({ colors }) => colors.accent};
@@ -76,8 +76,8 @@ const TargetReadStyled = styled.div`
 
   .targetReadItemDescription {
     font-weight: 500;
-    font-size: ${({ state }) => (!state ? "14px" : "11px")};
-    line-height: ${({ state }) => (!state ? "1.21" : "1.18")};
+    font-size: ${({ isActive }) => (!isActive ? "14px" : "11px")};
+    line-height: ${({ isActive }) => (!isActive ? "1.21" : "1.18")};
 
     color: ${({ colors }) => colors.secondaryText};
   }
@@ -85,20 +85,22 @@ const TargetReadStyled = styled.div`
   @media screen and (min-width: 768px) {
     display: flex;
     justify-content: space-between;
-    padding: ${({ state }) => (!state ? "0 45px 0 45px" : "0 30px 0 30px")};
+    padding: ${({ isActive }) =>
+      !isActive ? "0 45px 0 45px" : "0 30px 0 30px"};
     width: 678px;
 
     .titleWrapper {
       width: 275px;
-      margin-right: ${({ state }) => (!state ? "0" : "19px")};
+      margin-right: ${({ isActive }) => (!isActive ? "0" : "19px")};
     }
 
     .targetReadlist {
-      padding: ${({ state }) => (!state ? "20px 0 8px 0" : "20px 0 15px 0")};
+      padding: ${({ isActive }) =>
+        !isActive ? "20px 0 8px 0" : "20px 0 15px 0"};
     }
 
     .targetReadItem:not(:last-child) {
-      margin-right: ${({ state }) => (!state ? "35px" : "12px")};
+      margin-right: ${({ isActive }) => (!isActive ? "35px" : "12px")};
     }
 
     .targetReadDig {
@@ -121,7 +123,8 @@ const TargetReadStyled = styled.div`
     }
 
     .tabletWrapperStyled {
-      padding: ${({ state }) => (!state ? "23px 0 22px 0" : "23px 0 42px 0")};
+      padding: ${({ isActive }) =>
+        !isActive ? "23px 0 22px 0" : "23px 0 42px 0"};
     }
   }
 
@@ -136,31 +139,31 @@ const TargetReadStyled = styled.div`
     }
 
     .targetReadlist {
-      padding: ${({ state }) =>
-        !state ? "55px 27px 55px 28px" : "72px 9px 76px 17px"};
+      padding: ${({ isActive }) =>
+        !isActive ? "55px 27px 55px 28px" : "72px 9px 76px 17px"};
     }
 
     .targetReadItem:not(:last-child) {
-      margin-right: ${({ state }) => (!state ? "20px" : "12px")};
+      margin-right: ${({ isActive }) => (!isActive ? "20px" : "12px")};
     }
 
     .targetReadDig {
       margin-bottom: 14px;
       font-size: 45px;
-      width: ${({ state }) => (!state ? "100px" : "66px")};
-      height: ${({ state }) => (!state ? "100px" : "66px")};
+      width: ${({ isActive }) => (!isActive ? "100px" : "66px")};
+      height: ${({ isActive }) => (!isActive ? "100px" : "66px")};
     }
 
     .targetReadDigRemain {
       margin-bottom: 14px;
       font-size: 45px;
-      width: ${({ state }) => (!state ? "100px" : "66px")};
-      height: ${({ state }) => (!state ? "100px" : "66px")};
+      width: ${({ isActive }) => (!isActive ? "100px" : "66px")};
+      height: ${({ isActive }) => (!isActive ? "100px" : "66px")};
     }
 
     .targetReadItemDescription {
-      font-size: ${({ state }) => (!state ? "14px" : "12px")};
-      line-height: ${({ state }) => (!state ? "1.21" : "1.25")};
+      font-size: ${({ isActive }) => (!isActive ? "14px" : "12px")};
+      line-height: ${({ isActive }) => (!isActive ? "1.21" : "1.25")};
     }
 
     .tabletWrapperStyled {

@@ -44,11 +44,11 @@ export const updateRecordOperation =
     }
   };
 
-export const completeTargetOperation = (target) => async (dispatch) => {
+export const completeTargetOperation = (targetId) => async (dispatch) => {
   try {
     dispatch(completeTargetRequest());
 
-    const result = await completeTarget(target);
+    const result = await completeTarget(targetId);
 
     dispatch(completeTargetSuccess(result.data.data));
   } catch (error) {

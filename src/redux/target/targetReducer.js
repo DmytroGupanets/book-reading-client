@@ -21,6 +21,7 @@ import {
   addPlannedBookForSelect,
   addPlaningBook,
   removePlannedBooksForSelect,
+  setBookSelected,
   removePlannedBook,
   addPreplanningStartDate,
   addPreplanningEndtDate,
@@ -77,6 +78,7 @@ const plannedBooksReducer = createReducer([], {
 });
 
 const selectedBooksReducer = createReducer([], {
+  [setBookSelected]: (_, { payload }) => payload,
   [addSelectedBook]: (state, { payload }) => [...state, payload],
   [removeSelectedBook]: (state, { payload }) =>
     state.filter((book) => book._id !== payload._id),

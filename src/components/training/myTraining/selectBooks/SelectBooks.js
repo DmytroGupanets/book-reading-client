@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Select from "react-select";
 import { getPlannedBooks } from "../../../../redux/books/booksSelectors";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,9 +11,8 @@ import {
   addPlaningBook,
 } from "../../../../redux/target/targetActions";
 import {
-  getAllPlannedBooks,
   getAllSelectedBooks,
-  deleteSelectedBook,
+  getAllPlannedBooks,
 } from "../../../../redux/target/targetSelectors";
 import { useStickyState } from "../../../../hooks";
 
@@ -29,15 +28,17 @@ const SelectBooks = () => {
     "selected"
   );
   const [addTrainingBooks, setAddTrainingBooks] = useStickyState(
-    selectedBook,
+    selectedBooks,
     "selectedBooks"
   );
 
-  console.log(selectedBooks);
-
   useEffect(() => {
     dispatch(setPlannedBooksForSelect(value));
-  }, []);
+  }, [dispatch, value]);
+
+  // useEffect(() => {
+  //   dispatch(setPlannedBooksForSelect(addTrainingBooks));
+  // }, []);
 
   console.log(value);
   console.log(selectedBook);
@@ -65,7 +66,7 @@ const SelectBooks = () => {
   };
 
   console.log(value);
-  console.log(selectedBook);
+  console.log(selectedBooks);
 
   const options = value.map(({ name, author, year, pages, _id }) => ({
     value: { name, author, year, pages, _id },
@@ -88,7 +89,7 @@ const SelectBooks = () => {
   };
 
   console.log(value);
-  console.log(selectedBook);
+  console.log(addTrainingBooks);
   return (
     <>
       <Select

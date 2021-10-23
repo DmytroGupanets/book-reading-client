@@ -2,17 +2,20 @@ import Graph from "./Graph";
 import styled from "styled-components";
 import { useContext } from "react";
 import { ThemeContext } from "../App";
+import { useTranslation } from "react-i18next";
 
 const GraphContainer = () => {
+  const { t } = useTranslation();
   const { theme } = useContext(ThemeContext);
 
   return (
     <DivStyled colors={theme}>
       <h3 className="graph__count-page">
-        КОЛИЧЕСТВО СТРАНИЦ / ДЕНЬ <span>{13}</span>
+        {t("Amount of pages / day")}
+        <span>{13}</span>
       </h3>
       <Graph />
-      <p className="time-paragraph">ЧАС</p>
+      <p className="time-paragraph">{t("TIME")}</p>
     </DivStyled>
   );
 };

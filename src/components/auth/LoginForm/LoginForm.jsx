@@ -1,4 +1,5 @@
 import { useFormik } from "formik";
+import { useTranslation } from "react-i18next";
 import GoogleButton from "../GoogleButton/GoogleButton";
 import LoginFormStyled from "./LoginFormStyled";
 import { loginValidationSchema } from "../validation/validationSchema";
@@ -7,38 +8,27 @@ import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../../redux/auth/authOperations";
 import { useContext, useEffect } from "react";
 import { ThemeContext } from "../../App";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { getError } from "../../../redux/auth/authSelectors";
 import { resetError } from "../../../redux/auth/authActions";
+import { error } from "@pnotify/core/dist/PNotify.js";
+import "@pnotify/core/dist/BrightTheme.css";
+import "@pnotify/core/dist/PNotify.css";
 
 const LoginForm = () => {
   const dispatch = useDispatch();
   const { theme } = useContext(ThemeContext);
+  const { t } = useTranslation();
   const isError = useSelector(getError);
-  const notify = () =>
-    toast.error("Невiрний пароль/email або користувач не зареєстрований", {
-      position: "top-right",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
 
   useEffect(() => {
     if (isError !== null) {
-      notify();
+      error({
+        text: "Невiрний пароль/email або користувач не зареєстрований",
+        delay: 3000,
+      });
     }
     return dispatch(resetError());
   }, [isError, dispatch]);
-
-  // useEffect(() => {
-  //   if (isError !== null) {
-  //     notify();
-  //   }
-  // }, [isError, dispatch]);
 
   const formik = useFormik({
     initialValues: {
@@ -64,7 +54,7 @@ const LoginForm = () => {
       <form className="form" onSubmit={formik.handleSubmit}>
         <div className="formGroup emailInput">
           <label className="formLabel" htmlFor="email">
-            Електронна адреса
+            {t("Email")}
             <span className="formLabelStar"> *</span>
           </label>
           <input
@@ -83,7 +73,7 @@ const LoginForm = () => {
         </div>
         <div className="formGroup">
           <label className="formLabel" htmlFor="password">
-            Пароль
+            {t("Password")}
             <span className="formLabelStar"> *</span>
           </label>
           <input
@@ -93,7 +83,7 @@ const LoginForm = () => {
             maxLength="30"
             className="formInput"
             name="password"
-            placeholder="Пароль"
+            placeholder={t("Password")}
             value={formik.values.password}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
@@ -104,16 +94,15 @@ const LoginForm = () => {
         </div>
         <div className="wrapperButton">
           <button type="submit" className="authButton">
-            Увійти
+            {t("Login")}
           </button>
         </div>
         <div className="registContainer">
           <Link to="/auth/register" className="registerLink">
-            Реєстрація
+            {t("Registration")}
           </Link>
         </div>
       </form>
-      {isError && <h2>Проблемка</h2>}
     </LoginFormStyled>
   );
 };

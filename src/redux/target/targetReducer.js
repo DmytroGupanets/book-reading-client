@@ -34,7 +34,7 @@ const targetsReducer = createReducer([], {
     records: payload,
   }),
   [completeTargetSuccess]: (state, { payload }) => payload,
-  [addTargetSucces]: (state, { payload }) => payload,
+  [addTargetSucces]: (state, { payload }) => payload.result,
 });
 
 const bookInTrainingReducer = createReducer([], {

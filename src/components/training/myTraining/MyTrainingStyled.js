@@ -13,47 +13,6 @@ const MyTrainingStyled = styled.div`
     background: #b1b5c2;
     box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
   }
-  .datePickerTraining {
-    font-size: 14px;
-    line-height: 2.71;
-
-    color: ${({ colors }) => colors.trainingLabel};
-    padding-left: 47px;
-    width: 270px;
-    height: 42px;
-    margin-bottom: 20px;
-    border: 1px solid ${({ colors }) => colors.icons};
-  }
-  .datePickerWrapper {
-    position: relative;
-  }
-  .datePickerIcon {
-    position: absolute;
-    left: 17px;
-    top: 11px;
-    width: 17px;
-    height: 17px;
-  }
-  .datePickerIconPolygon {
-    position: absolute;
-    right: 18px;
-    top: 17px;
-    width: 13px;
-    height: 7px;
-  }
-  .navLibrarySvg {
-    width: 22px;
-    height: 18px;
-  }
-  .iconDelete {
-    width: 14px;
-    height: 18px;
-  }
-  .selectedBooksListWrapper {
-    display: flex;
-    align-content: center;
-    justify-content: space-between;
-  }
 `;
 
 export default MyTrainingStyled;

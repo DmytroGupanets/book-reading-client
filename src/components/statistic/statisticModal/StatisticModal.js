@@ -1,8 +1,7 @@
 import React, { useContext } from "react";
-import { useTranslation } from "react-i18next";
 import StatisticModalStyled from "./StatisticModalStyled";
 import sprite from "./sprite.svg";
-import quotes from "../../quotes/en/quotesEN.json";
+import quotes from "../../quotes/ua/quotesUA.json";
 import quotesIcon from "../../../images/auth/quotes.svg";
 import { ThemeContext } from "../../App";
 
@@ -19,7 +18,6 @@ const randomAuthor = Object.values(quotesArrayElement)[2];
 
 const StatisticModal = ({ onClose }) => {
   const { theme } = useContext(ThemeContext);
-  const { t } = useTranslation();
 
   return (
     <StatisticModalStyled colors={theme}>
@@ -28,16 +26,15 @@ const StatisticModal = ({ onClose }) => {
           <use href={sprite + "#icon-hand"} width="45"></use>
         </svg>
         <p className="StatisticModalText">
-          {t("Well done,")} <br />{" "}
-          {t("but you need to be a little bit faster!")} <br />{" "}
-          {t("Next time you will succeed)")}
+          Ти молодчина, <br /> але потрібно швидше! <br /> Наступного разу тобі
+          все вдасться)
         </p>
         <div className="StatisticModalQuote">
           <svg className="quotesIcon" width="25" height="20">
             <use href={quotesIcon + "#icon-quotes"}></use>
           </svg>
-          <p className="StatisticModalQuoteText">"{t(randomQuote)}"</p>
-          <p className="StatisticModalAuthorText">{t(randomAuthor)}</p>
+          <p className="StatisticModalQuoteText">"{randomQuote}"</p>
+          <p className="StatisticModalAuthorText">{randomAuthor}</p>
         </div>
         <button
           type="button"

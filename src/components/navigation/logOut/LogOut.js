@@ -1,25 +1,30 @@
-import React, { useContext } from "react";
-import { useDispatch } from "react-redux";
+import React, { useContext, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { logOut } from "../../../redux/auth/authOperations";
 import LogOutStyled from "./LogOutStyled";
 import { ThemeContext } from "../../App";
+import Modal from "../../modal/Modal";
+import LogOutModal from "../logOutModal/LogOutModal";
 
 const LogOut = () => {
   const { theme } = useContext(ThemeContext);
-  const dispatch = useDispatch();
+  const [modalState, setModalState] = useState(false);
 
-  const onHandleClick = () => {
-    dispatch(logOut());
+  const toggleModal = () => {
+    setModalState((state) => !state);
   };
 
   const { t } = useTranslation();
 
   return (
     <LogOutStyled colors={theme}>
-      <button className="logOutButton" type="button" onClick={onHandleClick}>
-        {t("Logout")}
+      <button className="logOutButton" type="button" onClick={toggleModal}>
+        <span className="logOutWrapper">{t("Logout")}</span>
       </button>
+      {modalState && (
+        <Modal onClose={toggleModal}>
+          <LogOutModal onClose={toggleModal} />
+        </Modal>
+      )}
     </LogOutStyled>
   );
 };

@@ -15,7 +15,7 @@ const AuthStyled = styled.div`
   line-height: 1.9;
   color: ${({ colors }) => colors.primaryText};
   width: 100%;
-  height: calc(100vh - 132px);
+  /* height: calc(100vh - 132px); */
 
   .authContainer {
     height: 100%;
@@ -45,6 +45,34 @@ const AuthStyled = styled.div`
         rgba(9, 30, 63, 0.8)
       ),
       url(${mobile1x});
+
+    .confirmContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 20px 5px;
+
+      .confirmMassage {
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 1.22;
+        color: ${({ colors }) => colors.secondaryBg};
+      }
+
+      .confirmButton {
+        margin-top: 25px;
+        padding: 0 20px;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 2;
+        color: ${({ colors }) => colors.secondaryBg};
+        background-color: ${({ colors }) => colors.accent};
+        border: none;
+        cursor: pointer;
+      }
+    }
 
     @media screen and (min-device-pixel-ratio: 2),
       screen and (min-resolution: 192dpi),
@@ -77,6 +105,24 @@ const AuthStyled = styled.div`
               rgba(9, 30, 63, 0.8)
             ),
             url(${tablet2x});
+        }
+
+        .confirmContainer {
+          .confirmMassage {
+            line-height: 1.58;
+            font-size: 24px;
+          }
+          .confirmButton {
+            margin-top: 35px;
+            padding: 0 25px;
+            font-size: 16px;
+            line-height: 2.37;
+            transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+            &:hover {
+              background-color: ${({ colors }) => colors.accentActive};
+            }
+          }
         }
       }
     }

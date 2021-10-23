@@ -11,9 +11,10 @@ const LogOutStyled = styled.div`
     line-height: 2.71;
     cursor: pointer;
 
-    text-decoration-line: underline;
-
     color: ${({ colors }) => colors.primaryText};
+  }
+  .logOutWrapper {
+    border-bottom: 1px solid #242a37;
   }
 `;
 

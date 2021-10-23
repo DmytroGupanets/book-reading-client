@@ -1,60 +1,96 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import arrowIcon from "../../../images/auth/arrow.svg";
 import { ThemeContext } from "../../App";
 import RegistrationForm from "../RegistrationForm/RegistrationForm";
 import { RegistrationStyled } from "./RegistrationStyled";
+import { useSelector } from "react-redux";
+import { getConfirmEmail } from "../../../redux/auth/authSelectors";
+import { useDispatch } from "react-redux";
+import { registerReset } from "../../../redux/auth/authActions";
+import { useCallback } from "react";
+import { useHistory } from "react-router";
 
 const Registration = () => {
   const { theme } = useContext(ThemeContext);
+  const { t } = useTranslation();
+  const dispatch = useDispatch();
+  const confirmEmail = useSelector(getConfirmEmail);
+  const history = useHistory();
+
+  useEffect(() => {
+    return () => {
+      dispatch(registerReset());
+    };
+  }, []);
+
+  const onConfirmEmailOk = useCallback(() => {
+    history.push("/auth/login");
+  }, [history]);
 
   return (
     <div className="authContainer">
       <div className="leftSideContainer">
-        <RegistrationForm />
+        {confirmEmail ? (
+          <div className="confirmContainer">
+            <div className="confirmMassage">
+              {t("Please confirm your email address")}
+            </div>
+            <button
+              className="confirmButton"
+              type="button"
+              onClick={onConfirmEmailOk}
+            >
+              OK
+            </button>
+          </div>
+        ) : (
+          <RegistrationForm />
+        )}
       </div>
       <div className="rightSideContainer">
         <RegistrationStyled colors={theme}>
           <h2 className="title">Books Reading</h2>
-          <p className="listTitle">Допоможе вам</p>
+          <p className="listTitle">{t("Will help you to")}</p>
           <ul className="list">
             <li className="listItem">
               <svg className="arrowIcon" width="5" height="10">
                 <use href={arrowIcon + "#icon-arrow"}></use>
               </svg>
-              Швидше сформулювати свою ціль і розпочати читати
+              {t("Create your goal faster and proceed to read")}
             </li>
             <li className="listItem">
               <svg className="arrowIcon" width="5" height="10">
                 <use href={arrowIcon + "#icon-arrow"}></use>
               </svg>
-              Пропорційно розподілити навантаження на кожний день
+              {t("Divide process proportionally for each day")}
             </li>
             <li className="listItem">
               <svg className="arrowIcon" width="5" height="10">
                 <use href={arrowIcon + "#icon-arrow"}></use>
               </svg>
-              Відстежувати особистий успіх
+              {t("Track your success")}
             </li>
           </ul>
-          <p className="listTitle">Також ви зможете</p>
+          <p className="listTitle">{t("You may also")}</p>
           <ul className="list">
             <li className="listItem">
               <svg className="arrowIcon" width="5" height="10">
                 <use href={arrowIcon + "#icon-arrow"}></use>
               </svg>
-              Формувати особисту думку незалежну від інших
+              {t("Pose your own independent point of view")}
             </li>
             <li className="listItem">
               <svg className="arrowIcon" width="5" height="10">
                 <use href={arrowIcon + "#icon-arrow"}></use>
               </svg>
-              Підвищити свої професійні якості опираючись на нові знання
+              {t("Improve your professional skills according to new knowledge")}
             </li>
             <li className="listItem">
               <svg className="arrowIcon" width="5" height="10">
                 <use href={arrowIcon + "#icon-arrow"}></use>
               </svg>
-              Стати цікавим співрозмовником
+              {t("Become an interesting interlocutor")}
             </li>
           </ul>
         </RegistrationStyled>

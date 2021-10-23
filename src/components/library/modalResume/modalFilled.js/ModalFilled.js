@@ -4,7 +4,7 @@ import starsRating from "../../../../images/rating-stars.svg";
 import { ThemeContext } from "../../../App";
 import { ModalFilledStyled } from "./ModalFilledStyled";
 
-const ModalFilled = ({ book, onClose, openForm }) => {
+const ModalFilled = ({ resume, onClose, openForm }) => {
   const { theme } = useContext(ThemeContext);
   const emptyStar = starsRating + "#star-active-empty";
   const filledStar = starsRating + "#star-active";
@@ -17,13 +17,23 @@ const ModalFilled = ({ book, onClose, openForm }) => {
     openForm(false);
   };
 
+  const bookResumeText = () => {
+    let msg = "";
+
+    if (!resume.text.trim().length) msg = "Ви маєте змогу додати ваше резюме!";
+    else msg = resume.text;
+
+    return msg;
+  };
+
   return (
     <ModalFilledStyled colors={theme}>
       <p className="yourRating">Рейтинг книги</p>
       <ReactStars
-        value={book.resume.rating}
+        value={resume.rating}
         count={5}
         size={16}
+        edit={false}
         activeColor="#FF6B08"
         emptyIcon={
           <i className="far fa-star">
@@ -42,8 +52,9 @@ const ModalFilled = ({ book, onClose, openForm }) => {
       />
 
       <span className="yourResume">Ваше резюме:</span>
-
-      <p className="yourResumeText">{book.resume.text}</p>
+      <div className="textBox">
+        <p className="yourResumeText">{bookResumeText()}</p>
+      </div>
 
       <div className="filledButtonsWrapper">
         <button

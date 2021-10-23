@@ -36,6 +36,12 @@ const LoginFormStyled = styled.div`
     background-color: ${({ colors }) => colors.iconActive};
     box-shadow: inset 0px 1px 2px rgba(29, 29, 27, 0.15);
     border: none;
+    border-radius: 4px;
+    outline: none;
+    &:focus {
+      border: 1px solid #d15807;
+      box-shadow: 0px 1px 2px rgba(221, 123, 12, 0.15);
+    }
   }
   .formGroup {
     position: relative;
@@ -66,6 +72,7 @@ const LoginFormStyled = styled.div`
     background-color: ${({ colors }) => colors.accent};
     border: none;
     cursor: pointer;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
     &:hover {
       background-color: ${({ colors }) => colors.accentActive};
@@ -86,6 +93,7 @@ const LoginFormStyled = styled.div`
     color: ${({ colors }) => colors.accent};
     text-decoration: underline;
     cursor: pointer;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
     &:hover {
       color: ${({ colors }) => colors.accentActive};

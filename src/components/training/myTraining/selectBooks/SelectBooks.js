@@ -1,5 +1,6 @@
-import React, { useEffect } from "react";
-import Select from "react-select";
+import React, { useEffect, useState } from "react";
+import Select, { components } from "react-select";
+import { useTranslation } from "react-i18next";
 import { getPlannedBooks } from "../../../../redux/books/booksSelectors";
 import { useDispatch, useSelector } from "react-redux";
 import MyGoalList from "../../myGoalBooks/myGoalList/MyGoalList";
@@ -16,7 +17,13 @@ import {
 } from "../../../../redux/target/targetSelectors";
 import { useStickyState } from "../../../../hooks";
 
-const SelectBooks = () => {
+import SelectBooksStyled from "./SelectBooksStyled";
+
+import sprite from "../../../../images/sprite.svg";
+
+const SelectBooks = ({ toggleModal }) => {
+  const { t } = useTranslation();
+
   const dispatch = useDispatch();
   const books = useSelector(getPlannedBooks);
   const plannedBooks = useSelector(getAllPlannedBooks);
@@ -28,20 +35,17 @@ const SelectBooks = () => {
     "selected"
   );
   const [addTrainingBooks, setAddTrainingBooks] = useStickyState(
-    selectedBooks,
+    selectedBook,
     "selectedBooks"
   );
 
   useEffect(() => {
     dispatch(setPlannedBooksForSelect(value));
-  }, [dispatch, value]);
+  }, []);
 
   // useEffect(() => {
   //   dispatch(setPlannedBooksForSelect(addTrainingBooks));
   // }, []);
-
-  console.log(value);
-  console.log(selectedBook);
 
   const handleInputChange = (value, e) => {
     if (e.action === "input-change") {
@@ -63,10 +67,8 @@ const SelectBooks = () => {
     setValue((state) => [
       ...state.filter((book) => book._id !== selectedBook._id),
     ]);
+    toggleModal();
   };
-
-  console.log(value);
-  console.log(selectedBooks);
 
   const options = value.map(({ name, author, year, pages, _id }) => ({
     value: { name, author, year, pages, _id },
@@ -88,19 +90,36 @@ const SelectBooks = () => {
     ]);
   };
 
-  console.log(value);
-  console.log(addTrainingBooks);
+  const CaretDownIcon = () => {
+    return (
+      <svg className="selectBooksIconPolygon">
+        <use href={sprite + "#icon-polygon"} />
+      </svg>
+    );
+  };
+
+  const DropdownIndicator = (props) => {
+    return (
+      <components.DropdownIndicator {...props}>
+        <CaretDownIcon />
+      </components.DropdownIndicator>
+    );
+  };
+
   return (
-    <>
+    <SelectBooksStyled>
       <Select
         options={options}
         closeMenuOnSelect={true}
         onChange={onChange}
         onInputChange={handleInputChange}
+        components={{ DropdownIndicator }}
       />
       <MyGoalList data={addTrainingBooks} onClickDelete={onHandleDelete} />
-      <button onClick={onHandleClick}>Додати</button>
-    </>
+      <button className="selectBooksButton" onClick={onHandleClick}>
+        {t("Add")}
+      </button>
+    </SelectBooksStyled>
   );
 };
 

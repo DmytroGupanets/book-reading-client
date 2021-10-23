@@ -12,6 +12,8 @@ import { ThemeContext } from "../App";
 import Modal from "../modal/Modal";
 import useWindowDimensions from "../../hooks/resize";
 import { useState } from "react";
+import LibraryEmptyModal from "../libraryEmpty/libraryEmptyModal/LibraryEmptyModal";
+import AddBookMobileIcon from "../libraryEmpty/addBookMobileIcon/AddBookMobileIcon";
 
 const Library = () => {
   const isAuth = useSelector(getAuthenticated);
@@ -20,9 +22,14 @@ const Library = () => {
   const { theme } = useContext(ThemeContext);
   const isMobile = useWindowDimensions().width < 768;
   const [modalState, setModalState] = useState(true);
+  const [addBookLibraryModal, setAddBookLibraryModal] = useState(true);
 
   const toggleModal = () => {
     setModalState((state) => !state);
+  };
+
+  const toggleAddBookModal = () => {
+    setAddBookLibraryModal((state) => !state);
   };
 
   useEffect(() => {
@@ -33,7 +40,10 @@ const Library = () => {
 
   return (
     <LibraryStyled colors={theme}>
-      {isAuth && <LibraryEmpty />}
+      {isAuth && !isMobile && <LibraryEmpty />}
+      {isAuth && isMobile && addBookLibraryModal && (
+        <LibraryEmptyModal toggleModal={toggleAddBookModal} />
+      )}
       {isAuth && !isUserHaveAnyBooks && !isMobile && <AddBookModal />}
       {isAuth && !isUserHaveAnyBooks && isMobile && modalState && (
         <Modal onClose={toggleModal}>
@@ -47,6 +57,7 @@ const Library = () => {
           Далі
         </NavLink>
       )}
+      {isMobile && <AddBookMobileIcon toggleModal={toggleAddBookModal} />}
     </LibraryStyled>
   );
 };

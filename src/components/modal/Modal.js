@@ -19,7 +19,7 @@ const Modal = ({ children, onClose }) => {
 
   return (
     <ModalStyled>
-      <div className="ModalOverlay" onClick={onHandleClick}>
+      <div className="ModalOverlay selector" onClick={onHandleClick}>
         <div className="Modal">{children}</div>
       </div>
     </ModalStyled>

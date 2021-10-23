@@ -1,12 +1,14 @@
 import styled from "styled-components";
 
 export const LibraryStyled = styled.div`
+  position: relative;
+
   .trainingLink {
     display: block;
 
     background-color: ${({ colors }) => colors.accent};
 
-    margin: 20px auto;
+    margin: 20px auto 110px;
     text-align: center;
     width: 200px;
     height: 40px;

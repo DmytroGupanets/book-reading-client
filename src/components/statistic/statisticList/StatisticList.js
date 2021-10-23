@@ -2,10 +2,11 @@ import React, { useContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setBookInTrainingSuccess } from "../../../redux/target/targetActions";
 import { getInProgressdBooks } from "../../../redux/books/booksSelectors";
-import { getRecords } from "../../../redux/target/targetSelectors";
+import { getRecords, getTargetId } from "../../../redux/target/targetSelectors";
 
 import { ThemeContext } from "../../App";
 import StatisticListStyled from "./StatisticListStyled";
+import { completeTargetOperation } from "../../../redux/target/targetOperations";
 
 const StatisticList = ({ toggleModal }) => {
   const { theme } = useContext(ThemeContext);
@@ -13,6 +14,7 @@ const StatisticList = ({ toggleModal }) => {
 
   const records = useSelector(getRecords);
   const booksInProgress = useSelector(getInProgressdBooks);
+  const targetId = useSelector(getTargetId);
 
   const dispatch = useDispatch();
 
@@ -24,11 +26,13 @@ const StatisticList = ({ toggleModal }) => {
   useEffect(() => {
     if (pagesState === totalPagesOfBookInProgress) {
       toggleModal();
+      // dispatch(completeTargetOperation(targetId));
     }
 
     return () => {
       if (pagesState === totalPagesOfBookInProgress) {
         toggleModal();
+        // dispatch(completeTargetOperation(targetId));
       }
     };
   }, [pagesState, totalPagesOfBookInProgress]);

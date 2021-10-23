@@ -7,34 +7,44 @@ import {
   addSelectedBook,
   removeSelectedBook,
   setPlannedBooksForSelect,
+  removePlannedBook,
+  addPlaningBook,
 } from "../../../../redux/target/targetActions";
 import {
   getAllPlannedBooks,
   getAllSelectedBooks,
+  deleteSelectedBook,
 } from "../../../../redux/target/targetSelectors";
 import { useStickyState } from "../../../../hooks";
 
 const SelectBooks = () => {
-  // const { t } = useTranslation();
   const dispatch = useDispatch();
   const books = useSelector(getPlannedBooks);
   const plannedBooks = useSelector(getAllPlannedBooks);
   const selectedBooks = useSelector(getAllSelectedBooks);
 
-  const [value, setValue] = useState(books);
-  const [selectedBook, setSelectedBook] = useState({});
+  const [value, setValue] = useStickyState(books, "books");
+  const [selectedBook, setSelectedBook] = useStickyState(
+    selectedBooks,
+    "selected"
+  );
+  const [addTrainingBooks, setAddTrainingBooks] = useStickyState(
+    selectedBook,
+    "selectedBooks"
+  );
+
+  console.log(selectedBooks);
 
   useEffect(() => {
-    dispatch(setPlannedBooksForSelect(books));
+    dispatch(setPlannedBooksForSelect(value));
   }, []);
 
-  useEffect(() => {
-    setValue(plannedBooks);
-  }, [plannedBooks]);
+  console.log(value);
+  console.log(selectedBook);
 
   const handleInputChange = (value, e) => {
     if (e.action === "input-change") {
-      setSelectedBook((state) => [...state, { value }]);
+      setSelectedBook((state) => [...state, value]);
     }
   };
 
@@ -43,25 +53,42 @@ const SelectBooks = () => {
     setSelectedBook(value);
   };
 
-  const onHandleClick = (e) => {
+  const onHandleClick = () => {
     dispatch(addSelectedBook(selectedBook));
+
+    dispatch(removePlannedBook(selectedBook));
+
+    setAddTrainingBooks((state) => [...state, selectedBook]);
+    setValue((state) => [
+      ...state.filter((book) => book._id !== selectedBook._id),
+    ]);
   };
+
+  console.log(value);
+  console.log(selectedBook);
 
   const options = value.map(({ name, author, year, pages, _id }) => ({
     value: { name, author, year, pages, _id },
     label: name,
   }));
 
-  // const onHandleDelete = useCallback(
-  //   (e) => {
-  //     const bookId = e.currentTarget.getAttribute("bookid");
-  //     const bookToRemove = books.find((book) => book._id === bookId);
+  const onHandleDelete = (e) => {
+    const bookId = e.currentTarget.getAttribute("bookid");
+    const bookToRemove = addTrainingBooks.find((book) => book._id === bookId);
 
-  //     dispatch(removeSelectedBook(bookToRemove));
-  //   },
-  //   [books, dispatch]
-  // );
+    dispatch(removeSelectedBook(bookToRemove));
+    dispatch(addPlaningBook(bookToRemove));
 
+    setAddTrainingBooks((state) => state.filter((book) => book._id !== bookId));
+
+    setValue(() => [
+      ...value,
+      ...addTrainingBooks.filter((book) => book._id === bookId),
+    ]);
+  };
+
+  console.log(value);
+  console.log(selectedBook);
   return (
     <>
       <Select
@@ -70,7 +97,7 @@ const SelectBooks = () => {
         onChange={onChange}
         onInputChange={handleInputChange}
       />
-      {/* <MyGoalList data={selectedBooks} onClickDelete={onHandleDelete} /> */}
+      <MyGoalList data={addTrainingBooks} onClickDelete={onHandleDelete} />
       <button onClick={onHandleClick}>Додати</button>
     </>
   );

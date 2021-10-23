@@ -19,7 +19,9 @@ import {
   resetPreplanning,
   setPlannedBooksForSelect,
   addPlannedBookForSelect,
+  addPlaningBook,
   removePlannedBooksForSelect,
+  removePlannedBook,
   addPreplanningStartDate,
   addPreplanningEndtDate,
 } from "./targetActions";
@@ -66,9 +68,11 @@ const errorReducer = createReducer("", {
 
 const plannedBooksReducer = createReducer([], {
   [setPlannedBooksForSelect]: (_, { payload }) => payload,
-  [removeSelectedBook]: (state, { payload }) => [...state, payload],
-  [addSelectedBook]: (state, { payload }) =>
+  [removePlannedBook]: (state, { payload }) =>
     state.filter((book) => book._id !== payload._id),
+
+  [addPlaningBook]: (state, { payload }) => [...state, payload],
+
   [resetPreplanning]: (_, __) => [],
 });
 

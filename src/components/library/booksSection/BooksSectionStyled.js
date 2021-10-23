@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const BooksSectionStyled = styled.div`
+  padding-top: 20px;
   .title {
-    margin-top: 20px;
     margin-bottom: 10px;
 
     font-family: "Montserrat", sans-serif;

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const FooterStyled = styled.div`
+  padding-bottom: 15px;
   .FooterWrapper {
     position: relative;
     /* margin-top: 666px; */
@@ -45,7 +46,6 @@ const FooterStyled = styled.div`
       font-size: 14px;
       line-height: 1.22;
       margin-top: 60px;
-      margin-bottom: 27px;
       margin-left: auto;
       margin-right: auto;
       width: 200px;
@@ -55,7 +55,6 @@ const FooterStyled = styled.div`
       width: 450px;
       font-size: 16px;
       margin-top: 60px;
-      margin-bottom: 18px;
     }
 
     @media screen and (min-width: 1280px) {

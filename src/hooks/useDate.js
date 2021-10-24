@@ -39,19 +39,29 @@ const useDate = () => {
     return startDateStr.join("-");
   };
 
-  // const chengeEndDataIdx = (str) => {
-  //   const startDateStr = str.slice().split(".");
-  //   [startDateStr[0], startDateStr[1]] = [startDateStr[1], startDateStr[0]];
-  //   return startDateStr.join("-");
-  // };
-
   const rangeBetwenStartAndEndDates = (startDate, endDate) => {
+    const arr = [];
     const reverseStart = startDate.split(".").reverse().join("-");
     const reverseEnd = endDate.split(".").reverse().join("-");
     const start = new Date(reverseStart);
     const end = new Date(reverseEnd);
     const range = moment.range(start, end);
-    return range.diff("days");
+
+    let newDateRange = start.getDate();
+
+    for (let i = 0; i < range.diff("days"); i++) {
+      newDateRange++;
+      const newDate = moment().set({
+        year: start.getFullYear,
+        month: start.getMonth(),
+        date: newDateRange,
+      });
+
+      arr.push(
+        newDate.toISOString().substr(0, 10).split("-").reverse().join(".")
+      );
+    }
+    return arr;
   };
 
   const setQuantityBetweenDays = (startTargetData) => {
@@ -87,7 +97,7 @@ const useDate = () => {
   return [
     stateData,
     moment,
-    setCurrentData,
+    // setCurrentData,
     setQuantityBetweenDays,
     rangeBetwenStartAndEndDates,
   ];

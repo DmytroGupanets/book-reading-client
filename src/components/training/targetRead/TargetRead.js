@@ -12,7 +12,7 @@ import {
 import useDate from "../../../hooks/useDate";
 
 import TargetReadStyled from "./TargetReadStyled";
-import { useContext } from "react";
+import { createRef, useContext } from "react";
 import { ThemeContext } from "../../App";
 
 const TargetRead = ({ isActive }) => {
@@ -21,22 +21,20 @@ const TargetRead = ({ isActive }) => {
   const [
     stateData,
     moment,
-    setCurrentData,
+    // setCurrentData,
     setQuantityBetweenDays,
     rangeBetwenStartAndEndDates,
   ] = useDate();
+
+  const preplaning = useSelector(getPreplaning);
 
   const start = useSelector(getPreplanningStartDate);
   const end = useSelector(getPreplanningEndDate);
   const booksInProgress = useSelector(getInProgressdBooks);
   const booksInSelected = useSelector(getAllSelectedBooks);
-  // const preplaning = useSelector(getPreplaning);
   const idxOfReadedBooksInTraining = useSelector(getIdxOfReadedBooksInTraining);
   const trainingQuantityDays =
     start && end && rangeBetwenStartAndEndDates(start, end);
-
-  // ? rangeBetwenStartAndEndDates(preplaning.startDate, preplaning.endDate)
-  // : rangeBetwenStartAndEndDates(start, end);
 
   return (
     <TargetReadStyled colors={theme} isActive={isActive}>
@@ -55,7 +53,7 @@ const TargetRead = ({ isActive }) => {
         </li>
         <li className="targetReadItem">
           <div className="targetReadDig">
-            {trainingQuantityDays ? trainingQuantityDays : 0}
+            {trainingQuantityDays ? trainingQuantityDays.length : 0}
           </div>
           <p className="targetReadItemDescription">Кількість днів</p>
         </li>

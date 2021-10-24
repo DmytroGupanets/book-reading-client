@@ -12,14 +12,11 @@ import TargetRead from "./targetRead/TargetRead";
 import TrainingStyled from "./TrainingStyled";
 import MyTraining from "./myTraining/MyTraining";
 import { useTranslation } from "react-i18next";
-
-import MyGoalBooks from "./myGoalBooks/MyGoalBooks";
 import { getAllBooksOperation } from "../../redux/books/booksOperations";
 import ModalMyTraining from "./modalMyTraining/ModalMyTraining";
-import MyGoalList from "./myGoalBooks/myGoalList/MyGoalList";
+import MyGoalList from "./myGoalBooks/myGoalListDefault/myGoalListNormal/MyGoalListNormal";
 import { getPlannedBooks } from "../../redux/books/booksSelectors";
 import {
-  addSelectedBook,
   removeSelectedBook,
   resetPreplanning,
 } from "../../redux/target/targetActions";
@@ -35,6 +32,8 @@ import { getPreplaning } from "../../redux/target/targetSelectors";
 import useWindowDimensions from "../../hooks/resize";
 import { ThemeContext } from "../App";
 import Timer from "../timer/Timer";
+import MyGoalListNormal from "./myGoalBooks/myGoalList/myGoalListNormal/MyGoalListNormal";
+import MyGoalListDefault from "./myGoalBooks/myGoalListDefault/MyGoalListDefault";
 
 const Training = () => {
   const dispatch = useDispatch();
@@ -73,7 +72,7 @@ const Training = () => {
 
   useEffect(() => {
     dispatch(getAllBooksOperation());
-    dispatch(getRecordOperation());
+    dispatch(getRecordOperation(ownerId));
   }, []);
 
   const toggleModal = useCallback(() => {
@@ -137,7 +136,9 @@ const Training = () => {
           <div className="mainContentWrapper">
             {!isActive && <MyTraining />}
             {isActive && <Timer />}
-            <MyGoalList data={selectedBooks} onClickDelete={onHandleDelete} />
+            {!isActive && (
+              <MyGoalList data={selectedBooks} onClickDelete={onHandleDelete} />
+            )}
             {!isActive && isTargetReady && (
               <button className="startTrainingBtn" onClick={onHandleClickStart}>
                 {t("Start training")}

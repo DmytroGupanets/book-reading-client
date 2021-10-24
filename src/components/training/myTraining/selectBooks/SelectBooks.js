@@ -79,7 +79,7 @@ const SelectBooks = ({ toggleModal }) => {
     if (isMobile) toggleModal();
   };
 
-  const options = value.map(({ name, author, year, pages, _id }) => ({
+  const options = books.map(({ name, author, year, pages, _id }) => ({
     value: { name, author, year, pages, _id },
     label: name,
   }));

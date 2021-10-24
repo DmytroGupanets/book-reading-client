@@ -3,6 +3,7 @@ import styled from "styled-components";
 const StatisticFormStyled = styled.form`
   position: relative;
   margin-bottom: 24px;
+
   .StatisticTitle {
     margin: 0;
     font-weight: 600;
@@ -12,14 +13,17 @@ const StatisticFormStyled = styled.form`
 
     text-transform: uppercase;
   }
+
   .inputWrapper {
     display: flex;
     justify-content: center;
     margin-bottom: 21px;
   }
+
   .inputWrapper :not(:last-child) {
     margin-right: 20px;
   }
+
   .statisticFormLabel {
     display: flex;
     flex-direction: column;
@@ -30,6 +34,7 @@ const StatisticFormStyled = styled.form`
     line-height: 20px;
     color: ${({ colors }) => colors.secondaryText};
   }
+
   .statisticInput {
     padding: 0 0 0 13px;
     height: 42px;

@@ -16,9 +16,10 @@ const StatisticList = ({ toggleModal }) => {
 
   const dispatch = useDispatch();
 
-  const totalPagesOfBookInProgress =
-    // booksInProgress &&
-    booksInProgress.reduce((acc, book) => (acc += book.pages), 0);
+  const totalPagesOfBookInProgress = booksInProgress.reduce(
+    (acc, book) => (acc += book.pages),
+    0
+  );
 
   useEffect(() => {
     if (totalPagesOfBookInProgress === 0) {

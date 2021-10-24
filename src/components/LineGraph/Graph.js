@@ -1,5 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
 import {
   LineChart,
   Line,
@@ -9,6 +10,13 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
+import useDate from "../../hooks/useDate";
+import { getInProgressdBooks } from "../../redux/books/booksSelectors";
+import {
+  getPreplanningEndDate,
+  getPreplanningStartDate,
+  getRecords,
+} from "../../redux/target/targetSelectors";
 
 // РАСЧЕТ ПЛАНА = СУММА СТРАНИЦ ВСЕХ ИЗБРАННЫХ КНИЖЕК / КОЛИЧЕСТВО ДНЕЙ ВЫБРАННОГО ПЕРИОДА
 
@@ -43,6 +51,21 @@ const defaultData = [
 ];
 
 export default function Graph() {
+  const [
+    stateData,
+    moment,
+    // setCurrentData,
+    setQuantityBetweenDays,
+    rangeBetwenStartAndEndDates,
+  ] = useDate();
+
+  const booksInProgress = useSelector(getInProgressdBooks);
+  const records = useSelector(getRecords);
+  const start = useSelector(getPreplanningStartDate);
+  const end = useSelector(getPreplanningEndDate);
+
+  const quantytyDays = start && end && rangeBetwenStartAndEndDates(start, end);
+
   const { t } = useTranslation();
   return (
     <ResponsiveContainer width={"99%"} height={215}>

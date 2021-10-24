@@ -11,7 +11,8 @@ const TimerLogicOfGoal = () => {
   const { theme } = useContext(ThemeContext);
 
   const end = useSelector(getTargetEndDate);
-  const endDate = end.split(".").reverse().join("-");
+
+  const endDate = end?.split(".")?.reverse()?.join("-");
 
   const goal = new Date(endDate).getTime();
 

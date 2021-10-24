@@ -18,13 +18,10 @@ import MyGoalList from "./myGoalBooks/myGoalListDefault/myGoalListNormal/MyGoalL
 import { getPlannedBooks } from "../../redux/books/booksSelectors";
 import {
   addPlaningBook,
-  addSelectedBook,
   removeSelectedBook,
   resetPreplanning,
 } from "../../redux/target/targetActions";
 import {
-  getAllPlannedBooks,
-  // getAllPlannedBooks,
   getAllSelectedBooks,
   getPreplanningEndDate,
   getPreplanningStartDate,
@@ -36,8 +33,7 @@ import { getPreplaning } from "../../redux/target/targetSelectors";
 import useWindowDimensions from "../../hooks/resize";
 import { ThemeContext } from "../App";
 import Timer from "../timer/Timer";
-import MyGoalListNormal from "./myGoalBooks/myGoalList/myGoalListNormal/MyGoalListNormal";
-import MyGoalListDefault from "./myGoalBooks/myGoalListDefault/MyGoalListDefault";
+import MyGoalBooks from "./myGoalBooks/MyGoalBooks";
 
 const Training = () => {
   const dispatch = useDispatch();
@@ -73,11 +69,6 @@ const Training = () => {
 
     setIsActive(targetActive);
   }, [clientsWidth, prepStartDate, prepEndDate, selectedBooks, targetActive]);
-
-  useEffect(() => {
-    dispatch(getAllBooksOperation());
-    dispatch(getRecordOperation(ownerId));
-  }, []);
 
   const toggleModal = useCallback(() => {
     setModal((prevShowModal) => !prevShowModal);
@@ -117,7 +108,7 @@ const Training = () => {
           {isActive && <Timer />}
           <TargetRead isActive={isActive} />
           {!isMobile && !isActive && <MyTraining />}
-          {/* <MyGoalBooks data={selectedBooks} onClickDelete={onHandleDelete} /> */}
+          <MyGoalBooks data={selectedBooks} onClickDelete={onHandleDelete} />
           {!isActive && isTargetReady && (
             <button className="startTrainingBtn" onClick={onHandleClickStart}>
               {t("Start training")}

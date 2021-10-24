@@ -5,15 +5,18 @@ import usePersistedTheme from "../hooks/usePersistedTheme";
 import Header from "./header/Header";
 import Main from "./main/Main";
 import Spinner from "./Spinner/Spinner";
-import { getToken } from "../redux/auth/authSelectors";
+import { getOwnerId, getToken } from "../redux/auth/authSelectors";
 import { setUserToken } from "../redux/auth/authActions";
 import { parse } from "query-string";
 import { useEffect } from "react";
 import { getCurrentUser } from "../redux/auth/authOperations";
+import { getAllBooksOperation } from "../redux/books/booksOperations";
+import { getRecordOperation } from "../redux/target/targetOperations";
 
 export const ThemeContext = createContext();
 
 function App() {
+  const ownerId = useSelector(getOwnerId);
   const [theme, changeTheme] = usePersistedTheme();
   const dispatch = useDispatch();
   const { search } = useLocation();
@@ -31,6 +34,11 @@ function App() {
       dispatch(getCurrentUser());
     }
   }, [dispatch, token]);
+
+  useEffect(() => {
+    dispatch(getAllBooksOperation());
+    dispatch(getRecordOperation(ownerId));
+  }, []);
 
   return (
     <ThemeContext.Provider value={{ theme, changeTheme }}>

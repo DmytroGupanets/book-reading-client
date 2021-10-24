@@ -24,9 +24,6 @@ const SelectDateStyled = styled.label`
     pointer-events: none;
   }
 
-  .reactSelect-container {
-  }
-
   .reactSelect__value-container {
     padding: 0 0 0 13px;
   }
@@ -52,6 +49,9 @@ const SelectDateStyled = styled.label`
 
   .reactSelect__input-container {
     width: 100px;
+  }
+  .reactSelect__single-value {
+    width: 100%;
   }
 `;
 

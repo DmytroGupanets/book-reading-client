@@ -30,9 +30,8 @@ const TargetRead = ({ isActive }) => {
   const end = useSelector(getPreplanningEndDate);
   const booksInProgress = useSelector(getInProgressdBooks);
   const booksInSelected = useSelector(getAllSelectedBooks);
-  const preplaning = useSelector(getPreplaning);
+  // const preplaning = useSelector(getPreplaning);
   const idxOfReadedBooksInTraining = useSelector(getIdxOfReadedBooksInTraining);
-  // console.log(idxOfReadedBooksInTraining);
   const trainingQuantityDays =
     start && end && rangeBetwenStartAndEndDates(start, end);
 

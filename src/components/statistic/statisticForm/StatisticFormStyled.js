@@ -38,7 +38,10 @@ const StatisticFormStyled = styled.form`
     color: ${({ colors }) => colors.primaryText};
     background: ${({ colors }) => colors.primaryBg};
     border: 1px solid ${({ colors }) => colors.icons};
+
+    outline-color: ${({ colors }) => colors.accent};
   }
+
   .statisticBtn {
     width: 171px;
     height: 42px;
@@ -48,6 +51,11 @@ const StatisticFormStyled = styled.form`
     background: ${({ colors }) => colors.accent};
     border: none;
     cursor: pointer;
+
+    &:hover,
+    :focus {
+      background-color: ${({ colors }) => colors.accentActive};
+    }
   }
 
   .InputErrorMassege {

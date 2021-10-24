@@ -4,6 +4,9 @@ import sprite from "./sprite.svg";
 import quotes from "../../quotes/ua/quotesUA.json";
 import quotesIcon from "../../../images/auth/quotes.svg";
 import { ThemeContext } from "../../App";
+import { getTargetId } from "../../../redux/target/targetSelectors";
+import { useDispatch, useSelector } from "react-redux";
+import { completeTargetOperation } from "../../../redux/target/targetOperations";
 
 const quotesArray = JSON.parse(JSON.stringify(quotes));
 const min = 1; // включая
@@ -18,6 +21,14 @@ const randomAuthor = Object.values(quotesArrayElement)[2];
 
 const StatisticModal = ({ onClose }) => {
   const { theme } = useContext(ThemeContext);
+
+  const targetId = useSelector(getTargetId);
+  const dispatch = useDispatch();
+
+  const onHandleCloseModal = () => {
+    onClose();
+    dispatch(completeTargetOperation(targetId));
+  };
 
   return (
     <StatisticModalStyled colors={theme}>
@@ -39,7 +50,7 @@ const StatisticModal = ({ onClose }) => {
         <button
           type="button"
           className="StatisticModalButton"
-          onClick={onClose}
+          onClick={onHandleCloseModal}
         >
           Ok
         </button>

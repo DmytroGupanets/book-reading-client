@@ -20,6 +20,7 @@ import {
 import SelectBooksStyled from "./SelectBooksStyled";
 
 import sprite from "../../../../images/sprite.svg";
+import useWindowDimensions from "../../../../hooks/resize";
 
 const CaretDownIcon = () => {
   return (
@@ -39,6 +40,14 @@ const DropdownIndicator = (props) => {
 
 const SelectBooks = ({ toggleModal }) => {
   const { t } = useTranslation();
+
+  const clientsWidth = useWindowDimensions().width;
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    setIsMobile(clientsWidth < 768);
+  }, [clientsWidth]);
+
   const dispatch = useDispatch();
   const books = useSelector(getPlannedBooks);
   const plannedBooks = useSelector(getAllPlannedBooks);

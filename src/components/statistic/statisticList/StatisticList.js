@@ -6,7 +6,6 @@ import { getRecords, getTargetId } from "../../../redux/target/targetSelectors";
 
 import { ThemeContext } from "../../App";
 import StatisticListStyled from "./StatisticListStyled";
-import { completeTargetOperation } from "../../../redux/target/targetOperations";
 
 const StatisticList = ({ toggleModal }) => {
   const { theme } = useContext(ThemeContext);
@@ -14,41 +13,28 @@ const StatisticList = ({ toggleModal }) => {
 
   const records = useSelector(getRecords);
   const booksInProgress = useSelector(getInProgressdBooks);
-  const targetId = useSelector(getTargetId);
 
   const dispatch = useDispatch();
 
-  const totalPagesOfBookInProgress = booksInProgress.reduce(
-    (acc, book) => (acc += book.pages),
-    0
-  );
+  const totalPagesOfBookInProgress =
+    // booksInProgress &&
+    booksInProgress.reduce((acc, book) => (acc += book.pages), 0);
 
   useEffect(() => {
-    if (pagesState === totalPagesOfBookInProgress) {
-      toggleModal();
-      // dispatch(completeTargetOperation(targetId));
+    if (totalPagesOfBookInProgress === 0) {
+      return;
     }
-
-    return () => {
-      if (pagesState === totalPagesOfBookInProgress) {
-        toggleModal();
-        // dispatch(completeTargetOperation(targetId));
-      }
-    };
+    if (pagesState >= totalPagesOfBookInProgress) {
+      toggleModal();
+    }
   }, [pagesState, totalPagesOfBookInProgress]);
 
   useEffect(() => {
     dispatch(setBookInTrainingSuccess(countIdxOfReadedBook(pagesState)));
-    return () => {
-      dispatch(setBookInTrainingSuccess(countIdxOfReadedBook(pagesState)));
-    };
   }, [pagesState]);
 
   useEffect(() => {
     countPages();
-    return () => {
-      countPages();
-    };
   }, [records]);
 
   const countIdxOfReadedBook = (statisticAmount) => {

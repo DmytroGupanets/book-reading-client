@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useContext } from "react";
 import { getOwnerId } from "../../redux/auth/authSelectors";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -20,6 +20,7 @@ import MyGoalList from "./myGoalBooks/myGoalList/MyGoalList";
 import { getPlannedBooks } from "../../redux/books/booksSelectors";
 import {
   addPlaningBook,
+  addSelectedBook,
   removeSelectedBook,
   resetPreplanning,
 } from "../../redux/target/targetActions";
@@ -27,29 +28,56 @@ import {
   getAllPlannedBooks,
   // getAllPlannedBooks,
   getAllSelectedBooks,
+  getPreplanningEndDate,
+  getPreplanningStartDate,
   getTargetActiv,
 } from "../../redux/target/targetSelectors";
 import sprite from "../../images/sprite.svg";
 
 import { getPreplaning } from "../../redux/target/targetSelectors";
+import useWindowDimensions from "../../hooks/resize";
+import { ThemeContext } from "../App";
+import Timer from "../timer/Timer";
 
 const Training = () => {
+  const dispatch = useDispatch();
   const { t } = useTranslation();
+  const { theme } = useContext(ThemeContext);
 
   const [state, setState] = useState(false);
   const [modal, setModal] = useState(false);
 
-  const dispatch = useDispatch();
-
   const books = useSelector(getPlannedBooks);
   const ownerId = useSelector(getOwnerId);
-  const isActive = useSelector(getTargetActiv);
+  const targetActive = useSelector(getTargetActiv);
   const preplaning = useSelector(getPreplaning);
+  const prepStartDate = useSelector(getPreplanningStartDate);
+  const prepEndDate = useSelector(getPreplanningEndDate);
   const selectedBooks = useSelector(getAllSelectedBooks);
 
-  // useEffect(() => {
-  //   dispatch(getRecordOperation(ownerId));
-  // }, []);
+  const clientsWidth = useWindowDimensions().width;
+  const [isMobile, setIsMobile] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
+  const [isPC, setIsPC] = useState(false);
+  const [isTargetReady, setIsTargetReady] = useState(false);
+  const [isActive, setIsActive] = useState(targetActive);
+
+  useEffect(() => {
+    setIsMobile(clientsWidth < 768);
+    setIsTablet(clientsWidth > 767 && clientsWidth < 1280);
+    setIsPC(clientsWidth > 1279);
+
+    if (prepStartDate && prepEndDate && Boolean(selectedBooks.length))
+      setIsTargetReady(true);
+    else setIsTargetReady(false);
+
+    setIsActive(targetActive);
+  }, [clientsWidth, prepStartDate, prepEndDate, selectedBooks, targetActive]);
+
+  useEffect(() => {
+    dispatch(getAllBooksOperation());
+    dispatch(getRecordOperation());
+  }, []);
 
   const toggleModal = useCallback(() => {
     setModal((prevShowModal) => !prevShowModal);
@@ -64,7 +92,6 @@ const Training = () => {
     if (selectedBooks) {
       await dispatch(addTargetOperation(target));
     }
-    // setState(true);
 
     await dispatch(getAllBooksOperation());
     await dispatch(resetPreplanning());
@@ -78,28 +105,54 @@ const Training = () => {
   };
 
   return (
-    <TrainingStyled>
-      {modal ? (
+    <TrainingStyled colors={theme}>
+      {isMobile && modal && (
         <ModalMyTraining toggleModal={toggleModal}>
           <MyTraining toggleModal={toggleModal} />
         </ModalMyTraining>
-      ) : (
+      )}
+
+      {!isPC && !modal && (
         <>
+          {isActive && <Timer />}
           <TargetRead isActive={isActive} />
+          {!isMobile && !isActive && <MyTraining />}
           <MyGoalBooks data={selectedBooks} onClickDelete={onHandleDelete} />
-          {!isActive && (
+          {!isActive && isTargetReady && (
             <button className="startTrainingBtn" onClick={onHandleClickStart}>
               {t("Start training")}
             </button>
           )}
-          {/* <MyGoalList data={selectedBooks} onClickDelete={onHandleDelete} /> */}
           <GraphContainer />
           {isActive && <Statistic isActive={isActive} />}
-          <button className="addTrainingBuuton" onClick={toggleModal}>
-            <svg className="moreTrainingIcon">
-              <use href={sprite + "#icon-more"} />
-            </svg>
-          </button>
+          {isMobile && (
+            <button className="addTrainingBuuton" onClick={toggleModal}>
+              <svg className="moreTrainingIcon">
+                <use href={sprite + "#icon-more"} />
+              </svg>
+            </button>
+          )}
+        </>
+      )}
+
+      {isPC && (
+        <>
+          <div className="mainContentWrapper">
+            {!isActive && <MyTraining />}
+            {isActive && <Timer />}
+            <MyGoalList data={selectedBooks} onClickDelete={onHandleDelete} />
+            {!isActive && isTargetReady && (
+              <button className="startTrainingBtn" onClick={onHandleClickStart}>
+                {t("Start training")}
+              </button>
+            )}
+            <GraphContainer />
+          </div>
+
+          <div className="rightStatisticsWrapper">
+            <TargetRead isActive={isActive} />
+            {isActive && <Statistic isActive={isActive} />}
+          </div>
         </>
       )}
     </TrainingStyled>

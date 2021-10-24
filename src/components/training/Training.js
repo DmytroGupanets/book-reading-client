@@ -74,10 +74,10 @@ const Training = () => {
     setIsActive(targetActive);
   }, [clientsWidth, prepStartDate, prepEndDate, selectedBooks, targetActive]);
 
-  useEffect(() => {
-    dispatch(getAllBooksOperation());
-    dispatch(getRecordOperation());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(getAllBooksOperation());
+  //   dispatch(getRecordOperation());
+  // }, []);
 
   const toggleModal = useCallback(() => {
     setModal((prevShowModal) => !prevShowModal);
@@ -140,7 +140,7 @@ const Training = () => {
           <div className="mainContentWrapper">
             {!isActive && <MyTraining />}
             {isActive && <Timer />}
-            <MyGoalList data={selectedBooks} onClickDelete={onHandleDelete} />
+            <MyGoalBooks data={selectedBooks} onClickDelete={onHandleDelete} />
             {!isActive && isTargetReady && (
               <button className="startTrainingBtn" onClick={onHandleClickStart}>
                 {t("Start training")}

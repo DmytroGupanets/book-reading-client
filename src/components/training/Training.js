@@ -131,9 +131,7 @@ const Training = () => {
           <div className="mainContentWrapper">
             {!isActive && <MyTraining />}
             {isActive && <Timer />}
-            {!isActive && (
-              <MyGoalList data={selectedBooks} onClickDelete={onHandleDelete} />
-            )}
+            <MyGoalBooks data={selectedBooks} onClickDelete={onHandleDelete} />
             {!isActive && isTargetReady && (
               <button className="startTrainingBtn" onClick={onHandleClickStart}>
                 {t("Start training")}

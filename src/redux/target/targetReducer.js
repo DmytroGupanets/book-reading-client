@@ -19,14 +19,11 @@ import {
   addSelectedBook,
   removeSelectedBook,
   resetPreplanning,
-  setPlannedBooksForSelect,
-  // addPlannedBookForSelect,
   addPlaningBook,
-  // removePlannedBooksForSelect,
-  // setBookSelected,
   removePlannedBook,
   addPreplanningStartDate,
   addPreplanningEndtDate,
+  setPlannedBooksForSelect,
 } from "./targetActions";
 
 const targetsReducer = createReducer([], {
@@ -80,7 +77,6 @@ const plannedBooksReducer = createReducer([], {
 });
 
 const selectedBooksReducer = createReducer([], {
-  // [setBookSelected]: (_, { payload }) => payload,
   [addSelectedBook]: (state, { payload }) => [...state, payload],
   [removeSelectedBook]: (state, { payload }) =>
     state.filter((book) => book._id !== payload._id),
@@ -99,7 +95,7 @@ const endDateReducer = createReducer("", {
 const preplanningPersistConfig = {
   key: "preplanning",
   storage,
-  whitelist: ["plannedBooks", "selectedBooks"],
+  whitelist: ["plannedBooks", "selectedBooks", "startDate", "endDate"],
 };
 
 const preplanningReducer = combineReducers({

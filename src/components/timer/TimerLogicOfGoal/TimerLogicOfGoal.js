@@ -4,16 +4,16 @@ import { TimerLogicOfGoalStyled } from "./TimerLogicOfGoalStyled";
 import { useContext } from "react";
 import { ThemeContext } from "../../App";
 import { useSelector } from "react-redux";
-import { endDate } from "../../../redux/target/targetSelectors";
+import { getTargetEndDate } from "../../../redux/target/targetSelectors";
 
 const TimerLogicOfGoal = () => {
   const { t } = useTranslation();
   const { theme } = useContext(ThemeContext);
 
-  // const end = useSelector(endDate);
-  const endDate = "2021-10-19"; //нужно будет ссылатся на день конца чтения
+  const end = useSelector(getTargetEndDate);
 
-  // const goal = new Date(end).getTime();
+  const endDate = end?.split(".")?.reverse()?.join("-");
+
   const goal = new Date(endDate).getTime();
 
   const [, setDateTime] = useState(new Date());
@@ -25,27 +25,29 @@ const TimerLogicOfGoal = () => {
     if (Math.floor(diff / (1000 * 60 * 60 * 24)) > 9) {
       return Math.floor(diff / (1000 * 60 * 60 * 24));
     }
-    return "0" + Math.floor(diff / (1000 * 60 * 60 * 24));
+    return "0" + Math.floor(Math.abs(diff) / (1000 * 60 * 60 * 24));
   };
 
   const hours = () => {
     if (Math.floor((diff / (1000 * 60 * 60)) % 24) > 9) {
       return Math.floor((diff / (1000 * 60 * 60)) % 24);
     }
-    return "0" + Math.floor((diff / (1000 * 60 * 60)) % 24);
+
+    return Math.floor((Math.abs(diff) / (1000 * 60 * 60)) % 24);
   };
+
   const minutes = () => {
     if (Math.floor((diff / 1000 / 60) % 60) > 9) {
       return Math.floor((diff / 1000 / 60) % 60);
     }
-    return "0" + Math.floor((diff / 1000 / 60) % 60);
+    return Math.floor((Math.abs(diff) / 1000 / 60) % 60);
   };
 
   const seconds = () => {
     if (Math.floor((diff / 1000) % 60) > 9) {
       return Math.floor((diff / 1000) % 60);
     }
-    return "0" + Math.floor((diff / 1000) % 60);
+    return Math.floor((Math.abs(diff) / 1000) % 60);
   };
 
   const time = {

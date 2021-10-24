@@ -20,6 +20,8 @@ const StatisticList = ({ toggleModal }) => {
     // booksInProgress &&
     booksInProgress.reduce((acc, book) => (acc += book.pages), 0);
 
+  console.log(`totalPagesOfBookInProgress`, totalPagesOfBookInProgress);
+
   useEffect(() => {
     if (totalPagesOfBookInProgress === 0) {
       return;

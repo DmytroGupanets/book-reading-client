@@ -28,10 +28,6 @@ export const removePlannedBook = createAction(
   "targets/preplanning/removePlannedBook"
 );
 
-export const setBookSelected = createAction(
-  "targets/preplanning/setBookSelected"
-);
-
 export const setPlannedBooksForSelect = createAction(
   "targets/preplanning/setPlannnedBooksForSelect"
 );

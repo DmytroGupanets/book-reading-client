@@ -5,7 +5,7 @@ const MyGoalListNormalStyled = styled.div`
   margin: 0 auto;
   margin-top: 40px;
   margin-bottom: 50px;
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: 1280px) {
     margin-top: 25px;
     margin-bottom: 40px;
   }
@@ -54,6 +54,7 @@ const MyGoalListNormalStyled = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
+
     @media screen and (min-width: 768px) {
       overflow-y: scroll;
       scrollbar-width: none;

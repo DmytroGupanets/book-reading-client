@@ -19,10 +19,12 @@ import ModalMyTraining from "./modalMyTraining/ModalMyTraining";
 import MyGoalList from "./myGoalBooks/myGoalList/MyGoalList";
 import { getPlannedBooks } from "../../redux/books/booksSelectors";
 import {
+  addPlaningBook,
   removeSelectedBook,
   resetPreplanning,
 } from "../../redux/target/targetActions";
 import {
+  getAllPlannedBooks,
   // getAllPlannedBooks,
   getAllSelectedBooks,
   getTargetActiv,
@@ -68,11 +70,11 @@ const Training = () => {
     await dispatch(resetPreplanning());
   };
 
-  const onHandleDelete = (e) => {
-    const bookId = e.currentTarget.getAttribute("bookid");
-    const bookToRemove = books.find((book) => book._id === bookId);
+  const onHandleDelete = (_id) => {
+    const bookToRemove = selectedBooks.find((book) => book._id === _id);
 
     dispatch(removeSelectedBook(bookToRemove));
+    dispatch(addPlaningBook(bookToRemove));
   };
 
   return (
@@ -84,13 +86,13 @@ const Training = () => {
       ) : (
         <>
           <TargetRead isActive={isActive} />
-          <MyGoalBooks />
+          <MyGoalBooks data={selectedBooks} onClickDelete={onHandleDelete} />
           {!isActive && (
             <button className="startTrainingBtn" onClick={onHandleClickStart}>
               {t("Start training")}
             </button>
           )}
-          <MyGoalList data={selectedBooks} onClickDelete={onHandleDelete} />
+          {/* <MyGoalList data={selectedBooks} onClickDelete={onHandleDelete} /> */}
           <GraphContainer />
           {isActive && <Statistic isActive={isActive} />}
           <button className="addTrainingBuuton" onClick={toggleModal}>

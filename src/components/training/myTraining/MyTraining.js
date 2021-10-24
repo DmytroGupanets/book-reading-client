@@ -7,8 +7,7 @@ import { useContext } from "react";
 
 import DatePickerTraining from "./datePickerTraining/DatePickerTraining";
 
-const MyTraining = ({ toggleModal }) => {
-
+const MyTraining = ({ toggleModal, func }) => {
   const { theme } = useContext(ThemeContext);
 
   return (

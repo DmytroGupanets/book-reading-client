@@ -16,11 +16,6 @@ const Statistic = () => {
     <StatisticStyled>
       <StatisticForm />
       <StatisticList toggleModal={toggleModal} />
-      <div>
-        <button type="button" onClick={toggleModal}>
-          STATISTIC MODAL
-        </button>
-      </div>
       {showModal && (
         <Modal onClose={toggleModal}>
           <StatisticModal onClose={toggleModal} />

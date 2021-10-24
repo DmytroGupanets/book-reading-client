@@ -1,11 +1,6 @@
 import { useEffect, useState, useCallback, useContext } from "react";
-import { getOwnerId } from "../../redux/auth/authSelectors";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  addTargetOperation,
-  getRecordOperation,
-  // getRecordOperation,
-} from "../../redux/target/targetOperations";
+import { addTargetOperation } from "../../redux/target/targetOperations";
 import GraphContainer from "../LineGraph/GraphContainer";
 import Statistic from "../statistic/Statistic";
 import TargetRead from "./targetRead/TargetRead";
@@ -14,8 +9,6 @@ import MyTraining from "./myTraining/MyTraining";
 import { useTranslation } from "react-i18next";
 import { getAllBooksOperation } from "../../redux/books/booksOperations";
 import ModalMyTraining from "./modalMyTraining/ModalMyTraining";
-import MyGoalList from "./myGoalBooks/myGoalListDefault/myGoalListNormal/MyGoalListNormal";
-import { getPlannedBooks } from "../../redux/books/booksSelectors";
 import {
   addPlaningBook,
   removeSelectedBook,
@@ -40,11 +33,8 @@ const Training = () => {
   const { t } = useTranslation();
   const { theme } = useContext(ThemeContext);
 
-  const [state, setState] = useState(false);
   const [modal, setModal] = useState(false);
 
-  const books = useSelector(getPlannedBooks);
-  const ownerId = useSelector(getOwnerId);
   const targetActive = useSelector(getTargetActiv);
   const preplaning = useSelector(getPreplaning);
   const prepStartDate = useSelector(getPreplanningStartDate);

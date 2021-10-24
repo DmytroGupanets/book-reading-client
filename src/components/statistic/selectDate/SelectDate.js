@@ -31,6 +31,7 @@ const SelectDate = ({ date, setStatistic }) => {
       </svg>
       Дата
       <Select
+        isSearchable={false}
         options={options}
         placeholder={"DD/MM/YYYY"}
         classNamePrefix="reactSelect"

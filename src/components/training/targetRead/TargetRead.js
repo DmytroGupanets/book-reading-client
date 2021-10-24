@@ -38,7 +38,7 @@ const TargetRead = ({ isActive }) => {
 
   // ? rangeBetwenStartAndEndDates(preplaning.startDate, preplaning.endDate)
   // : rangeBetwenStartAndEndDates(start, end);
-  // console.log(booksInProgress);
+
   return (
     <TargetReadStyled colors={theme} isActive={isActive}>
       <div className="tabletWrapperStyled">

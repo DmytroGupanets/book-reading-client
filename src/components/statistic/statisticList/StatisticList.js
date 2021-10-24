@@ -18,37 +18,24 @@ const StatisticList = ({ toggleModal }) => {
 
   const dispatch = useDispatch();
 
-  const totalPagesOfBookInProgress = booksInProgress.reduce(
-    (acc, book) => (acc += book.pages),
-    0
-  );
+  // console.log(booksInProgress);
+  const totalPagesOfBookInProgress =
+    booksInProgress &&
+    booksInProgress.reduce((acc, book) => (acc += book.pages), 0);
 
   useEffect(() => {
-    if (pagesState === totalPagesOfBookInProgress) {
-      toggleModal();
+    if (pagesState >= totalPagesOfBookInProgress) {
+      // toggleModal();
       // dispatch(completeTargetOperation(targetId));
     }
-
-    return () => {
-      if (pagesState === totalPagesOfBookInProgress) {
-        toggleModal();
-        // dispatch(completeTargetOperation(targetId));
-      }
-    };
   }, [pagesState, totalPagesOfBookInProgress]);
 
   useEffect(() => {
     dispatch(setBookInTrainingSuccess(countIdxOfReadedBook(pagesState)));
-    return () => {
-      dispatch(setBookInTrainingSuccess(countIdxOfReadedBook(pagesState)));
-    };
   }, [pagesState]);
 
   useEffect(() => {
     countPages();
-    return () => {
-      countPages();
-    };
   }, [records]);
 
   const countIdxOfReadedBook = (statisticAmount) => {

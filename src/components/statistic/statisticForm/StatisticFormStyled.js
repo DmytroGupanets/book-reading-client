@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const StatisticFormStyled = styled.form`
+  position: relative;
   margin-bottom: 24px;
   .StatisticTitle {
     margin: 0;
@@ -49,6 +50,14 @@ const StatisticFormStyled = styled.form`
     cursor: pointer;
   }
 
+  .InputErrorMassege {
+    position: absolute;
+    font-weight: 500;
+    top: 100%;
+    font-size: 14px;
+    color: ${({ colors }) => colors.accent};
+  }
+
   @media screen and (min-width: 768px) {
     margin-bottom: 12px;
 
@@ -65,6 +74,9 @@ const StatisticFormStyled = styled.form`
     }
     .statisticBtn {
       width: 240px;
+    }
+    .InputErrorMassege {
+      top: 30%;
     }
   }
 
@@ -86,6 +98,9 @@ const StatisticFormStyled = styled.form`
 
     .statisticBtn {
       width: 240px;
+    }
+    .InputErrorMassege {
+      top: 100%;
     }
   } ;
 `;

@@ -20,9 +20,17 @@ import { useStickyState } from "../../../../hooks";
 import SelectBooksStyled from "./SelectBooksStyled";
 
 import sprite from "../../../../images/sprite.svg";
+import useWindowDimensions from "../../../../hooks/resize";
 
 const SelectBooks = ({ toggleModal }) => {
   const { t } = useTranslation();
+
+  const clientsWidth = useWindowDimensions().width;
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    setIsMobile(clientsWidth < 768);
+  }, [clientsWidth]);
 
   const dispatch = useDispatch();
   const books = useSelector(getPlannedBooks);
@@ -67,7 +75,8 @@ const SelectBooks = ({ toggleModal }) => {
     setValue((state) => [
       ...state.filter((book) => book._id !== selectedBook._id),
     ]);
-    toggleModal();
+
+    if (isMobile) toggleModal();
   };
 
   const options = value.map(({ name, author, year, pages, _id }) => ({
@@ -115,7 +124,6 @@ const SelectBooks = ({ toggleModal }) => {
         onInputChange={handleInputChange}
         components={{ DropdownIndicator }}
       />
-      <MyGoalList data={addTrainingBooks} onClickDelete={onHandleDelete} />
       <button className="selectBooksButton" onClick={onHandleClick}>
         {t("Add")}
       </button>

@@ -56,7 +56,7 @@ const DivStyled = styled.div`
     line-height: 38px;
     color: ${({ colors }) => colors.digits};
   }
-  @media screen and (min-width: 767px) {
+  @media screen and (min-width: 768px) {
     width: 678px;
     padding-top: 25px;
     padding-bottom: 50px;
@@ -68,7 +68,7 @@ const DivStyled = styled.div`
     }
   }
 
-  @media screen and (min-width: 1279px) {
+  @media screen and (min-width: 1280px) {
     width: 886px;
     padding-top: 25px;
     padding-bottom: 50px;

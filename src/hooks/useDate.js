@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Moment from "moment";
 import { extendMoment } from "moment-range";
 import { useSelector } from "react-redux";
-import { startDate } from "../redux/target/targetSelectors";
+import { getPreplanningStartDate } from "../redux/target/targetSelectors";
 
 const moment = extendMoment(Moment);
 
@@ -20,7 +20,7 @@ const useDate = () => {
   const [stateData, setDate] = useState(initialStateDate);
   const { quantityDays } = stateData;
 
-  const start = useSelector(startDate);
+  const start = useSelector(getPreplanningStartDate);
 
   useEffect(() => {
     setCurrentData();

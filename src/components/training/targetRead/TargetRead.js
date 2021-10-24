@@ -2,12 +2,12 @@
 import { useSelector } from "react-redux";
 import { getInProgressdBooks } from "../../../redux/books/booksSelectors";
 import {
-  endDate,
   // getAllPlannedBooks,
   getAllSelectedBooks,
   getIdxOfReadedBooksInTraining,
   getPreplaning,
-  startDate,
+  getPreplanningEndDate,
+  getPreplanningStartDate,
 } from "../../../redux/target/targetSelectors";
 import useDate from "../../../hooks/useDate";
 
@@ -26,8 +26,8 @@ const TargetRead = ({ isActive }) => {
     rangeBetwenStartAndEndDates,
   ] = useDate();
 
-  const start = useSelector(startDate);
-  const end = useSelector(endDate);
+  const start = useSelector(getPreplanningStartDate);
+  const end = useSelector(getPreplanningEndDate);
   const booksInProgress = useSelector(getInProgressdBooks);
   const booksInSelected = useSelector(getAllSelectedBooks);
   const preplaning = useSelector(getPreplaning);

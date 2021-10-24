@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import MyTrainingStyled from "./MyTrainingStyled";
 
 import SelectBooks from "./selectBooks/SelectBooks";
@@ -8,7 +8,6 @@ import { useContext } from "react";
 import DatePickerTraining from "./datePickerTraining/DatePickerTraining";
 
 const MyTraining = ({ toggleModal }) => {
-
   const { theme } = useContext(ThemeContext);
 
   return (

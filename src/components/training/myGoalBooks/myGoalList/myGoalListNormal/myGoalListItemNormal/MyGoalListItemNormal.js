@@ -4,6 +4,7 @@ import { ThemeContext } from "../../../../../App";
 import { useContext } from "react";
 
 const MyGoalListItemNormal = ({ item, onClickDelete }) => {
+  console.log(item);
   const { theme } = useContext(ThemeContext);
   const { name, author, year, pages, _id } = item;
 
@@ -19,8 +20,7 @@ const MyGoalListItemNormal = ({ item, onClickDelete }) => {
         <li className="myGoalListNorm_Item_ListFull_Item">{pages}</li>
       </ul>
       <button
-        onClick={onClickDelete}
-        bookid={_id}
+        onClick={() => onClickDelete(_id)}
         className="myGoalListNorm_Item__ButtonDelete"
       >
         <svg className="myGoalListNorm_Item__DeleteSvg ">

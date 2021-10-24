@@ -26,6 +26,9 @@ const StatisticForm = () => {
   const targetId = useSelector(getTargetId);
   const dispatch = useDispatch();
 
+  // console.log(/([0-9]){1,3}/.test(pages));
+  // console.log(pages);
+
   useEffect(() => {
     setStatistic((prev) => ({
       ...prev,
@@ -72,8 +75,9 @@ const StatisticForm = () => {
               value={pages}
               className="statisticInput"
               onChange={onHandleChange}
-              pattern="[0-9]{1,3}"
-              placeholder=""
+              pattern="([0-9]){1,3}"
+              // maxLength="3"
+              // placeholder=""
               title="только цифры от 1-й до 3-х"
             />
           </label>

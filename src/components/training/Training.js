@@ -17,10 +17,14 @@ import ModalMyTraining from "./modalMyTraining/ModalMyTraining";
 import MyGoalList from "./myGoalBooks/myGoalListDefault/myGoalListNormal/MyGoalListNormal";
 import { getPlannedBooks } from "../../redux/books/booksSelectors";
 import {
+  addPlaningBook,
+  addSelectedBook,
   removeSelectedBook,
   resetPreplanning,
 } from "../../redux/target/targetActions";
 import {
+  getAllPlannedBooks,
+  // getAllPlannedBooks,
   getAllSelectedBooks,
   getPreplanningEndDate,
   getPreplanningStartDate,
@@ -93,11 +97,11 @@ const Training = () => {
     await dispatch(resetPreplanning());
   };
 
-  const onHandleDelete = (e) => {
-    const bookId = e.currentTarget.getAttribute("bookid");
-    const bookToRemove = books.find((book) => book._id === bookId);
+  const onHandleDelete = (_id) => {
+    const bookToRemove = selectedBooks.find((book) => book._id === _id);
 
     dispatch(removeSelectedBook(bookToRemove));
+    dispatch(addPlaningBook(bookToRemove));
   };
 
   return (
@@ -113,7 +117,7 @@ const Training = () => {
           {isActive && <Timer />}
           <TargetRead isActive={isActive} />
           {!isMobile && !isActive && <MyTraining />}
-          <MyGoalList data={selectedBooks} onClickDelete={onHandleDelete} />
+          {/* <MyGoalBooks data={selectedBooks} onClickDelete={onHandleDelete} /> */}
           {!isActive && isTargetReady && (
             <button className="startTrainingBtn" onClick={onHandleClickStart}>
               {t("Start training")}

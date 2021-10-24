@@ -1,5 +1,7 @@
 import { createReducer } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
+import persistReducer from "redux-persist/es/persistReducer";
+import storage from "redux-persist/lib/storage";
 import {
   getRecordRequest,
   getRecordSuccess,
@@ -94,6 +96,12 @@ const endDateReducer = createReducer("", {
   [addPreplanningEndtDate]: (_, { payload }) => payload,
 });
 
+const preplanningPersistConfig = {
+  key: "preplanning",
+  storage,
+  whitelist: ["plannedBooks", "selectedBooks"],
+};
+
 const preplanningReducer = combineReducers({
   plannedBooks: plannedBooksReducer,
   selectedBooks: selectedBooksReducer,
@@ -104,7 +112,7 @@ const preplanningReducer = combineReducers({
 const targetReducer = combineReducers({
   target: targetsReducer,
   bookInTraining: bookInTrainingReducer,
-  preplanning: preplanningReducer,
+  preplanning: persistReducer(preplanningPersistConfig, preplanningReducer),
   isLoading: isLoadingReducer,
   error: errorReducer,
 });

@@ -33,6 +33,12 @@ export const RegistrationFormStyled = styled.div`
     background-color: ${({ colors }) => colors.iconsActive};
     box-shadow: inset 0px 1px 2px rgba(29, 29, 27, 0.15);
     border: none;
+    border-radius: 4px;
+    outline: none;
+    &:focus {
+      border: 1px solid #d15807;
+      box-shadow: 0px 1px 2px rgba(221, 123, 12, 0.15);
+    }
   }
 
   .wrapperButton {
@@ -69,7 +75,6 @@ export const RegistrationFormStyled = styled.div`
     font-family: "Montserrat", sans-serif;
     font-weight: 500;
     font-size: 13px;
-    color: ${({ colors }) => colors.secondaryText};
   }
 
   .login {
@@ -77,6 +82,14 @@ export const RegistrationFormStyled = styled.div`
     color: ${({ colors }) => colors.accent};
     text-decoration: underline;
     cursor: pointer;
+  }
+
+  .loginText {
+    color: ${({ colors }) => colors.secondaryText};
+    &:hover,
+    &:focus {
+      color: ${({ colors }) => colors.accent};
+    }
   }
   .formGroup {
     position: relative;

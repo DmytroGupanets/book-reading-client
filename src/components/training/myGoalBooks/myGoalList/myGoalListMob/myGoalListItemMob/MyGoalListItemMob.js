@@ -5,6 +5,7 @@ import { ThemeContext } from "../../../../../App";
 import { useTranslation } from "react-i18next";
 
 const MyGoalListItemMob = ({ item, onClickDelete }) => {
+  console.log(item);
   const { t } = useTranslation();
   const { theme } = useContext(ThemeContext);
   const { name, author, year, pages, _id } = item;
@@ -36,8 +37,7 @@ const MyGoalListItemMob = ({ item, onClickDelete }) => {
         </div>
       </div>
       <button
-        bookid={_id}
-        onClick={onClickDelete}
+        onClick={() => onClickDelete(_id)}
         className="myGoalListMob_ButtonDelete"
       >
         <svg className="myGoalListMob_SvgDelete">

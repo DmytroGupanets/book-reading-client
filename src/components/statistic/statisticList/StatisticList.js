@@ -6,7 +6,6 @@ import { getRecords, getTargetId } from "../../../redux/target/targetSelectors";
 
 import { ThemeContext } from "../../App";
 import StatisticListStyled from "./StatisticListStyled";
-import { completeTargetOperation } from "../../../redux/target/targetOperations";
 
 const StatisticList = ({ toggleModal }) => {
   const { theme } = useContext(ThemeContext);
@@ -14,21 +13,21 @@ const StatisticList = ({ toggleModal }) => {
 
   const records = useSelector(getRecords);
   const booksInProgress = useSelector(getInProgressdBooks);
-  const targetId = useSelector(getTargetId);
 
   const dispatch = useDispatch();
 
-  // console.log(booksInProgress);
   const totalPagesOfBookInProgress =
-    booksInProgress &&
+    // booksInProgress &&
     booksInProgress.reduce((acc, book) => (acc += book.pages), 0);
 
   console.log(`totalPagesOfBookInProgress`, totalPagesOfBookInProgress);
 
   useEffect(() => {
+    if (totalPagesOfBookInProgress === 0) {
+      return;
+    }
     if (pagesState >= totalPagesOfBookInProgress) {
-      // toggleModal();
-      // dispatch(completeTargetOperation(targetId));
+      toggleModal();
     }
   }, [pagesState, totalPagesOfBookInProgress]);
 

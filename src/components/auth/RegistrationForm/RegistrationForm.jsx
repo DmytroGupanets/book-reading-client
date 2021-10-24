@@ -139,9 +139,8 @@ const RegistrationForm = () => {
           </button>
         </div>
         <div className="loginContainer">
-          {t("With us already")}?
-          <Link to="/auth/login" className="login">
-            {t("Login")}
+          <Link to="/auth/login" className="loginText">
+            {t("With us already")}?<span className="login">{t("Login")}</span>
           </Link>
         </div>
       </form>

@@ -43,7 +43,7 @@ const LoginForm = () => {
         email: email.toLowerCase(),
         password,
       };
-      console.log(user);
+
       dispatch(login(user));
     },
   });

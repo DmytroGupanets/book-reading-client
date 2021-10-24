@@ -39,83 +39,91 @@ const LibraryEmpty = () => {
     <LibraryEmptyStyled onSubmit={formik.handleSubmit} colors={theme}>
       <div className="bookContainer">
         <div className="booGroup">
-        <label className="aboutBook aboutBook-title" htmlFor="title">
-        {t("Book title")}
-          <input
-            id="title"
-            type="text"
-            name="title"
-            value={formik.values.title}
-            placeholder="..."
-            className="aboutBookInput aboutBookInput-title"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-          />
-          {formik.errors.title && formik.touched.title && (
-              <div className="inputError inputErrorTitle">{formik.errors.title}</div>
+          <label className="aboutBook aboutBook-title" htmlFor="title">
+            {t("Book title")}
+            <input
+              id="title"
+              type="text"
+              name="title"
+              value={formik.values.title}
+              placeholder="..."
+              className="aboutBookInput aboutBookInput-title"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+            />
+            {formik.errors.title && formik.touched.title && (
+              <div className="inputError inputErrorTitle">
+                {formik.errors.title}
+              </div>
             )}
-        </label>
+          </label>
         </div>
         <div className="aboutBookContainer">
-        <div className="booGroup">
-          <label className="aboutBook aboutBook-author" htmlFor="author">
-          {t("Author")}
-            <input
-              id="author"
-              type="text"
-              minLength="1"
-              maxLength="50"
-              name="author"
-              value={formik.values.author}
-              placeholder="..."
-              className="aboutBookInput aboutBookInput-author"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-            />
-            {formik.errors.author && formik.touched.author && (
-              <div className="inputError inputErrorAuthor">{formik.errors.author}</div>
-            )}
-          </label>
+          <div className="booGroup">
+            <label className="aboutBook aboutBook-author" htmlFor="author">
+              {t("Author")}
+              <input
+                id="author"
+                type="text"
+                minLength="1"
+                maxLength="50"
+                name="author"
+                value={formik.values.author}
+                placeholder="..."
+                className="aboutBookInput aboutBookInput-author"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+              />
+              {formik.errors.author && formik.touched.author && (
+                <div className="inputError inputErrorAuthor">
+                  {formik.errors.author}
+                </div>
+              )}
+            </label>
           </div>
           <div className="booGroup">
-          <label className="aboutBook aboutBook-year" htmlFor="year">
-          {t("Publication date")}
-            <input
-              id="year"
-              type="number"
-              name="year"
-              value={formik.values.year}
-              placeholder="..."
-              className="aboutBookInput aboutBookInput-year"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-            />
-            {formik.errors.year && formik.touched.year && (
-              <div className="inputError inputErrorYear">{formik.errors.year}</div>
-            )}
-          </label>
+            <label className="aboutBook aboutBook-year" htmlFor="year">
+              {t("Publication date")}
+              <input
+                id="year"
+                type="number"
+                name="year"
+                value={formik.values.year}
+                placeholder="..."
+                className="aboutBookInput aboutBookInput-year"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+              />
+              {formik.errors.year && formik.touched.year && (
+                <div className="inputError inputErrorYear">
+                  {formik.errors.year}
+                </div>
+              )}
+            </label>
           </div>
           <div className="booGroup">
-          <label className="aboutBook aboutBook-page" htmlFor="pages">
-          {t("Amount of pages")}
-            <input
-              id="pages"
-              type="number"
-              name="pages"
-              value={formik.values.pages}
-              placeholder="..."
-              className="aboutBookInput aboutBookInput-page"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-            />
-            {formik.errors.pages && formik.touched.pages && (
-              <div className="inputError inputErrorPages">{formik.errors.pages}</div>
-            )}
-          </label>
+            <label className="aboutBook aboutBook-page" htmlFor="pages">
+              {t("Amount of pages")}
+              <input
+                id="pages"
+                type="number"
+                name="pages"
+                value={formik.values.pages}
+                placeholder="..."
+                className="aboutBookInput aboutBookInput-page"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+              />
+              {formik.errors.pages && formik.touched.pages && (
+                <div className="inputError inputErrorPages">
+                  {formik.errors.pages}
+                </div>
+              )}
+            </label>
           </div>
         </div>
         <button type="submit" className="addButton">
-        {t("Add")}
+          {t("Add")}
         </button>
       </div>
     </LibraryEmptyStyled>

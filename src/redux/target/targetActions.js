@@ -24,8 +24,20 @@ export const addTargetRequest = createAction("target/addTargetRequest");
 export const addTargetSucces = createAction("target/addTargetSucces");
 export const addTargetError = createAction("target/addTargetError");
 
+export const removePlannedBook = createAction(
+  "targets/preplanning/removePlannedBook"
+);
+
+export const setBookSelected = createAction(
+  "targets/preplanning/setBookSelected"
+);
+
 export const setPlannedBooksForSelect = createAction(
   "targets/preplanning/setPlannnedBooksForSelect"
+);
+
+export const addPlaningBook = createAction(
+  "targets/preplanning/addPlaningBook"
 );
 
 export const addSelectedBook = createAction(

@@ -8,11 +8,14 @@ import {
   addSelectedBook,
   removeSelectedBook,
   setPlannedBooksForSelect,
+  removePlannedBook,
+  addPlaningBook,
 } from "../../../../redux/target/targetActions";
 import {
-  getAllPlannedBooks,
   getAllSelectedBooks,
+  getAllPlannedBooks,
 } from "../../../../redux/target/targetSelectors";
+import { useStickyState } from "../../../../hooks";
 
 import SelectBooksStyled from "./SelectBooksStyled";
 
@@ -24,22 +27,29 @@ const SelectBooks = ({ toggleModal }) => {
   const dispatch = useDispatch();
   const books = useSelector(getPlannedBooks);
   const plannedBooks = useSelector(getAllPlannedBooks);
-  // const selectedBooks = useSelector(getAllSelectedBooks);
+  const selectedBooks = useSelector(getAllSelectedBooks);
 
-  const [value, setValue] = useState(books);
-  const [selectedBook, setSelectedBook] = useState({});
+  const [value, setValue] = useStickyState(books, "books");
+  const [selectedBook, setSelectedBook] = useStickyState(
+    selectedBooks,
+    "selected"
+  );
+  const [addTrainingBooks, setAddTrainingBooks] = useStickyState(
+    selectedBook,
+    "selectedBooks"
+  );
 
   useEffect(() => {
-    dispatch(setPlannedBooksForSelect(books));
+    dispatch(setPlannedBooksForSelect(value));
   }, []);
 
-  useEffect(() => {
-    setValue(plannedBooks);
-  }, [plannedBooks]);
+  // useEffect(() => {
+  //   dispatch(setPlannedBooksForSelect(addTrainingBooks));
+  // }, []);
 
   const handleInputChange = (value, e) => {
     if (e.action === "input-change") {
-      setSelectedBook((state) => [...state, { value }]);
+      setSelectedBook((state) => [...state, value]);
     }
   };
 
@@ -48,8 +58,15 @@ const SelectBooks = ({ toggleModal }) => {
     setSelectedBook(value);
   };
 
-  const onHandleClick = (e) => {
+  const onHandleClick = () => {
     dispatch(addSelectedBook(selectedBook));
+
+    dispatch(removePlannedBook(selectedBook));
+
+    setAddTrainingBooks((state) => [...state, selectedBook]);
+    setValue((state) => [
+      ...state.filter((book) => book._id !== selectedBook._id),
+    ]);
     toggleModal();
   };
 
@@ -58,12 +75,21 @@ const SelectBooks = ({ toggleModal }) => {
     label: name,
   }));
 
-  // const onHandleDelete = (e) => {
-  //   const bookId = e.currentTarget.getAttribute("bookid");
-  //   const bookToRemove = books.find((book) => book._id === bookId);
+  const onHandleDelete = (e) => {
+    const bookId = e.currentTarget.getAttribute("bookid");
+    const bookToRemove = addTrainingBooks.find((book) => book._id === bookId);
 
-  //   dispatch(removeSelectedBook(bookToRemove));
-  // };
+    dispatch(removeSelectedBook(bookToRemove));
+    dispatch(addPlaningBook(bookToRemove));
+
+    setAddTrainingBooks((state) => state.filter((book) => book._id !== bookId));
+
+    setValue(() => [
+      ...value,
+      ...addTrainingBooks.filter((book) => book._id === bookId),
+    ]);
+  };
+
   const CaretDownIcon = () => {
     return (
       <svg className="selectBooksIconPolygon">
@@ -89,8 +115,7 @@ const SelectBooks = ({ toggleModal }) => {
         onInputChange={handleInputChange}
         components={{ DropdownIndicator }}
       />
-
-      {/* <MyGoalList data={selectedBooks} onClickDelete={onHandleDelete} /> */}
+      <MyGoalList data={addTrainingBooks} onClickDelete={onHandleDelete} />
       <button className="selectBooksButton" onClick={onHandleClick}>
         {t("Add")}
       </button>

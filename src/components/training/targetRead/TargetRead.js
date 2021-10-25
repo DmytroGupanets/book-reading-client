@@ -12,7 +12,7 @@ import {
 import useDate from "../../../hooks/useDate";
 
 import TargetReadStyled from "./TargetReadStyled";
-import { createRef, useContext } from "react";
+import { useContext } from "react";
 import { ThemeContext } from "../../App";
 
 const TargetRead = ({ isActive }) => {
@@ -21,7 +21,7 @@ const TargetRead = ({ isActive }) => {
   const [
     stateData,
     moment,
-    // setCurrentData,
+    chengeStartDataIdx,
     setQuantityBetweenDays,
     rangeBetwenStartAndEndDates,
   ] = useDate();

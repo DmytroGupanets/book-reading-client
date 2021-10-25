@@ -46,9 +46,30 @@ const SelectBooks = ({ toggleModal }) => {
   const plannedBooks = useSelector(getAllPlannedBooks);
   const [selectedBook, setSelectedBook] = useState({});
 
+  // const compareBookSets = () => {
+  //   if (plannedBooks) return dispatch(setPlannedBooksForSelect(books));
+  // console.log(`books`, books);
+  // console.log(`plannedBooks`, plannedBooks);
+  // const allPlannedStatusBooks = books.reduce((acc, book) => {
+  //   const findBook = plannedBooks.find((elId) => book._id !== elId._id);
+  //   if (findBook !== -1) {
+  //     acc.push(findBook);
+  //   }
+  //   return acc;
+  // }, []);
+
+  // return allPlannedStatusBooks;
+  // };
+
   useEffect(() => {
-    books.length && dispatch(setPlannedBooksForSelect(books));
-  }, [books]);
+    // const diff = compareBookSets();
+    // console.log(`diff`, diff);
+    // if (diff.length) {
+    //   dispatch(setPlannedBooksForSelect(diff));
+    // }
+
+    dispatch(setPlannedBooksForSelect(plannedBooks));
+  }, [plannedBooks, dispatch]);
 
   const handleSelectBook = (selectedOption) => {
     const { value } = selectedOption;

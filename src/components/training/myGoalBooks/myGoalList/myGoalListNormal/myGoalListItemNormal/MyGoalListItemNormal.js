@@ -4,7 +4,6 @@ import { ThemeContext } from "../../../../../App";
 import { useContext } from "react";
 
 const MyGoalListItemNormal = ({ item, onClickDelete }) => {
-  console.log(item);
   const { theme } = useContext(ThemeContext);
   const { name, author, year, pages, _id } = item;
 

@@ -7,7 +7,6 @@ import MyGoalListDefault from "./myGoalListDefault/MyGoalListDefault";
 // import { useStickyState } from "../../../hooks";
 
 function MyGoalBooks({ data, onClickDelete }) {
-  console.log(data);
   return (
     <>
       {data.length > 0 ? (

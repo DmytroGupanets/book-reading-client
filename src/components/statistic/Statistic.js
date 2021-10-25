@@ -43,7 +43,7 @@ const Statistic = () => {
   };
 
   const textModalTargetSuccess = () =>
-    `Поздравляем ты вовремя прочитал книг в количестве ${booksInProgress.length} шт., так держать!`;
+    `Ты вовремя прочитал книг в количестве ${booksInProgress.length} шт., так держать!`;
 
   const textModalBookSuccess = () =>
     `Поздравляем еще одна книга прочитана так держать`;

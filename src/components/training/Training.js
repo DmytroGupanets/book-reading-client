@@ -20,6 +20,7 @@ import {
   getPreplanningStartDate,
   getTargetActiv,
 } from "../../redux/target/targetSelectors";
+import { getInProgressdBooks } from "../../redux/books/booksSelectors";
 import sprite from "../../images/sprite.svg";
 
 import { getPreplaning } from "../../redux/target/targetSelectors";
@@ -27,6 +28,7 @@ import useWindowDimensions from "../../hooks/resize";
 import { ThemeContext } from "../App";
 import Timer from "../timer/Timer";
 import MyGoalBooks from "./myGoalBooks/MyGoalBooks";
+import MyProgressBooks from "./myProgressBooks/MyProgressBooks";
 
 const Training = () => {
   const dispatch = useDispatch();
@@ -40,6 +42,7 @@ const Training = () => {
   const prepStartDate = useSelector(getPreplanningStartDate);
   const prepEndDate = useSelector(getPreplanningEndDate);
   const selectedBooks = useSelector(getAllSelectedBooks);
+  const progressBooks = useSelector(getInProgressdBooks);
 
   const clientsWidth = useWindowDimensions().width;
   const [isMobile, setIsMobile] = useState(false);
@@ -98,7 +101,10 @@ const Training = () => {
           {isActive && <Timer />}
           <TargetRead isActive={isActive} />
           {!isMobile && !isActive && <MyTraining />}
-          <MyGoalBooks data={selectedBooks} onClickDelete={onHandleDelete} />
+          {isActive && <MyProgressBooks data={progressBooks} />}
+          {!isActive && (
+            <MyGoalBooks data={selectedBooks} onClickDelete={onHandleDelete} />
+          )}
           {!isActive && isTargetReady && (
             <button className="startTrainingBtn" onClick={onHandleClickStart}>
               {t("Start training")}
@@ -121,7 +127,13 @@ const Training = () => {
           <div className="mainContentWrapper">
             {!isActive && <MyTraining />}
             {isActive && <Timer />}
-            <MyGoalBooks data={selectedBooks} onClickDelete={onHandleDelete} />
+            {isActive && <MyProgressBooks data={progressBooks} />}
+            {!isActive && (
+              <MyGoalBooks
+                data={selectedBooks}
+                onClickDelete={onHandleDelete}
+              />
+            )}
             {!isActive && isTargetReady && (
               <button className="startTrainingBtn" onClick={onHandleClickStart}>
                 {t("Start training")}

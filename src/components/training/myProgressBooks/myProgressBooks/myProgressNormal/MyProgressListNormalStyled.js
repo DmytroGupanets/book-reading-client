@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
-const MyGoalListNormalStyled = styled.section`
+const MyProgressListNormalStyled = styled.section`
   margin: 0 auto;
   margin-top: 20px;
   margin-bottom: 40px;
-  text-align: start;
   width: 100%;
   border-bottom: 1px solid #e0e5eb;
   @media screen and (min-width: 1280px) {
     width: 886px;
+    height: 219px;
   }
   .myGoalListNorm_ListHead {
     @media screen and (min-width: 768px) {
@@ -40,7 +40,7 @@ const MyGoalListNormalStyled = styled.section`
   .myGoalListNorm_item:nth-child(3) {
     margin-right: 69px;
     @media screen and (min-width: 1280px) {
-      margin-right: 73px;
+      margin-right: 142px;
     }
   }
   .myGoalListNorm_ListBooks {
@@ -68,6 +68,9 @@ const MyGoalListNormalStyled = styled.section`
         border-radius: 0px;
         border: 3px none #ffffff;
       }
+      @media screen and (min-width: 1280px) {
+        max-height: 181px;
+      }
     }
   }
   .myGoalListNorm_MoreBooksContainer {
@@ -87,4 +90,4 @@ const MyGoalListNormalStyled = styled.section`
   }
 `;
 
-export default MyGoalListNormalStyled;
+export default MyProgressListNormalStyled;

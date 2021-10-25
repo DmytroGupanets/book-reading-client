@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const MyGoalListItemMobStyled = styled.li`
+const MyProgressListItemMobStyled = styled.li`
   :not(:last-child) {
     margin-bottom: 15px;
   }
@@ -10,7 +10,7 @@ const MyGoalListItemMobStyled = styled.li`
   list-style: none;
   display: flex;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: start;
   border-top: 1px solid #e0e5eb;
 
   :last-child {
@@ -27,14 +27,11 @@ const MyGoalListItemMobStyled = styled.li`
     font-weight: 500;
     margin-bottom: 5px;
   }
-  .myGoalListMob_SvgBook {
-    height: 17px;
-    width: 22px;
+  .myGoalListMob_CheckBoxSvg {
+    height: 15px;
+    width: 15px;
     margin-right: 13px;
-  }
-  .myGoalListMob_SvgDelete {
-    height: 18px;
-    width: 14px;
+    background-color: inherit;
   }
 
   .myGoalListMob_ListContainer {
@@ -58,7 +55,6 @@ const MyGoalListItemMobStyled = styled.li`
     font-size: 12px;
     font-weight: 500;
     line-height: 3.1;
-    text-align: start;
   }
   .myGoalListMob_ButtonDelete {
     cursor: pointer;
@@ -68,4 +64,4 @@ const MyGoalListItemMobStyled = styled.li`
   }
 `;
 
-export default MyGoalListItemMobStyled;
+export default MyProgressListItemMobStyled;

@@ -13,21 +13,6 @@ const DatePickerTrainingStyled = styled.div`
     margin-top: 25px;
   }
 
-  .datePickerTraining {
-    font-size: 14px;
-    line-height: 2.71;
-
-    color: ${({ colors }) => colors.trainingLabel};
-    padding-left: 47px;
-    width: 270px;
-    height: 42px;
-    margin-bottom: 20px;
-    border: 1px solid ${({ colors }) => colors.icons};
-
-    @media screen and (min-width: 768px) {
-      width: 250px;
-    }
-  }
   .datePickerWrapper {
     position: relative;
 
@@ -51,8 +36,24 @@ const DatePickerTrainingStyled = styled.div`
     width: 13px;
     height: 7px;
   }
-  .react-datepicker__input-container {
-    background: #f6f7fb;
+  .datePickerTraining {
+    font-size: 14px;
+    line-height: 2.71;
+
+    color: ${({ colors }) => colors.trainingLabel};
+
+    padding-left: 47px;
+    width: 270px;
+    height: 42px;
+    margin-bottom: 20px;
+    border: 1px solid ${({ colors }) => colors.icons};
+
+    @media screen and (min-width: 768px) {
+      width: 250px;
+    }
+    react-datepicker__input-container input {
+      background-color: ${({ colors }) => colors.background};
+    }
   }
 `;
 

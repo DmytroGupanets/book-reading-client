@@ -28,7 +28,7 @@ const ModalMyTrainingStyled = styled.div`
     border: none;
     background: transparent;
     margin-bottom: 26px;
-    text-align: left;
+    text-align: start;
 
   }
 

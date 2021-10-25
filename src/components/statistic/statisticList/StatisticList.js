@@ -14,7 +14,6 @@ import StatisticListStyled from "./StatisticListStyled";
 import useDate from "../../../hooks/useDate";
 
 const StatisticList = ({
-  showModal,
   toggleModal,
   toggleModalTimer,
   toggleModalTargetSuccess,
@@ -51,7 +50,9 @@ const StatisticList = ({
   }, [pagesState, totalPagesOfBookInProgress]);
 
   useEffect(() => {
-    toggleModalBookSuccess();
+    if (b >= 1) {
+      toggleModalBookSuccess();
+    }
   }, [b]);
 
   useEffect(() => {

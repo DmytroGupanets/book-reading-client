@@ -14,6 +14,7 @@ import useDate from "../../hooks/useDate";
 import { getInProgressdBooks } from "../../redux/books/booksSelectors";
 import {
   getRecords,
+  getTargetActiv,
   getTargetEndDate,
   getTargetStartDate,
 } from "../../redux/target/targetSelectors";
@@ -40,11 +41,13 @@ export default function Graph() {
   const records = useSelector(getRecords);
   const start = useSelector(getTargetStartDate);
   const end = useSelector(getTargetEndDate);
+  const isActive = useSelector(getTargetActiv);
 
   const dateNow = new Date();
   const today = dateNow.toLocaleDateString("en-GB").split("/").join(".");
 
-  const quantityDaysUptoNow = rangeBetwenStartAndEndDates(start, today);
+  const quantityDaysUptoNow =
+    start && today && rangeBetwenStartAndEndDates(start, today);
 
   const quantityDays = start && end && rangeBetwenStartAndEndDates(start, end);
 
@@ -58,6 +61,7 @@ export default function Graph() {
   const plannedPagesPerDay = Math.floor(sumOfPagesTotal / sumOfDaysTotal);
 
   const getReadPagesPerDay = () => {
+    if (!records) return [];
     return records.reduce((acc, rec, idx) => {
       const ans = acc.findIndex((record) => record.date === rec.date);
 
@@ -75,7 +79,7 @@ export default function Graph() {
   const createData = () => {
     const pagesReadPerDayRecords = getReadPagesPerDay();
     const result = [];
-
+    if (!quantityDaysUptoNow) return defaultData;
     for (let i = 0; i < quantityDaysUptoNow.length; i++) {
       const index = pagesReadPerDayRecords.findIndex(
         (rec) => rec.date === quantityDaysUptoNow[i]

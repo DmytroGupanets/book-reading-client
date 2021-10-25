@@ -2,20 +2,31 @@ import React, { useContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setBookInTrainingSuccess } from "../../../redux/target/targetActions";
 import { getInProgressdBooks } from "../../../redux/books/booksSelectors";
-import { getRecords, getTargetId } from "../../../redux/target/targetSelectors";
+import {
+  getIdxOfReadedBooksInTraining,
+  getPreplanningEndDate,
+  getRecords,
+  getTargetId,
+} from "../../../redux/target/targetSelectors";
 
 import { ThemeContext } from "../../App";
 import StatisticListStyled from "./StatisticListStyled";
-import { completeTargetOperation } from "../../../redux/target/targetOperations";
+import useDate from "../../../hooks/useDate";
 
-const StatisticList = ({ toggleModal }) => {
+const StatisticList = ({
+  toggleModal,
+  toggleModalTimer,
+  toggleModalTargetSuccess,
+  toggleModalBookSuccess,
+}) => {
   const { theme } = useContext(ThemeContext);
   const [pagesState, setQuantityPages] = useState(0);
+  const [stateData, moment, chengeStartDataIdx] = useDate();
 
+  const end = useSelector(getPreplanningEndDate);
   const records = useSelector(getRecords);
   const booksInProgress = useSelector(getInProgressdBooks);
-  const targetId = useSelector(getTargetId);
-
+  const b = useSelector(getIdxOfReadedBooksInTraining);
   const dispatch = useDispatch();
 
   const totalPagesOfBookInProgress = booksInProgress.reduce(
@@ -24,31 +35,32 @@ const StatisticList = ({ toggleModal }) => {
   );
 
   useEffect(() => {
-    if (pagesState === totalPagesOfBookInProgress) {
-      toggleModal();
-      // dispatch(completeTargetOperation(targetId));
+    if (totalPagesOfBookInProgress === 0) {
+      return;
     }
-
-    return () => {
-      if (pagesState === totalPagesOfBookInProgress) {
-        toggleModal();
-        // dispatch(completeTargetOperation(targetId));
-      }
-    };
+    if (openModalByTimer() >= 0 && pagesState >= totalPagesOfBookInProgress) {
+      toggleModalTargetSuccess();
+    }
+    if (openModalByTimer() < 0 && pagesState >= totalPagesOfBookInProgress) {
+      toggleModal();
+    }
+    if (openModalByTimer() < 0 && pagesState < totalPagesOfBookInProgress) {
+      toggleModalTimer();
+    }
   }, [pagesState, totalPagesOfBookInProgress]);
 
   useEffect(() => {
+    if (b >= 1) {
+      toggleModalBookSuccess();
+    }
+  }, [b]);
+
+  useEffect(() => {
     dispatch(setBookInTrainingSuccess(countIdxOfReadedBook(pagesState)));
-    return () => {
-      dispatch(setBookInTrainingSuccess(countIdxOfReadedBook(pagesState)));
-    };
   }, [pagesState]);
 
   useEffect(() => {
     countPages();
-    return () => {
-      countPages();
-    };
   }, [records]);
 
   const countIdxOfReadedBook = (statisticAmount) => {
@@ -65,25 +77,6 @@ const StatisticList = ({ toggleModal }) => {
     return result;
   };
 
-  // const result = ;
-  // const fn = (arr) => {
-  //   let pagesOfReadedBook = 0;
-  //   return arr.reduce((acc, item, idx) => {
-  //     console.log(pagesOfReadedBook);
-  //     // console.log(acc[idx]);
-
-  //     if (item.pages === pagesState - pagesOfReadedBook) {
-  //       // console.log(pagesState.pagesOfReadedBook);
-  //       acc = idx;
-  //       pagesOfReadedBook += item.pages;
-  //       // acc.accPages = p;
-  //       return acc;
-  //     }
-
-  //     return acc;
-  //   }, 0);
-  // };
-
   const countPages = () => {
     let pages = 0;
 
@@ -91,6 +84,10 @@ const StatisticList = ({ toggleModal }) => {
 
     setQuantityPages(pages);
   };
+
+  const openModalByTimer = () =>
+    new Date(chengeStartDataIdx(end)) -
+    new Date(chengeStartDataIdx(stateData.currentDate.split("-").join(".")));
 
   return (
     <StatisticListStyled colors={theme}>

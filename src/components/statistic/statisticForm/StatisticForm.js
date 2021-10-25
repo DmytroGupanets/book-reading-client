@@ -11,19 +11,23 @@ import useDate from "../../../hooks/useDate";
 const initialState = {
   date: "",
   pages: "",
+  isValidate: true,
 };
 
 const StatisticForm = () => {
   const { theme } = useContext(ThemeContext);
 
-  const [statistic, setStatistic] = useState(initialState);
-  const { date, pages } = statistic;
+  const [statisticState, setStatistic] = useState(initialState);
+  const { date, pages, isValidate } = statisticState;
 
   const [stateData, moment] = useDate();
   const { currentDate } = stateData;
 
   const targetId = useSelector(getTargetId);
   const dispatch = useDispatch();
+
+  // console.log(/([0-9]){1,3}/.test(pages));
+  // console.log(pages);
 
   useEffect(() => {
     setStatistic((prev) => ({
@@ -42,11 +46,17 @@ const StatisticForm = () => {
 
   const onHandleSubmit = (e) => {
     e.preventDefault();
+
     const record = {
       time: moment().toLocaleString().substr(16, 8),
       date: date,
       pages: pages,
     };
+
+    if (pages === "" || date === "") {
+      setStatistic((prev) => ({ ...prev, isValidate: false }));
+      return;
+    }
 
     dispatch(updateRecordOperation(targetId, record));
     setStatistic(initialState);
@@ -65,13 +75,19 @@ const StatisticForm = () => {
               value={pages}
               className="statisticInput"
               onChange={onHandleChange}
-              required
+              pattern="([0-9]){1,3}"
+              title="только цифры от 1-й до 3-х"
             />
           </label>
         </div>
         <button className="statisticBtn" type="submit">
           Додати результат
         </button>
+        {!isValidate && (
+          <p className="InputErrorMassege">
+            Укажите дату и колличество страниц
+          </p>
+        )}
       </div>
     </StatisticFormStyled>
   );

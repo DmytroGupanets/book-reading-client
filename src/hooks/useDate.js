@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Moment from "moment";
 import { extendMoment } from "moment-range";
 import { useSelector } from "react-redux";
-import { startDate } from "../redux/target/targetSelectors";
+import { getTargetStartDate } from "../redux/target/targetSelectors";
 
 const moment = extendMoment(Moment);
 
@@ -18,9 +18,10 @@ const dateNow = `${day}-${month + 1}-${year}`;
 
 const useDate = () => {
   const [stateData, setDate] = useState(initialStateDate);
-  const { quantityDays } = stateData;
+  const { quantityDays, currentDate } = stateData;
 
-  const start = useSelector(startDate);
+  const startTarget = useSelector(getTargetStartDate);
+  const start = startTarget?.split(".")?.reverse()?.join("-");
 
   useEffect(() => {
     setCurrentData();
@@ -39,19 +40,29 @@ const useDate = () => {
     return startDateStr.join("-");
   };
 
-  // const chengeEndDataIdx = (str) => {
-  //   const startDateStr = str.slice().split(".");
-  //   [startDateStr[0], startDateStr[1]] = [startDateStr[1], startDateStr[0]];
-  //   return startDateStr.join("-");
-  // };
-
   const rangeBetwenStartAndEndDates = (startDate, endDate) => {
+    const arr = [];
     const reverseStart = startDate.split(".").reverse().join("-");
     const reverseEnd = endDate.split(".").reverse().join("-");
     const start = new Date(reverseStart);
     const end = new Date(reverseEnd);
     const range = moment.range(start, end);
-    return range.diff("days");
+
+    let newDateRange = start.getDate();
+
+    for (let i = 0; i < range.diff("days"); i++) {
+      newDateRange++;
+      const newDate = moment().set({
+        year: start.getFullYear,
+        month: start.getMonth(),
+        date: newDateRange,
+      });
+
+      arr.push(
+        newDate.toISOString().substr(0, 10).split("-").reverse().join(".")
+      );
+    }
+    return arr;
   };
 
   const setQuantityBetweenDays = (startTargetData) => {
@@ -87,7 +98,8 @@ const useDate = () => {
   return [
     stateData,
     moment,
-    setCurrentData,
+    chengeStartDataIdx,
+    // setCurrentData,
     setQuantityBetweenDays,
     rangeBetwenStartAndEndDates,
   ];

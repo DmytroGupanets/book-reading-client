@@ -52,7 +52,6 @@ export const googleAuth = (tokenId) => async (dispatch) => {
     const {
       data: { data },
     } = await axios.post("api/auth/google", { token: tokenId });
-    console.log(data);
     token.set(data.token);
     dispatch(loginSuccess(data));
   } catch (error) {

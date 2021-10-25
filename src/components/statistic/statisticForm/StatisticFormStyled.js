@@ -1,7 +1,9 @@
 import styled from "styled-components";
 
 const StatisticFormStyled = styled.form`
+  position: relative;
   margin-bottom: 24px;
+
   .StatisticTitle {
     margin: 0;
     font-weight: 600;
@@ -11,14 +13,17 @@ const StatisticFormStyled = styled.form`
 
     text-transform: uppercase;
   }
+
   .inputWrapper {
     display: flex;
     justify-content: center;
     margin-bottom: 21px;
   }
+
   .inputWrapper :not(:last-child) {
     margin-right: 20px;
   }
+
   .statisticFormLabel {
     display: flex;
     flex-direction: column;
@@ -29,6 +34,7 @@ const StatisticFormStyled = styled.form`
     line-height: 20px;
     color: ${({ colors }) => colors.secondaryText};
   }
+
   .statisticInput {
     padding: 0 0 0 13px;
     height: 42px;
@@ -37,7 +43,10 @@ const StatisticFormStyled = styled.form`
     color: ${({ colors }) => colors.primaryText};
     background: ${({ colors }) => colors.primaryBg};
     border: 1px solid ${({ colors }) => colors.icons};
+
+    outline-color: ${({ colors }) => colors.accent};
   }
+
   .statisticBtn {
     width: 171px;
     height: 42px;
@@ -47,6 +56,19 @@ const StatisticFormStyled = styled.form`
     background: ${({ colors }) => colors.accent};
     border: none;
     cursor: pointer;
+
+    &:hover,
+    :focus {
+      background-color: ${({ colors }) => colors.accentActive};
+    }
+  }
+
+  .InputErrorMassege {
+    position: absolute;
+    font-weight: 500;
+    top: 100%;
+    font-size: 14px;
+    color: ${({ colors }) => colors.accent};
   }
 
   @media screen and (min-width: 768px) {
@@ -65,6 +87,9 @@ const StatisticFormStyled = styled.form`
     }
     .statisticBtn {
       width: 240px;
+    }
+    .InputErrorMassege {
+      top: 30%;
     }
   }
 
@@ -86,6 +111,9 @@ const StatisticFormStyled = styled.form`
 
     .statisticBtn {
       width: 240px;
+    }
+    .InputErrorMassege {
+      top: 100%;
     }
   } ;
 `;

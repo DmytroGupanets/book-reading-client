@@ -2,12 +2,12 @@
 import { useSelector } from "react-redux";
 import { getInProgressdBooks } from "../../../redux/books/booksSelectors";
 import {
-  endDate,
   // getAllPlannedBooks,
   getAllSelectedBooks,
   getIdxOfReadedBooksInTraining,
   getPreplaning,
-  startDate,
+  getPreplanningEndDate,
+  getPreplanningStartDate,
 } from "../../../redux/target/targetSelectors";
 import useDate from "../../../hooks/useDate";
 
@@ -21,24 +21,21 @@ const TargetRead = ({ isActive }) => {
   const [
     stateData,
     moment,
-    setCurrentData,
+    chengeStartDataIdx,
     setQuantityBetweenDays,
     rangeBetwenStartAndEndDates,
   ] = useDate();
 
-  const start = useSelector(startDate);
-  const end = useSelector(endDate);
+  const preplaning = useSelector(getPreplaning);
+
+  const start = useSelector(getPreplanningStartDate);
+  const end = useSelector(getPreplanningEndDate);
   const booksInProgress = useSelector(getInProgressdBooks);
   const booksInSelected = useSelector(getAllSelectedBooks);
-  const preplaning = useSelector(getPreplaning);
   const idxOfReadedBooksInTraining = useSelector(getIdxOfReadedBooksInTraining);
-  // console.log(idxOfReadedBooksInTraining);
   const trainingQuantityDays =
     start && end && rangeBetwenStartAndEndDates(start, end);
 
-  // ? rangeBetwenStartAndEndDates(preplaning.startDate, preplaning.endDate)
-  // : rangeBetwenStartAndEndDates(start, end);
-  // console.log(booksInProgress);
   return (
     <TargetReadStyled colors={theme} isActive={isActive}>
       <div className="tabletWrapperStyled">
@@ -56,7 +53,7 @@ const TargetRead = ({ isActive }) => {
         </li>
         <li className="targetReadItem">
           <div className="targetReadDig">
-            {trainingQuantityDays ? trainingQuantityDays : 0}
+            {trainingQuantityDays ? trainingQuantityDays.length : 0}
           </div>
           <p className="targetReadItemDescription">Кількість днів</p>
         </li>

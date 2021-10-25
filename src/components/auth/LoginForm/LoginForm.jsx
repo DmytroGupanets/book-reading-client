@@ -43,7 +43,7 @@ const LoginForm = () => {
         email: email.toLowerCase(),
         password,
       };
-      console.log(user);
+
       dispatch(login(user));
     },
   });
@@ -59,7 +59,7 @@ const LoginForm = () => {
           </label>
           <input
             id="email"
-            type="email"
+            type="text"
             className="formInput"
             name="email"
             placeholder="your@email.com"

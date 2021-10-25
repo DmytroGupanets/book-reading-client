@@ -81,7 +81,7 @@ const RegistrationForm = () => {
           </label>
           <input
             id="email"
-            type="email"
+            type="text"
             className="formInput"
             name="email"
             placeholder="your@email.com"
@@ -139,9 +139,8 @@ const RegistrationForm = () => {
           </button>
         </div>
         <div className="loginContainer">
-          {t("With us already")}?
-          <Link to="/auth/login" className="login">
-            {t("Login")}
+          <Link to="/auth/login" className="loginText">
+            {t("With us already")}?<span className="login">{t("Login")}</span>
           </Link>
         </div>
       </form>

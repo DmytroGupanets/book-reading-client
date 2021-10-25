@@ -50,6 +50,7 @@ const LibraryEmptyModal = ({ toggleModal }) => {
         year,
         pages,
       };
+      console.log(`ok`);
 
       await dispatch(addNewBookOperation(newBook));
 

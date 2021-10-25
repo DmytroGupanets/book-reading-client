@@ -6,7 +6,7 @@ const MyGoalList = ({ data, onClickDelete }) => {
   const { width } = resize();
   return (
     <>
-      {width > 768 ? (
+      {width > 767 ? (
         <MyGoalListNormal data={data} onClickDelete={onClickDelete} />
       ) : (
         <MyGoalListMob data={data} onClickDelete={onClickDelete} />

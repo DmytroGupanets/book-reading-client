@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const MyGoalListDefMobStyled = styled.div`
+  text-align: start;
   margin-top: 30px;
   margin-bottom: 30px;
   width: 100%;

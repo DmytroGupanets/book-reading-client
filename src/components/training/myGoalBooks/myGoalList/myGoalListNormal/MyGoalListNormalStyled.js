@@ -4,6 +4,7 @@ const MyGoalListNormalStyled = styled.section`
   margin: 0 auto;
   margin-top: 20px;
   margin-bottom: 40px;
+  text-align: start;
   width: 100%;
   border-bottom: 1px solid #e0e5eb;
   @media screen and (min-width: 1280px) {

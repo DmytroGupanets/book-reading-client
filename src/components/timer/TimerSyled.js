@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const TimerStyled = styled.div`
   display: flex;
   margin-bottom: 30px;
-  padding-top: 50px;
+  padding-top: 25px;
   justify-content: center;
 
   @media (max-width: 768px) {
@@ -11,11 +11,12 @@ export const TimerStyled = styled.div`
     justify-content: space-evenly;
   }
 
-  @media (min-width: 768px) and (max-width: 1280px) {
-    padding-top: 65px;
+  @media screen and (min-width: 768px) {
+    padding-top: 35px;
   }
 
   @media (min-width: 1280px) {
     margin-bottom: 40px;
+    padding-top: 0;
   }
 `;

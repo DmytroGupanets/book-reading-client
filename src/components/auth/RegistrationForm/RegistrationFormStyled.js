@@ -41,6 +41,10 @@ export const RegistrationFormStyled = styled.div`
     }
   }
 
+  .formInput:invalid {
+    border-color: red;
+  }
+
   .wrapperButton {
     display: flex;
     justify-content: center;

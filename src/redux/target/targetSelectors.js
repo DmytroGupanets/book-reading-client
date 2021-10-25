@@ -15,3 +15,5 @@ export const getPreplanningStartDate = (state) =>
   state.target.preplanning.startDate;
 export const getPreplanningEndDate = (state) =>
   state.target.preplanning.endDate;
+
+export const getNumberOfPagesRemaining = (state) => state.target.pagesRemaining;

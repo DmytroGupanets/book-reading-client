@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getTargetId } from "../../redux/target/targetSelectors";
+import {
+  getNumberOfPagesRemaining,
+  getTargetId,
+} from "../../redux/target/targetSelectors";
 import { completeTargetOperation } from "../../redux/target/targetOperations";
 
 import Modal from "../modal/Modal";
@@ -21,6 +24,7 @@ const Statistic = () => {
   const dispatch = useDispatch();
   const targetId = useSelector(getTargetId);
   const booksInProgress = useSelector(getInProgressdBooks);
+  const NumberOfPagesRemaining = useSelector(getNumberOfPagesRemaining);
 
   const toggleModal = () => {
     setShowModal((isActive) => !isActive);
@@ -39,7 +43,7 @@ const Statistic = () => {
   };
 
   const textModalTimeOut = () => {
-    return `Не останавливайся! Тебе осталось чиитать ${1} страниц Ты можешь достичь этой цели`;
+    return `Не останавливайся! Тебе осталось чиитать ${NumberOfPagesRemaining} страниц Ты можешь достичь этой цели`;
   };
 
   const textModalTargetSuccess = () =>

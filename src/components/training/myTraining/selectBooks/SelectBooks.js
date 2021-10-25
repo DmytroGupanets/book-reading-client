@@ -45,10 +45,17 @@ const SelectBooks = ({ toggleModal }) => {
   const books = useSelector(getPlannedBooks);
   const plannedBooks = useSelector(getAllPlannedBooks);
   const [selectedBook, setSelectedBook] = useState({});
+  console.log(`plannedBooks`, plannedBooks);
+  console.log(`books`, books);
 
   useEffect(() => {
+    if (!plannedBooks.length) dispatch(setPlannedBooksForSelect(books));
+  });
+
+  useEffect(() => {
+    if (!plannedBooks.length) dispatch(setPlannedBooksForSelect(books));
     dispatch(setPlannedBooksForSelect(plannedBooks));
-  }, [plannedBooks, dispatch]);
+  }, [books, plannedBooks, dispatch]);
 
   const handleSelectBook = (selectedOption) => {
     const { value } = selectedOption;

@@ -34,8 +34,6 @@ const StatisticList = ({
     0
   );
 
-  console.log(`totalPagesOfBookInProgress`, totalPagesOfBookInProgress);
-
   useEffect(() => {
     if (totalPagesOfBookInProgress === 0) {
       return;
@@ -72,25 +70,6 @@ const StatisticList = ({
     }
     return result;
   };
-
-  // const result = ;
-  // const fn = (arr) => {
-  //   let pagesOfReadedBook = 0;
-  //   return arr.reduce((acc, item, idx) => {
-  //     console.log(pagesOfReadedBook);
-  //     // console.log(acc[idx]);
-
-  //     if (item.pages === pagesState - pagesOfReadedBook) {
-  //       // console.log(pagesState.pagesOfReadedBook);
-  //       acc = idx;
-  //       pagesOfReadedBook += item.pages;
-  //       // acc.accPages = p;
-  //       return acc;
-  //     }
-
-  //     return acc;
-  //   }, 0);
-  // };
 
   const countPages = () => {
     let pages = 0;

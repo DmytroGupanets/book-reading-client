@@ -36,9 +36,11 @@ function App() {
   }, [dispatch, token]);
 
   useEffect(() => {
-    dispatch(getAllBooksOperation());
-    dispatch(getRecordOperation(ownerId));
-  }, []);
+    if (ownerId) {
+      dispatch(getAllBooksOperation());
+      dispatch(getRecordOperation(ownerId));
+    }
+  }, [ownerId]);
 
   return (
     <ThemeContext.Provider value={{ theme, changeTheme }}>

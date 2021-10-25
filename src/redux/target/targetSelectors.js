@@ -2,6 +2,7 @@ export const getTargetId = (state) => state.target.target._id;
 export const getTargetActiv = (state) => state.target.target.isActive;
 export const getRecords = (state) => state.target.target.records;
 export const getTargetEndDate = (state) => state.target.target.endDate;
+export const getTargetStartDate = (state) => state.target.target.startDate;
 export const getIdxOfReadedBooksInTraining = (state) =>
   state.target.bookInTraining;
 

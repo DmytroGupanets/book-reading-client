@@ -47,8 +47,8 @@ const SelectBooks = ({ toggleModal }) => {
   const [selectedBook, setSelectedBook] = useState({});
 
   useEffect(() => {
-    books.length && dispatch(setPlannedBooksForSelect(books));
-  }, [books]);
+    dispatch(setPlannedBooksForSelect(plannedBooks));
+  }, [plannedBooks, dispatch]);
 
   const handleSelectBook = (selectedOption) => {
     const { value } = selectedOption;

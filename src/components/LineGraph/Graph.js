@@ -1,6 +1,6 @@
-import React from "react";
-import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
 import {
   LineChart,
   Line,
@@ -9,35 +9,29 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
-} from "recharts";
-import useDate from "../../hooks/useDate";
-import { getInProgressdBooks } from "../../redux/books/booksSelectors";
+} from 'recharts';
+import useDate from '../../hooks/useDate';
+import { getInProgressdBooks } from '../../redux/books/booksSelectors';
 import {
   getPreplanningEndDate,
   getPreplanningStartDate,
   getRecords,
-} from "../../redux/target/targetSelectors";
+} from '../../redux/target/targetSelectors';
 
 // РАСЧЕТ ПЛАНА = СУММА СТРАНИЦ ВСЕХ ИЗБРАННЫХ КНИЖЕК / КОЛИЧЕСТВО ДНЕЙ ВЫБРАННОГО ПЕРИОДА
 
 const data = [
   {
     PLAN: 30,
-    ACT: 29,
+    ACT: 0,
     ПЛАН: 30,
-    ФАКТ: 29,
+    ФАКТ: 0,
   },
   {
-    PLAN: 40,
-    ACT: 40,
-    ПЛАН: 40,
-    ФАКТ: 40,
-  },
-  {
-    PLAN: 67,
-    ACT: 56,
-    ПЛАН: 67,
-    ФАКТ: 56,
+    PLAN: 30,
+    ACT: 23,
+    ПЛАН: 30,
+    ФАКТ: 23,
   },
 ];
 
@@ -65,10 +59,10 @@ export default function Graph() {
   const end = useSelector(getPreplanningEndDate);
 
   const quantytyDays = start && end && rangeBetwenStartAndEndDates(start, end);
-
+  console.log(quantytyDays);
   const { t } = useTranslation();
   return (
-    <ResponsiveContainer width={"99%"} height={215}>
+    <ResponsiveContainer width={'100%'} height={215}>
       <LineChart
         width={811}
         height={300}
@@ -82,11 +76,11 @@ export default function Graph() {
       >
         <CartesianGrid strokeDasharray="0" />
         <XAxis dataKey="name" />
-        <YAxis />
+        <YAxis tick={false} />
         <Tooltip />
         <Line
           type="monotone"
-          dataKey={t("PLAN")}
+          dataKey={t('PLAN')}
           stroke="#091E3F"
           strokeWidth={2}
           dot={{ r: 5 }}
@@ -94,7 +88,7 @@ export default function Graph() {
         />
         <Line
           type="monotone"
-          dataKey={t("ACT")}
+          dataKey={t('ACT')}
           stroke="#FF6B08"
           strokeWidth={2}
           dot={{ r: 5 }}

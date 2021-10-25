@@ -10,6 +10,7 @@ import StatisticModal from "./statisticModal/StatisticModal";
 import ModalEndTarining from "./modalEndTraining/ModalEndTraining";
 
 import StatisticStyled from "./StatisticStyled";
+import { getInProgressdBooks } from "../../redux/books/booksSelectors";
 
 const Statistic = () => {
   const [showModal, setShowModal] = useState(false);
@@ -19,6 +20,7 @@ const Statistic = () => {
 
   const dispatch = useDispatch();
   const targetId = useSelector(getTargetId);
+  const booksInProgress = useSelector(getInProgressdBooks);
 
   const toggleModal = () => {
     setShowModal((isActive) => !isActive);
@@ -36,11 +38,12 @@ const Statistic = () => {
     }
   };
 
-  const textModalTimeOut = () =>
-    `Не останавливайся! Тебе осталось чиитать ${10} страниц Ты можешь достичь этой цели`;
+  const textModalTimeOut = () => {
+    return `Не останавливайся! Тебе осталось чиитать ${1} страниц Ты можешь достичь этой цели`;
+  };
 
   const textModalTargetSuccess = () =>
-    `Поздравляем ты вовремя прочитал ${5} книг, так держать!`;
+    `Поздравляем ты вовремя прочитал книг в количестве ${booksInProgress.length} шт., так держать!`;
 
   const textModalBookSuccess = () =>
     `Поздравляем еще одна книга прочитана так держать`;

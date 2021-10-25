@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setBookInTrainingSuccess } from "../../../redux/target/targetActions";
 import { getInProgressdBooks } from "../../../redux/books/booksSelectors";
 import {
+  getIdxOfReadedBooksInTraining,
   getPreplanningEndDate,
   getRecords,
   getTargetId,
@@ -26,7 +27,7 @@ const StatisticList = ({
   const end = useSelector(getPreplanningEndDate);
   const records = useSelector(getRecords);
   const booksInProgress = useSelector(getInProgressdBooks);
-
+  const b = useSelector(getIdxOfReadedBooksInTraining);
   const dispatch = useDispatch();
 
   const totalPagesOfBookInProgress = booksInProgress.reduce(
@@ -48,6 +49,10 @@ const StatisticList = ({
       toggleModalTimer();
     }
   }, [pagesState, totalPagesOfBookInProgress]);
+
+  useEffect(() => {
+    toggleModalBookSuccess();
+  }, [b]);
 
   useEffect(() => {
     dispatch(setBookInTrainingSuccess(countIdxOfReadedBook(pagesState)));

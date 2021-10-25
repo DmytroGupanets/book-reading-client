@@ -31,7 +31,7 @@ export default function Graph() {
   const [
     stateData,
     moment,
-    // setCurrentData,
+    chengeStartDataIdx,
     setQuantityBetweenDays,
     rangeBetwenStartAndEndDates,
   ] = useDate();
@@ -110,7 +110,7 @@ export default function Graph() {
 
   const { t } = useTranslation();
   return (
-    <ResponsiveContainer width={"99%"} height={215}>
+    <ResponsiveContainer width={"100%"} height={215}>
       <LineChart
         width={811}
         height={300}
@@ -124,7 +124,7 @@ export default function Graph() {
       >
         <CartesianGrid strokeDasharray="0" />
         <XAxis dataKey="name" />
-        <YAxis domain={[0, getHighestValue]} />
+        <YAxis domain={[0, getHighestValue]} tick={false} />
         <Tooltip />
         <Line
           type="monotone"

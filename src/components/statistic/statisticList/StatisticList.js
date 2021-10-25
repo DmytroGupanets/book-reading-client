@@ -2,15 +2,28 @@ import React, { useContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setBookInTrainingSuccess } from "../../../redux/target/targetActions";
 import { getInProgressdBooks } from "../../../redux/books/booksSelectors";
-import { getRecords, getTargetId } from "../../../redux/target/targetSelectors";
+import {
+  getPreplanningEndDate,
+  getRecords,
+  getTargetId,
+} from "../../../redux/target/targetSelectors";
 
 import { ThemeContext } from "../../App";
 import StatisticListStyled from "./StatisticListStyled";
+import useDate from "../../../hooks/useDate";
 
-const StatisticList = ({ toggleModal }) => {
+const StatisticList = ({
+  showModal,
+  toggleModal,
+  toggleModalTimer,
+  toggleModalTargetSuccess,
+  toggleModalBookSuccess,
+}) => {
   const { theme } = useContext(ThemeContext);
   const [pagesState, setQuantityPages] = useState(0);
+  const [stateData, moment, chengeStartDataIdx] = useDate();
 
+  const end = useSelector(getPreplanningEndDate);
   const records = useSelector(getRecords);
   const booksInProgress = useSelector(getInProgressdBooks);
 
@@ -25,10 +38,16 @@ const StatisticList = ({ toggleModal }) => {
     if (totalPagesOfBookInProgress === 0) {
       return;
     }
-    if (pagesState >= totalPagesOfBookInProgress) {
+    if (openModalByTimer() >= 0 && pagesState >= totalPagesOfBookInProgress) {
+      toggleModalTargetSuccess();
+    }
+    if (openModalByTimer() < 0 && pagesState >= totalPagesOfBookInProgress) {
       toggleModal();
     }
-  }, [pagesState, totalPagesOfBookInProgress, toggleModal]);
+    if (openModalByTimer() < 0 && pagesState < totalPagesOfBookInProgress) {
+      toggleModalTimer();
+    }
+  }, [pagesState, totalPagesOfBookInProgress]);
 
   useEffect(() => {
     dispatch(setBookInTrainingSuccess(countIdxOfReadedBook(pagesState)));
@@ -59,6 +78,10 @@ const StatisticList = ({ toggleModal }) => {
 
     setQuantityPages(pages);
   };
+
+  const openModalByTimer = () =>
+    new Date(chengeStartDataIdx(end)) -
+    new Date(chengeStartDataIdx(stateData.currentDate.split("-").join(".")));
 
   return (
     <StatisticListStyled colors={theme}>

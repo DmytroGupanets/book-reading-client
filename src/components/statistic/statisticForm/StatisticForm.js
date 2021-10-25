@@ -76,8 +76,6 @@ const StatisticForm = () => {
               className="statisticInput"
               onChange={onHandleChange}
               pattern="([0-9]){1,3}"
-              // maxLength="3"
-              // placeholder=""
               title="только цифры от 1-й до 3-х"
             />
           </label>

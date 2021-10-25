@@ -54,7 +54,7 @@ export default function Graph() {
   const [
     stateData,
     moment,
-    // setCurrentData,
+    chengeStartDataIdx,
     setQuantityBetweenDays,
     rangeBetwenStartAndEndDates,
   ] = useDate();

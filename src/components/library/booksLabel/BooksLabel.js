@@ -7,7 +7,7 @@ const BooksLabel = ({ title, isPC }) => {
   const { t } = useTranslation();
   const { theme } = useContext(ThemeContext);
 
-  const isCompleted = title === "Прочитано";
+  const isCompleted = title === "Already read" || "Прочитано";
 
   return (
     <BooksLabelStyled isCompleted={isCompleted} colors={theme}>
@@ -15,7 +15,7 @@ const BooksLabel = ({ title, isPC }) => {
       <div className="labelWrapper">
         <span className="labelName">{t("Book title")}</span>
         <span className="labelAuthor">{t("Author m")}</span>
-        <span className="labelYear">{t("Year")}</span>
+        <span className="labelYear">{t("Year m")}</span>
         <span className="labelPages">{t("Pages")}</span>
         {isCompleted && !isPC && (
           <span className="labelRating">{t("Rating m")}</span>

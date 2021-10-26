@@ -112,7 +112,6 @@ const preplanningReducer = combineReducers({
 const targetReducer = combineReducers({
   target: targetsReducer,
   bookInTraining: bookInTrainingReducer,
-  preplanning: preplanningReducer,
   pagesRemaining: numberOfPagesRemainingReducer,
   preplanning: persistReducer(preplanningPersistConfig, preplanningReducer),
   isLoading: isLoadingReducer,

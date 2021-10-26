@@ -22,7 +22,7 @@ const Registration = () => {
     return () => {
       dispatch(registerReset());
     };
-  }, []);
+  }, [dispatch]);
 
   const onConfirmEmailOk = useCallback(() => {
     history.push("/auth/login");

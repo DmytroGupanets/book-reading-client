@@ -46,14 +46,12 @@ const Training = () => {
 
   const clientsWidth = useWindowDimensions().width;
   const [isMobile, setIsMobile] = useState(false);
-  const [isTablet, setIsTablet] = useState(false);
   const [isPC, setIsPC] = useState(false);
   const [isTargetReady, setIsTargetReady] = useState(false);
   const [isActive, setIsActive] = useState(targetActive);
 
   useEffect(() => {
     setIsMobile(clientsWidth < 768);
-    setIsTablet(clientsWidth > 767 && clientsWidth < 1280);
     setIsPC(clientsWidth > 1279);
 
     if (prepStartDate && prepEndDate && Boolean(selectedBooks.length))

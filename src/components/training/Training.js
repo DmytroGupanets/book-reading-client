@@ -49,7 +49,7 @@ const Training = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [isPC, setIsPC] = useState(false);
   const [isTargetReady, setIsTargetReady] = useState(false);
-  const [isActive, setIsActive] = useState(targetActive);
+  const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
     setIsMobile(clientsWidth < 768);
@@ -59,7 +59,9 @@ const Training = () => {
       setIsTargetReady(true);
     else setIsTargetReady(false);
 
-    setIsActive(targetActive);
+    if (targetActive !== undefined) {
+      setIsActive(targetActive);
+    }
   }, [clientsWidth, prepStartDate, prepEndDate, selectedBooks, targetActive]);
 
   const toggleModal = useCallback(() => {

@@ -28,15 +28,18 @@ import {
   setPagesPerDay,
 } from "./targetActions";
 
-const targetsReducer = createReducer([], {
-  [getRecordSuccess]: (_, { payload }) => payload.result,
-  [updateRecordSuccess]: (state, { payload }) => ({
-    ...state,
-    records: payload,
-  }),
-  [completeTargetSuccess]: (state, { payload }) => payload,
-  [addTargetSucces]: (state, { payload }) => payload.result,
-});
+const targetsReducer = createReducer(
+  {},
+  {
+    [getRecordSuccess]: (_, { payload }) => payload.result,
+    [updateRecordSuccess]: (state, { payload }) => ({
+      ...state,
+      records: payload,
+    }),
+    [completeTargetSuccess]: (_, { payload }) => payload.target,
+    [addTargetSucces]: (_, { payload }) => payload.result,
+  }
+);
 
 const bookInTrainingReducer = createReducer([], {
   [setBookInTrainingSuccess]: (_, { payload }) => payload,

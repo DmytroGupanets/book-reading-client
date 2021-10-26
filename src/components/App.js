@@ -1,4 +1,4 @@
-import { createContext, Suspense } from "react";
+import { createContext, Suspense, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router";
 import usePersistedTheme from "../hooks/usePersistedTheme";
@@ -12,6 +12,7 @@ import { useEffect } from "react";
 import { getCurrentUser } from "../redux/auth/authOperations";
 import { getAllBooksOperation } from "../redux/books/booksOperations";
 import { getRecordOperation } from "../redux/target/targetOperations";
+import BackToTop from "./ToTop/BackToTop";
 
 export const ThemeContext = createContext();
 
@@ -39,12 +40,24 @@ function App() {
     dispatch(getAllBooksOperation());
     dispatch(getRecordOperation(ownerId));
   }, []);
+  const [showButton, setShowButton] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (window.pageYOffset > 50) {
+        setShowButton(true);
+      } else {
+        setShowButton(false);
+      }
+    });
+  }, []);
 
   return (
     <ThemeContext.Provider value={{ theme, changeTheme }}>
       <Suspense fallback={<Spinner />}>
         <Header />
         <Main />
+        {showButton && <BackToTop />}
       </Suspense>
     </ThemeContext.Provider>
   );

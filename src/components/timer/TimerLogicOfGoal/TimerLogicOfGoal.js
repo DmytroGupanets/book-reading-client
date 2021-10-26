@@ -32,22 +32,21 @@ const TimerLogicOfGoal = () => {
     if (Math.floor((diff / (1000 * 60 * 60)) % 24) > 9) {
       return Math.floor((diff / (1000 * 60 * 60)) % 24);
     }
-
-    return Math.floor((Math.abs(diff) / (1000 * 60 * 60)) % 24);
+    return "0" + Math.floor((Math.abs(diff) / (1000 * 60 * 60)) % 24);
   };
 
   const minutes = () => {
     if (Math.floor((diff / 1000 / 60) % 60) > 9) {
       return Math.floor((diff / 1000 / 60) % 60);
     }
-    return Math.floor((Math.abs(diff) / 1000 / 60) % 60);
+    return "0" + Math.floor((Math.abs(diff) / 1000 / 60) % 60);
   };
 
   const seconds = () => {
     if (Math.floor((diff / 1000) % 60) > 9) {
       return Math.floor((diff / 1000) % 60);
     }
-    return Math.floor((Math.abs(diff) / 1000) % 60);
+    return "0" + Math.floor((Math.abs(diff) / 1000) % 60);
   };
 
   const time = {

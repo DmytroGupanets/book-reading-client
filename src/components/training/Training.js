@@ -29,6 +29,7 @@ import { ThemeContext } from "../App";
 import Timer from "../timer/Timer";
 import MyGoalBooks from "./myGoalBooks/MyGoalBooks";
 import MyProgressBooks from "./myProgressBooks/MyProgressBooks";
+import Modal from "../modal/Modal";
 
 const Training = () => {
   const dispatch = useDispatch();
@@ -46,14 +47,12 @@ const Training = () => {
 
   const clientsWidth = useWindowDimensions().width;
   const [isMobile, setIsMobile] = useState(false);
-  const [isTablet, setIsTablet] = useState(false);
   const [isPC, setIsPC] = useState(false);
   const [isTargetReady, setIsTargetReady] = useState(false);
   const [isActive, setIsActive] = useState(targetActive);
 
   useEffect(() => {
     setIsMobile(clientsWidth < 768);
-    setIsTablet(clientsWidth > 767 && clientsWidth < 1280);
     setIsPC(clientsWidth > 1279);
 
     if (prepStartDate && prepEndDate && Boolean(selectedBooks.length))
@@ -89,11 +88,14 @@ const Training = () => {
   };
 
   return (
-    <TrainingStyled colors={theme}>
+    <TrainingStyled modal={modal} colors={theme}>
       {isMobile && modal && (
         <ModalMyTraining toggleModal={toggleModal}>
           <MyTraining toggleModal={toggleModal} />
         </ModalMyTraining>
+        // <Modal toggleModal={toggleModal}>
+        //   <MyTraining toggleModal={toggleModal} />
+        // </Modal>
       )}
 
       {!isPC && !modal && (
@@ -113,11 +115,13 @@ const Training = () => {
           <GraphContainer />
           {isActive && <Statistic isActive={isActive} />}
           {isMobile && (
-            <button className="addTrainingBuuton" onClick={toggleModal}>
-              <svg className="moreTrainingIcon">
-                <use href={sprite + "#icon-more"} />
-              </svg>
-            </button>
+            <div className="buttonWrapper">
+              <button className="addTrainingButton" onClick={toggleModal}>
+                <svg className="moreTrainingIcon">
+                  <use href={sprite + "#icon-more"} />
+                </svg>
+              </button>
+            </div>
           )}
         </>
       )}

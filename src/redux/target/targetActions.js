@@ -20,6 +20,10 @@ export const setBookInTrainingSuccess = createAction(
   "target/setBookInTrainingSuccess"
 );
 
+export const setNumberOfPagesRemaining = createAction(
+  "target/setNumberOfPagesRemaining"
+);
+
 export const addTargetRequest = createAction("target/addTargetRequest");
 export const addTargetSucces = createAction("target/addTargetSucces");
 export const addTargetError = createAction("target/addTargetError");
@@ -53,3 +57,5 @@ export const addPreplanningStartDate = createAction(
 export const addPreplanningEndtDate = createAction(
   "targets/preplanning/addPreplanningEndDate"
 );
+
+export const setPagesPerDay = createAction("targets/setPagesPerDay");

@@ -2,14 +2,17 @@ import React, { useContext } from "react";
 import { useTranslation } from "react-i18next";
 import { LanguageSwitcherStyled } from "./LanguageSwitcherStyled";
 import { ThemeContext } from "../App";
+import { getAuthenticated } from "../../redux/auth/authSelectors";
+import { useSelector } from "react-redux";
 
 const LanguageSwitcher = () => {
   const { i18n } = useTranslation();
   const { theme } = useContext(ThemeContext);
+  const isAuth = useSelector(getAuthenticated);
 
   return (
     <>
-      <LanguageSwitcherStyled colors={theme}>
+      <LanguageSwitcherStyled isAuth={isAuth} colors={theme}>
         {i18n.language === "en" && (
           <button className="langBtn" onClick={() => i18n.changeLanguage("ru")}>
             EN

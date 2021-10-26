@@ -4,11 +4,14 @@ import { ThemeContext } from "../../App";
 import SelectDateStyled from "./SelectDateStyled";
 import sprite from "../../../images/sprite.svg";
 import useDate from "../../../hooks/useDate";
+import { useTranslation } from "react-i18next";
 
 const SelectDate = ({ date, setStatistic }) => {
   const { theme } = useContext(ThemeContext);
   const [stateData] = useDate();
   const { quantityDays } = stateData;
+
+  const { t } = useTranslation();
 
   const onChange = (e) => {
     const value = e.value;
@@ -29,7 +32,7 @@ const SelectDate = ({ date, setStatistic }) => {
       <svg className="iconSelectDate">
         <use href={sprite + "#icon-selectDate"} />
       </svg>
-      Дата
+      {t("Date")}
       <Select
         isSearchable={false}
         options={options}

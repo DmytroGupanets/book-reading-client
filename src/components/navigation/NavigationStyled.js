@@ -8,16 +8,15 @@ const NavigationStyled = styled.nav`
   border-right: 2px solid ${({ colors }) => colors.secondaryText};
 
   .navigationList {
-    margin: 0;
-    padding: 0;
-    list-style: none;
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
   }
-
+  .navigationLink {
+    display: flex;
+  }
   .navigationItem {
-    margin-right: 14px;
+    margin-right: 6px;
   }
 
   .wrapper {
@@ -25,6 +24,8 @@ const NavigationStyled = styled.nav`
     height: 33px;
   }
   .activeNavigationLink {
+    background-color: ${({ colors }) => colors.iconsActive};
+    border-radius: 50px;
   }
   .navHomeSvg {
     width: 20px;
@@ -34,8 +35,12 @@ const NavigationStyled = styled.nav`
     width: 22px;
     height: 18px;
   }
-  @media screen and (min-width: 768px) {
-    margin-left: 124px;
+  .iconWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 33px;
+    height: 33px;
   }
 `;
 

@@ -1,25 +1,24 @@
-import Graph from './Graph';
-import { useSelector } from 'react-redux';
-import styled from 'styled-components';
-import { useContext } from 'react';
-import { ThemeContext } from '../App';
-import { useTranslation } from 'react-i18next';
-import useDate from '../../hooks/useDate';
-import { getPreplanningEndDate } from '../../redux/target/targetSelectors';
+import Graph from "./Graph";
+import { useSelector } from "react-redux";
+import styled from "styled-components";
+import { useContext } from "react";
+import { ThemeContext } from "../App";
+import { useTranslation } from "react-i18next";
+import { getPagesPerDay } from "../../redux/target/targetSelectors";
 
 const GraphContainer = () => {
   const { t } = useTranslation();
   const { theme } = useContext(ThemeContext);
-  const end = useSelector(getPreplanningEndDate);
+  const pagesPerDay = useSelector(getPagesPerDay);
 
   return (
     <DivStyled colors={theme}>
       <h3 className="graph__count-page">
-        {t('Amount of pages / day')}
-        <span>{parseInt(end)}</span>
+        {t("Amount of pages / day")}
+        <span>{pagesPerDay}</span>
       </h3>
       <Graph />
-      <p className="time-paragraph">{t('TIME')}</p>
+      <p className="time-paragraph">{t("TIME")}</p>
     </DivStyled>
   );
 };
@@ -33,7 +32,7 @@ const DivStyled = styled.div`
 
   > h3 {
     width: 215px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 11px;
@@ -50,7 +49,7 @@ const DivStyled = styled.div`
     position: absolute;
     left: 74%;
     top: 74%;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 12px;

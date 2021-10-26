@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import {
@@ -14,10 +14,11 @@ import useDate from "../../hooks/useDate";
 import { getInProgressdBooks } from "../../redux/books/booksSelectors";
 import {
   getRecords,
-  getTargetActiv,
   getTargetEndDate,
   getTargetStartDate,
 } from "../../redux/target/targetSelectors";
+import { useDispatch } from "react-redux";
+import { setPagesPerDay } from "../../redux/target/targetActions";
 
 const defaultData = [
   {
@@ -29,25 +30,21 @@ const defaultData = [
 ];
 
 export default function Graph() {
-  const [
-    stateData,
-    moment,
-    chengeStartDataIdx,
-    setQuantityBetweenDays,
-    rangeBetwenStartAndEndDates,
-  ] = useDate();
+  const dispatch = useDispatch();
+  const { t } = useTranslation();
+  const [, , , , rangeBetwenStartAndEndDates] = useDate();
 
   const booksInProgress = useSelector(getInProgressdBooks);
   const records = useSelector(getRecords);
   const start = useSelector(getTargetStartDate);
   const end = useSelector(getTargetEndDate);
-  const isActive = useSelector(getTargetActiv);
 
   const dateNow = new Date();
   const today = dateNow.toLocaleDateString("en-GB").split("/").join(".");
 
   const quantityDaysUptoNow =
     start && today && rangeBetwenStartAndEndDates(start, today);
+  quantityDaysUptoNow?.unshift(start);
 
   const quantityDays = start && end && rangeBetwenStartAndEndDates(start, end);
 
@@ -59,6 +56,12 @@ export default function Graph() {
   const sumOfDaysTotal = quantityDays?.length;
 
   const plannedPagesPerDay = Math.floor(sumOfPagesTotal / sumOfDaysTotal);
+
+  useEffect(() => {
+    plannedPagesPerDay
+      ? dispatch(setPagesPerDay(plannedPagesPerDay))
+      : dispatch(setPagesPerDay(0));
+  }, [dispatch, plannedPagesPerDay]);
 
   const getReadPagesPerDay = () => {
     if (!records) return [];
@@ -112,7 +115,6 @@ export default function Graph() {
     return acc;
   }, 0);
 
-  const { t } = useTranslation();
   return (
     <ResponsiveContainer width={"100%"} height={215}>
       <LineChart

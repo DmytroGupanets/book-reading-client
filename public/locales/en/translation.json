@@ -143,10 +143,10 @@
   "My goals": "My goals",
   "Amount of books": "Amount of books",
   "Amount of days": "Amount of days",
-  "Books left": "Books left",
+  "Books left": "Remained books",
   "Resume": "Resume",
   "Author m": "Author",
-  "Year": "Year",
+  "Year m": "Year",
   "Pages": "Pages",
   "Rating": "Rating",
   "Rating m": "Rating",
@@ -163,5 +163,9 @@
   "Amount of pages / day": "Amount of pages / day ",
   "TIME": "TIME",
   "PLAN": "PLAN",
-  "ACT": "ACT"
+  "ACT": "ACT",
+
+  "str": "pag",
+  "AmountOFBooks": "Amount of books",
+  "AmountOfDays": "Amount of days"
 }

@@ -1,8 +1,6 @@
 import React, { useContext, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { BookMobileStyled } from "./BookMobileStyled";
-import colors from "../../../styles/colors";
-
 import bookIcon from "../../../images/books-sprite.svg";
 import RatingStars from "../ratingStars/RatingStars";
 import Modal from "../../modal/Modal";

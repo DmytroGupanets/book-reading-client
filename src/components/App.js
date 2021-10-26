@@ -22,6 +22,7 @@ function App() {
   const dispatch = useDispatch();
   const { search } = useLocation();
   const token = useSelector(getToken);
+  const [showButton, setShowButton] = useState(false);
 
   useEffect(() => {
     if (search) {
@@ -40,7 +41,6 @@ function App() {
     dispatch(getAllBooksOperation());
     dispatch(getRecordOperation(ownerId));
   }, []);
-  const [showButton, setShowButton] = useState(false);
 
   useEffect(() => {
     window.addEventListener("scroll", () => {

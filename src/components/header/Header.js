@@ -9,22 +9,43 @@ import { useSelector } from "react-redux";
 import { getAuthenticated } from "../../redux/auth/authSelectors";
 import { useContext } from "react";
 import { ThemeContext } from "../App";
+import { resize } from "../../hooks";
 
 const Header = () => {
   const { theme } = useContext(ThemeContext);
   const isAuth = useSelector(getAuthenticated);
+  const { width } = resize();
 
   return (
-    <HeaderStyled colors={theme}>
-      <Logo />
-      <LanguageSwitcher />
+    <HeaderStyled
+      className="header"
+      width={width}
+      isAuth={isAuth}
+      colors={theme}
+    >
+      <div className="logoWrapper">
+        <Logo />
+        <LanguageSwitcher />
+      </div>
       {isAuth && (
         <>
-          <div className="headerWrapper">
-            <Navigation />
-            <UserMenu />
-          </div>
-          <LogOut />
+          {width > 767 ? (
+            <>
+              <UserMenu />
+              <div className="desktopWrapper">
+                <Navigation />
+                <LogOut />
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="mobileWrapper">
+                <Navigation />
+                <UserMenu />
+                <LogOut />
+              </div>
+            </>
+          )}
         </>
       )}
       {/* <ThemeSwitcher /> */}

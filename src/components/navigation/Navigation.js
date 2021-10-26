@@ -23,9 +23,11 @@ const Navigation = () => {
               to="/training"
               exact
             >
-              <svg className="navHomeSvg">
-                <use href={sprite + "#icon-home"} />
-              </svg>
+              <span className="iconWrapper">
+                <svg className="navHomeSvg">
+                  <use href={sprite + "#icon-home"} />
+                </svg>
+              </span>
             </NavLink>
           </li>
         )}
@@ -34,10 +36,13 @@ const Navigation = () => {
             className="navigationLink"
             activeClassName="activeNavigationLink"
             to="/library"
+            exact
           >
-            <svg className="navLibrarySvg">
-              <use href={sprite + "#icon-library"} />
-            </svg>
+            <span className="iconWrapper">
+              <svg className="navLibrarySvg">
+                <use href={sprite + "#icon-library"} />
+              </svg>
+            </span>
           </NavLink>
         </li>
       </ul>

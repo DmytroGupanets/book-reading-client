@@ -52,8 +52,7 @@ const StatisticForm = () => {
       date: date,
       pages: pages,
     };
-
-    if (pages === "" || date === "") {
+    if (pages === "" || pages === "0" || date === "") {
       setStatistic((prev) => ({ ...prev, isValidate: false }));
       return;
     }

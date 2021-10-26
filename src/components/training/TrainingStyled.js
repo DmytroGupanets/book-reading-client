@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 const TargetStyled = styled.div`
-  padding: 30px 0 53px 0;
-  text-align: center;
+  padding: ${({ modal }) => (modal ? "0" : "30px 0 53px 0")};
+  text-align: ${({ modal }) => (modal ? "start" : "center")};
 
   @media screen and (min-width: 1280px) {
     display: flex;
@@ -31,7 +31,10 @@ const TargetStyled = styled.div`
     }
   }
 
-  .addTrainingBuuton {
+  .addTrainingButton {
+    position: absolute;
+    top: -26px;
+    left: 102px;
     cursor: pointer;
     border: none;
     background: transparent;
@@ -52,7 +55,10 @@ const TargetStyled = styled.div`
 
   @media screen and (min-width: 1280px) {
     padding: 50px 0 36px 0;
-  } ;
+  }
+  .buttonWrapper {
+    position: relative;
+  }
 `;
 
 export default TargetStyled;

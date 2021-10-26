@@ -4,13 +4,15 @@ const ModalMyTrainingStyled = styled.div`
   .modalWrapper {
     position: fixed;
     bottom: 0;
-    width: 100%;
+    width: 100vw;
+    height: 100vh;
     background: #000;
     padding: 0;
+    z-index: 200;
   }
 
   .modalWrapper.open {
-    height: 100%;
+    height: 100vh;
     display: block;
   }
 
@@ -18,17 +20,18 @@ const ModalMyTrainingStyled = styled.div`
     height: 0;
     display: none;
   }
+
   .modalBody {
     max-width: 320px;
     background: #f6f7fb;
-    max-height: 100%;
+    height: calc(100vh - 285px);
+    text-align: center;
   }
 
   .modalBackButton {
     border: none;
     background: transparent;
-    margin-bottom: 26px;
-    text-align: start;
+    margin: 26px 0 26px 0;
   }
 
   .modalBackIcon {

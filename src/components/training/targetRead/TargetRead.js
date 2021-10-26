@@ -14,9 +14,11 @@ import useDate from "../../../hooks/useDate";
 import TargetReadStyled from "./TargetReadStyled";
 import { useContext } from "react";
 import { ThemeContext } from "../../App";
+import { useTranslation } from "react-i18next";
 
 const TargetRead = ({ isActive }) => {
   const { theme } = useContext(ThemeContext);
+  const { t } = useTranslation();
 
   const [
     stateData,
@@ -40,7 +42,7 @@ const TargetRead = ({ isActive }) => {
     <TargetReadStyled colors={theme} isActive={isActive}>
       <div className="tabletWrapperStyled">
         <div className="titleWrapper">
-          <h3 className="targetReadTitle">Моя мета прочитати</h3>
+          <h3 className="targetReadTitle">{t("My goals")}</h3>
         </div>
       </div>
 
@@ -49,13 +51,19 @@ const TargetRead = ({ isActive }) => {
           <div className="targetReadDig">
             {!isActive ? booksInSelected.length : booksInProgress.length}
           </div>
-          <p className="targetReadItemDescription">Кількість книжок</p>
+          <p className="targetReadItemDescription">
+            {" "}
+            {!isActive ? t("Amount of books") : t("AmountOFBooks")}
+          </p>
         </li>
         <li className="targetReadItem">
           <div className="targetReadDig">
             {trainingQuantityDays ? trainingQuantityDays.length : 0}
           </div>
-          <p className="targetReadItemDescription">Кількість днів</p>
+          <p className="targetReadItemDescription">
+            {" "}
+            {!isActive ? t("Amount of books") : t("AmountOFBooks")}
+          </p>
         </li>
         {isActive && (
           <li className="targetReadItem">
@@ -67,7 +75,7 @@ const TargetRead = ({ isActive }) => {
                     booksInProgress.length - 1
                   ).length}
             </div>
-            <p className="targetReadItemDescription">Залишилось книжок</p>
+            <p className="targetReadItemDescription">{t("Books left")}</p>
           </li>
         )}
       </ul>

@@ -138,12 +138,12 @@
   "Book title": "Название книги",
   "Author": "Автор книги",
   "Publication date": "Год издания",
-  "Amount of pages": "Количество страниц",
+  "Amount of pages": "Кол-во страниц",
   "Add": "Добавить",
   "My goals": "Моя цель прочитать",
-  "Amount of books": "Количество книжек",
+  "Amount of books": "Количество книг",
   "Amount of days": "Количество дней",
-  "Books left": "Осталось книжек",
+  "Books left": "Осталось книг",
   "Resume": "Резюме",
   "Author m": "Автор",
   "Year": "Год",
@@ -162,5 +162,9 @@
   "Amount of pages / day": "КОЛИЧЕСТВО СТРАНИЦ / ДЕНЬ ",
   "TIME": "ВРЕМЯ",
   "PLAN": "ПЛАН",
-  "ACT": "ФАКТ"
+  "ACT": "ФАКТ",
+
+  "str": "стр",
+  "AmountOFBooks": "Кол-во книг",
+  "AmountOfDays": "Кол-во дней"
 }

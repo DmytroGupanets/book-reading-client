@@ -28,8 +28,11 @@ const DatePickerTraining = () => {
     return result;
   };
 
+  const today = new Date();
+
   const onHandleStartDateChange = (date) => {
     setStartDate(date);
+
     let newDate = new Date(date);
     const firstDate = newDate.toLocaleDateString().slice(0, 10);
 
@@ -44,7 +47,7 @@ const DatePickerTraining = () => {
   };
 
   return (
-    <DatePickerTrainingStyled colors={theme}>
+    <DatePickerTrainingStyled className="datePicker" colors={theme}>
       <div className="datePickerWrapper">
         <DatePicker
           className="datePickerTraining"
@@ -53,7 +56,7 @@ const DatePickerTraining = () => {
           selected={startDate}
           onChange={onHandleStartDateChange}
           selectsStart
-          minDate={startDate}
+          minDate={today}
           startDate={startDate}
           endDate={endDate}
         />

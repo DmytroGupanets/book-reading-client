@@ -9,32 +9,28 @@ const HeaderStyled = styled.header`
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  :after {
-    position: absolute;
-    display: block;
-    content: "";
-    bottom: 0;
-    left: 0;
-    right: 0;
-    border-bottom: 2px solid ${({ colors }) => colors.secondaryText};
-  }
+  box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
 
-  .headerWrapper {
-    margin-left: 42px;
+  justify-content: ${({ isAuth }) => (isAuth ? "space-between" : "center")};
+
+  .logoWrapper {
     display: flex;
     align-items: center;
   }
-  @media screen and (min-width: 768px) {
-    .headerWrapper {
-      margin-left: 256px;
-      flex-direction: row-reverse;
-    }
+  .mobileWrapper {
+    height: 33px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: start;
   }
-
-  @media screen and (min-width: 1280px) {
-    .headerWrapper {
-    }
+  .desktopWrapper {
+    height: 33px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: start;
+  }
+  .logOut {
+    margin-left: 14px;
   }
 `;
 

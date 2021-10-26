@@ -1,10 +1,12 @@
 import styled from "styled-components";
 
 const LogOutStyled = styled.div`
+  margin-left: 14px;
   .logOutButton {
+    padding: 0;
     border: none;
     background-color: transparent;
-    height: 38px;
+    height: 34px;
     font-weight: 300;
     font-size: 14px;
     line-height: 2.71;

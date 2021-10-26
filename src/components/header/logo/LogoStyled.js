@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const LogoStyled = styled.div`
+  height: 28px;
   .logoSvg {
     width: 28px;
     height: 28px;

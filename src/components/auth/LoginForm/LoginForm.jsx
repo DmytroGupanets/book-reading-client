@@ -23,7 +23,7 @@ const LoginForm = () => {
   useEffect(() => {
     if (isError !== null) {
       error({
-        text: "Невiрний пароль/email або користувач не зареєстрований",
+        text: t("invalid password/email or user not registered"),
         delay: 3000,
       });
     }
@@ -68,7 +68,7 @@ const LoginForm = () => {
             onBlur={formik.handleBlur}
           />
           {formik.errors.email && formik.touched.email && (
-            <div className="inputError">{formik.errors.email}</div>
+            <div className="inputError">{t([formik.errors.email])}</div>
           )}
         </div>
         <div className="formGroup">
@@ -89,7 +89,7 @@ const LoginForm = () => {
             onBlur={formik.handleBlur}
           />
           {formik.errors.password && formik.touched.password && (
-            <div className="inputError">{formik.errors.password}</div>
+            <div className="inputError">{t([formik.errors.password])}</div>
           )}
         </div>
         <div className="wrapperButton">

@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import {
   getCompletedBooks,
@@ -8,6 +9,7 @@ import {
 import BooksSection from "../booksSection/BooksSection";
 
 const BooksList = () => {
+  const { t } = useTranslation();
   const completed = useSelector(getCompletedBooks);
   const inProgress = useSelector(getInProgressdBooks);
   const planned = useSelector(getPlannedBooks);
@@ -19,14 +21,14 @@ const BooksList = () => {
   return (
     <>
       {isAnyBookCompleted && (
-        <BooksSection title={"Прочитано"} books={completed} />
+        <BooksSection title={t("Already read")} books={completed} />
       )}
 
       {isAnyBookInProgress && (
-        <BooksSection title={"Читаю"} books={inProgress} />
+        <BooksSection title={t("Reading now")} books={inProgress} />
       )}
       {isAnyBookPlanned && (
-        <BooksSection title={"Маю намір прочитати"} books={planned} />
+        <BooksSection title={t("Going to read")} books={planned} />
       )}
     </>
   );

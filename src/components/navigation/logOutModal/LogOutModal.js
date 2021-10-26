@@ -2,9 +2,11 @@ import React, { useContext } from "react";
 import { useDispatch } from "react-redux";
 import { logOut } from "../../../redux/auth/authOperations";
 import { ThemeContext } from "../../App";
+import { useTranslation } from "react-i18next";
 import { LogOutModalStyled } from "./LogOutModalStyled";
 
 const LogOutModal = ({ onClose }) => {
+  const { t } = useTranslation();
   const { theme } = useContext(ThemeContext);
   const dispatch = useDispatch();
 
@@ -20,7 +22,9 @@ const LogOutModal = ({ onClose }) => {
   return (
     <LogOutModalStyled colors={theme}>
       <p className="attentionText">
-        Якщо Ви вийдете з програми незбережені дані будуть втрачені
+        {t(
+          "The changes you made will be lost if you navigate away from this application"
+        )}
       </p>
       <div className="logOutButtonsWrapper">
         <button
@@ -28,14 +32,14 @@ const LogOutModal = ({ onClose }) => {
           type="button"
           onClick={onHandleCancelClick}
         >
-          Відміна
+          {t("Сancel")}
         </button>
         <button
           className="logOutConfirmBtn"
           type="button"
           onClick={onHandleLogOutClick}
         >
-          Вийти
+          {t("Leave this app")}
         </button>
       </div>
     </LogOutModalStyled>

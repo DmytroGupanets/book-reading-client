@@ -77,7 +77,7 @@ const SelectBooks = ({ toggleModal }) => {
     <SelectBooksStyled colors={theme}>
       <Select
         options={options}
-        placeholder="Обрати книги з бібліотеки"
+        placeholder={t("Choose books from the library")}
         closeMenuOnSelect={true}
         onChange={handleSelectBook}
         components={{ DropdownIndicator }}

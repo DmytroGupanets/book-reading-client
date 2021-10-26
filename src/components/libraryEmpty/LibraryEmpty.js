@@ -27,7 +27,7 @@ const LibraryEmpty = () => {
   useEffect(() => {
     if (isError !== null) {
       error({
-        text: "Поле не може починатися з пробілу або дефісу",
+        text: t("Field cannot start with space or hyphen"),
         delay: 3000,
         //  autoOpen: false,
       });
@@ -74,7 +74,7 @@ const LibraryEmpty = () => {
             />
             {formik.errors.title && formik.touched.title && (
               <div className="inputError inputErrorTitle">
-                {formik.errors.title}
+                {t([formik.errors.title])}
               </div>
             )}
           </label>
@@ -97,7 +97,7 @@ const LibraryEmpty = () => {
               />
               {formik.errors.author && formik.touched.author && (
                 <div className="inputError inputErrorAuthor">
-                  {formik.errors.author}
+                  {t([formik.errors.author])}
                 </div>
               )}
             </label>
@@ -117,7 +117,7 @@ const LibraryEmpty = () => {
               />
               {formik.errors.year && formik.touched.year && (
                 <div className="inputError inputErrorYear">
-                  {formik.errors.year}
+                  {t([formik.errors.year])}
                 </div>
               )}
             </label>
@@ -138,7 +138,7 @@ const LibraryEmpty = () => {
               />
               {formik.errors.pages && formik.touched.pages && (
                 <div className="inputError inputErrorPages">
-                  {formik.errors.pages}
+                  {t([formik.errors.pages])}
                 </div>
               )}
             </label>

@@ -26,22 +26,29 @@ const MyProgressListNormalStyled = styled.section`
     line-height: 2.7;
   }
   .myGoalListNorm_item:nth-child(1) {
-    margin-right: 171px;
+    text-align: start;
+    width: 121px;
+    margin-right: 142px;
     @media screen and (min-width: 1280px) {
-      margin-right: 269px;
+      margin-right: 238px;
     }
   }
   .myGoalListNorm_item:nth-child(2) {
-    margin-right: 146px;
+    width: 50px;
+    margin-right: 134px;
     @media screen and (min-width: 1280px) {
-      margin-right: 185px;
+      margin-right: 170px;
     }
   }
   .myGoalListNorm_item:nth-child(3) {
-    margin-right: 69px;
+    width: 31px;
+    margin-right: 64px;
     @media screen and (min-width: 1280px) {
-      margin-right: 142px;
+      margin-right: 145px;
     }
+  }
+  .myGoalListNorm_item:nth-child(4) {
+    width: 44px;
   }
   .myGoalListNorm_ListBooks {
     padding-left: 0;

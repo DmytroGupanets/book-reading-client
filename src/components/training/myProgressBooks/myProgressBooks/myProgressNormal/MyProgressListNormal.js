@@ -15,7 +15,7 @@ const MyProgressListNormal = ({ data, onClickDelete }) => {
       <ul className="myGoalListNorm_ListHead">
         <li className="myGoalListNorm_item">{t("Book title")}</li>
         <li className="myGoalListNorm_item">{t("Author m")}</li>
-        <li className="myGoalListNorm_item">{t("Year")}</li>
+        <li className="myGoalListNorm_item">{t("Year m")}</li>
         <li className="myGoalListNorm_item">{t("Pages")}</li>
       </ul>
       <ul className="myGoalListNorm_ListBooks">

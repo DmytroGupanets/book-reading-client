@@ -115,6 +115,8 @@ export default function Graph() {
     return acc;
   }, 0);
 
+  console.log(`data`, data);
+  console.log("getHighestValue", getHighestValue);
   return (
     <ResponsiveContainer width={"100%"} height={215}>
       <LineChart

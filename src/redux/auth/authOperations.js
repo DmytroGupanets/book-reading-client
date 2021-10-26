@@ -14,7 +14,7 @@ import {
   getCurrentUserError,
 } from "./authActions";
 
-axios.defaults.baseURL = "http://localhost:5000";
+axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 
 const token = {
   set(token) {

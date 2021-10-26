@@ -13,9 +13,10 @@ import sprite from "../../../../images/sprite.svg";
 import { useDispatch } from "react-redux";
 
 const initialState = {
-  startDate: null,
-  endDate: null,
+  startDate: "",
+  endDate: "",
 };
+
 const DatePickerTraining = () => {
   const [startDate, setStartDate] = useState(initialState.startDate);
   const [endDate, setEndDate] = useState(initialState.endDate);

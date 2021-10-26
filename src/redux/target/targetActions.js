@@ -57,3 +57,5 @@ export const addPreplanningStartDate = createAction(
 export const addPreplanningEndtDate = createAction(
   "targets/preplanning/addPreplanningEndDate"
 );
+
+export const setPagesPerDay = createAction("targets/setPagesPerDay");

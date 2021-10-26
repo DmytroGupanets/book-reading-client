@@ -26,11 +26,11 @@ const LibraryEmpty = () => {
 
   useEffect(() => {
     if (isError !== null) {
-       error({
-         text: "Поле не може починатися з пробілу або дефісу",
-         delay: 3000,
+      error({
+        text: "Поле не може починатися з пробілу або дефісу",
+        delay: 3000,
         //  autoOpen: false,
-       })
+      });
     }
     return dispatch(resetError());
   }, [isError, dispatch]);
@@ -134,6 +134,7 @@ const LibraryEmpty = () => {
                 className="aboutBookInput aboutBookInput-page"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
+                maxlength="4"
               />
               {formik.errors.pages && formik.touched.pages && (
                 <div className="inputError inputErrorPages">

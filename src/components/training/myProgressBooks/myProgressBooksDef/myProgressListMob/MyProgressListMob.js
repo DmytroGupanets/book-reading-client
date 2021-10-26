@@ -21,7 +21,7 @@ const MyGoalListDefMob = () => {
               <p>{t("Author m")}:</p>
             </li>
             <li>
-              <p>{t("Year")}</p>
+              <p>{t("Year m")}</p>
             </li>
             <li>
               <p>{t("Pages")}:</p>

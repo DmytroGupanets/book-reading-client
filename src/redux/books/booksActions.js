@@ -21,3 +21,5 @@ export const updateBookStatusSuccess = createAction(
 export const updateBookStatusError = createAction(
   "books/updateBookStatusError"
 );
+
+export const resetError = createAction("books/resetError");

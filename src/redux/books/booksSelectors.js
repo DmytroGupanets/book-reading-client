@@ -1,6 +1,7 @@
 import { createSelector } from "@reduxjs/toolkit";
 
 export const getAllBooks = (state) => state.books.items;
+export const getErrorBooks = (state) => state.books.error;
 
 export const getCompletedBooks = (state) =>
   state.books.items.filter((book) => book.status === "completed");

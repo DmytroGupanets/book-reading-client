@@ -1,11 +1,8 @@
-// import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { getInProgressdBooks } from "../../../redux/books/booksSelectors";
 import {
-  // getAllPlannedBooks,
   getAllSelectedBooks,
   getIdxOfReadedBooksInTraining,
-  getPreplaning,
   getPreplanningEndDate,
   getPreplanningStartDate,
 } from "../../../redux/target/targetSelectors";
@@ -18,15 +15,7 @@ import { ThemeContext } from "../../App";
 const TargetRead = ({ isActive }) => {
   const { theme } = useContext(ThemeContext);
 
-  const [
-    stateData,
-    moment,
-    chengeStartDataIdx,
-    setQuantityBetweenDays,
-    rangeBetwenStartAndEndDates,
-  ] = useDate();
-
-  const preplaning = useSelector(getPreplaning);
+  const [, , , , rangeBetwenStartAndEndDates] = useDate();
 
   const start = useSelector(getPreplanningStartDate);
   const end = useSelector(getPreplanningEndDate);

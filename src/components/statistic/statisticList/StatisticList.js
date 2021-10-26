@@ -4,12 +4,12 @@ import {
   setBookInTrainingSuccess,
   setNumberOfPagesRemaining,
 } from "../../../redux/target/targetActions";
-import { getInProgressdBooks } from "../../../redux/books/booksSelectors";
 import {
   getIdxOfReadedBooksInTraining,
-  getPreplanningEndDate,
   getRecords,
+  getTargetEndDate,
 } from "../../../redux/target/targetSelectors";
+import { getInProgressdBooks } from "../../../redux/books/booksSelectors";
 
 import { ThemeContext } from "../../App";
 import StatisticListStyled from "./StatisticListStyled";
@@ -23,12 +23,13 @@ const StatisticList = ({
 }) => {
   const { theme } = useContext(ThemeContext);
   const [pagesState, setQuantityPages] = useState(0);
-  const [stateData, , chengeStartDataIdx] = useDate();
+  const [stateData, moment, chengeStartDataIdx] = useDate();
 
-  const end = useSelector(getPreplanningEndDate);
-  const records = useSelector(getRecords);
+  const indexOfReadidBook = useSelector(getIdxOfReadedBooksInTraining);
   const booksInProgress = useSelector(getInProgressdBooks);
-  const b = useSelector(getIdxOfReadedBooksInTraining);
+  const targetEndDate = useSelector(getTargetEndDate);
+  const records = useSelector(getRecords);
+
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
@@ -38,10 +39,55 @@ const StatisticList = ({
   );
 
   useEffect(() => {
-    const openModalByTimer = () =>
-      new Date(chengeStartDataIdx(end)) -
-      new Date(chengeStartDataIdx(stateData.currentDate.split("-").join(".")));
+    dispatch(
+      setNumberOfPagesRemaining(totalPagesOfBookInProgress - pagesState)
+    );
+    dispatch(setBookInTrainingSuccess(countIdxOfReadedBook(pagesState)));
 
+    return () => {
+      dispatch(setBookInTrainingSuccess(countIdxOfReadedBook(0)));
+    };
+  }, [pagesState, totalPagesOfBookInProgress]);
+
+  useEffect(() => {
+    if (indexOfReadidBook >= 0) {
+      toggleModalBookSuccess();
+    }
+  }, [indexOfReadidBook]);
+
+  useEffect(() => {
+    countPages();
+  }, [records]);
+
+  const countIdxOfReadedBook = (statisticAmount) => {
+    let result = -1;
+
+    for (let i = 0; i < booksInProgress.length; i++) {
+      if (statisticAmount >= booksInProgress[i].pages) {
+        statisticAmount -= booksInProgress[i].pages;
+        result = i;
+      } else {
+        return (result = i - 1);
+      }
+    }
+    return result;
+  };
+
+  const countPages = () => {
+    let pages = 0;
+
+    records && records.forEach((el) => (pages += +el.pages));
+
+    setQuantityPages(pages);
+  };
+
+  // ======================================Open Modals======================================
+
+  const openModalByTimer = () =>
+    new Date(chengeStartDataIdx(targetEndDate)) -
+    new Date(chengeStartDataIdx(stateData.currentDate.split("-").join(".")));
+
+  useEffect(() => {
     if (totalPagesOfBookInProgress === 0) {
       return;
     }
@@ -54,55 +100,9 @@ const StatisticList = ({
     if (openModalByTimer() < 0 && pagesState < totalPagesOfBookInProgress) {
       toggleModalTimer();
     }
-  }, [
-    pagesState,
-    totalPagesOfBookInProgress,
-    toggleModal,
-    toggleModalTargetSuccess,
-    toggleModalTimer,
-    chengeStartDataIdx,
-    end,
-    stateData,
-  ]);
+  }, [pagesState, totalPagesOfBookInProgress]);
 
-  useEffect(() => {
-    if (b >= 1) {
-      toggleModalBookSuccess();
-    }
-  }, [b, toggleModalBookSuccess]);
-
-  useEffect(() => {
-    const countIdxOfReadedBook = (statisticAmount) => {
-      let result = -1;
-
-      for (let i = 0; i < booksInProgress.length; i++) {
-        if (statisticAmount >= booksInProgress[i].pages) {
-          statisticAmount -= booksInProgress[i].pages;
-          result = i;
-        } else {
-          return (result = i - 1);
-        }
-      }
-      return result;
-    };
-
-    dispatch(
-      setNumberOfPagesRemaining(totalPagesOfBookInProgress - pagesState)
-    );
-    dispatch(setBookInTrainingSuccess(countIdxOfReadedBook(pagesState)));
-  }, [pagesState, totalPagesOfBookInProgress, dispatch, booksInProgress]);
-
-  useEffect(() => {
-    const countPages = () => {
-      let pages = 0;
-
-      records && records.forEach((el) => (pages += +el.pages));
-
-      setQuantityPages(pages);
-    };
-
-    countPages();
-  }, [records]);
+  // ======================================Open Modals======================================
 
   return (
     <StatisticListStyled colors={theme}>

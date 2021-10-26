@@ -91,11 +91,17 @@ export const LibraryEmptyStyled = styled.form`
     .aboutBookInput-year {
       margin-right: 27px;
     }
+    .inputErrorTitle {
+      top: 120px;
+    }
+    .inputErrorAuthor {
+      top: 200px;
+    }
     .inputErrorYear {
-      top: 260px;
+      top: 200px;
     }
     .inputErrorPages {
-      top: 260px;
+      top: 200px;
     }
   }
   @media screen and (min-width: 1280px) {
@@ -113,14 +119,14 @@ export const LibraryEmptyStyled = styled.form`
       width: 250px;
     }
     .inputErrorAuthor {
-      top: 185px;
+      top: 120px;
     }
     .inputErrorYear {
-      top: 185px;
+      top: 120px;
     
     }
     .inputErrorPages {
-      top: 185px;
+      top: 120px;
     }
     .addButton {
       margin: auto;

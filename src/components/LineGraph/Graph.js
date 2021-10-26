@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import {
@@ -17,6 +17,8 @@ import {
   getTargetEndDate,
   getTargetStartDate,
 } from "../../redux/target/targetSelectors";
+import { useDispatch } from "react-redux";
+import { setPagesPerDay } from "../../redux/target/targetActions";
 
 const defaultData = [
   {
@@ -28,6 +30,7 @@ const defaultData = [
 ];
 
 export default function Graph() {
+  const dispatch = useDispatch();
   const { t } = useTranslation();
   const [, , , , rangeBetwenStartAndEndDates] = useDate();
 
@@ -53,6 +56,12 @@ export default function Graph() {
   const sumOfDaysTotal = quantityDays?.length;
 
   const plannedPagesPerDay = Math.floor(sumOfPagesTotal / sumOfDaysTotal);
+
+  useEffect(() => {
+    plannedPagesPerDay
+      ? dispatch(setPagesPerDay(plannedPagesPerDay))
+      : dispatch(setPagesPerDay(0));
+  }, [dispatch, plannedPagesPerDay]);
 
   const getReadPagesPerDay = () => {
     if (!records) return [];

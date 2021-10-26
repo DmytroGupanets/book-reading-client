@@ -23,3 +23,5 @@ export const getNumberOfPagesRemaining = (state) => state.target.pagesRemaining;
 
 export const getIndexOfReadedBooksInTraining = (state) =>
   state.target.bookInTraining;
+
+export const getPagesPerDay = (state) => state.target.pagesPerDay;

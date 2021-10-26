@@ -4,12 +4,12 @@ import {
   setBookInTrainingSuccess,
   setNumberOfPagesRemaining,
 } from "../../../redux/target/targetActions";
-import { getInProgressdBooks } from "../../../redux/books/booksSelectors";
 import {
   getIdxOfReadedBooksInTraining,
-  getPreplanningEndDate,
   getRecords,
+  getTargetEndDate,
 } from "../../../redux/target/targetSelectors";
+import { getInProgressdBooks } from "../../../redux/books/booksSelectors";
 
 import { ThemeContext } from "../../App";
 import StatisticListStyled from "./StatisticListStyled";
@@ -25,10 +25,11 @@ const StatisticList = ({
   const [pagesState, setQuantityPages] = useState(0);
   const [stateData, moment, chengeStartDataIdx] = useDate();
 
-  const end = useSelector(getPreplanningEndDate);
-  const records = useSelector(getRecords);
+  const indexOfReadidBook = useSelector(getIdxOfReadedBooksInTraining);
   const booksInProgress = useSelector(getInProgressdBooks);
-  const b = useSelector(getIdxOfReadedBooksInTraining);
+  const targetEndDate = useSelector(getTargetEndDate);
+  const records = useSelector(getRecords);
+
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
@@ -38,32 +39,21 @@ const StatisticList = ({
   );
 
   useEffect(() => {
-    if (totalPagesOfBookInProgress === 0) {
-      return;
-    }
-    if (openModalByTimer() >= 0 && pagesState >= totalPagesOfBookInProgress) {
-      toggleModalTargetSuccess();
-    }
-    if (openModalByTimer() < 0 && pagesState >= totalPagesOfBookInProgress) {
-      toggleModal();
-    }
-    if (openModalByTimer() < 0 && pagesState < totalPagesOfBookInProgress) {
-      toggleModalTimer();
-    }
-  }, [pagesState, totalPagesOfBookInProgress]);
-
-  useEffect(() => {
-    if (b >= 1) {
-      toggleModalBookSuccess();
-    }
-  }, [b]);
-
-  useEffect(() => {
     dispatch(
       setNumberOfPagesRemaining(totalPagesOfBookInProgress - pagesState)
     );
     dispatch(setBookInTrainingSuccess(countIdxOfReadedBook(pagesState)));
+
+    return () => {
+      dispatch(setBookInTrainingSuccess(countIdxOfReadedBook(0)));
+    };
   }, [pagesState, totalPagesOfBookInProgress]);
+
+  useEffect(() => {
+    if (indexOfReadidBook >= 0) {
+      toggleModalBookSuccess();
+    }
+  }, [indexOfReadidBook]);
 
   useEffect(() => {
     countPages();
@@ -91,9 +81,28 @@ const StatisticList = ({
     setQuantityPages(pages);
   };
 
+  // ======================================Open Modals======================================
+
   const openModalByTimer = () =>
-    new Date(chengeStartDataIdx(end)) -
+    new Date(chengeStartDataIdx(targetEndDate)) -
     new Date(chengeStartDataIdx(stateData.currentDate.split("-").join(".")));
+
+  useEffect(() => {
+    if (totalPagesOfBookInProgress === 0) {
+      return;
+    }
+    if (openModalByTimer() >= 0 && pagesState >= totalPagesOfBookInProgress) {
+      toggleModalTargetSuccess();
+    }
+    if (openModalByTimer() < 0 && pagesState >= totalPagesOfBookInProgress) {
+      toggleModal();
+    }
+    if (openModalByTimer() < 0 && pagesState < totalPagesOfBookInProgress) {
+      toggleModalTimer();
+    }
+  }, [pagesState, totalPagesOfBookInProgress]);
+
+  // ======================================Open Modals======================================
 
   return (
     <StatisticListStyled colors={theme}>

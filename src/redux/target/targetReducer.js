@@ -87,10 +87,12 @@ const selectedBooksReducer = createReducer([], {
 
 const startDateReducer = createReducer("", {
   [addPreplanningStartDate]: (_, { payload }) => payload,
+  [resetPreplanning]: (_, __) => "",
 });
 
 const endDateReducer = createReducer("", {
   [addPreplanningEndtDate]: (_, { payload }) => payload,
+  [resetPreplanning]: (_, __) => "",
 });
 
 const numberOfPagesRemainingReducer = createReducer(0, {

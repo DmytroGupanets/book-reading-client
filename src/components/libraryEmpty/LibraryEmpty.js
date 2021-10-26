@@ -134,7 +134,6 @@ const LibraryEmpty = () => {
                 className="aboutBookInput aboutBookInput-page"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                maxlength="4"
               />
               {formik.errors.pages && formik.touched.pages && (
                 <div className="inputError inputErrorPages">

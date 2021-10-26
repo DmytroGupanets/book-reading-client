@@ -21,7 +21,7 @@ const RegistrationForm = () => {
   useEffect(() => {
     if (isError !== null) {
       error({
-        text: "Kористувач вже зареєстрований",
+        text: t("user already registered"),
         delay: 3000,
       });
     }
@@ -70,7 +70,7 @@ const RegistrationForm = () => {
             onBlur={formik.handleBlur}
           />
           {formik.errors.name && formik.touched.name && (
-            <div className="inputError">{formik.errors.name}</div>
+            <div className="inputError">{t([formik.errors.name])}</div>
           )}
         </div>
 
@@ -90,7 +90,7 @@ const RegistrationForm = () => {
             onBlur={formik.handleBlur}
           />
           {formik.errors.email && formik.touched.email && (
-            <div className="inputError">{formik.errors.email}</div>
+            <div className="inputError">{t([formik.errors.email])}</div>
           )}
         </div>
         <div className="formGroup">
@@ -111,7 +111,7 @@ const RegistrationForm = () => {
             onBlur={formik.handleBlur}
           />
           {formik.errors.password && formik.touched.password && (
-            <div className="inputError">{formik.errors.password}</div>
+            <div className="inputError">{t([formik.errors.password])}</div>
           )}
         </div>
         <div className="formGroup">
@@ -130,7 +130,9 @@ const RegistrationForm = () => {
             onBlur={formik.handleBlur}
           />
           {formik.errors.confirmPassword && formik.touched.confirmPassword && (
-            <div className="inputError">{formik.errors.confirmPassword}</div>
+            <div className="inputError">
+              {t([formik.errors.confirmPassword])}
+            </div>
           )}
         </div>
         <div className="wrapperButton">

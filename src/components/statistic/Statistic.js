@@ -14,8 +14,10 @@ import ModalEndTarining from "./modalEndTraining/ModalEndTraining";
 
 import StatisticStyled from "./StatisticStyled";
 import { getInProgressdBooks } from "../../redux/books/booksSelectors";
+import { useTranslation } from "react-i18next";
 
 const Statistic = () => {
+  const { t } = useTranslation();
   const [showModal, setShowModal] = useState(false);
   const [modalTimerOut, setModalTimerOut] = useState(false);
   const [modalTargetSuccess, setModalTargetSuccess] = useState(false);
@@ -43,13 +45,18 @@ const Statistic = () => {
   };
 
   const textModalTimeOut = () => {
-    return `Не останавливайся! Тебе осталось чиитать ${NumberOfPagesRemaining} страниц Ты можешь достичь этой цели`;
+    return `${t("Don’t stop! You have to read")} ${NumberOfPagesRemaining} ${t(
+      "pages You can reach this goal"
+    )}`;
   };
 
   const textModalTargetSuccess = () =>
-    `Ты вовремя прочитал книг в количестве ${booksInProgress.length} шт. так держать!`;
+    `${t("You read books in numbers just in time")} ${
+      booksInProgress.length
+    } ${t("Way to go!")}`;
 
-  const textModalBookSuccess = () => `Поздравляем! еще одна книга прочитана 📚`;
+  const textModalBookSuccess = () =>
+    `${t("Congratulations! Another book has been read")} 📚`;
 
   return (
     <StatisticStyled>

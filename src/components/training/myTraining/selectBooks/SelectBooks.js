@@ -50,12 +50,7 @@ const SelectBooks = ({ toggleModal }) => {
 
   useEffect(() => {
     if (!plannedBooks.length) dispatch(setPlannedBooksForSelect(books));
-  });
-
-  useEffect(() => {
-    if (!plannedBooks.length) dispatch(setPlannedBooksForSelect(books));
-    dispatch(setPlannedBooksForSelect(plannedBooks));
-  }, [books, plannedBooks, dispatch]);
+  }, []);
 
   const handleSelectBook = (selectedOption) => {
     const { value } = selectedOption;
@@ -77,7 +72,7 @@ const SelectBooks = ({ toggleModal }) => {
     <SelectBooksStyled colors={theme}>
       <Select
         options={options}
-        placeholder="Обрати книги з бібліотеки"
+        placeholder={t("Choose books from the library")}
         closeMenuOnSelect={true}
         onChange={handleSelectBook}
         components={{ DropdownIndicator }}

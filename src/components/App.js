@@ -40,7 +40,7 @@ function App() {
       dispatch(getAllBooksOperation());
       dispatch(getRecordOperation(ownerId));
     }
-  }, [ownerId]);
+  }, [ownerId, dispatch]);
 
   return (
     <ThemeContext.Provider value={{ theme, changeTheme }}>

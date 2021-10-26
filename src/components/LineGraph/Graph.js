@@ -14,7 +14,6 @@ import useDate from "../../hooks/useDate";
 import { getInProgressdBooks } from "../../redux/books/booksSelectors";
 import {
   getRecords,
-  getTargetActiv,
   getTargetEndDate,
   getTargetStartDate,
 } from "../../redux/target/targetSelectors";
@@ -29,25 +28,20 @@ const defaultData = [
 ];
 
 export default function Graph() {
-  const [
-    stateData,
-    moment,
-    chengeStartDataIdx,
-    setQuantityBetweenDays,
-    rangeBetwenStartAndEndDates,
-  ] = useDate();
+  const { t } = useTranslation();
+  const [, , , , rangeBetwenStartAndEndDates] = useDate();
 
   const booksInProgress = useSelector(getInProgressdBooks);
   const records = useSelector(getRecords);
   const start = useSelector(getTargetStartDate);
   const end = useSelector(getTargetEndDate);
-  const isActive = useSelector(getTargetActiv);
 
   const dateNow = new Date();
   const today = dateNow.toLocaleDateString("en-GB").split("/").join(".");
 
   const quantityDaysUptoNow =
     start && today && rangeBetwenStartAndEndDates(start, today);
+  quantityDaysUptoNow?.unshift(start);
 
   const quantityDays = start && end && rangeBetwenStartAndEndDates(start, end);
 
@@ -112,7 +106,6 @@ export default function Graph() {
     return acc;
   }, 0);
 
-  const { t } = useTranslation();
   return (
     <ResponsiveContainer width={"100%"} height={215}>
       <LineChart

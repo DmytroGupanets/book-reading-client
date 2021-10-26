@@ -18,7 +18,7 @@ const dateNow = `${day}-${month + 1}-${year}`;
 
 const useDate = () => {
   const [stateData, setDate] = useState(initialStateDate);
-  const { quantityDays, currentDate } = stateData;
+  const { quantityDays } = stateData;
 
   const startTarget = useSelector(getTargetStartDate);
   const start = startTarget?.split(".")?.reverse()?.join("-");
@@ -99,7 +99,6 @@ const useDate = () => {
     stateData,
     moment,
     chengeStartDataIdx,
-    // setCurrentData,
     setQuantityBetweenDays,
     rangeBetwenStartAndEndDates,
   ];

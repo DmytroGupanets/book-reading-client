@@ -1,6 +1,5 @@
 import MyProgressListNormalItem from "./myProgressListItemNormal/MyProgressListItemNormal";
 import MyProgressListNormalStyled from "./MyProgressListNormalStyled";
-import spite from "../../../../../images/Training/sprite.svg";
 import { ThemeContext } from "../../../../App";
 import { useContext } from "react";
 import { useTranslation } from "react-i18next";

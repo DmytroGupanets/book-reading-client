@@ -35,7 +35,7 @@ const Library = () => {
   useEffect(() => {
     if (!books.length) toggleModal();
     dispatch(getAllBooksOperation());
-  }, [dispatch]);
+  }, [dispatch, books.length]);
 
   const isUserHaveAnyBooks = Boolean(books.length);
 

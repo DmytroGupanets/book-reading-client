@@ -1,6 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setBookInTrainingSuccess } from "../../../redux/target/targetActions";
+import {
+  setBookInTrainingSuccess,
+  setNumberOfPagesRemaining,
+} from "../../../redux/target/targetActions";
 import { getInProgressdBooks } from "../../../redux/books/booksSelectors";
 import {
   getIdxOfReadedBooksInTraining,
@@ -56,8 +59,11 @@ const StatisticList = ({
   }, [b]);
 
   useEffect(() => {
+    dispatch(
+      setNumberOfPagesRemaining(totalPagesOfBookInProgress - pagesState)
+    );
     dispatch(setBookInTrainingSuccess(countIdxOfReadedBook(pagesState)));
-  }, [pagesState]);
+  }, [pagesState, totalPagesOfBookInProgress]);
 
   useEffect(() => {
     countPages();

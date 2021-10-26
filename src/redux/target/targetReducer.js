@@ -23,6 +23,7 @@ import {
   removePlannedBook,
   addPreplanningStartDate,
   addPreplanningEndtDate,
+  setNumberOfPagesRemaining,
   setPlannedBooksForSelect,
 } from "./targetActions";
 
@@ -92,6 +93,9 @@ const endDateReducer = createReducer("", {
   [addPreplanningEndtDate]: (_, { payload }) => payload,
 });
 
+const numberOfPagesRemainingReducer = createReducer(0, {
+  [setNumberOfPagesRemaining]: (_, { payload }) => payload,
+});
 const preplanningPersistConfig = {
   key: "preplanning",
   storage,
@@ -108,6 +112,8 @@ const preplanningReducer = combineReducers({
 const targetReducer = combineReducers({
   target: targetsReducer,
   bookInTraining: bookInTrainingReducer,
+  preplanning: preplanningReducer,
+  pagesRemaining: numberOfPagesRemainingReducer,
   preplanning: persistReducer(preplanningPersistConfig, preplanningReducer),
   isLoading: isLoadingReducer,
   error: errorReducer,

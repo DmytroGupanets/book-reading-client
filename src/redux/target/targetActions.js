@@ -20,6 +20,10 @@ export const setBookInTrainingSuccess = createAction(
   "target/setBookInTrainingSuccess"
 );
 
+export const setNumberOfPagesRemaining = createAction(
+  "target/setNumberOfPagesRemaining"
+);
+
 export const addTargetRequest = createAction("target/addTargetRequest");
 export const addTargetSucces = createAction("target/addTargetSucces");
 export const addTargetError = createAction("target/addTargetError");

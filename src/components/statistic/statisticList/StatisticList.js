@@ -9,13 +9,12 @@ import {
   getIdxOfReadedBooksInTraining,
   getPreplanningEndDate,
   getRecords,
-  getTargetId,
 } from "../../../redux/target/targetSelectors";
 
 import { ThemeContext } from "../../App";
 import StatisticListStyled from "./StatisticListStyled";
+import { useTranslation } from "react-i18next";
 import useDate from "../../../hooks/useDate";
-
 const StatisticList = ({
   toggleModal,
   toggleModalTimer,
@@ -31,6 +30,7 @@ const StatisticList = ({
   const booksInProgress = useSelector(getInProgressdBooks);
   const b = useSelector(getIdxOfReadedBooksInTraining);
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const totalPagesOfBookInProgress = booksInProgress.reduce(
     (acc, book) => (acc += book.pages),
@@ -83,25 +83,6 @@ const StatisticList = ({
     return result;
   };
 
-  // const result = ;
-  // const fn = (arr) => {
-  //   let pagesOfReadedBook = 0;
-  //   return arr.reduce((acc, item, idx) => {
-  //     console.log(pagesOfReadedBook);
-  //     // console.log(acc[idx]);
-
-  //     if (item.pages === pagesState - pagesOfReadedBook) {
-  //       // console.log(pagesState.pagesOfReadedBook);
-  //       acc = idx;
-  //       pagesOfReadedBook += item.pages;
-  //       // acc.accPages = p;
-  //       return acc;
-  //     }
-
-  //     return acc;
-  //   }, 0);
-  // };
-
   const countPages = () => {
     let pages = 0;
 
@@ -116,7 +97,7 @@ const StatisticList = ({
 
   return (
     <StatisticListStyled colors={theme}>
-      <h2 className="statisticTitle">Статистика</h2>
+      <h2 className="statisticTitle">{t("STATISTICS")}</h2>
 
       <div className="listWrapper">
         {records &&
@@ -129,7 +110,7 @@ const StatisticList = ({
                 <li className="statisticListItemTime">{time}</li>
                 <li className="statisticListItemWrapper">
                   {pages}
-                  <p className="statisticListItemTime">стор.</p>
+                  <p className="statisticListItemTime">{t("str")}.</p>
                 </li>
               </ul>
             ))}

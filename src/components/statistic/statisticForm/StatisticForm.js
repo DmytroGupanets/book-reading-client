@@ -6,6 +6,7 @@ import SelectDate from "../selectDate/SelectDate";
 
 import StatisticFormStyled from "./StatisticFormStyled";
 import { ThemeContext } from "../../App";
+import { useTranslation } from "react-i18next";
 import useDate from "../../../hooks/useDate";
 
 const initialState = {
@@ -25,9 +26,7 @@ const StatisticForm = () => {
 
   const targetId = useSelector(getTargetId);
   const dispatch = useDispatch();
-
-  // console.log(/([0-9]){1,3}/.test(pages));
-  // console.log(pages);
+  const { t } = useTranslation();
 
   useEffect(() => {
     setStatistic((prev) => ({
@@ -63,12 +62,12 @@ const StatisticForm = () => {
 
   return (
     <StatisticFormStyled onSubmit={onHandleSubmit} colors={theme}>
-      <h2 className="StatisticTitle">Результати</h2>
+      <h2 className="StatisticTitle">{t("RESULTS")}</h2>
       <div className="formWrapper">
         <div className="inputWrapper">
           <SelectDate setStatistic={setStatistic} date={date} />
           <label className="statisticFormLabel">
-            Кількість сторінок
+            {t("Amount of pages")}
             <input
               type="text"
               value={pages}
@@ -80,7 +79,7 @@ const StatisticForm = () => {
           </label>
         </div>
         <button className="statisticBtn" type="submit">
-          Додати результат
+          {t("Add result")}
         </button>
         {!isValidate && (
           <p className="InputErrorMassege">

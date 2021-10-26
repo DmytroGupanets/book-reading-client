@@ -21,7 +21,7 @@ const HeaderStyled = styled.header`
   }
 
   .headerWrapper {
-    margin-left: 66px;
+    margin-left: 42px;
     display: flex;
     align-items: center;
   }

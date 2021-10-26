@@ -13,11 +13,8 @@ const min = 1; // включая
 const max = 41; // исключая
 const randomInt = Math.floor(Math.random() * (max - min) + min);
 const quotesArrayElement = quotesArray[randomInt];
-// console.log(`quotesArrayElement`, quotesArrayElement);
-const randomQuote = Object.values(quotesArrayElement)[1];
-const randomAuthor = Object.values(quotesArrayElement)[2];
-// console.log(randomQuote);
-// console.log(randomAuthor);
+const randomQuote = Object.values(quotesArrayElement)?.[1];
+const randomAuthor = Object.values(quotesArrayElement)?.[2];
 
 const StatisticModal = ({ onClose }) => {
   const { theme } = useContext(ThemeContext);

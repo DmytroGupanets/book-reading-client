@@ -4,7 +4,7 @@ import { resize } from "../../../../hooks";
 
 const MyGoalListDefault = () => {
   const { width } = resize();
-  return <>{width > 768 ? <MyGoalListNormal /> : <MyGoalListDefMob />}</>;
+  return <>{width > 767 ? <MyGoalListNormal /> : <MyGoalListDefMob />}</>;
 };
 
 export default MyGoalListDefault;

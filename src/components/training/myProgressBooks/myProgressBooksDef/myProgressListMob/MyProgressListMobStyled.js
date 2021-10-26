@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
-const MyGoalListDefMobStyled = styled.div`
-  text-align: start;
+const MyProgressListDefMobStyled = styled.div`
   margin-top: 30px;
   margin-bottom: 30px;
   width: 100%;
@@ -45,4 +44,4 @@ const MyGoalListDefMobStyled = styled.div`
   }
 `;
 
-export default MyGoalListDefMobStyled;
+export default MyProgressListDefMobStyled;

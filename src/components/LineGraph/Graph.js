@@ -13,33 +13,11 @@ import {
 import useDate from "../../hooks/useDate";
 import { getInProgressdBooks } from "../../redux/books/booksSelectors";
 import {
-  getPreplanningEndDate,
-  getPreplanningStartDate,
   getRecords,
+  getTargetActiv,
+  getTargetEndDate,
+  getTargetStartDate,
 } from "../../redux/target/targetSelectors";
-
-// РАСЧЕТ ПЛАНА = СУММА СТРАНИЦ ВСЕХ ИЗБРАННЫХ КНИЖЕК / КОЛИЧЕСТВО ДНЕЙ ВЫБРАННОГО ПЕРИОДА
-
-const data = [
-  {
-    PLAN: 30,
-    ACT: 29,
-    ПЛАН: 30,
-    ФАКТ: 29,
-  },
-  {
-    PLAN: 40,
-    ACT: 40,
-    ПЛАН: 40,
-    ФАКТ: 40,
-  },
-  {
-    PLAN: 67,
-    ACT: 56,
-    ПЛАН: 67,
-    ФАКТ: 56,
-  },
-];
 
 const defaultData = [
   {
@@ -61,14 +39,82 @@ export default function Graph() {
 
   const booksInProgress = useSelector(getInProgressdBooks);
   const records = useSelector(getRecords);
-  const start = useSelector(getPreplanningStartDate);
-  const end = useSelector(getPreplanningEndDate);
+  const start = useSelector(getTargetStartDate);
+  const end = useSelector(getTargetEndDate);
+  const isActive = useSelector(getTargetActiv);
 
-  const quantytyDays = start && end && rangeBetwenStartAndEndDates(start, end);
+  const dateNow = new Date();
+  const today = dateNow.toLocaleDateString("en-GB").split("/").join(".");
+
+  const quantityDaysUptoNow =
+    start && today && rangeBetwenStartAndEndDates(start, today);
+
+  const quantityDays = start && end && rangeBetwenStartAndEndDates(start, end);
+
+  const sumOfPagesTotal = booksInProgress.reduce((acc, book) => {
+    acc += book.pages;
+    return acc;
+  }, 0);
+
+  const sumOfDaysTotal = quantityDays?.length;
+
+  const plannedPagesPerDay = Math.floor(sumOfPagesTotal / sumOfDaysTotal);
+
+  const getReadPagesPerDay = () => {
+    if (!records) return [];
+    return records.reduce((acc, rec, idx) => {
+      const ans = acc.findIndex((record) => record.date === rec.date);
+
+      if (ans === -1) acc.push(rec);
+      else
+        acc[ans] = {
+          ...acc[ans],
+          pages: (+acc[ans].pages + +rec.pages).toString(),
+        };
+
+      return acc;
+    }, []);
+  };
+
+  const createData = () => {
+    const pagesReadPerDayRecords = getReadPagesPerDay();
+    const result = [];
+    if (!quantityDaysUptoNow) return defaultData;
+    for (let i = 0; i < quantityDaysUptoNow.length; i++) {
+      const index = pagesReadPerDayRecords.findIndex(
+        (rec) => rec.date === quantityDaysUptoNow[i]
+      );
+
+      if (index === -1) {
+        result.push({
+          PLAN: plannedPagesPerDay,
+          ACT: 0,
+          ПЛАН: plannedPagesPerDay,
+          ФАКТ: 0,
+        });
+      } else {
+        result.push({
+          PLAN: plannedPagesPerDay,
+          ACT: pagesReadPerDayRecords[index].pages,
+          ПЛАН: plannedPagesPerDay,
+          ФАКТ: pagesReadPerDayRecords[index].pages,
+        });
+      }
+    }
+    return result;
+  };
+
+  const data = createData();
+
+  const getHighestValue = data.reduce((acc, data) => {
+    if (+data.ACT > acc) acc = +data.ACT;
+
+    return acc;
+  }, 0);
 
   const { t } = useTranslation();
   return (
-    <ResponsiveContainer width={"99%"} height={215}>
+    <ResponsiveContainer width={"100%"} height={215}>
       <LineChart
         width={811}
         height={300}
@@ -82,7 +128,7 @@ export default function Graph() {
       >
         <CartesianGrid strokeDasharray="0" />
         <XAxis dataKey="name" />
-        <YAxis />
+        <YAxis domain={[0, getHighestValue]} tick={false} />
         <Tooltip />
         <Line
           type="monotone"

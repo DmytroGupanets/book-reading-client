@@ -43,6 +43,12 @@ const LoginFormStyled = styled.div`
       box-shadow: 0px 1px 2px rgba(221, 123, 12, 0.15);
     }
   }
+  .formInput:out-of-range {
+    border-color: red;
+  }
+  .formInput:invalid {
+    border-color: red;
+  }
   .formGroup {
     position: relative;
   }

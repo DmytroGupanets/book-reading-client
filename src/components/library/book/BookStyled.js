@@ -42,7 +42,7 @@ export const BookStyled = styled.div`
 
     @media screen and (min-width: 1280px) {
       margin-right: 0;
-      line-height: 2.71;
+      line-height: 1.31;
       flex-basis: ${({ isCompleted }) => (isCompleted ? "29%" : "49%")};
     }
   }
@@ -51,7 +51,7 @@ export const BookStyled = styled.div`
     flex-basis: ${({ isCompleted }) => (isCompleted ? "17%" : "28%")};
 
     @media screen and (min-width: 1280px) {
-      line-height: 2.71;
+      line-height: 1.31;
       flex-basis: ${({ isCompleted }) => (isCompleted ? "16.5%" : "29%")};
     }
 

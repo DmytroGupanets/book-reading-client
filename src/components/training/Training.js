@@ -1,25 +1,16 @@
 import { useEffect, useState, useCallback, useContext } from "react";
-import { getOwnerId } from "../../redux/auth/authSelectors";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  addTargetOperation,
-  getRecordOperation,
-  // getRecordOperation,
-} from "../../redux/target/targetOperations";
+import { addTargetOperation } from "../../redux/target/targetOperations";
 import GraphContainer from "../LineGraph/GraphContainer";
 import Statistic from "../statistic/Statistic";
 import TargetRead from "./targetRead/TargetRead";
 import TrainingStyled from "./TrainingStyled";
 import MyTraining from "./myTraining/MyTraining";
 import { useTranslation } from "react-i18next";
-
-import MyGoalBooks from "./myGoalBooks/MyGoalBooks";
 import { getAllBooksOperation } from "../../redux/books/booksOperations";
 import ModalMyTraining from "./modalMyTraining/ModalMyTraining";
-import MyGoalList from "./myGoalBooks/myGoalList/MyGoalList";
-import { getPlannedBooks } from "../../redux/books/booksSelectors";
 import {
-  addSelectedBook,
+  addPlaningBook,
   removeSelectedBook,
   resetPreplanning,
 } from "../../redux/target/targetActions";
@@ -29,28 +20,29 @@ import {
   getPreplanningStartDate,
   getTargetActiv,
 } from "../../redux/target/targetSelectors";
+import { getInProgressdBooks } from "../../redux/books/booksSelectors";
 import sprite from "../../images/sprite.svg";
 
 import { getPreplaning } from "../../redux/target/targetSelectors";
 import useWindowDimensions from "../../hooks/resize";
 import { ThemeContext } from "../App";
 import Timer from "../timer/Timer";
+import MyGoalBooks from "./myGoalBooks/MyGoalBooks";
+import MyProgressBooks from "./myProgressBooks/MyProgressBooks";
 
 const Training = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
   const { theme } = useContext(ThemeContext);
 
-  const [state, setState] = useState(false);
   const [modal, setModal] = useState(false);
 
-  const books = useSelector(getPlannedBooks);
-  const ownerId = useSelector(getOwnerId);
   const targetActive = useSelector(getTargetActiv);
   const preplaning = useSelector(getPreplaning);
   const prepStartDate = useSelector(getPreplanningStartDate);
   const prepEndDate = useSelector(getPreplanningEndDate);
   const selectedBooks = useSelector(getAllSelectedBooks);
+  const progressBooks = useSelector(getInProgressdBooks);
 
   const clientsWidth = useWindowDimensions().width;
   const [isMobile, setIsMobile] = useState(false);
@@ -71,11 +63,6 @@ const Training = () => {
     setIsActive(targetActive);
   }, [clientsWidth, prepStartDate, prepEndDate, selectedBooks, targetActive]);
 
-  useEffect(() => {
-    dispatch(getAllBooksOperation());
-    dispatch(getRecordOperation());
-  }, []);
-
   const toggleModal = useCallback(() => {
     setModal((prevShowModal) => !prevShowModal);
   }, []);
@@ -94,11 +81,11 @@ const Training = () => {
     await dispatch(resetPreplanning());
   };
 
-  const onHandleDelete = (e) => {
-    const bookId = e.currentTarget.getAttribute("bookid");
-    const bookToRemove = books.find((book) => book._id === bookId);
+  const onHandleDelete = (_id) => {
+    const bookToRemove = selectedBooks.find((book) => book._id === _id);
 
     dispatch(removeSelectedBook(bookToRemove));
+    dispatch(addPlaningBook(bookToRemove));
   };
 
   return (
@@ -114,7 +101,10 @@ const Training = () => {
           {isActive && <Timer />}
           <TargetRead isActive={isActive} />
           {!isMobile && !isActive && <MyTraining />}
-          <MyGoalList data={selectedBooks} onClickDelete={onHandleDelete} />
+          {isActive && <MyProgressBooks data={progressBooks} />}
+          {!isActive && (
+            <MyGoalBooks data={selectedBooks} onClickDelete={onHandleDelete} />
+          )}
           {!isActive && isTargetReady && (
             <button className="startTrainingBtn" onClick={onHandleClickStart}>
               {t("Start training")}
@@ -137,7 +127,13 @@ const Training = () => {
           <div className="mainContentWrapper">
             {!isActive && <MyTraining />}
             {isActive && <Timer />}
-            <MyGoalList data={selectedBooks} onClickDelete={onHandleDelete} />
+            {isActive && <MyProgressBooks data={progressBooks} />}
+            {!isActive && (
+              <MyGoalBooks
+                data={selectedBooks}
+                onClickDelete={onHandleDelete}
+              />
+            )}
             {!isActive && isTargetReady && (
               <button className="startTrainingBtn" onClick={onHandleClickStart}>
                 {t("Start training")}

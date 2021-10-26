@@ -1,21 +1,21 @@
-import MyGoalList from "./myGoalList/MyGoalList";
-import MyGoalListDefault from "./myGoalListDefault/MyGoalListDefault";
+import MyProgresslList from "./myProgressBooks/MyProgressList";
+import MyProgressListDefault from "./myProgressBooksDef/MyProgressListDefault";
 // import { getPlannedBooks } from "../../../redux/books/booksSelectors";
 // import { useDispatch, useSelector } from "react-redux";
 // import { useEffect } from "react";
 // import { getAllBooksOperation } from "../../../redux/books/booksOperations";
 // import { useStickyState } from "../../../hooks";
 
-function MyGoalBooks({ data, onClickDelete }) {
+function MyProgresslBooks({ data, onClickDelete }) {
   return (
     <>
       {data.length > 0 ? (
-        <MyGoalList data={data} onClickDelete={onClickDelete} />
+        <MyProgresslList data={data} onClickDelete={onClickDelete} />
       ) : (
-        <MyGoalListDefault />
+        <MyProgressListDefault />
       )}
     </>
   );
 }
 
-export default MyGoalBooks;
+export default MyProgresslBooks;

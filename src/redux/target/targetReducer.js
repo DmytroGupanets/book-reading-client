@@ -1,5 +1,7 @@
 import { createReducer } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
+import persistReducer from "redux-persist/es/persistReducer";
+import storage from "redux-persist/lib/storage";
 import {
   getRecordRequest,
   getRecordSuccess,
@@ -17,15 +19,12 @@ import {
   addSelectedBook,
   removeSelectedBook,
   resetPreplanning,
-  setPlannedBooksForSelect,
-  // addPlannedBookForSelect,
   addPlaningBook,
-  // removePlannedBooksForSelect,
-  // setBookSelected,
   removePlannedBook,
   addPreplanningStartDate,
   addPreplanningEndtDate,
   setNumberOfPagesRemaining,
+  setPlannedBooksForSelect,
 } from "./targetActions";
 
 const targetsReducer = createReducer([], {
@@ -79,7 +78,6 @@ const plannedBooksReducer = createReducer([], {
 });
 
 const selectedBooksReducer = createReducer([], {
-  // [setBookSelected]: (_, { payload }) => payload,
   [addSelectedBook]: (state, { payload }) => [...state, payload],
   [removeSelectedBook]: (state, { payload }) =>
     state.filter((book) => book._id !== payload._id),
@@ -98,6 +96,11 @@ const endDateReducer = createReducer("", {
 const numberOfPagesRemainingReducer = createReducer(0, {
   [setNumberOfPagesRemaining]: (_, { payload }) => payload,
 });
+const preplanningPersistConfig = {
+  key: "preplanning",
+  storage,
+  whitelist: ["plannedBooks", "selectedBooks", "startDate", "endDate"],
+};
 
 const preplanningReducer = combineReducers({
   plannedBooks: plannedBooksReducer,
@@ -111,6 +114,7 @@ const targetReducer = combineReducers({
   bookInTraining: bookInTrainingReducer,
   preplanning: preplanningReducer,
   pagesRemaining: numberOfPagesRemainingReducer,
+  preplanning: persistReducer(preplanningPersistConfig, preplanningReducer),
   isLoading: isLoadingReducer,
   error: errorReducer,
 });

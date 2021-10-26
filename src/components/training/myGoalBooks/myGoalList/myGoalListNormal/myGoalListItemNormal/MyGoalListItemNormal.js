@@ -19,8 +19,7 @@ const MyGoalListItemNormal = ({ item, onClickDelete }) => {
         <li className="myGoalListNorm_Item_ListFull_Item">{pages}</li>
       </ul>
       <button
-        onClick={onClickDelete}
-        bookid={_id}
+        onClick={() => onClickDelete(_id)}
         className="myGoalListNorm_Item__ButtonDelete"
       >
         <svg className="myGoalListNorm_Item__DeleteSvg ">

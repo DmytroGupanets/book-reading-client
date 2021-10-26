@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useFormik } from "formik";
 import { useDispatch } from "react-redux";
 import { addNewBookOperation } from "../../redux/books/booksOperations";
@@ -8,11 +8,32 @@ import { libraryValidationSchema } from "./validationLibrary/validationSchema";
 import { useContext } from "react";
 import { ThemeContext } from "../App";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
+import { getErrorBooks } from "../../redux/books/booksSelectors";
+import { resetError } from "../../redux/books/booksActions";
+import { error } from "@pnotify/core/dist/PNotify.js";
+import "@pnotify/core/dist/BrightTheme.css";
+import "@pnotify/core/dist/PNotify.css";
 
 const LibraryEmpty = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
   const { theme } = useContext(ThemeContext);
+  const isError = useSelector(getErrorBooks);
+  // const myError = error({
+  //   text: "I'm an error message."
+  // });
+
+  useEffect(() => {
+    if (isError !== null) {
+       error({
+         text: "Поле не може починатися з пробілу або дефісу",
+         delay: 3000,
+        //  autoOpen: false,
+       })
+    }
+    return dispatch(resetError());
+  }, [isError, dispatch]);
 
   const formik = useFormik({
     initialValues: {

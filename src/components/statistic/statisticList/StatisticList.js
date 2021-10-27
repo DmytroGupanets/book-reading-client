@@ -38,6 +38,12 @@ const StatisticList = ({
     0
   );
 
+  const renderRemainingBooks = () =>
+    indexOfReadidBook === -1
+      ? booksInProgress.length
+      : booksInProgress.slice(indexOfReadidBook, booksInProgress.length - 1)
+          .length;
+
   useEffect(() => {
     dispatch(
       setNumberOfPagesRemaining(totalPagesOfBookInProgress - pagesState)
@@ -46,10 +52,9 @@ const StatisticList = ({
   }, [pagesState, totalPagesOfBookInProgress]);
 
   useEffect(() => {
-    if (indexOfReadidBook >= 0) {
+    renderRemainingBooks() !== booksInProgress.length &&
       toggleModalBookSuccess();
-    }
-  }, [indexOfReadidBook]);
+  }, [indexOfReadidBook, booksInProgress, renderRemainingBooks]);
 
   useEffect(() => {
     countPages();
@@ -80,7 +85,7 @@ const StatisticList = ({
   // ======================================Open Modals======================================
 
   const openModalByTimer = () =>
-    new Date(chengeStartDataIdx(targetEndDate)) - Date.now();
+    new Date(chengeStartDataIdx(targetEndDate)) - Date.now() + 86400000;
 
   useEffect(() => {
     if (totalPagesOfBookInProgress === 0) {
@@ -95,7 +100,7 @@ const StatisticList = ({
     if (openModalByTimer() < 0 && pagesState < totalPagesOfBookInProgress) {
       toggleModalTimer();
     }
-  }, [pagesState, totalPagesOfBookInProgress]);
+  }, [pagesState, totalPagesOfBookInProgress, openModalByTimer]);
 
   // ======================================Open Modals======================================
 

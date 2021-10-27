@@ -2,10 +2,7 @@ import { useState, useEffect } from "react";
 import Moment from "moment";
 import { extendMoment } from "moment-range";
 import { useSelector } from "react-redux";
-import {
-  getPreplanningStartDate,
-  getTargetStartDate,
-} from "../redux/target/targetSelectors";
+import { getPreplanningStartDate } from "../redux/target/targetSelectors";
 
 const moment = extendMoment(Moment);
 
@@ -38,7 +35,7 @@ const useDate = () => {
   };
 
   const chengeStartDataIdx = (str) => {
-    console.log(str);
+    // console.log(str);
     const startDateStr = str.slice().split(".");
     [startDateStr[0], startDateStr[1]] = [startDateStr[1], startDateStr[0]];
     return startDateStr.join("-");

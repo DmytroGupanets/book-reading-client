@@ -1,13 +1,15 @@
 import React, { useContext } from "react";
 import { useTranslation } from "react-i18next";
+import useWindowDimensions from "../../../hooks/resize";
 import { ThemeContext } from "../../App";
 import { BooksLabelStyled } from "./BooksLabelStyled";
 
-const BooksLabel = ({ title, isPC }) => {
+const BooksLabel = ({ title }) => {
   const { t } = useTranslation();
   const { theme } = useContext(ThemeContext);
+  const isPC = useWindowDimensions().width >= 1280;
 
-  const isCompleted = title === "Already read" || "Прочитано";
+  const isCompleted = title === "Already read" || title === "Прочитано";
 
   return (
     <BooksLabelStyled isCompleted={isCompleted} colors={theme}>

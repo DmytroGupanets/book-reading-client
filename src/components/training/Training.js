@@ -69,17 +69,24 @@ const Training = () => {
   }, []);
 
   const onHandleClickStart = async () => {
+    if (
+      preplaning.startDate === "" ||
+      preplaning.endDate === "" ||
+      preplaning.selectedBooks.length === 0
+    )
+      return;
+
     const target = {
       startDate: preplaning.startDate,
       endDate: preplaning.endDate,
       books: preplaning.selectedBooks.map((el) => el._id),
     };
-    if (selectedBooks) {
+    if (selectedBooks.length > 0) {
       await dispatch(addTargetOperation(target));
-    }
 
-    await dispatch(getAllBooksOperation());
-    await dispatch(resetPreplanning());
+      await dispatch(getAllBooksOperation());
+      await dispatch(resetPreplanning());
+    }
   };
 
   const onHandleDelete = (_id) => {

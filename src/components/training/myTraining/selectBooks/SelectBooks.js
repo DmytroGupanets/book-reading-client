@@ -8,7 +8,10 @@ import {
   setPlannedBooksForSelect,
   removePlannedBook,
 } from "../../../../redux/target/targetActions";
-import { getAllPlannedBooks } from "../../../../redux/target/targetSelectors";
+import {
+  getAllPlannedBooks,
+  getAllSelectedBooks,
+} from "../../../../redux/target/targetSelectors";
 
 import SelectBooksStyled from "./SelectBooksStyled";
 import { ThemeContext } from "../../../App";
@@ -44,20 +47,63 @@ const SelectBooks = ({ toggleModal }) => {
   }, [clientsWidth]);
 
   const dispatch = useDispatch();
+  const preplanningSelectedBooks = useSelector(getAllSelectedBooks);
   const books = useSelector(getPlannedBooks);
   const plannedBooks = useSelector(getAllPlannedBooks);
-  const [selectedBook, setSelectedBook] = useState({});
+  const [selectedBook, setSelectedBook] = useState(null);
+  const [disable, setDisable] = useState(false);
 
   useEffect(() => {
     if (!plannedBooks.length) dispatch(setPlannedBooksForSelect(books));
   }, []);
 
+  useEffect(() => {
+    if (plannedBooks !== null && preplanningSelectedBooks.length) {
+      const diffBetweenBooksAndPlanned = findDiffBooks();
+      const updateSelector = [...plannedBooks, ...diffBetweenBooksAndPlanned];
+
+      dispatch(setPlannedBooksForSelect(updateSelector));
+    }
+  }, []);
+
+  const findDiffBooks = () => {
+    let notInThePlanned = [];
+    const result = [];
+
+    for (const book of books) {
+      const res = plannedBooks.find((pbook) => pbook._id === book._id);
+
+      if (!res) {
+        notInThePlanned.push(book);
+      }
+    }
+
+    for (const book of notInThePlanned) {
+      const res2 = preplanningSelectedBooks.find(
+        (sbook) => sbook._id === book._id
+      );
+
+      if (!res2) {
+        result.push(book);
+      }
+    }
+    return result;
+  };
+
   const handleSelectBook = (selectedOption) => {
     const { value } = selectedOption;
+    setDisable(false);
     setSelectedBook(value);
   };
 
   const addBookToSelected = () => {
+    if (!selectedBook) return;
+
+    const isAddedBookAlready = preplanningSelectedBooks.findIndex(
+      (book) => book._id === selectedBook._id
+    );
+    if (isAddedBookAlready >= 0) return setDisable(true);
+
     dispatch(addSelectedBook(selectedBook));
     dispatch(removePlannedBook(selectedBook));
     if (isMobile) toggleModal();
@@ -77,7 +123,11 @@ const SelectBooks = ({ toggleModal }) => {
         onChange={handleSelectBook}
         components={{ DropdownIndicator }}
       />
-      <button className="selectBooksButton" onClick={addBookToSelected}>
+      <button
+        disabled={disable}
+        className="selectBooksButton"
+        onClick={addBookToSelected}
+      >
         {t("Add")}
       </button>
     </SelectBooksStyled>

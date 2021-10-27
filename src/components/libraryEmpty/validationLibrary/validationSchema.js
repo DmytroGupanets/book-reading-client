@@ -4,7 +4,7 @@ const title = Yup.string()
   .required("field must be filled")
   .max(50, "The book name field should contain no more than 50 characters")
   .matches(
-    /^([0-9A-ZА-ЯЁa-zа-яёА-Яа-яёЁЇїІіЄєҐґ ./?@!"№$%^&*()-_=])+$/,
+    /^([0-9A-ZА-ЯЁa-zа-яёА-Яа-яёЁЇїІіЄєҐґ ./?'@!"№$%^&*()-_=])+$/,
     "wrong book name format"
   )
   .matches(/^[^\s].+[^\s]$/, "name cannot begin or end with space");
@@ -13,7 +13,7 @@ const author = Yup.string()
   .required("field must be filled")
   .max(50, "The author field should contain no more than 50 characters")
   .matches(
-    /^([A-ZА-ЯЁa-zа-яёА-Яа-яёЁЇїІіЄєҐґ .,/?@!$%^&*()-_=])+$/,
+    /^([A-ZА-ЯЁa-zа-яёА-Яа-яёЁЇїІіЄєҐґ .,/?'@!$%^&*()-_=])+$/,
     "wrong author format"
   )
   .matches(/^[^0-9]+$/, "author field cannot have numbers")

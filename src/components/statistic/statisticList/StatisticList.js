@@ -23,7 +23,7 @@ const StatisticList = ({
 }) => {
   const { theme } = useContext(ThemeContext);
   const [pagesState, setQuantityPages] = useState(0);
-  const [stateData, moment, chengeStartDataIdx] = useDate();
+  const [, , chengeStartDataIdx] = useDate();
 
   const indexOfReadidBook = useSelector(getIdxOfReadedBooksInTraining);
   const booksInProgress = useSelector(getInProgressdBooks);
@@ -43,10 +43,6 @@ const StatisticList = ({
       setNumberOfPagesRemaining(totalPagesOfBookInProgress - pagesState)
     );
     dispatch(setBookInTrainingSuccess(countIdxOfReadedBook(pagesState)));
-
-    return () => {
-      dispatch(setBookInTrainingSuccess(countIdxOfReadedBook(-1)));
-    };
   }, [pagesState, totalPagesOfBookInProgress]);
 
   useEffect(() => {
@@ -84,8 +80,7 @@ const StatisticList = ({
   // ======================================Open Modals======================================
 
   const openModalByTimer = () =>
-    new Date(chengeStartDataIdx(targetEndDate)) -
-    new Date(chengeStartDataIdx(stateData.currentDate.split("-").join(".")));
+    new Date(chengeStartDataIdx(targetEndDate)) - Date.now();
 
   useEffect(() => {
     if (totalPagesOfBookInProgress === 0) {

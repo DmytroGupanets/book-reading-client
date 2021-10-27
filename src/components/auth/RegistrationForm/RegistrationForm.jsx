@@ -6,7 +6,7 @@ import GoogleButton from "../GoogleButton/GoogleButton";
 import { registerValidationSchema } from "../validation/validationSchema";
 import { register } from "../../../redux/auth/authOperations";
 import { RegistrationFormStyled } from "./RegistrationFormStyled";
-import { useContext, useEffect, useRef } from "react";
+import { useContext, useEffect } from "react";
 import { ThemeContext } from "../../App";
 import { getError } from "../../../redux/auth/authSelectors";
 import { resetError } from "../../../redux/auth/authActions";

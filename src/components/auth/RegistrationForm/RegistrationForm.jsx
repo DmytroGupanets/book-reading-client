@@ -6,11 +6,12 @@ import GoogleButton from "../GoogleButton/GoogleButton";
 import { registerValidationSchema } from "../validation/validationSchema";
 import { register } from "../../../redux/auth/authOperations";
 import { RegistrationFormStyled } from "./RegistrationFormStyled";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { ThemeContext } from "../../App";
 import { getError } from "../../../redux/auth/authSelectors";
 import { resetError } from "../../../redux/auth/authActions";
 import { error } from "@pnotify/core/dist/PNotify.js";
+import { current } from "@reduxjs/toolkit";
 
 const RegistrationForm = () => {
   const { theme } = useContext(ThemeContext);
@@ -124,6 +125,9 @@ const RegistrationForm = () => {
             type="password"
             className="formInput"
             name="confirmPassword"
+            onPaste={(e) => {
+              e.preventDefault();
+            }}
             placeholder="..."
             value={formik.values.confirmPassword}
             onChange={formik.handleChange}

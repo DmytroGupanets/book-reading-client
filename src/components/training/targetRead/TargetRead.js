@@ -19,16 +19,12 @@ const TargetRead = ({ isActive }) => {
   const { theme } = useContext(ThemeContext);
   const { t } = useTranslation();
 
-
-
-
   const idxOfReadedBooksInTraining = useSelector(getIdxOfReadedBooksInTraining);
   const preplanningStartDate = useSelector(getPreplanningStartDate);
   const preplanningEndDate = useSelector(getPreplanningEndDate);
   const targetStartDate = useSelector(getTargetStartDate);
   const targetEndDate = useSelector(getTargetEndDate);
   const [, , , , rangeBetwenStartAndEndDates] = useDate();
-
 
   const booksInProgress = useSelector(getInProgressdBooks);
   const booksInSelected = useSelector(getAllSelectedBooks);

@@ -41,7 +41,7 @@ const targetsReducer = createReducer(
   }
 );
 
-const bookInTrainingReducer = createReducer([], {
+const bookInTrainingReducer = createReducer(-1, {
   [setBookInTrainingSuccess]: (_, { payload }) => payload,
 });
 

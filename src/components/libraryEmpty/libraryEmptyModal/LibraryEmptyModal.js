@@ -120,10 +120,11 @@ const LibraryEmptyModal = ({ toggleModal }) => {
               placeholder="..."
               className="aboutBookInputModal aboutBookInput-yearModal"
               onChange={(e) => {
-
-                if (e.target.value.length > 4) return;
-                formik.handleChange(e)
-              } }
+                const testStr = e.target.value;
+                const regExp = /^([0-9]{0,4})$/;
+                 if (testStr.length > 4 || !regExp.test(testStr)) return;
+                 formik.handleChange(e)
+               } }
               onBlur={formik.handleBlur}
             />
           </label>

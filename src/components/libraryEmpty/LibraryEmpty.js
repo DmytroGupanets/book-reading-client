@@ -113,9 +113,7 @@ const LibraryEmpty = () => {
                 onChange={(e) => {
                  const testStr = e.target.value;
                  const regExp = /^([0-9]{0,4})$/;
-                  // console.log(regExp.test(testStr))
                   if (testStr.length > 4 || !regExp.test(testStr)) return;
-                
                   formik.handleChange(e)
                 } }
                 onBlur={formik.handleBlur}

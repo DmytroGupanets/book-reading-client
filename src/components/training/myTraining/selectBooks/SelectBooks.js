@@ -8,7 +8,10 @@ import {
   setPlannedBooksForSelect,
   removePlannedBook,
 } from "../../../../redux/target/targetActions";
-import { getAllPlannedBooks } from "../../../../redux/target/targetSelectors";
+import {
+  getAllPlannedBooks,
+  getAllSelectedBooks,
+} from "../../../../redux/target/targetSelectors";
 
 import SelectBooksStyled from "./SelectBooksStyled";
 import { ThemeContext } from "../../../App";
@@ -44,9 +47,10 @@ const SelectBooks = ({ toggleModal }) => {
   }, [clientsWidth]);
 
   const dispatch = useDispatch();
+  const preplanningSelectedBooks = useSelector(getAllSelectedBooks);
   const books = useSelector(getPlannedBooks);
   const plannedBooks = useSelector(getAllPlannedBooks);
-  const [selectedBook, setSelectedBook] = useState({});
+  const [selectedBook, setSelectedBook] = useState(null);
 
   useEffect(() => {
     if (!plannedBooks.length) dispatch(setPlannedBooksForSelect(books));
@@ -58,6 +62,13 @@ const SelectBooks = ({ toggleModal }) => {
   };
 
   const addBookToSelected = () => {
+    if (!selectedBook) return;
+
+    const isAddedBookAlready = preplanningSelectedBooks.findIndex(
+      (book) => book._id === selectedBook._id
+    );
+    if (isAddedBookAlready >= 0) return;
+
     dispatch(addSelectedBook(selectedBook));
     dispatch(removePlannedBook(selectedBook));
     if (isMobile) toggleModal();

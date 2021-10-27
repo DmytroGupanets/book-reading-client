@@ -42,20 +42,35 @@ export default function Graph() {
   const dateNow = new Date();
   const today = dateNow.toLocaleDateString("en-GB").split("/").join(".");
 
-  const quantityDaysUptoNow =
-    start && today && rangeBetwenStartAndEndDates(start, today);
-  quantityDaysUptoNow?.unshift(start);
+  const quantityDaysUptoNow = () => {
+    let res = [];
+    if (start === undefined) return false;
+    res = rangeBetwenStartAndEndDates(start, today);
+    return res.unshift(start);
+  };
 
-  const quantityDays = start && end && rangeBetwenStartAndEndDates(start, end);
+  const getPlannedPagesPerDay = () => {
+    if (
+      start === undefined ||
+      end === undefined ||
+      start === "00.00.0000" ||
+      end === "00.00.0000"
+    )
+      return false;
+    const quantityDays = rangeBetwenStartAndEndDates(start, end);
 
-  const sumOfPagesTotal = booksInProgress.reduce((acc, book) => {
-    acc += book.pages;
-    return acc;
-  }, 0);
+    const sumOfDaysTotal = quantityDays.length;
 
-  const sumOfDaysTotal = quantityDays?.length;
+    if (!sumOfDaysTotal) return false;
+    const sumOfPagesTotal = booksInProgress.reduce((acc, book) => {
+      acc += book.pages;
+      return acc;
+    }, 0);
 
-  const plannedPagesPerDay = Math.floor(sumOfPagesTotal / sumOfDaysTotal);
+    return Math.floor(sumOfPagesTotal / sumOfDaysTotal);
+  };
+
+  const plannedPagesPerDay = getPlannedPagesPerDay();
 
   useEffect(() => {
     plannedPagesPerDay
@@ -82,10 +97,11 @@ export default function Graph() {
   const createData = () => {
     const pagesReadPerDayRecords = getReadPagesPerDay();
     const result = [];
-    if (!quantityDaysUptoNow) return defaultData;
-    for (let i = 0; i < quantityDaysUptoNow.length; i++) {
+    const quantityDaysUpToToday = quantityDaysUptoNow();
+    if (!quantityDaysUpToToday) return defaultData;
+    for (let i = 0; i < quantityDaysUpToToday.length; i++) {
       const index = pagesReadPerDayRecords.findIndex(
-        (rec) => rec.date === quantityDaysUptoNow[i]
+        (rec) => rec.date === quantityDaysUpToToday[i]
       );
 
       if (index === -1) {
@@ -115,6 +131,7 @@ export default function Graph() {
     return acc;
   }, 0);
 
+  // debugger;
   return (
     <ResponsiveContainer width={"100%"} height={215}>
       <LineChart

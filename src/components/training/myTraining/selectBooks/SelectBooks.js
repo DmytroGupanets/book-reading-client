@@ -1,10 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import Select, { components } from "react-select";
 import { useTranslation } from "react-i18next";
-import {
-  getPlannedBooks,
-  getAllSelectedBooks,
-} from "../../../../redux/books/booksSelectors";
+import { getPlannedBooks } from "../../../../redux/books/booksSelectors";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addSelectedBook,
@@ -72,7 +69,7 @@ const SelectBooks = ({ toggleModal }) => {
     const isAddedBookAlready = preplanningSelectedBooks.findIndex(
       (book) => book._id === selectedBook._id
     );
-    if (isAddedBookAlready >= 0) return;
+    if (isAddedBookAlready >= 0) return setDisable(true);
 
     dispatch(addSelectedBook(selectedBook));
     dispatch(removePlannedBook(selectedBook));

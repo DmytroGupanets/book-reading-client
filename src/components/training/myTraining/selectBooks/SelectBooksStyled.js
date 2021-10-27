@@ -37,6 +37,25 @@ const SelectBooksStyled = styled.div`
       margin-top: 0;
     }
   }
+  .selectBooksButton:disabled,
+  button[disabled] {
+    cursor: pointer;
+    width: 172px;
+    color: #c2bfc7;
+    height: 42px;
+    background: ${({ colors }) => colors.background};
+    border: 1px solid #c2bfc7;
+
+    margin-top: 36px;
+
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 2.71;
+
+    @media screen and (min-width: 768px) {
+      margin-top: 0;
+    }
+  }
   .selectBooksIconPolygon {
     width: 13px;
     height: 7px;

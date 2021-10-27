@@ -4,18 +4,18 @@ import styled from "styled-components";
 import { useContext } from "react";
 import { ThemeContext } from "../App";
 import { useTranslation } from "react-i18next";
-import { getPreplanningEndDate } from "../../redux/target/targetSelectors";
+import { getPagesPerDay } from "../../redux/target/targetSelectors";
 
 const GraphContainer = () => {
   const { t } = useTranslation();
   const { theme } = useContext(ThemeContext);
-  const end = useSelector(getPreplanningEndDate);
+  const pagesPerDay = useSelector(getPagesPerDay);
 
   return (
     <DivStyled colors={theme}>
       <h3 className="graph__count-page">
         {t("Amount of pages / day")}
-        <span>{parseInt(end)}</span>
+        <span>{pagesPerDay}</span>
       </h3>
       <Graph />
       <p className="time-paragraph">{t("TIME")}</p>

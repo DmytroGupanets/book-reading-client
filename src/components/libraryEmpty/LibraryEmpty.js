@@ -20,9 +20,6 @@ const LibraryEmpty = () => {
   const { t } = useTranslation();
   const { theme } = useContext(ThemeContext);
   // const isError = useSelector(getErrorBooks);
-  // const myError = error({
-  //   text: "I'm an error message."
-  // });
 
   // useEffect(() => {
   //   if (isError !== null) {
@@ -34,6 +31,7 @@ const LibraryEmpty = () => {
   //   }
   //   return dispatch(resetError());
   // }, [isError, dispatch]);
+
 
   const formik = useFormik({
     initialValues: {
@@ -74,7 +72,7 @@ const LibraryEmpty = () => {
             />
             {formik.errors.title && formik.touched.title && (
               <div className="inputError inputErrorTitle">
-                {formik.errors.title}
+                {t([formik.errors.title])}
               </div>
             )}
           </label>
@@ -97,7 +95,7 @@ const LibraryEmpty = () => {
               />
               {formik.errors.author && formik.touched.author && (
                 <div className="inputError inputErrorAuthor">
-                  {formik.errors.author}
+                  {t([formik.errors.author])}
                 </div>
               )}
             </label>
@@ -117,7 +115,7 @@ const LibraryEmpty = () => {
               />
               {formik.errors.year && formik.touched.year && (
                 <div className="inputError inputErrorYear">
-                  {formik.errors.year}
+                  {t([formik.errors.year])}
                 </div>
               )}
             </label>
@@ -134,11 +132,10 @@ const LibraryEmpty = () => {
                 className="aboutBookInput aboutBookInput-page"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                maxlength="4"
               />
               {formik.errors.pages && formik.touched.pages && (
                 <div className="inputError inputErrorPages">
-                  {formik.errors.pages}
+                  {t([formik.errors.pages])}
                 </div>
               )}
             </label>

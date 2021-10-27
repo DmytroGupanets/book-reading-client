@@ -45,7 +45,7 @@ const StatisticList = ({
     dispatch(setBookInTrainingSuccess(countIdxOfReadedBook(pagesState)));
 
     return () => {
-      dispatch(setBookInTrainingSuccess(countIdxOfReadedBook(0)));
+      dispatch(setBookInTrainingSuccess(countIdxOfReadedBook(-1)));
     };
   }, [pagesState, totalPagesOfBookInProgress]);
 

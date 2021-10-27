@@ -29,6 +29,7 @@ import { ThemeContext } from "../App";
 import Timer from "../timer/Timer";
 import MyGoalBooks from "./myGoalBooks/MyGoalBooks";
 import MyProgressBooks from "./myProgressBooks/MyProgressBooks";
+import Modal from "../modal/Modal";
 
 const Training = () => {
   const dispatch = useDispatch();
@@ -48,7 +49,7 @@ const Training = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [isPC, setIsPC] = useState(false);
   const [isTargetReady, setIsTargetReady] = useState(false);
-  const [isActive, setIsActive] = useState(targetActive);
+  const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
     setIsMobile(clientsWidth < 768);
@@ -58,7 +59,9 @@ const Training = () => {
       setIsTargetReady(true);
     else setIsTargetReady(false);
 
-    setIsActive(targetActive);
+    if (targetActive !== undefined) {
+      setIsActive(targetActive);
+    }
   }, [clientsWidth, prepStartDate, prepEndDate, selectedBooks, targetActive]);
 
   const toggleModal = useCallback(() => {
@@ -66,17 +69,24 @@ const Training = () => {
   }, []);
 
   const onHandleClickStart = async () => {
+    if (
+      preplaning.startDate === "" ||
+      preplaning.endDate === "" ||
+      preplaning.selectedBooks.length === 0
+    )
+      return;
+
     const target = {
       startDate: preplaning.startDate,
       endDate: preplaning.endDate,
       books: preplaning.selectedBooks.map((el) => el._id),
     };
-    if (selectedBooks) {
+    if (selectedBooks.length > 0) {
       await dispatch(addTargetOperation(target));
-    }
 
-    await dispatch(getAllBooksOperation());
-    await dispatch(resetPreplanning());
+      await dispatch(getAllBooksOperation());
+      await dispatch(resetPreplanning());
+    }
   };
 
   const onHandleDelete = (_id) => {
@@ -87,11 +97,14 @@ const Training = () => {
   };
 
   return (
-    <TrainingStyled colors={theme}>
+    <TrainingStyled modal={modal} colors={theme}>
       {isMobile && modal && (
         <ModalMyTraining toggleModal={toggleModal}>
           <MyTraining toggleModal={toggleModal} />
         </ModalMyTraining>
+        // <Modal toggleModal={toggleModal}>
+        //   <MyTraining toggleModal={toggleModal} />
+        // </Modal>
       )}
 
       {!isPC && !modal && (
@@ -111,11 +124,13 @@ const Training = () => {
           <GraphContainer />
           {isActive && <Statistic isActive={isActive} />}
           {isMobile && (
-            <button className="addTrainingBuuton" onClick={toggleModal}>
-              <svg className="moreTrainingIcon">
-                <use href={sprite + "#icon-more"} />
-              </svg>
-            </button>
+            <div className="buttonWrapper">
+              <button className="addTrainingButton" onClick={toggleModal}>
+                <svg className="moreTrainingIcon">
+                  <use href={sprite + "#icon-more"} />
+                </svg>
+              </button>
+            </div>
           )}
         </>
       )}

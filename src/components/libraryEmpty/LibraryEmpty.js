@@ -105,12 +105,19 @@ const LibraryEmpty = () => {
               {t("Publication date")}
               <input
                 id="year"
-                type="number"
+                type="text"
                 name="year"
                 value={formik.values.year}
                 placeholder="..."
                 className="aboutBookInput aboutBookInput-year"
-                onChange={formik.handleChange}
+                onChange={(e) => {
+                 const testStr = e.target.value;
+                 const regExp = /^([0-9]{0,4})$/;
+                  // console.log(regExp.test(testStr))
+                  if (testStr.length > 4 || !regExp.test(testStr)) return;
+                
+                  formik.handleChange(e)
+                } }
                 onBlur={formik.handleBlur}
               />
               {formik.errors.year && formik.touched.year && (

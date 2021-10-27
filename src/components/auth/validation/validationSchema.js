@@ -7,7 +7,7 @@ const email = Yup.string()
   .matches(
 
     /^[\w*;!:"'#%^*+&?$§]{1}[\w\-*;!:"'#%^?*+&$§.]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/i,
-    "невірний формат"
+    "invalid format"
   );
 
 const password = Yup.string()

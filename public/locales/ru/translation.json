@@ -165,8 +165,8 @@
   "ACT": "ФАКТ",
 
   "str": "стр",
-  "AmountOFBooks": "Кол-во книг",
-  "AmountOfDays": "Кол-во дней",
+  "AmountOFBooks": "Кол - во книг",
+  "AmountOfDays": "Кол - во дней",
 
   "this is mandatory area": "это обязательное поле",
   "email must be at least 10 characters": "email должен состоять не менее чем с 10 символами",

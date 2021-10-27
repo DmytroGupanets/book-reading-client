@@ -19,22 +19,28 @@ const MyGoalListNormalStyled = styled.div`
       border-bottom: 1px solid #e0e5eb;
     }
     .goalListNorm_List__Item:nth-child(1) {
-      margin-right: 234px;
+      width: 121px;
+      margin-right: 221px;
       @media screen and (min-width: 1280px) {
-        margin-right: 269px;
+        margin-right: 241px;
       }
     }
     .goalListNorm_List__Item:nth-child(2) {
-      margin-right: 168px;
+      width: 50px;
+      margin-right: 134px;
       @media screen and (min-width: 1280px) {
-        margin-right: 185px;
+        margin-right: 170px;
       }
     }
     .goalListNorm_List__Item:nth-child(3) {
-      margin-right: 47px;
+      width: 31px;
+      margin-right: 64px;
       @media screen and (min-width: 1280px) {
-        margin-right: 73px;
+        margin-right: 78px;
       }
+    }
+    .goalListNorm_List__Item:nth-child(4) {
+      width: 44px;
     }
   }
   .goalListNorm_List__Item {

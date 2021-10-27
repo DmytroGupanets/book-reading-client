@@ -11,12 +11,15 @@ import {
 import sprite from "../../../../images/sprite.svg";
 
 import { useDispatch } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 const initialState = {
-  startDate: null,
-  endDate: null,
+  startDate: "",
+  endDate: "",
 };
+
 const DatePickerTraining = () => {
+  const { t } = useTranslation();
   const [startDate, setStartDate] = useState(initialState.startDate);
   const [endDate, setEndDate] = useState(initialState.endDate);
   const { theme } = useContext(ThemeContext);
@@ -28,8 +31,11 @@ const DatePickerTraining = () => {
     return result;
   };
 
+  const today = new Date();
+
   const onHandleStartDateChange = (date) => {
     setStartDate(date);
+
     let newDate = new Date(date);
     const firstDate = newDate.toLocaleDateString().slice(0, 10);
 
@@ -44,16 +50,16 @@ const DatePickerTraining = () => {
   };
 
   return (
-    <DatePickerTrainingStyled colors={theme}>
+    <DatePickerTrainingStyled className="datePicker" colors={theme}>
       <div className="datePickerWrapper">
         <DatePicker
           className="datePickerTraining"
-          placeholderText="ПОЧАТОК"
+          placeholderText={t("Start")}
           dateFormat="dd.MM.yyyy"
           selected={startDate}
           onChange={onHandleStartDateChange}
           selectsStart
-          minDate={startDate}
+          minDate={today}
           startDate={startDate}
           endDate={endDate}
         />
@@ -68,7 +74,7 @@ const DatePickerTraining = () => {
         <DatePicker
           className="datePickerTraining"
           dateFormat="dd.MM.yyyy"
-          placeholderText="КІНЕЦЬ"
+          placeholderText={t("Finish")}
           selected={endDate}
           onChange={onHandleEndDateChange}
           selectsEnd

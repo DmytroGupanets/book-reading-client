@@ -1,5 +1,8 @@
 import styled from "styled-components";
 export const LanguageSwitcherStyled = styled.div`
+  position: ${({ isAuth }) => (isAuth ? "static" : "absolute")};
+  left: 25px;
+  top: 13px;
   .langBtn {
     margin-left: 5px;
     margin-right: 5px;

@@ -15,9 +15,10 @@ const MyTrainingStyled = styled.div`
     line-height: 1.9;
     padding: 11px 47px;
     text-align: center;
+    margin-bottom: 20px;
 
     color: ${({ colors }) => colors.secondaryBg};
-    background: #b1b5c2;
+    background: ${({ colors }) => colors.trainingLabel};
     box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
   }
 `;

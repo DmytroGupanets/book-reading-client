@@ -11,7 +11,6 @@ const MyGoalListItemMobStyled = styled.li`
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  background: ${({ colors }) => colors.secondaryBg};
   border-top: 1px solid #e0e5eb;
 
   :last-child {
@@ -59,6 +58,7 @@ const MyGoalListItemMobStyled = styled.li`
     font-size: 12px;
     font-weight: 500;
     line-height: 3.1;
+    text-align: start;
   }
   .myGoalListMob_ButtonDelete {
     cursor: pointer;

@@ -1,46 +1,69 @@
-// import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { getInProgressdBooks } from "../../../redux/books/booksSelectors";
 import {
-  // getAllPlannedBooks,
   getAllSelectedBooks,
   getIdxOfReadedBooksInTraining,
-  getPreplaning,
   getPreplanningEndDate,
   getPreplanningStartDate,
+  getTargetEndDate,
+  getTargetStartDate,
 } from "../../../redux/target/targetSelectors";
 import useDate from "../../../hooks/useDate";
 
 import TargetReadStyled from "./TargetReadStyled";
-import { createRef, useContext } from "react";
+import { useContext } from "react";
 import { ThemeContext } from "../../App";
+import { useTranslation } from "react-i18next";
 
 const TargetRead = ({ isActive }) => {
   const { theme } = useContext(ThemeContext);
+  const { t } = useTranslation();
 
-  const [
-    stateData,
-    moment,
-    // setCurrentData,
-    setQuantityBetweenDays,
-    rangeBetwenStartAndEndDates,
-  ] = useDate();
 
-  const preplaning = useSelector(getPreplaning);
 
-  const start = useSelector(getPreplanningStartDate);
-  const end = useSelector(getPreplanningEndDate);
+
+  const idxOfReadedBooksInTraining = useSelector(getIdxOfReadedBooksInTraining);
+  const preplanningStartDate = useSelector(getPreplanningStartDate);
+  const preplanningEndDate = useSelector(getPreplanningEndDate);
+  const targetStartDate = useSelector(getTargetStartDate);
+  const targetEndDate = useSelector(getTargetEndDate);
+  const [, , , , rangeBetwenStartAndEndDates] = useDate();
+
+
   const booksInProgress = useSelector(getInProgressdBooks);
   const booksInSelected = useSelector(getAllSelectedBooks);
-  const idxOfReadedBooksInTraining = useSelector(getIdxOfReadedBooksInTraining);
-  const trainingQuantityDays =
-    start && end && rangeBetwenStartAndEndDates(start, end);
+
+  const addDateFromPreplanning = () => {
+    const targetQuantytyDays =
+      preplanningStartDate &&
+      preplanningEndDate &&
+      rangeBetwenStartAndEndDates(preplanningStartDate, preplanningEndDate);
+
+    if (targetQuantytyDays === undefined) {
+      return 0;
+    }
+
+    return targetQuantytyDays.length;
+  };
+
+  const addDateFromTarget = () => {
+    const targetQuantytyDays =
+      targetStartDate &&
+      targetEndDate &&
+      rangeBetwenStartAndEndDates(targetStartDate, targetEndDate);
+
+    if (targetQuantytyDays === undefined) {
+      return 0;
+    }
+
+    return targetQuantytyDays.length;
+  };
 
   return (
     <TargetReadStyled colors={theme} isActive={isActive}>
       <div className="tabletWrapperStyled">
         <div className="titleWrapper">
-          <h3 className="targetReadTitle">Моя мета прочитати</h3>
+          <h3 className="targetReadTitle">{t("My goals")}</h3>
         </div>
       </div>
 
@@ -49,13 +72,17 @@ const TargetRead = ({ isActive }) => {
           <div className="targetReadDig">
             {!isActive ? booksInSelected.length : booksInProgress.length}
           </div>
-          <p className="targetReadItemDescription">Кількість книжок</p>
+          <p className="targetReadItemDescription">
+            {!isActive ? t("Amount of books") : t("AmountOFBooks")}
+          </p>
         </li>
         <li className="targetReadItem">
           <div className="targetReadDig">
-            {trainingQuantityDays ? trainingQuantityDays.length : 0}
+            {!isActive ? addDateFromPreplanning() : addDateFromTarget()}
           </div>
-          <p className="targetReadItemDescription">Кількість днів</p>
+          <p className="targetReadItemDescription">
+            {!isActive ? t("Amount of days") : t("AmountOfDays")}
+          </p>
         </li>
         {isActive && (
           <li className="targetReadItem">
@@ -67,7 +94,7 @@ const TargetRead = ({ isActive }) => {
                     booksInProgress.length - 1
                   ).length}
             </div>
-            <p className="targetReadItemDescription">Залишилось книжок</p>
+            <p className="targetReadItemDescription">{t("Books left")}</p>
           </li>
         )}
       </ul>

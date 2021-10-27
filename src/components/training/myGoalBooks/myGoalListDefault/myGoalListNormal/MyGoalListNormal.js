@@ -13,7 +13,7 @@ const MyGoalListNormal = () => {
       <ul className="goalListNorm_List">
         <li className="goalListNorm_List__Item">{t("Book title")}</li>
         <li className="goalListNorm_List__Item">{t("Author m")}</li>
-        <li className="goalListNorm_List__Item">{t("Year")}</li>
+        <li className="goalListNorm_List__Item">{t("Year m")}</li>
         <li className="goalListNorm_List__Item">{t("Pages")}</li>
       </ul>
       <div className="goalListNorm_EmptyContainer">

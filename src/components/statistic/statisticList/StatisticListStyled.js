@@ -60,6 +60,7 @@ const StatisticListStyled = styled.div`
 
     .listWrapper {
       overflow: scroll;
+      overflow-x: hidden;
       height: 80px;
     }
 

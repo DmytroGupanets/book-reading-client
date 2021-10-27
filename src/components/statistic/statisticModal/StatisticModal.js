@@ -7,19 +7,18 @@ import { ThemeContext } from "../../App";
 import { getTargetId } from "../../../redux/target/targetSelectors";
 import { useDispatch, useSelector } from "react-redux";
 import { completeTargetOperation } from "../../../redux/target/targetOperations";
+import { useTranslation } from "react-i18next";
 
 const quotesArray = JSON.parse(JSON.stringify(quotes));
 const min = 1; // включая
 const max = 41; // исключая
 const randomInt = Math.floor(Math.random() * (max - min) + min);
 const quotesArrayElement = quotesArray[randomInt];
-// console.log(`quotesArrayElement`, quotesArrayElement);
-const randomQuote = Object.values(quotesArrayElement)[1];
-const randomAuthor = Object.values(quotesArrayElement)[2];
-// console.log(randomQuote);
-// console.log(randomAuthor);
+const randomQuote = Object.values(quotesArrayElement)?.[1];
+const randomAuthor = Object.values(quotesArrayElement)?.[2];
 
 const StatisticModal = ({ onClose }) => {
+  const { t } = useTranslation();
   const { theme } = useContext(ThemeContext);
 
   const targetId = useSelector(getTargetId);
@@ -37,8 +36,9 @@ const StatisticModal = ({ onClose }) => {
           <use href={sprite + "#icon-hand"} width="45"></use>
         </svg>
         <p className="StatisticModalText">
-          Ти молодчина, <br /> але потрібно швидше! <br /> Наступного разу тобі
-          все вдасться)
+          {t("Well done!")} <br />
+          {t("but you need to be a little bit faster!")} <br />
+          {t("Next time you will succeed)")}
         </p>
         <div className="StatisticModalQuote">
           <svg className="quotesIcon" width="25" height="20">

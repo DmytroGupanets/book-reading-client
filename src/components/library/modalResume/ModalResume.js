@@ -5,8 +5,10 @@ import starsRating from "../../../images/rating-stars.svg";
 import { useDispatch } from "react-redux";
 import { addBookResumeByIdOperation } from "../../../redux/books/booksOperations";
 import { ThemeContext } from "../../App";
+import { useTranslation } from "react-i18next";
 
 const ModalResume = ({ onClose, bookId, openForm }) => {
+  const { t } = useTranslation();
   const emptyStar = starsRating + "#star-active-empty";
   const filledStar = starsRating + "#star-active";
   const [stars, setStars] = useState(0);
@@ -69,7 +71,7 @@ const ModalResume = ({ onClose, bookId, openForm }) => {
       warning={warning}
       textAreaIsActive={textAreaIsActive}
     >
-      <p className="chooseRating">Обрати рейтинг книги</p>
+      <p className="chooseRating">{t("Choose rating of the book")}</p>
       <ReactStars
         count={5}
         onChange={ratingChanged}
@@ -92,7 +94,7 @@ const ModalResume = ({ onClose, bookId, openForm }) => {
       />
 
       <label className="resumeLabel" htmlFor="resumeText">
-        Резюме
+        {t("Resume")}
         <textarea
           className="ResumeTextArea"
           type="text"
@@ -103,10 +105,12 @@ const ModalResume = ({ onClose, bookId, openForm }) => {
           maxLength="1000"
         />
         {!attentionMsg && (
-          <p className="symbolsAmount">Залишилось {amountSymbols} символів</p>
+          <p className="symbolsAmount">
+            {t("Remain")} {amountSymbols} {t("symbols")}
+          </p>
         )}
         {attentionMsg && (
-          <p className="symbolsLimit">Ліміт символів вичерпано</p>
+          <p className="symbolsLimit">{t("Limit of Characters Exhausted")}</p>
         )}
       </label>
 
@@ -116,14 +120,14 @@ const ModalResume = ({ onClose, bookId, openForm }) => {
           type="button"
           onClick={onHandleClose}
         >
-          Назад
+          {t("Back")}
         </button>
         <button
           className="resumeModalSubmitBtn"
           type="button"
           onClick={onClickHandleSubmit}
         >
-          Зберегти
+          {t("Save")}
         </button>
       </div>
     </ModalResumeStyled>

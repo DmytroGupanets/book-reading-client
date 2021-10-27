@@ -1,29 +1,30 @@
 import * as Yup from "yup";
 
 const email = Yup.string()
-  .required("необхідно заповнити поле")
-  .min(10, "email повинен складатися не менше ніж з 10 символів")
-  .max(63, "email повинен складатися не бiльше ніж з 63 символів")
+  .required("this is mandatory area")
+  .min(10, "email must be at least 10 characters")
+  .max(63, "email must contain no more than 63 characters")
   .matches(
+
     /^[\w*;!:"'#%^*+&?$§]{1}[\w\-*;!:"'#%^?*+&$§.]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/i,
     "невірний формат"
   );
 
 const password = Yup.string()
-  .required("необхідно заповнити поле")
-  .min(5, "пароль повинен складатися не менше ніж з 5 символів")
+  .required("this is mandatory area")
+  .min(5, "password must be at least 5 characters")
   .matches(
     /^(?![-.])[\w*;!:"'@#%^*&$§?.-]{5,30}$/i,
-    "пароль може складатися з цифр, букв та символiв"
+    "password can be with numbers, letters, characters"
   );
 
 const name = Yup.string()
-  .required("необхідно заповнити поле")
-  .min(3, "ім'я повинне складатися не менше ніж з 3 символів")
-  .max(100, "ім'я повинне складатися не бiльше ніж з 100 символів")
+  .required("this is mandatory area")
+  .min(3, "name must be at least 3 characters")
+  .max(100, "name must contain no more than 100 characters")
   .matches(
     /^(?=[a-zA-Zа-яА-ЯІіЇїЄєҐґ'0-9])[a-zA-Zа-яА-ЯІіЇїЄєҐґ'0-9 -]{3,100}$/i,
-    "невірний формат"
+    "invalid format"
   );
 
 export const loginValidationSchema = Yup.object({
@@ -37,6 +38,6 @@ export const registerValidationSchema = Yup.object({
   password,
   confirmPassword: Yup.string().oneOf(
     [Yup.ref("password"), null],
-    "паролі повинні співпадати"
+    "passwords must match"
   ),
 });

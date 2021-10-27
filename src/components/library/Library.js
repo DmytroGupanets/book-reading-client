@@ -12,10 +12,13 @@ import { ThemeContext } from "../App";
 import Modal from "../modal/Modal";
 import useWindowDimensions from "../../hooks/resize";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import LibraryEmptyModal from "../libraryEmpty/libraryEmptyModal/LibraryEmptyModal";
 import AddBookMobileIcon from "../libraryEmpty/addBookMobileIcon/AddBookMobileIcon";
 
 const Library = () => {
+  const { t } = useTranslation();
+
   const isAuth = useSelector(getAuthenticated);
   const books = useSelector(getAllBooks);
   const dispatch = useDispatch();
@@ -35,7 +38,7 @@ const Library = () => {
   useEffect(() => {
     if (!books.length) toggleModal();
     dispatch(getAllBooksOperation());
-  }, [dispatch]);
+  }, [dispatch, books.length]);
 
   const isUserHaveAnyBooks = Boolean(books.length);
 
@@ -55,7 +58,7 @@ const Library = () => {
 
       {isAuth && isUserHaveAnyBooks && (
         <NavLink to="/training" className="trainingLink">
-          Далі
+          {t("Next")}
         </NavLink>
       )}
       {isMobile && <AddBookMobileIcon toggleModal={toggleAddBookModal} />}

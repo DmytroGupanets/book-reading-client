@@ -1,18 +1,21 @@
 import Graph from "./Graph";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { useContext } from "react";
 import { ThemeContext } from "../App";
 import { useTranslation } from "react-i18next";
+import { getPagesPerDay } from "../../redux/target/targetSelectors";
 
 const GraphContainer = () => {
   const { t } = useTranslation();
   const { theme } = useContext(ThemeContext);
+  const pagesPerDay = useSelector(getPagesPerDay);
 
   return (
     <DivStyled colors={theme}>
       <h3 className="graph__count-page">
         {t("Amount of pages / day")}
-        <span>{13}</span>
+        <span>{pagesPerDay}</span>
       </h3>
       <Graph />
       <p className="time-paragraph">{t("TIME")}</p>
@@ -22,11 +25,8 @@ const GraphContainer = () => {
 const DivStyled = styled.div`
   position: relative;
   margin: 0 auto;
-  width: 227px;
   padding-top: 14px;
   padding-bottom: 39px;
-  padding-left: 22px;
-  padding-right: 7px;
   background-color: ${({ colors }) => colors.secondaryBg};
   box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.25);
 
@@ -60,8 +60,6 @@ const DivStyled = styled.div`
     width: 678px;
     padding-top: 25px;
     padding-bottom: 50px;
-    padding-left: 36px;
-    padding-right: 16px;
 
     > p {
       left: 89%;
@@ -72,8 +70,6 @@ const DivStyled = styled.div`
     width: 886px;
     padding-top: 25px;
     padding-bottom: 50px;
-    padding-left: 39px;
-    padding-right: 16px;
 
     > p {
       left: 91%;

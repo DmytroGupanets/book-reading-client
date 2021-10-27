@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Select, { components } from "react-select";
 import { useTranslation } from "react-i18next";
 import { getPlannedBooks } from "../../../../redux/books/booksSelectors";
@@ -11,6 +11,7 @@ import {
 import { getAllPlannedBooks } from "../../../../redux/target/targetSelectors";
 
 import SelectBooksStyled from "./SelectBooksStyled";
+import { ThemeContext } from "../../../App";
 
 import sprite from "../../../../images/sprite.svg";
 import useWindowDimensions from "../../../../hooks/resize";
@@ -33,6 +34,7 @@ const DropdownIndicator = (props) => {
 
 const SelectBooks = ({ toggleModal }) => {
   const { t } = useTranslation();
+  const { theme } = useContext(ThemeContext);
 
   const clientsWidth = useWindowDimensions().width;
   const [isMobile, setIsMobile] = useState(false);
@@ -45,17 +47,10 @@ const SelectBooks = ({ toggleModal }) => {
   const books = useSelector(getPlannedBooks);
   const plannedBooks = useSelector(getAllPlannedBooks);
   const [selectedBook, setSelectedBook] = useState({});
-  console.log(`plannedBooks`, plannedBooks);
-  console.log(`books`, books);
 
   useEffect(() => {
     if (!plannedBooks.length) dispatch(setPlannedBooksForSelect(books));
-  });
-
-  useEffect(() => {
-    if (!plannedBooks.length) dispatch(setPlannedBooksForSelect(books));
-    dispatch(setPlannedBooksForSelect(plannedBooks));
-  }, [books, plannedBooks, dispatch]);
+  }, []);
 
   const handleSelectBook = (selectedOption) => {
     const { value } = selectedOption;
@@ -74,9 +69,10 @@ const SelectBooks = ({ toggleModal }) => {
   }));
 
   return (
-    <SelectBooksStyled>
+    <SelectBooksStyled colors={theme}>
       <Select
         options={options}
+        placeholder={t("Choose books from the library")}
         closeMenuOnSelect={true}
         onChange={handleSelectBook}
         components={{ DropdownIndicator }}

@@ -1,40 +1,59 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setBookInTrainingSuccess } from "../../../redux/target/targetActions";
+import {
+  setBookInTrainingSuccess,
+  setNumberOfPagesRemaining,
+} from "../../../redux/target/targetActions";
+import {
+  getIdxOfReadedBooksInTraining,
+  getRecords,
+  getTargetEndDate,
+} from "../../../redux/target/targetSelectors";
 import { getInProgressdBooks } from "../../../redux/books/booksSelectors";
-import { getRecords, getTargetId } from "../../../redux/target/targetSelectors";
 
 import { ThemeContext } from "../../App";
 import StatisticListStyled from "./StatisticListStyled";
-
-const StatisticList = ({ toggleModal }) => {
+import { useTranslation } from "react-i18next";
+import useDate from "../../../hooks/useDate";
+const StatisticList = ({
+  toggleModal,
+  toggleModalTimer,
+  toggleModalTargetSuccess,
+  toggleModalBookSuccess,
+}) => {
   const { theme } = useContext(ThemeContext);
   const [pagesState, setQuantityPages] = useState(0);
+  const [stateData, moment, chengeStartDataIdx] = useDate();
 
-  const records = useSelector(getRecords);
+  const indexOfReadidBook = useSelector(getIdxOfReadedBooksInTraining);
   const booksInProgress = useSelector(getInProgressdBooks);
+  const targetEndDate = useSelector(getTargetEndDate);
+  const records = useSelector(getRecords);
 
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const totalPagesOfBookInProgress = booksInProgress.reduce(
     (acc, book) => (acc += book.pages),
     0
   );
 
-  console.log(`totalPagesOfBookInProgress`, totalPagesOfBookInProgress);
-
   useEffect(() => {
-    if (totalPagesOfBookInProgress === 0) {
-      return;
-    }
-    if (pagesState >= totalPagesOfBookInProgress) {
-      toggleModal();
-    }
+    dispatch(
+      setNumberOfPagesRemaining(totalPagesOfBookInProgress - pagesState)
+    );
+    dispatch(setBookInTrainingSuccess(countIdxOfReadedBook(pagesState)));
+
+    return () => {
+      dispatch(setBookInTrainingSuccess(countIdxOfReadedBook(-1)));
+    };
   }, [pagesState, totalPagesOfBookInProgress]);
 
   useEffect(() => {
-    dispatch(setBookInTrainingSuccess(countIdxOfReadedBook(pagesState)));
-  }, [pagesState]);
+    if (indexOfReadidBook >= 0) {
+      toggleModalBookSuccess();
+    }
+  }, [indexOfReadidBook]);
 
   useEffect(() => {
     countPages();
@@ -54,25 +73,6 @@ const StatisticList = ({ toggleModal }) => {
     return result;
   };
 
-  // const result = ;
-  // const fn = (arr) => {
-  //   let pagesOfReadedBook = 0;
-  //   return arr.reduce((acc, item, idx) => {
-  //     console.log(pagesOfReadedBook);
-  //     // console.log(acc[idx]);
-
-  //     if (item.pages === pagesState - pagesOfReadedBook) {
-  //       // console.log(pagesState.pagesOfReadedBook);
-  //       acc = idx;
-  //       pagesOfReadedBook += item.pages;
-  //       // acc.accPages = p;
-  //       return acc;
-  //     }
-
-  //     return acc;
-  //   }, 0);
-  // };
-
   const countPages = () => {
     let pages = 0;
 
@@ -81,9 +81,32 @@ const StatisticList = ({ toggleModal }) => {
     setQuantityPages(pages);
   };
 
+  // ======================================Open Modals======================================
+
+  const openModalByTimer = () =>
+    new Date(chengeStartDataIdx(targetEndDate)) -
+    new Date(chengeStartDataIdx(stateData.currentDate.split("-").join(".")));
+
+  useEffect(() => {
+    if (totalPagesOfBookInProgress === 0) {
+      return;
+    }
+    if (openModalByTimer() >= 0 && pagesState >= totalPagesOfBookInProgress) {
+      toggleModalTargetSuccess();
+    }
+    if (openModalByTimer() < 0 && pagesState >= totalPagesOfBookInProgress) {
+      toggleModal();
+    }
+    if (openModalByTimer() < 0 && pagesState < totalPagesOfBookInProgress) {
+      toggleModalTimer();
+    }
+  }, [pagesState, totalPagesOfBookInProgress]);
+
+  // ======================================Open Modals======================================
+
   return (
     <StatisticListStyled colors={theme}>
-      <h2 className="statisticTitle">Статистика</h2>
+      <h2 className="statisticTitle">{t("STATISTICS")}</h2>
 
       <div className="listWrapper">
         {records &&
@@ -96,7 +119,7 @@ const StatisticList = ({ toggleModal }) => {
                 <li className="statisticListItemTime">{time}</li>
                 <li className="statisticListItemWrapper">
                   {pages}
-                  <p className="statisticListItemTime">стор.</p>
+                  <p className="statisticListItemTime">{t("str")}.</p>
                 </li>
               </ul>
             ))}

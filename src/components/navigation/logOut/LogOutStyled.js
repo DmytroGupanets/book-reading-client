@@ -1,11 +1,12 @@
 import styled from "styled-components";
 
 const LogOutStyled = styled.div`
+  margin-left: 14px;
   .logOutButton {
+    padding: 0;
     border: none;
     background-color: transparent;
-    width: 40px;
-    height: 38px;
+    height: 34px;
     font-weight: 300;
     font-size: 14px;
     line-height: 2.71;
@@ -14,7 +15,7 @@ const LogOutStyled = styled.div`
     color: ${({ colors }) => colors.primaryText};
   }
   .logOutWrapper {
-    border-bottom: 1px solid #242a37;
+    border-bottom: 1px solid ${({ colors }) => colors.primaryText};
   }
 `;
 

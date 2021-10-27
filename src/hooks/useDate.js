@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import Moment from "moment";
 import { extendMoment } from "moment-range";
 import { useSelector } from "react-redux";
-import { getPreplanningStartDate } from "../redux/target/targetSelectors";
+import { getTargetStartDate } from "../redux/target/targetSelectors";
+
 
 const moment = extendMoment(Moment);
 
@@ -18,24 +19,26 @@ const dateNow = `${day}-${month + 1}-${year}`;
 
 const useDate = () => {
   const [stateData, setDate] = useState(initialStateDate);
-  const { quantityDays } = stateData;
 
-  const startTarget = useSelector(getPreplanningStartDate);
-  const start = startTarget.split(".").reverse().join("-");
+  const startTarget = useSelector(getTargetStartDate);
+  const start = startTarget && startTarget.split(".").reverse().join("-");
 
   useEffect(() => {
     setCurrentData();
-    if (quantityDays && start) {
-      setQuantityBetweenDays(chengeStartDataIdx(start));
-    }
-  }, []);
+
+    setQuantityBetweenDays(chengeStartDataIdx(start));
+  }, [start]);
 
   const setCurrentData = () => {
     setDate((prev) => ({ ...prev, currentDate: dateNow }));
   };
 
   const chengeStartDataIdx = (str) => {
-    // console.log(str);
+
+    if (str === undefined) {
+      return;
+    }
+
     const startDateStr = str.slice().split(".");
     [startDateStr[0], startDateStr[1]] = [startDateStr[1], startDateStr[0]];
     return startDateStr.join("-");
@@ -45,7 +48,6 @@ const useDate = () => {
     if (startDate === "00.00.0000" || endDate === "00.00.0000") {
       return [];
     }
-
     const arr = [];
     const reverseStart = startDate.split(".").reverse().join("-");
     const reverseEnd = endDate.split(".").reverse().join("-");
@@ -83,7 +85,7 @@ const useDate = () => {
 
     let newDateRange = +startDay;
 
-    for (let i = 0; i < range.diff("days") + 1; i++) {
+    for (let i = 0; i <= range.diff("days"); i++) {
       const newDate = moment().set({
         year: startYear,
         month: startMonth,

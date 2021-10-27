@@ -1,7 +1,10 @@
 import React, { useEffect, useState, useContext } from "react";
 import Select, { components } from "react-select";
 import { useTranslation } from "react-i18next";
-import { getPlannedBooks } from "../../../../redux/books/booksSelectors";
+import {
+  getPlannedBooks,
+  getAllSelectedBooks,
+} from "../../../../redux/books/booksSelectors";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addSelectedBook,
@@ -51,6 +54,7 @@ const SelectBooks = ({ toggleModal }) => {
   const books = useSelector(getPlannedBooks);
   const plannedBooks = useSelector(getAllPlannedBooks);
   const [selectedBook, setSelectedBook] = useState(null);
+  const [disable, setDisable] = useState(false);
 
   useEffect(() => {
     if (!plannedBooks.length) dispatch(setPlannedBooksForSelect(books));
@@ -58,6 +62,7 @@ const SelectBooks = ({ toggleModal }) => {
 
   const handleSelectBook = (selectedOption) => {
     const { value } = selectedOption;
+    setDisable(false);
     setSelectedBook(value);
   };
 
@@ -88,7 +93,11 @@ const SelectBooks = ({ toggleModal }) => {
         onChange={handleSelectBook}
         components={{ DropdownIndicator }}
       />
-      <button className="selectBooksButton" onClick={addBookToSelected}>
+      <button
+        disabled={disable}
+        className="selectBooksButton"
+        onClick={addBookToSelected}
+      >
         {t("Add")}
       </button>
     </SelectBooksStyled>

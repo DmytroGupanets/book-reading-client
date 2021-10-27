@@ -57,6 +57,39 @@ const SelectBooks = ({ toggleModal }) => {
     if (!plannedBooks.length) dispatch(setPlannedBooksForSelect(books));
   }, []);
 
+  useEffect(() => {
+    if (plannedBooks !== null && preplanningSelectedBooks.length) {
+      const diffBetweenBooksAndPlanned = findDiffBooks();
+      const updateSelector = [...plannedBooks, ...diffBetweenBooksAndPlanned];
+
+      dispatch(setPlannedBooksForSelect(updateSelector));
+    }
+  }, []);
+
+  const findDiffBooks = () => {
+    let notInThePlanned = [];
+    const result = [];
+
+    for (const book of books) {
+      const res = plannedBooks.find((pbook) => pbook._id === book._id);
+
+      if (!res) {
+        notInThePlanned.push(book);
+      }
+    }
+
+    for (const book of notInThePlanned) {
+      const res2 = preplanningSelectedBooks.find(
+        (sbook) => sbook._id === book._id
+      );
+
+      if (!res2) {
+        result.push(book);
+      }
+    }
+    return result;
+  };
+
   const handleSelectBook = (selectedOption) => {
     const { value } = selectedOption;
     setDisable(false);

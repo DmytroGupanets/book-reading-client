@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const LibraryStyled = styled.div`
   position: relative;
+  min-height: calc(100vh - 180px);
 
   .trainingLink {
     display: block;

@@ -16,6 +16,7 @@ export const LogOutModalStyled = styled.div`
     font-size: 16px;
     line-height: 1.37;
 
+    color: ${({ colors }) => colors.primaryText};
     text-align: center;
   }
 
@@ -32,7 +33,7 @@ export const LogOutModalStyled = styled.div`
   .logOutCancelBtn {
     width: 140px;
 
-    background-color: white;
+    background-color: ${({ colors }) => colors.secondaryBg};
     border: 1px solid ${({ colors }) => colors.primaryText};
 
     font-family: "Montserrat", sans-serif;

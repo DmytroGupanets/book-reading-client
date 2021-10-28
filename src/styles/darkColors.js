@@ -16,7 +16,11 @@ const dark = {
   inputBg: "#cfcfcf",
   inputText: "#242A37",
   inputFocus: "#f3f3f3",
-  chartsBg: "#cfcfcf",
+  chartsBg: "#cfcfcf68",
+  timerYearBg: "#B1B5C2",
+  timerDigits: "#091E3F",
+  timerLabels: "#50565e",
+  timerEndDateBg: "#FFFFFF",
 };
 
 export default dark;

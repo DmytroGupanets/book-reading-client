@@ -65,12 +65,12 @@ export const LibraryEmptyModalStyled = styled.form`
     line-height: 2.7;
     margin: 0 auto;
     border: 1px solid ${({ colors }) => colors.primaryText};
-    background-color: ${({ colors }) => colors.primaryBg};
+    background-color: #f6f7fb;
     cursor: pointer;
 
     &:hover,
     :focus {
-      background-color: ${({ colors }) => colors.trainingLabel};
+      background-color: ${({ colors }) => colors.accentActive};
     }
   }
 

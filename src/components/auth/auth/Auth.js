@@ -1,14 +1,13 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import AuthStyled from "./AuthStyled";
 import Login from "../Login/Login";
 import Registration from "../Registration/Registration";
 import { Redirect, useRouteMatch } from "react-router";
 import MobileAuth from "../MobileAuth/MobileAuth";
-import { ThemeContext } from "../../App";
+import colors from "../../../styles/lightColors";
 
 const Auth = () => {
   const { url } = useRouteMatch();
-  const { theme } = useContext(ThemeContext);
 
   const [deviceWidth, setDeviceWidth] = useState(window.innerWidth);
 
@@ -29,7 +28,7 @@ const Auth = () => {
   const isRegisterUrl = url === "/auth/register";
 
   return (
-    <AuthStyled colors={theme}>
+    <AuthStyled colors={colors}>
       {isMobile && isAuthURL && <MobileAuth />}
       {isMobile && isLoginUrl && <Login />}
       {isMobile && isRegisterUrl && <Registration />}

@@ -10,7 +10,6 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import useDate from "../../hooks/useDate";
 import { getInProgressdBooks } from "../../redux/books/booksSelectors";
 import {
   getRecords,
@@ -134,7 +133,14 @@ export default function Graph() {
 
   const createData = () => {
     const pagesReadPerDayRecords = getReadPagesPerDay();
-    const result = [];
+    const result = [
+      {
+        PLAN: plannedPagesPerDay,
+        ACT: 0,
+        ПЛАН: plannedPagesPerDay,
+        ФАКТ: 0,
+      },
+    ];
     const quantityDaysUpToToday = quantityDaysUptoNow();
 
     if (!quantityDaysUpToToday.length) return defaultData;
@@ -145,9 +151,9 @@ export default function Graph() {
 
       if (index === -1) {
         result.push({
-          PLAN: plannedPagesPerDay,
+          PLAN: 0,
           ACT: 0,
-          ПЛАН: plannedPagesPerDay,
+          ПЛАН: 0,
           ФАКТ: 0,
         });
       } else {

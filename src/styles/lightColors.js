@@ -17,10 +17,10 @@ const light = {
   inputText: "#242A37",
   inputFocus: "#FFFFFF",
   chartsBg: "#FFFFFF",
-  // timerYearBg: "",
-  // timerDigitsPrimary: "",
-  // timerDigitsSecondary: ""
-  // timerEndDateBg: ""
+  timerYearBg: "#FFFFFF",
+  timerDigits: "#091E3F",
+  timerLabels: "#898F9F",
+  timerEndDateBg: "#FFFFFF",
 };
 
 export default light;

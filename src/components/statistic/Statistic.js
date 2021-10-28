@@ -15,8 +15,11 @@ import ModalEndTarining from "./modalEndTraining/ModalEndTraining";
 import StatisticStyled from "./StatisticStyled";
 import { getInProgressdBooks } from "../../redux/books/booksSelectors";
 import { useTranslation } from "react-i18next";
+import { useContext } from "react";
+import { ThemeContext } from "../App";
 
 const Statistic = () => {
+  const { theme } = useContext(ThemeContext);
   const { t } = useTranslation();
   const [showModal, setShowModal] = useState(false);
   const [modalTimerOut, setModalTimerOut] = useState(false);
@@ -59,7 +62,7 @@ const Statistic = () => {
     `${t("Congratulations! Another book has been read")} 📚`;
 
   return (
-    <StatisticStyled>
+    <StatisticStyled colors={theme}>
       <StatisticForm />
       <StatisticList
         showModal={showModal}

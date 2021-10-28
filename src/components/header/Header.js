@@ -10,9 +10,20 @@ import { getAuthenticated } from "../../redux/auth/authSelectors";
 import { useContext } from "react";
 import { ThemeContext } from "../App";
 import { resize } from "../../hooks";
+import { useLocation } from "react-router";
 
 const Header = () => {
-  const { theme } = useContext(ThemeContext);
+  const location = useLocation();
+  let { theme } = useContext(ThemeContext);
+
+  if (
+    location.pathname === "/auth" ||
+    location.pathname === "/auth/login" ||
+    location.pathname === "/auth/register"
+  ) {
+    theme = "light";
+  }
+
   const isAuth = useSelector(getAuthenticated);
   const { width } = resize();
 
@@ -48,7 +59,11 @@ const Header = () => {
           )}
         </>
       )}
-      <ThemeSwitcher />
+      {!(
+        location.pathname === "/auth" ||
+        location.pathname === "/auth/login" ||
+        location.pathname === "/auth/register"
+      ) && <ThemeSwitcher />}
     </HeaderStyled>
   );
 };

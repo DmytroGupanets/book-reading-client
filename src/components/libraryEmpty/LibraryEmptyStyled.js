@@ -100,16 +100,16 @@ export const LibraryEmptyStyled = styled.form`
       margin-right: 27px;
     }
     .inputErrorTitle {
-      top: 120px;
+      top: 128px;
     }
     .inputErrorAuthor {
-      top: 200px;
+      top: 216px;
     }
     .inputErrorYear {
-      top: 200px;
+      top: 216px;
     }
     .inputErrorPages {
-      top: 200px;
+      top: 216px;
     }
   }
   @media screen and (min-width: 1280px) {
@@ -127,13 +127,13 @@ export const LibraryEmptyStyled = styled.form`
       width: 250px;
     }
     .inputErrorAuthor {
-      top: 120px;
+      top: 126px;
     }
     .inputErrorYear {
-      top: 120px;
+      top: 126px;
     }
     .inputErrorPages {
-      top: 120px;
+      top: 126px;
     }
     .addButton {
       margin: auto;

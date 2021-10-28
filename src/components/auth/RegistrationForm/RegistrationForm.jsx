@@ -6,15 +6,13 @@ import GoogleButton from "../GoogleButton/GoogleButton";
 import { registerValidationSchema } from "../validation/validationSchema";
 import { register } from "../../../redux/auth/authOperations";
 import { RegistrationFormStyled } from "./RegistrationFormStyled";
-import { useContext, useEffect } from "react";
-import { ThemeContext } from "../../App";
+import { useEffect } from "react";
 import { getError } from "../../../redux/auth/authSelectors";
 import { resetError } from "../../../redux/auth/authActions";
 import { error } from "@pnotify/core/dist/PNotify.js";
-import { current } from "@reduxjs/toolkit";
+import colors from "../../../styles/lightColors";
 
 const RegistrationForm = () => {
-  const { theme } = useContext(ThemeContext);
   const dispatch = useDispatch();
   const { t } = useTranslation();
   const isError = useSelector(getError);
@@ -52,7 +50,7 @@ const RegistrationForm = () => {
   });
 
   return (
-    <RegistrationFormStyled colors={theme}>
+    <RegistrationFormStyled colors={colors}>
       <GoogleButton />
       <form className="form" onSubmit={formik.handleSubmit}>
         <div className="formGroup">

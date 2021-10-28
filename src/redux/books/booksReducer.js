@@ -1,5 +1,6 @@
 import { createReducer } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
+import { logoutSuccess } from "../auth/authActions";
 import {
   addBookError,
   addBookRequest,
@@ -29,6 +30,7 @@ const booksListReducer = createReducer([], {
     state.map((book) =>
       book._id === action.payload.result._id ? action.payload.result : book
     ),
+  [logoutSuccess]: () => [],
 });
 
 const isLoadingReducer = createReducer(false, {
@@ -44,6 +46,7 @@ const isLoadingReducer = createReducer(false, {
   [updateBookStatusRequest]: () => true,
   [updateBookStatusSuccess]: () => false,
   [updateBookStatusError]: () => false,
+  [logoutSuccess]: () => false,
 });
 
 const errorReducer = createReducer("", {
@@ -55,6 +58,7 @@ const errorReducer = createReducer("", {
   [addBookResumeError]: (_, { payload }) => payload,
   [updateBookStatusRequest]: () => "",
   [updateBookStatusError]: (_, { payload }) => payload,
+  [logoutSuccess]: () => "",
 });
 
 const booksReducer = combineReducers({

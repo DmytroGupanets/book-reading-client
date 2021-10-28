@@ -4,7 +4,6 @@ import { extendMoment } from "moment-range";
 import { useSelector } from "react-redux";
 import { getTargetStartDate } from "../redux/target/targetSelectors";
 
-
 const moment = extendMoment(Moment);
 
 const initialStateDate = {
@@ -33,8 +32,9 @@ const useDate = () => {
     setDate((prev) => ({ ...prev, currentDate: dateNow }));
   };
 
+  // ============================================================chengeStartDataIdx
+  // takes a date in the format "yyyy / mm / dd" converts to "mm / dd / yyyy"
   const chengeStartDataIdx = (str) => {
-
     if (str === undefined) {
       return;
     }
@@ -43,7 +43,11 @@ const useDate = () => {
     [startDateStr[0], startDateStr[1]] = [startDateStr[1], startDateStr[0]];
     return startDateStr.join("-");
   };
+  // ============================================================chengeStartDataIdx
 
+  // ============================================================rangeBetwenStartAndEndDates
+  // calculates the difference between the start and end dates
+  // returns an array of days accepts data in the format "dd / mm / yyyy"
   const rangeBetwenStartAndEndDates = (startDate, endDate) => {
     if (startDate === "00.00.0000" || endDate === "00.00.0000") {
       return [];
@@ -71,7 +75,11 @@ const useDate = () => {
     }
     return arr;
   };
+  // ============================================================rangeBetwenStartAndEndDates
 
+  // ============================================================setQuantityBetweenDays
+  // calculates the difference between the current and the start day
+  // returns an array of days accepts only the start date in the format "mm / dd / yyyy"
   const setQuantityBetweenDays = (startTargetData) => {
     const startTarget = new Date(startTargetData);
     const startData = moment(startTarget);
@@ -101,6 +109,7 @@ const useDate = () => {
       newDateRange++;
     }
   };
+  // ============================================================setQuantityBetweenDays
 
   return [
     stateData,

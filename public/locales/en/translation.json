@@ -210,5 +210,8 @@
   "Remain": "Remain",
   "symbols": "symbols",
   "Save": "Save",
-  "Back": "Back"
+  "Back": "Back",
+
+  "inputPagesError": "Enter the date and number of pages",
+  "warningInputPages": "only numbers from 1st to 3rd"
 }

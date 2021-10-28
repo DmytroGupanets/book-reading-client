@@ -39,17 +39,6 @@ const StatisticList = ({
     0
   );
 
-  const openModalBookSuccess = async (idx) => {
-    const getLoc = localStorage.getItem("book");
-    const promis = await getLoc.then((data) => JSON.parse(data));
-    if (promis === null) {
-      localStorage.setItem("book", `${indexOfReadidBook}`);
-    } else if (idx > promis) {
-      await localStorage.setItem("book", `${idx}`);
-      toggleModalBookSuccess();
-    }
-  };
-
   useEffect(() => {
     dispatch(
       setNumberOfPagesRemaining(totalPagesOfBookInProgress - pagesState)
@@ -86,6 +75,17 @@ const StatisticList = ({
   };
 
   // ======================================Open Modals======================================
+
+  const openModalBookSuccess = async (idx) => {
+    const getLoc = localStorage.getItem("book");
+    const promis = await getLoc.then((data) => JSON.parse(data));
+    if (promis === null) {
+      localStorage.setItem("book", `${indexOfReadidBook}`);
+    } else if (idx > promis) {
+      await localStorage.setItem("book", `${idx}`);
+      toggleModalBookSuccess();
+    }
+  };
 
   const openModalByTimer = () =>
     new Date(chengeStartDataIdx(targetEndDate)) - Date.now() + 86400000;

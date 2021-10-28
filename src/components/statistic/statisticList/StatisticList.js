@@ -15,6 +15,7 @@ import { ThemeContext } from "../../App";
 import StatisticListStyled from "./StatisticListStyled";
 import { useTranslation } from "react-i18next";
 import useDate from "../../../hooks/useDate";
+import localStorage from "redux-persist/es/storage";
 const StatisticList = ({
   toggleModal,
   toggleModalTimer,
@@ -38,22 +39,12 @@ const StatisticList = ({
     0
   );
 
-  // const renderRemainingBooks = () =>
-  //   indexOfReadidBook === -1
-  //     ? booksInProgress.length
-  //     : booksInProgress.slice(indexOfReadidBook, booksInProgress.length - 1)
-  //         .length;
-
   useEffect(() => {
     dispatch(
       setNumberOfPagesRemaining(totalPagesOfBookInProgress - pagesState)
     );
     dispatch(setBookInTrainingSuccess(countIdxOfReadedBook(pagesState)));
   }, [pagesState, totalPagesOfBookInProgress]);
-
-  useEffect(() => {
-    indexOfReadidBook !== -1 && toggleModalBookSuccess();
-  }, [indexOfReadidBook]);
 
   useEffect(() => {
     countPages();
@@ -69,7 +60,9 @@ const StatisticList = ({
       } else {
         return (result = i - 1);
       }
+      openModalBookSuccess(result);
     }
+
     return result;
   };
 
@@ -82,6 +75,17 @@ const StatisticList = ({
   };
 
   // ======================================Open Modals======================================
+
+  const openModalBookSuccess = async (idx) => {
+    const getLoc = localStorage.getItem("book");
+    const promis = await getLoc.then((data) => JSON.parse(data));
+    if (promis === null) {
+      localStorage.setItem("book", `${indexOfReadidBook}`);
+    } else if (idx > promis) {
+      await localStorage.setItem("book", `${idx}`);
+      toggleModalBookSuccess();
+    }
+  };
 
   const openModalByTimer = () =>
     new Date(chengeStartDataIdx(targetEndDate)) - Date.now() + 86400000;

@@ -74,7 +74,7 @@ const StatisticForm = () => {
               className="statisticInput"
               onChange={onHandleChange}
               pattern="([0-9]){1,3}"
-              title="только цифры от 1-й до 3-х"
+              title={t("warning Input Pages")}
             />
           </label>
         </div>
@@ -82,9 +82,7 @@ const StatisticForm = () => {
           {t("Add result")}
         </button>
         {!isValidate && (
-          <p className="InputErrorMassege">
-            Укажите дату и колличество страниц
-          </p>
+          <p className="InputErrorMassege">{t("inputPagesError")}</p>
         )}
       </div>
     </StatisticFormStyled>

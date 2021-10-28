@@ -41,6 +41,7 @@ const Statistic = () => {
     setModalTargetSuccess((isActive) => !isActive);
     if (modalTargetSuccess) {
       dispatch(completeTargetOperation(targetId));
+      localStorage.setItem("book", "-1");
     }
   };
 

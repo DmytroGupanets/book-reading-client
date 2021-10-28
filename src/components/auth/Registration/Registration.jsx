@@ -1,7 +1,6 @@
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import arrowIcon from "../../../images/auth/arrow.svg";
-import { ThemeContext } from "../../App";
 import RegistrationForm from "../RegistrationForm/RegistrationForm";
 import { RegistrationStyled } from "./RegistrationStyled";
 import { useSelector } from "react-redux";
@@ -10,9 +9,9 @@ import { useDispatch } from "react-redux";
 import { registerReset } from "../../../redux/auth/authActions";
 import { useCallback } from "react";
 import { useHistory } from "react-router";
+import colors from "../../../styles/lightColors";
 
 const Registration = () => {
-  const { theme } = useContext(ThemeContext);
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const confirmEmail = useSelector(getConfirmEmail);
@@ -49,7 +48,7 @@ const Registration = () => {
         )}
       </div>
       <div className="rightSideContainer">
-        <RegistrationStyled colors={theme}>
+        <RegistrationStyled colors={colors}>
           <h2 className="title">Books Reading</h2>
           <p className="listTitle">{t("Will help you to")}</p>
           <ul className="list">

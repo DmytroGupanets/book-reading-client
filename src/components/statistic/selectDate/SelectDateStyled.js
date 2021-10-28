@@ -10,7 +10,7 @@ const SelectDateStyled = styled.label`
   font-weight: 500px;
   font-size: 11px;
   line-height: 20px;
-  color: ${({ colors }) => colors.secondaryText};
+  color: ${({ colors }) => colors.timerLabels};
 
   .iconSelectDate {
     position: absolute;

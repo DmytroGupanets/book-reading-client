@@ -50,7 +50,6 @@ const LibraryEmptyModal = ({ toggleModal }) => {
         year,
         pages,
       };
-      console.log(`ok`);
 
       await dispatch(addNewBookOperation(newBook));
 
@@ -87,6 +86,11 @@ const LibraryEmptyModal = ({ toggleModal }) => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
           />
+          {formik.errors.title && formik.touched.title && (
+            <span className="inputErrorModal inputErrorTitleModal">
+              {t([formik.errors.title])}
+            </span>
+          )}
         </label>
         <div className="aboutBookContainerModal">
           <label
@@ -106,22 +110,34 @@ const LibraryEmptyModal = ({ toggleModal }) => {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
             />
-            {formik.errors.title && formik.touched.title && (
-              <div className="inputErrorModal">{formik.errors.title}</div>
+            {formik.errors.author && formik.touched.author && (
+              <span className="inputErrorModal inputErrorTitleModal">
+                {t([formik.errors.author])}
+              </span>
             )}
           </label>
           <label className="aboutBookModal aboutBook-yearModal" htmlFor="year">
             {t("Publication date")}
             <input
               id="year"
-              type="number"
+              type="text"
               name="year"
               value={formik.values.year}
               placeholder="..."
               className="aboutBookInputModal aboutBookInput-yearModal"
-              onChange={formik.handleChange}
+              onChange={(e) => {
+                const testStr = e.target.value;
+                const regExp = /^([0-9]{0,4})$/;
+                if (testStr.length > 4 || !regExp.test(testStr)) return;
+                formik.handleChange(e);
+              }}
               onBlur={formik.handleBlur}
             />
+            {formik.errors.year && formik.touched.year && (
+              <span className="inputErrorModal inputErrorTitleModal">
+                {t([formik.errors.year])}
+              </span>
+            )}
           </label>
           <label className="aboutBookModal aboutBook-pageModal" htmlFor="pages">
             {t("Amount of pages")}
@@ -135,6 +151,11 @@ const LibraryEmptyModal = ({ toggleModal }) => {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
             />
+            {formik.errors.pages && formik.touched.pages && (
+              <span className="inputErrorModal inputErrorTitleModal">
+                {t([formik.errors.pages])}
+              </span>
+            )}
           </label>
           {firstBookWarning && (
             <p className="warningText">

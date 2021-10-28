@@ -20,7 +20,7 @@ const author = Yup.string()
   .matches(/^\S+(?: \S+)*$/, "name cannot begin or end with space");
 
 const year = Yup.string()
-  .required("field must be filled")
+  // .required("field must be filled")
   .max(4, "Year must contain no more than 4 characters")
   .matches(/^[1,2][0-9]{3}$/, "wrong format of year");
 

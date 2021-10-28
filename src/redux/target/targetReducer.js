@@ -2,6 +2,7 @@ import { createReducer } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
 import persistReducer from "redux-persist/es/persistReducer";
 import storage from "redux-persist/lib/storage";
+import { logoutSuccess } from "../auth/authActions";
 import {
   getRecordRequest,
   getRecordSuccess,
@@ -38,11 +39,13 @@ const targetsReducer = createReducer(
     }),
     [completeTargetSuccess]: (_, { payload }) => payload.target,
     [addTargetSucces]: (_, { payload }) => payload.result,
+    [logoutSuccess]: () => {},
   }
 );
 
 const bookInTrainingReducer = createReducer(-1, {
   [setBookInTrainingSuccess]: (_, { payload }) => payload,
+  [logoutSuccess]: () => -1,
 });
 
 const isLoadingReducer = createReducer(false, {
@@ -58,6 +61,7 @@ const isLoadingReducer = createReducer(false, {
   [addTargetRequest]: () => true,
   [addTargetSucces]: () => false,
   [addTargetError]: () => false,
+  [logoutSuccess]: () => false,
 });
 
 const errorReducer = createReducer("", {
@@ -69,6 +73,7 @@ const errorReducer = createReducer("", {
   [completeTargetError]: (_, { payload }) => payload,
   [addTargetRequest]: () => "",
   [addTargetError]: (_, { payload }) => payload,
+  [logoutSuccess]: () => "",
 });
 
 const plannedBooksReducer = createReducer([], {
@@ -78,7 +83,8 @@ const plannedBooksReducer = createReducer([], {
 
   [addPlaningBook]: (state, { payload }) => [...state, payload],
 
-  [resetPreplanning]: (_, __) => [],
+  [resetPreplanning]: () => [],
+  [logoutSuccess]: () => [],
 });
 
 const selectedBooksReducer = createReducer([], {
@@ -86,17 +92,20 @@ const selectedBooksReducer = createReducer([], {
   [removeSelectedBook]: (state, { payload }) =>
     state.filter((book) => book._id !== payload._id),
 
-  [resetPreplanning]: (_, __) => [],
+  [resetPreplanning]: () => [],
+  [logoutSuccess]: () => [],
 });
 
 const startDateReducer = createReducer("", {
   [addPreplanningStartDate]: (_, { payload }) => payload,
-  [resetPreplanning]: (_, __) => "",
+  [resetPreplanning]: () => "",
+  [logoutSuccess]: () => "",
 });
 
 const endDateReducer = createReducer("", {
   [addPreplanningEndtDate]: (_, { payload }) => payload,
-  [resetPreplanning]: (_, __) => "",
+  [resetPreplanning]: () => "",
+  [logoutSuccess]: () => "",
 });
 
 const numberOfPagesRemainingReducer = createReducer(0, {

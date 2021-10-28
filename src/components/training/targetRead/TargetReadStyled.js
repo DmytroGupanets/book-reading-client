@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 const TargetReadStyled = styled.div`
-  /* margin: 0 auto; */
   margin-bottom: 30px;
   width: 270px;
 
@@ -51,7 +50,7 @@ const TargetReadStyled = styled.div`
     line-height: 0.84;
 
     color: ${({ colors }) => colors.digits};
-    background: ${({ colors }) => colors.iconsActive};
+    background: #f5f7fa;
     box-shadow: 4px 4px 8px rgba(36, 42, 55, 0.15);
   }
 
@@ -70,7 +69,7 @@ const TargetReadStyled = styled.div`
     line-height: 0.84;
 
     color: ${({ colors }) => colors.accent};
-    background: ${({ colors }) => colors.iconsActive};
+    background: #f5f7fa;
     box-shadow: 4px 4px 8px rgba(36, 42, 55, 0.15);
   }
 

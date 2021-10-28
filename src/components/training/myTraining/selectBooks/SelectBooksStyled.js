@@ -22,7 +22,7 @@ const SelectBooksStyled = styled.div`
     cursor: pointer;
     width: 172px;
     height: 42px;
-    background: ${({ colors }) => colors.background};
+    background: ${({ colors }) => colors.primaryBg};
     border: 1px solid ${({ colors }) => colors.primaryText};
 
     margin-top: 36px;
@@ -32,6 +32,11 @@ const SelectBooksStyled = styled.div`
     line-height: 2.71;
 
     color: ${({ colors }) => colors.primaryText};
+
+    &:hover,
+    :focus {
+      background-color: ${({ colors }) => colors.accent};
+    }
 
     @media screen and (min-width: 768px) {
       margin-top: 0;

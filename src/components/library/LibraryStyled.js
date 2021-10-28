@@ -18,5 +18,10 @@ export const LibraryStyled = styled.div`
     font-size: 16px;
     line-height: 2.37;
     color: ${({ colors }) => colors.secondaryBg};
+
+    &:hover,
+    :focus {
+      background-color: ${({ colors }) => colors.accentActive};
+    }
   }
 `;

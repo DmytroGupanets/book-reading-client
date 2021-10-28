@@ -44,7 +44,7 @@ export const ModalResumeStyled = styled.div`
     font-size: 14px;
     line-height: 1.1;
 
-    color: ${({ colors }) => colors.secondaryText};
+    color: ${({ colors }) => colors.inputText};
 
     @media screen and (min-width: 768px) {
       width: 510px;
@@ -85,7 +85,7 @@ export const ModalResumeStyled = styled.div`
   .resumeModalBackBtn {
     width: 140px;
 
-    background-color: white;
+    background-color: ${({ colors }) => colors.secondaryBg};
     border: 1px solid ${({ colors }) => colors.primaryText};
 
     font-family: "Montserrat", sans-serif;

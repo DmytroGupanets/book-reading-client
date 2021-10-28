@@ -15,6 +15,7 @@ import { ThemeContext } from "../../App";
 import StatisticListStyled from "./StatisticListStyled";
 import { useTranslation } from "react-i18next";
 import useDate from "../../../hooks/useDate";
+import localStorage from "redux-persist/es/storage";
 const StatisticList = ({
   toggleModal,
   toggleModalTimer,
@@ -46,12 +47,6 @@ const StatisticList = ({
   }, [pagesState, totalPagesOfBookInProgress]);
 
   useEffect(() => {
-    if (indexOfReadidBook >= 0) {
-      toggleModalBookSuccess();
-    }
-  }, [indexOfReadidBook]);
-
-  useEffect(() => {
     countPages();
   }, [records]);
 
@@ -65,7 +60,9 @@ const StatisticList = ({
       } else {
         return (result = i - 1);
       }
+      openModalBookSuccess(result);
     }
+
     return result;
   };
 
@@ -79,8 +76,19 @@ const StatisticList = ({
 
   // ======================================Open Modals======================================
 
+  const openModalBookSuccess = async (idx) => {
+    const getLoc = localStorage.getItem("book");
+    const promis = await getLoc.then((data) => JSON.parse(data));
+    if (promis === null) {
+      localStorage.setItem("book", `${indexOfReadidBook}`);
+    } else if (idx > promis) {
+      await localStorage.setItem("book", `${idx}`);
+      toggleModalBookSuccess();
+    }
+  };
+
   const openModalByTimer = () =>
-    new Date(chengeStartDataIdx(targetEndDate)) - Date.now();
+    new Date(chengeStartDataIdx(targetEndDate)) - Date.now() + 86400000;
 
   useEffect(() => {
     if (totalPagesOfBookInProgress === 0) {

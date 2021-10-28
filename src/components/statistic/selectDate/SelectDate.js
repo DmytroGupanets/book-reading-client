@@ -48,8 +48,8 @@ const SelectDate = ({ date, setStatistic }) => {
           ...theme,
           colors: {
             ...theme.colors,
-            primary25: `${colors.primaryBg}`,
-            primary50: `${colors.trainingLabel}`,
+            primary25: `${colors.inputBg}`,
+            primary50: `${colors.inputFocus}`,
             primary: `${colors.accent}`,
           },
         })}

@@ -40,8 +40,8 @@ const StatisticFormStyled = styled.form`
     height: 42px;
     font-size: 14px;
 
-    color: ${({ colors }) => colors.primaryText};
-    background: ${({ colors }) => colors.primaryBg};
+    color: ${({ colors }) => colors.inputText};
+    background: ${({ colors }) => colors.inputBg};
     border: 1px solid ${({ colors }) => colors.icons};
 
     outline-color: ${({ colors }) => colors.accent};

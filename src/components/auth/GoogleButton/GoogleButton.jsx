@@ -3,11 +3,9 @@ import iconGoogle from "../../../images/auth/googleIcon.svg";
 import { GoogleButtonStyled } from "./GoogleButtonStyled";
 import { useDispatch } from "react-redux";
 import { googleAuth } from "../../../redux/auth/authOperations";
-import { useContext } from "react";
-import { ThemeContext } from "../../App";
+import colors from "../../../styles/lightColors";
 
 const GoogleButton = () => {
-  const { theme } = useContext(ThemeContext);
   const dispatch = useDispatch();
   const responseGoogle = (response) => {
     const { tokenId } = response;
@@ -18,7 +16,7 @@ const GoogleButton = () => {
       <GoogleLogin
         clientId="553525570800-6tkk7jlm1vu8e8o4l9gj3dhvn470il4k.apps.googleusercontent.com"
         render={(renderProps) => (
-          <GoogleButtonStyled colors={theme}>
+          <GoogleButtonStyled colors={colors}>
             <button
               className="googleButton"
               onClick={renderProps.onClick}

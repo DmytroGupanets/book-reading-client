@@ -55,6 +55,14 @@ const TargetRead = ({ isActive }) => {
     return targetQuantytyDays.length;
   };
 
+  const renderRemainingBooks = () =>
+    idxOfReadedBooksInTraining === -1
+      ? booksInProgress.length
+      : booksInProgress.slice(
+          idxOfReadedBooksInTraining,
+          booksInProgress.length - 1
+        ).length;
+
   return (
     <TargetReadStyled colors={theme} isActive={isActive}>
       <div className="tabletWrapperStyled">
@@ -82,14 +90,7 @@ const TargetRead = ({ isActive }) => {
         </li>
         {isActive && (
           <li className="targetReadItem">
-            <div className="targetReadDigRemain">
-              {idxOfReadedBooksInTraining === -1
-                ? booksInProgress.length
-                : booksInProgress.slice(
-                    idxOfReadedBooksInTraining,
-                    booksInProgress.length - 1
-                  ).length}
-            </div>
+            <div className="targetReadDigRemain">{renderRemainingBooks()}</div>
             <p className="targetReadItemDescription">{t("Books left")}</p>
           </li>
         )}

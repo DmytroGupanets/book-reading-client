@@ -74,7 +74,7 @@ const StatisticForm = () => {
               className="statisticInput"
               onChange={onHandleChange}
               pattern="([0-9]){1,3}"
-              title={t("warningInputPages")}
+              title={t("warning Input Pages")}
             />
           </label>
         </div>

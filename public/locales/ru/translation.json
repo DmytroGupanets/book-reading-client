@@ -212,5 +212,5 @@
   "Back": "Назад",
 
   "inputPagesError": "Укажите дату и колличество страниц",
-  "warningInputPages": "Только цифры от 1-й до 3-х"
+  "warning Input Pages": "Только цифры от 1-й до 3-х"
 }

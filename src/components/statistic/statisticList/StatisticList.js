@@ -87,6 +87,17 @@ const StatisticList = ({
     }
   };
 
+  const oprenModalByTimerSuccess = async (pages) => {
+    const getLoc = localStorage.getItem("pages");
+    const promis = await getLoc.then((data) => +data);
+    if (promis === null) {
+      localStorage.setItem("pages", `${indexOfReadidBook}`);
+    } else if (pages > promis) {
+      await localStorage.setItem("pages", `${pages}`);
+      toggleModalTimer();
+    }
+  };
+
   const openModalByTimer = () =>
     new Date(chengeStartDataIdx(targetEndDate)) - Date.now() + 86400000;
 
@@ -101,7 +112,7 @@ const StatisticList = ({
       toggleModal();
     }
     if (openModalByTimer() < 0 && pagesState < totalPagesOfBookInProgress) {
-      toggleModalTimer();
+      oprenModalByTimerSuccess(pagesState);
     }
   }, [pagesState, totalPagesOfBookInProgress]);
 

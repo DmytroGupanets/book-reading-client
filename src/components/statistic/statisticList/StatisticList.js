@@ -38,11 +38,11 @@ const StatisticList = ({
     0
   );
 
-  const renderRemainingBooks = () =>
-    indexOfReadidBook === -1
-      ? booksInProgress.length
-      : booksInProgress.slice(indexOfReadidBook, booksInProgress.length - 1)
-          .length;
+  // const renderRemainingBooks = () =>
+  //   indexOfReadidBook === -1
+  //     ? booksInProgress.length
+  //     : booksInProgress.slice(indexOfReadidBook, booksInProgress.length - 1)
+  //         .length;
 
   useEffect(() => {
     dispatch(
@@ -52,9 +52,8 @@ const StatisticList = ({
   }, [pagesState, totalPagesOfBookInProgress]);
 
   useEffect(() => {
-    renderRemainingBooks() !== booksInProgress.length &&
-      toggleModalBookSuccess();
-  }, [indexOfReadidBook, booksInProgress, renderRemainingBooks]);
+    indexOfReadidBook !== -1 && toggleModalBookSuccess();
+  }, [indexOfReadidBook]);
 
   useEffect(() => {
     countPages();
@@ -100,7 +99,7 @@ const StatisticList = ({
     if (openModalByTimer() < 0 && pagesState < totalPagesOfBookInProgress) {
       toggleModalTimer();
     }
-  }, [pagesState, totalPagesOfBookInProgress, openModalByTimer]);
+  }, [pagesState, totalPagesOfBookInProgress]);
 
   // ======================================Open Modals======================================
 

@@ -133,14 +133,7 @@ export default function Graph() {
 
   const createData = () => {
     const pagesReadPerDayRecords = getReadPagesPerDay();
-    const result = [
-      {
-        PLAN: plannedPagesPerDay,
-        ACT: 0,
-        ПЛАН: plannedPagesPerDay,
-        ФАКТ: 0,
-      },
-    ];
+    const result = [];
     const quantityDaysUpToToday = quantityDaysUptoNow();
 
     if (!quantityDaysUpToToday.length) return defaultData;
@@ -151,9 +144,9 @@ export default function Graph() {
 
       if (index === -1) {
         result.push({
-          PLAN: 0,
+          PLAN: plannedPagesPerDay,
           ACT: 0,
-          ПЛАН: 0,
+          ПЛАН: plannedPagesPerDay,
           ФАКТ: 0,
         });
       } else {

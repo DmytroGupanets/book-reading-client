@@ -25,34 +25,34 @@ const TimerLogicOfGoal = () => {
   const [, setDateTime] = useState(new Date());
   const oneDay = 86400000;
 
-  const diff = goal + oneDay - new Date().getTime();
+  const diff = Math.abs(goal + oneDay - new Date().getTime());
 
   const days = () => {
     if (Math.floor(diff / (1000 * 60 * 60 * 24)) > 9) {
       return Math.floor(diff / (1000 * 60 * 60 * 24));
     }
-    return "0" + Math.floor(Math.abs(diff) / (1000 * 60 * 60 * 24));
+    return "0" + Math.floor(diff / (1000 * 60 * 60 * 24));
   };
 
   const hours = () => {
     if (Math.floor((diff / (1000 * 60 * 60)) % 24) > 9) {
       return Math.floor((diff / (1000 * 60 * 60)) % 24);
     }
-    return "0" + Math.floor((Math.abs(diff) / (1000 * 60 * 60)) % 24);
+    return "0" + Math.floor((diff / (1000 * 60 * 60)) % 24);
   };
 
   const minutes = () => {
     if (Math.floor((diff / 1000 / 60) % 60) > 9) {
       return Math.floor((diff / 1000 / 60) % 60);
     }
-    return "0" + Math.floor((Math.abs(diff) / 1000 / 60) % 60);
+    return "0" + Math.floor((diff / 1000 / 60) % 60);
   };
 
   const seconds = () => {
     if (Math.floor((diff / 1000) % 60) > 9) {
       return Math.floor((diff / 1000) % 60);
     }
-    return "0" + Math.floor((Math.abs(diff) / 1000) % 60);
+    return "0" + Math.floor((diff / 1000) % 60);
   };
 
   const time = {

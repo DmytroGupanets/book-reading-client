@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const HeaderStyled = styled.header`
+  background-color: ${({ colors }) => colors.headerBg};
   padding-left: 25px;
   padding-right: 25px;
   width: 100%;

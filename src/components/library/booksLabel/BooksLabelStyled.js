@@ -9,6 +9,7 @@ export const BooksLabelStyled = styled.div`
     font-weight: 600;
     font-size: 19px;
     line-height: 2;
+    color: ${({ colors }) => colors.primaryText};
   }
 
   .labelWrapper {

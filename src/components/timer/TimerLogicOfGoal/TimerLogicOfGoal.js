@@ -12,7 +12,13 @@ const TimerLogicOfGoal = () => {
 
   const end = useSelector(getTargetEndDate);
 
-  const endDate = end?.split(".")?.reverse()?.join("-");
+  let endDate;
+
+  if (!end) {
+    endDate = "0000-00-00";
+  } else {
+    endDate = end.split(".").reverse().join("-");
+  }
 
   const goal = new Date(endDate).getTime();
 

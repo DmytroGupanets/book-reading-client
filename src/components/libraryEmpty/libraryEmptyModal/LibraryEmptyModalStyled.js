@@ -29,6 +29,7 @@ export const LibraryEmptyModalStyled = styled.form`
   }
 
   .aboutBookModal {
+    position: relative;
     display: block;
     font-weight: 500;
     font-size: 14px;
@@ -74,7 +75,6 @@ export const LibraryEmptyModalStyled = styled.form`
   }
 
   .aboutBookContainerModal {
-    position: relative;
     margin-bottom: 35px;
   }
 
@@ -104,5 +104,19 @@ export const LibraryEmptyModalStyled = styled.form`
     font-size: 10px;
     line-height: 1.1;
     color: #eb5757;
+  }
+
+  .inputErrorModal.inputErrorTitleModal {
+    position: absolute;
+    left: 0;
+    bottom: -22px;
+
+    color: #eb5757;
+
+    text-align: start;
+
+    font-size: 10px;
+    font-weight: 400px;
+    line-height: 1.11;
   }
 `;

@@ -125,6 +125,7 @@ const RegistrationForm = () => {
             type="password"
             className="formInput"
             name="confirmPassword"
+            maxLength="30"
             onPaste={(e) => {
               e.preventDefault();
             }}

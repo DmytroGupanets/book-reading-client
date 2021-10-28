@@ -50,7 +50,7 @@ const LibraryEmptyModal = ({ toggleModal }) => {
         year,
         pages,
       };
-      console.log(`ok`);
+      // console.log(`ok`);
 
       await dispatch(addNewBookOperation(newBook));
 
@@ -114,12 +114,17 @@ const LibraryEmptyModal = ({ toggleModal }) => {
             {t("Publication date")}
             <input
               id="year"
-              type="number"
+              type="text"
               name="year"
               value={formik.values.year}
               placeholder="..."
               className="aboutBookInputModal aboutBookInput-yearModal"
-              onChange={formik.handleChange}
+              onChange={(e) => {
+                const testStr = e.target.value;
+                const regExp = /^([0-9]{0,4})$/;
+                 if (testStr.length > 4 || !regExp.test(testStr)) return;
+                 formik.handleChange(e)
+               } }
               onBlur={formik.handleBlur}
             />
           </label>

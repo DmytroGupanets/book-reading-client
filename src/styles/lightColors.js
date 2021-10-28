@@ -12,6 +12,15 @@ const light = {
   digits: "#091E3F",
   buttonPrimary: "#6D7A8D",
   langBtnActive: "#3c4148",
+  headerBg: "#ffffff",
+  inputBg: "#F6F7FB",
+  inputText: "#242A37",
+  inputFocus: "#FFFFFF",
+  chartsBg: "#FFFFFF",
+  timerYearBg: "#FFFFFF",
+  timerDigits: "#091E3F",
+  timerLabels: "#898F9F",
+  timerEndDateBg: "#FFFFFF",
 };
 
 export default light;

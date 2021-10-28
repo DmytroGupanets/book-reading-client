@@ -23,15 +23,15 @@ export const LibraryEmptyStyled = styled.form`
     font-weight: 400;
     font-size: 14px;
     line-height: 2.7;
-    color: ${({ colors }) => colors.primaryText};
-    background-color: #f6f7fb;
+    color: ${({ colors }) => colors.inputText};
+    background-color: ${({ colors }) => colors.inputBg};
     padding-left: 13px;
     box-shadow: inset 0px 1px 2px rgba(29, 29, 27, 0.15);
     margin-bottom: 10px;
     border: none;
 
     &:focus {
-      background-color: ${({ colors }) => colors.secondaryBg};
+      background-color: ${({ colors }) => colors.inputFocus};
     }
   }
   .bookGroup {
@@ -46,7 +46,7 @@ export const LibraryEmptyStyled = styled.form`
   }
   .inputErrorTitle {
     position: absolute;
-    top: 185px; 
+    top: 185px;
   }
   .inputErrorAuthor {
     position: absolute;
@@ -71,6 +71,14 @@ export const LibraryEmptyStyled = styled.form`
     margin: 0 auto;
     border: 1px solid ${({ colors }) => colors.primaryText};
     cursor: pointer;
+
+    color: #242a37;
+    background-color: #f6f7fb;
+
+    &:hover,
+    :focus {
+      background-color: ${({ colors }) => colors.accentActive};
+    }
   }
 
   @media screen and (min-width: 768px) {
@@ -92,16 +100,16 @@ export const LibraryEmptyStyled = styled.form`
       margin-right: 27px;
     }
     .inputErrorTitle {
-      top: 120px;
+      top: 128px;
     }
     .inputErrorAuthor {
-      top: 200px;
+      top: 216px;
     }
     .inputErrorYear {
-      top: 200px;
+      top: 216px;
     }
     .inputErrorPages {
-      top: 200px;
+      top: 216px;
     }
   }
   @media screen and (min-width: 1280px) {
@@ -119,14 +127,13 @@ export const LibraryEmptyStyled = styled.form`
       width: 250px;
     }
     .inputErrorAuthor {
-      top: 120px;
+      top: 126px;
     }
     .inputErrorYear {
-      top: 120px;
-    
+      top: 126px;
     }
     .inputErrorPages {
-      top: 120px;
+      top: 126px;
     }
     .addButton {
       margin: auto;

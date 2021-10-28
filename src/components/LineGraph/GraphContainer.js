@@ -27,7 +27,7 @@ const DivStyled = styled.div`
   margin: 0 auto;
   padding-top: 14px;
   padding-bottom: 39px;
-  background-color: ${({ colors }) => colors.secondaryBg};
+  background-color: ${({ colors }) => colors.chartsBg};
   box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.25);
 
   > h3 {

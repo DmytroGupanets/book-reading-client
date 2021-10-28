@@ -10,7 +10,6 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import useDate from "../../hooks/useDate";
 import { getInProgressdBooks } from "../../redux/books/booksSelectors";
 import {
   getRecords,
@@ -19,6 +18,9 @@ import {
 } from "../../redux/target/targetSelectors";
 import { useDispatch } from "react-redux";
 import { setPagesPerDay } from "../../redux/target/targetActions";
+import Moment from "moment";
+import { extendMoment } from "moment-range";
+const moment = extendMoment(Moment);
 
 const defaultData = [
   {
@@ -32,7 +34,7 @@ const defaultData = [
 export default function Graph() {
   const dispatch = useDispatch();
   const { t } = useTranslation();
-  const [, , , , rangeBetwenStartAndEndDates] = useDate();
+  // const [, , , , rangeBetwenStartAndEndDates] = useDate();
 
   const booksInProgress = useSelector(getInProgressdBooks);
   const records = useSelector(getRecords);
@@ -45,9 +47,42 @@ export default function Graph() {
   const quantityDaysUptoNow = () => {
     let res = [];
     if (start === undefined) return false;
+
     res = rangeBetwenStartAndEndDates(start, today);
-    return res.unshift(start);
+    res.unshift(start);
+
+    return res;
   };
+  //  ================================================================================
+  const rangeBetwenStartAndEndDates = (startDate, endDate) => {
+    if (startDate === "00.00.0000" || endDate === "00.00.0000") {
+      return [];
+    }
+    const arr = [];
+    const reverseStart = startDate.split(".").reverse().join("-");
+    const reverseEnd = endDate.split(".").reverse().join("-");
+    const start = new Date(reverseStart);
+    const end = new Date(reverseEnd);
+    const range = moment.range(start, end);
+
+    let newDateRange = start.getDate();
+
+    for (let i = 0; i < range.diff("days"); i++) {
+      newDateRange++;
+      const newDate = moment().set({
+        year: start.getFullYear,
+        month: start.getMonth(),
+        date: newDateRange,
+      });
+
+      arr.push(
+        newDate.toISOString().substr(0, 10).split("-").reverse().join(".")
+      );
+    }
+    return arr;
+  };
+
+  // ==================================================================
 
   const getPlannedPagesPerDay = () => {
     if (
@@ -58,6 +93,8 @@ export default function Graph() {
     )
       return false;
     const quantityDays = rangeBetwenStartAndEndDates(start, end);
+    quantityDays.unshift(start);
+    quantityDays.push(end);
 
     const sumOfDaysTotal = quantityDays.length;
 
@@ -96,9 +133,17 @@ export default function Graph() {
 
   const createData = () => {
     const pagesReadPerDayRecords = getReadPagesPerDay();
-    const result = [];
+    const result = [
+      {
+        PLAN: plannedPagesPerDay,
+        ACT: 0,
+        ПЛАН: plannedPagesPerDay,
+        ФАКТ: 0,
+      },
+    ];
     const quantityDaysUpToToday = quantityDaysUptoNow();
-    if (!quantityDaysUpToToday) return defaultData;
+
+    if (!quantityDaysUpToToday.length) return defaultData;
     for (let i = 0; i < quantityDaysUpToToday.length; i++) {
       const index = pagesReadPerDayRecords.findIndex(
         (rec) => rec.date === quantityDaysUpToToday[i]
@@ -106,9 +151,9 @@ export default function Graph() {
 
       if (index === -1) {
         result.push({
-          PLAN: plannedPagesPerDay,
+          PLAN: 0,
           ACT: 0,
-          ПЛАН: plannedPagesPerDay,
+          ПЛАН: 0,
           ФАКТ: 0,
         });
       } else {
@@ -124,14 +169,12 @@ export default function Graph() {
   };
 
   const data = createData();
-
   const getHighestValue = data.reduce((acc, data) => {
     if (+data.ACT > acc) acc = +data.ACT;
 
     return acc;
   }, 0);
 
-  // debugger;
   return (
     <ResponsiveContainer width={"100%"} height={215}>
       <LineChart

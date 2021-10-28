@@ -5,6 +5,7 @@ const UserMenuStyled = styled.div`
   margin-left: ${({ width }) => (width > 767 ? "0" : "14px")};
   .userName {
     display: none;
+    color: ${({ colors }) => colors.primaryText};
   }
   .userNameFirstLet {
     display: flex;

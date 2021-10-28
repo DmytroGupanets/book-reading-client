@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { useSelector } from "react-redux";
-import { Switch } from "react-router";
+import { Switch, useLocation } from "react-router";
 import { getAuthenticated } from "../../redux/auth/authSelectors";
 import { mainRoutes } from "../../routes/mainRoutes";
 import PrivatRoutes from "../../routes/privatRoutes";
@@ -9,8 +9,17 @@ import { ThemeContext } from "../App";
 import { MainStyled } from "./MainStyled";
 
 const Main = () => {
-  const { theme } = useContext(ThemeContext);
+  const location = useLocation();
+  let { theme } = useContext(ThemeContext);
   const isAuth = useSelector(getAuthenticated);
+
+  if (
+    location.pathname === "/auth" ||
+    location.pathname === "/auth/login" ||
+    location.pathname === "/auth/register"
+  ) {
+    theme = "light";
+  }
 
   return (
     <MainStyled colors={theme}>

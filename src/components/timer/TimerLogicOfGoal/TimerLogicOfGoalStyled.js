@@ -6,7 +6,7 @@ export const TimerLogicOfGoalStyled = styled.div`
   min-width: 270px;
   height: 60px;
 
-  background-color: ${({ colors }) => colors.secondaryBg};
+  background-color: ${({ colors }) => colors.timerEndDateBg};
   box-shadow: 4px 4px 8px rgba(36, 42, 55, 0.15);
 
   @media (min-width: 768px) {
@@ -37,7 +37,7 @@ export const TimerLogicOfGoalStyled = styled.div`
     line-height: 1.52;
     margin-left: 10px;
 
-    color: ${({ colors }) => colors.digits};
+    color: ${({ colors }) => colors.timerDigits};
   }
 
   .time:first-child {
@@ -58,6 +58,6 @@ export const TimerLogicOfGoalStyled = styled.div`
     font-size: 10px;
     line-height: 3.8;
 
-    color: ${({ colors }) => colors.secondaryText};
+    color: ${({ colors }) => colors.timerLabels};
   }
 `;

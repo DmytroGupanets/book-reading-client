@@ -66,7 +66,7 @@ export const ModalFilledStyled = styled.div`
     line-height: 2.71;
     text-align: center;
 
-    color: ${({ colors }) => colors.primaryText};
+    color: ${({ colors }) => colors.inputText};
     cursor: pointer;
 
     &:hover,

@@ -6,8 +6,8 @@ import { loginValidationSchema } from "../validation/validationSchema";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../../redux/auth/authOperations";
-import { useContext, useEffect } from "react";
-import { ThemeContext } from "../../App";
+import { useEffect } from "react";
+import colors from "../../../styles/lightColors";
 import { getError } from "../../../redux/auth/authSelectors";
 import { resetError } from "../../../redux/auth/authActions";
 import { error } from "@pnotify/core/dist/PNotify.js";
@@ -16,7 +16,6 @@ import "@pnotify/core/dist/PNotify.css";
 
 const LoginForm = () => {
   const dispatch = useDispatch();
-  const { theme } = useContext(ThemeContext);
   const { t } = useTranslation();
   const isError = useSelector(getError);
 
@@ -49,7 +48,7 @@ const LoginForm = () => {
   });
 
   return (
-    <LoginFormStyled colors={theme}>
+    <LoginFormStyled colors={colors}>
       <GoogleButton />
       <form className="form" onSubmit={formik.handleSubmit}>
         <div className="formGroup emailInput">

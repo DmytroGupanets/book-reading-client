@@ -24,8 +24,8 @@ const Library = () => {
   const dispatch = useDispatch();
   const { theme } = useContext(ThemeContext);
   const isMobile = useWindowDimensions().width < 768;
-  const [modalState, setModalState] = useState(true);
-  const [addBookLibraryModal, setAddBookLibraryModal] = useState(false);
+  const [modalState, setModalState] = useState(false);
+  const [addBookLibraryModal, setAddBookLibraryModal] = useState(true);
 
   const toggleModal = () => {
     setModalState((state) => !state);

@@ -35,6 +35,7 @@ const StatisticListStyled = styled.div`
   .statisticListItemWrapper {
     width: calc(100% / 3);
 
+    color: ${({ colors }) => colors.primaryText};
     display: flex;
     align-items: center;
     justify-content: end;

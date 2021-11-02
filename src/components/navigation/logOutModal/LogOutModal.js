@@ -17,6 +17,7 @@ const LogOutModal = ({ onClose }) => {
   const onHandleLogOutClick = () => {
     onClose();
     dispatch(logOut());
+    localStorage.clear();
   };
 
   return (

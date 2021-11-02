@@ -18,7 +18,7 @@ const dateNow = `${day}-${month + 1}-${year}`;
 
 const useDate = () => {
   const [stateData, setDate] = useState(initialStateDate);
-
+  // console.log(stateData.currentDate);
   const startTarget = useSelector(getTargetStartDate);
   const start = startTarget && startTarget.split(".").reverse().join("-");
 
@@ -29,7 +29,11 @@ const useDate = () => {
   }, [start]);
 
   const setCurrentData = () => {
-    setDate((prev) => ({ ...prev, currentDate: dateNow }));
+    if (dateNow.length === 10) {
+      setDate((prev) => ({ ...prev, currentDate: dateNow }));
+    } else if (dateNow.length === 9) {
+      setDate((prev) => ({ ...prev, currentDate: `0${dateNow}` }));
+    }
   };
 
   // ============================================================chengeStartDataIdx
